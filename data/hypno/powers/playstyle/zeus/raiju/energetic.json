@@ -1,0 +1,241 @@
+{
+    "name":"Energetic",
+    "description":"You have an electro-bar. If your bar isn't at max, you suffer from reduced movement, attack speed, armor, attack damage, healing and health. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak",
+    "type": "origins:multiple",
+    "leak":{
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "change": -200
+        },
+        "damage_condition": {
+            "type": "origins:or",
+            "conditions": [{
+            "type": "eggolib:projectile",
+            "nbt": "{PierceLevel:1b}"
+            },
+            {
+            "type": "eggolib:projectile",
+            "nbt": "{PierceLevel:2b}"
+            },
+            {
+            "type": "eggolib:projectile",
+            "nbt": "{PierceLevel:3b}"
+            },
+            {
+            "type": "eggolib:projectile",
+            "nbt": "{PierceLevel:4b}"
+            }
+        ]
+    },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "leak2":{
+        "type": "origins:self_action_on_hit",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "change": -300
+        },
+        "damage_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:using_item",
+                "item_condition": {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:shield"
+                    }
+                }
+            }
+        },
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "movement_reduction":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Speed decrease",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.2,
+            "operation": "multiply_base"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "health_reduction":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Speed decrease",
+            "attribute": "minecraft:generic.max_health",
+            "value": -2,
+            "operation": "addition"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "healing_reduction":
+    {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "armor_reduction":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Speed decrease",
+            "attribute": "minecraft:generic.armor",
+            "value": -4,
+            "operation": "addition"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "attackspeed_reduction":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Attack speed decrease",
+            "attribute": "minecraft:generic.attack_speed",
+            "value": -0.2,
+            "operation": "multiply_base"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "attackdmg_reduction":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Attack damage decrease",
+            "attribute": "minecraft:generic.attack_damage",
+            "value": -0.1,
+            "operation": "multiply_total"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "roll_reduction":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Faster roll recharge",
+            "attribute": "combatroll:recharge",
+            "value": -0.2,
+            "operation": "multiply_base"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "<",
+            "compare_to": 600
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
+    "particle":
+    {
+        "type": "origins:particle",
+        "particle": "supplementaries:stasis",
+        "frequency": 4,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "==",
+            "compare_to": 600
+        }
+    },
+    "hidden": false
+}

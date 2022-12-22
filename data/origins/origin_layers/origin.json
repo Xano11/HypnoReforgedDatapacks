@@ -1,0 +1,8 @@
+{
+  "order": 1,
+  "replace": true,
+  "origins": [
+    "hypno:welcome"
+  ],
+  "name":"beginning"
+}

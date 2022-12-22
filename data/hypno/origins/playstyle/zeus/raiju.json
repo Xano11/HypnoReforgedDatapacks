@@ -1,0 +1,15 @@
+{
+	"powers": [
+		"hypno:playstyle/zeus/raiju/absorb",
+		"hypno:playstyle/zeus/raiju/striked",
+		"hypno:playstyle/zeus/raiju/lightning_fast",
+		"hypno:playstyle/zeus/raiju/energetic"
+	],
+	"icon": {
+		"item": "minecraft:bell"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Raiju",
+	"description": "A humanoid beast of lightning, you are able to channel the dynamic energy of thunder to fight your foes."
+}

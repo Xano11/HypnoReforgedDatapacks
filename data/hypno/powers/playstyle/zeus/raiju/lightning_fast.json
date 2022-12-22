@@ -1,0 +1,88 @@
+{
+    "name":"Lightning Fast",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "activation":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 30,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "command_at_hit": "summon armor_stand ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,Small:1b,Marker:1b,Invisible:1b,Tags:[\"lighttp\"]}",
+                    "command_along_ray": "particle supplementaries:stasis ~ ~ ~ 0.1 0.1 0.1 0.1 4 normal",
+                    "command_step": 2
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":70,
+                    "action":
+                    {
+                        "type": "origins:and",
+                        "actions": [{
+                        "type": "origins:execute_command",
+                        "command": "tp @s @e[limit=1,sort=nearest,type=minecraft:armor_stand,tag=lighttp]"
+                    }
+                ]
+                    }
+            },
+            {
+                "type":"origins:delay",
+                "ticks":71,
+                "action":
+                {
+                    "type": "origins:and",
+                    "actions": [{
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "effect give @s minecraft:glowing 5 0 true"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "kill @e[limit=1,sort=nearest,tag=lighttp]"
+                    }
+            ]
+                }
+        },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.lightning_bolt.thunder player @s ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+                    "change": -600
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused"
+        }
+    },
+    "hidden": false
+}

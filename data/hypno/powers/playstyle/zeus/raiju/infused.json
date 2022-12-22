@@ -1,0 +1,161 @@
+{
+    "name":"Infused",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "fire_immune":{
+    "type": "origins:fire_immunity"
+    },
+    "thunderstruck":{
+        "type": "origins:target_action_on_hit",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "power grant @s hypno:playstyle/zeus/raiju/shocked"
+        },
+        {
+            "type": "origins:damage",
+            "amount": 1,
+            "source": {
+                "name": "lightningBolt",
+                "unblockable": true,
+                "bypasses_armor": true
+            }
+        }
+    ]
+    },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "thunderstruck_user":{
+        "type": "origins:self_action_on_hit",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type":"origins:delay",
+                "ticks":1,
+                "action":{
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
+        }
+            }
+    ]
+    },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "defibrillator":
+    {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:regeneration",
+                            "duration": 60,
+                            "amplifier": 1
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle supplementaries:stasis ~ ~ ~ 1 1 1 0.1 100 normal"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:totem_of_undying ~ ~ ~ 1 1 1 0.3 10"
+                    },
+                    {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:speed",
+                            "duration": 40,
+                            "amplifier": 1
+                        }
+                    }
+                ]
+            }
+        },
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition":{
+                "type": "origins:health",
+                "comparison": "<=",
+                "compare_to": 8
+            }
+    },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/infused_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "movement_buff":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.15,
+            "operation": "multiply_base"
+        }
+    },
+    "attackspeed_buff":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Attack speed increase",
+            "attribute": "minecraft:generic.attack_speed",
+            "value": 0.15,
+            "operation": "multiply_base"
+        }
+    },
+    "roll_buff":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Faster roll recharge",
+            "attribute": "combatroll:recharge",
+            "value": 0.5,
+            "operation": "multiply_base"
+        }
+    },
+    "energy_swirl":
+    {
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/entity/trident_riptide.png",
+        "speed": 0.01
+    },
+    "hidden": true
+}

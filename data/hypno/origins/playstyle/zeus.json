@@ -1,0 +1,13 @@
+{
+	"powers": [
+		"hypno:default"
+	],
+	"icon": {
+		"item": "minecraft:gold_ingot",
+		"tag": "{tag:{Enchantments:[{}],\"enchant_the_rainbow:GlintColor\": 4}}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Blessing of Zeus",
+	"description": "You are blessed by Hermes. Thy blessed by thee messenger of gods are to be exceptionally swift and agile."
+}

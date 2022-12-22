@@ -1,0 +1,77 @@
+{
+    "name":"Default",
+    "description":"Those are all the default effects on Hypno Players.",
+    "type": "origins:multiple",
+    "no_posture":{
+        "type": "origins:effect_immunity",
+        "effects": [
+            "soulsweapons:posture_break",
+            "soulsweapons:disable_heal"
+        ]
+    },
+
+    "guinsoo_nerf":{
+        "type": "origins:modify_status_effect_amplifier",
+        "status_effect": "minecraft:strength",
+        "modifier": {
+            "operation": "add_base_early",
+            "value": -2
+        },
+        "condition": {
+            "type": "origins:status_effect",
+            "effect": "minecraft:strength",
+            "min_amplifier": 2,
+            "max_amplifier": 2
+        }
+    },
+    "turtle_master1":{
+        "type": "origins:modify_status_effect_duration",
+        "status_effect": "minecraft:slowness",
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": -0.60
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:status_effect",
+            "effect": "minecraft:resistance",
+            "min_amplifier": 1,
+            "max_amplifier": 3
+        },
+        {
+            "type": "origins:status_effect",
+            "effect": "minecraft:slowness",
+            "min_amplifier": 3,
+            "max_amplifier": 5
+        }
+    ]
+}
+    },
+    "turtle_master2":
+    {
+        "type": "origins:modify_status_effect_duration",
+        "status_effect": "minecraft:resistance",
+        "modifier": {
+            "operation": "multiply_base_multiplicative",
+            "value": -0.60
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:status_effect",
+            "effect": "minecraft:resistance",
+            "min_amplifier": 2,
+            "max_amplifier": 4
+        },
+        {
+            "type": "origins:status_effect",
+            "effect": "minecraft:slowness",
+            "min_amplifier": 4,
+            "max_amplifier": 6
+        }
+    ]
+}
+    },
+    "hidden": true
+}

@@ -1,0 +1,13 @@
+{
+	"powers": [
+		"hypno:default"
+	],
+	"icon": {
+		"item": "minecraft:anvil",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Blessing of Hephaestus",
+	"description": "You are blessed by Hephaestus. Thy blessed by thee crafstman of gods are to be exceptionally talented in ingenuity and usefulness."
+}

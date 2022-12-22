@@ -1,0 +1,14 @@
+{
+    "order": 2,
+    "replace": false,
+    "origins": [
+    "hypno:playstyle/artemis",
+    "hypno:playstyle/hephaestus",
+    "hypno:playstyle/hermes",
+    "hypno:playstyle/ares",
+    "hypno:playstyle/zeus",
+    "hypno:playstyle/aeolus"
+      ],
+      "name": "blessing"
+}
+  

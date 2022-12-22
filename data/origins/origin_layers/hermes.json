@@ -1,0 +1,17 @@
+{
+    "order": 2,
+    "replace": false,
+    "origins": [
+          {
+            "condition": {
+              "type": "origins:origin",
+              "origin": "hypno:playstyle/hermes",
+              "layer": "origins:blessing"
+          },
+          "origins": [
+            "hypno:playstyle/zeus/raiju"
+          ]
+          }
+      ],
+      "name": "origin"
+}

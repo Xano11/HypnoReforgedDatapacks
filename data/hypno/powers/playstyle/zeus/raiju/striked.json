@@ -1,0 +1,136 @@
+{
+    "name":"Call of the Thunder Beast",
+    "description":"When your electro-bar is at max, you can summon lighting to smite you using [PRIMARY ABILITY KEY]. If your enemy is affected by shock, you will teleport behind them on use",
+    "type": "origins:multiple",
+    "activation":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @e[tag=shocked] at @e[tag=shocked,limit=1,sort=nearest] run tp @s ^ ^ ^-0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 1 1 ~ ~ ~ 0.7 0.7 0.7 0.1 100 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:stasis ~ ~ ~ 1 1 1 0.1 100 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:totem_of_undying ~ ~ ~ 1 1 1 0.3 10"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon minecraft:lightning_bolt"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.lightning_bolt.thunder player @s ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+                    "change": -600
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "==",
+            "compare_to": 600
+        }
+    },
+    "tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 1 1 ~ ~ ~ 0.7 0.7 0.7 0.1 100 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:stasis ~ ~ ~ 1 1 1 0.1 100 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:totem_of_undying ~ ~ ~ 1 1 1 0.3 10"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon minecraft:lightning_bolt"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.lightning_bolt.thunder player @s ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+                    "change": -600
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "comparison": "==",
+            "compare_to": 600
+        }
+    },
+    "resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 2
+        }
+    },
+    "resource_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "change": 10
+        },
+        "interval": 10
+    },
+    "resource_up_rain":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/striked_resource",
+            "change": 10
+        },
+        "condition":{
+            "type": "origins:in_rain"
+        },        
+        "interval": 10
+    },
+    "hidden": false
+}

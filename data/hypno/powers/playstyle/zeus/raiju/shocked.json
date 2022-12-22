@@ -1,0 +1,183 @@
+{
+    "name":"Infused",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/zeus/raiju/shocked"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/shocked_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "tag":
+    {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:execute_command",
+            "command": "tag @s add shocked"
+        },
+        "entity_action_lost": {
+            "type": "origins:execute_command",
+            "command": "tag @s remove shocked"
+        }
+    },
+    "supracharged_normal":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:area_of_effect",
+            "radius": 5,
+            "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[{
+                    "type": "origins:damage",
+                    "amount": 3,
+                    "source": {
+                        "name": "lightningBolt",
+                        "bypasses_armor": true
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 1 1 ~ ~ ~ 0.7 0.7 0.7 0.1 50 normal"
+                }
+            ]
+                }
+            },
+            "bientity_condition": {
+                "type":"origins:and",
+                "conditions":[{
+                "type": "origins:can_see"
+            },
+            {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:living"
+            }
+        },
+        {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:in_rain",
+                "inverted": true
+            }
+        },
+        {
+            "type": "origins:target_condition",
+            "condition":{
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/absorb",
+            "inverted": true
+        }
+    }
+        ]
+    }
+        },
+        "interval": 20
+    },
+    "supracharged_rain":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:area_of_effect",
+            "radius": 7,
+            "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[{
+                    "type": "origins:damage",
+                    "amount": 4,
+                    "source": {
+                        "name": "lightningBolt",
+                        "bypasses_armor": true
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 1 1 ~ ~ ~ 0.7 0.7 0.7 0.1 50 normal"
+                }
+            ]
+                }
+            },
+            "bientity_condition": {
+                "type":"origins:and",
+                "conditions":[{
+                "type": "origins:can_see"
+            },
+            {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:living"
+            }
+        },
+        {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:in_rain",
+                "inverted": false
+            }
+        },
+        {
+            "type": "origins:target_condition",
+            "condition":{
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/absorb",
+            "inverted": true
+        }
+    }
+        ]
+    }
+        },
+        "interval": 20
+    },
+    "weakened_resistance":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Weakened mitigation",
+            "operation": "multiply_total",
+            "value": 0.25
+        }
+    },
+    "slower_roll_recharge":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower recharge",
+            "attribute": "combatroll:recharge",
+            "value": -0.5,
+            "operation": "multiply_base"
+        }
+    },
+    "weakened_roll":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower recharge",
+            "attribute": "combatroll:distance",
+            "value": -0.5,
+            "operation": "multiply_base"
+        }
+    },
+    "energy_swirl":
+    {
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/entity/trident_riptide.png",
+        "speed": 0.3
+    },
+    "hidden": true
+}

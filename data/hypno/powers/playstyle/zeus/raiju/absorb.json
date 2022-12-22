@@ -1,0 +1,57 @@
+{
+    "name":"Lightning Eater",
+    "description":"You do not take damage from lighting; In comparison, you get infused by it. Being infused allows you to use your main abilities : Call of the Thunder Beast and Requiem.",
+    "type": "origins:multiple",
+    "immunity":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type":"origins:or",
+            "conditions":[ 
+        {
+            "type": "origins:name",
+            "name": "lightningBolt"
+        },
+        {
+            "type": "origins:name",
+            "name": "lightningBolt.player"
+        }
+    ]
+},
+        "modifier": {
+            "name": "immune",
+            "operation": "multiply_total",
+            "value": -0.99
+        }
+    },
+    "fire_resistance":{
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "power grant @s hypno:playstyle/zeus/raiju/infused"
+        },
+        "damage_condition": {
+            "type":"origins:or",
+            "conditions":[ 
+        {
+            "type": "origins:name",
+            "name": "lightningBolt"
+        },
+        {
+            "type": "origins:name",
+            "name": "lightningBolt.player"
+        }
+    ]
+    },
+        "cooldown": 20,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 5,
+            "should_render": false
+        }
+    },
+    "redirect":{
+        "type": "apugli:redirect_lightning",
+        "chance": 0.75
+    },
+    "hidden": false
+}

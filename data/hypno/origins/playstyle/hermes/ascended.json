@@ -1,0 +1,13 @@
+{
+	"powers": [
+		"hypno:default"
+	],
+	"icon": {
+		"item": "minecraft:feather",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Ascended",
+	"description": "You are blessed by Aeolus. Thy blessed by thee god of winds are to be exceptionally talented in speed and wisdom."
+}

@@ -1,0 +1,13 @@
+{
+	"powers": [
+		"hypno:default"
+	],
+	"icon": {
+		"item": "minecraft:bow",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Blessing of Artemis",
+	"description": "You are blessed by Artemis. Thy blessed by thee goddess of hunt are to be exceptionally talented in agility and combat."
+}
