@@ -1,0 +1,109 @@
+{
+    "name":"Energetic",
+    "description":"You have an electro-bar. If your bar isn't at max, you suffer from reduced movement, attack speed, armor, attack damage, healing and health. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak",
+    "type": "origins:multiple",
+    "restrict":{
+        "type": "origins:restrict_armor",
+        "head": {
+            "type": "origins:armor_value",
+            "comparison": ">",
+            "compare_to": 2
+        },
+        "chest": {
+            "type": "origins:armor_value",
+            "comparison": ">",
+            "compare_to": 6
+        },
+        "legs": {
+            "type": "origins:armor_value",
+            "comparison": ">",
+            "compare_to": 5
+        },
+        "feet": {
+            "type": "origins:armor_value",
+            "comparison": ">",
+            "compare_to": 2
+        }
+    },
+    "helmet_toughness":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.armor_toughness",
+            "operation": "addition",
+            "value": 1,
+            "name": "Additional Armor toughness"
+        },
+        "tick_rate": 20,
+        "condition":  {
+            "type": "origins:equipped_item",
+            "equipment_slot": "head",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:iron_helmet"
+                }
+            }
+        }
+    },
+    "chestplate_toughness":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.armor_toughness",
+            "operation": "addition",
+            "value": 2,
+            "name": "Additional Armor toughness"
+        },
+        "tick_rate": 20,
+        "condition":  {
+            "type": "origins:equipped_item",
+            "equipment_slot": "chest",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:iron_chestplate"
+                }
+            }
+        }
+    },
+    "leggings_toughness":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.armor_toughness",
+            "operation": "addition",
+            "value": 2,
+            "name": "Additional Armor toughness"
+        },
+        "tick_rate": 20,
+        "condition":  {
+            "type": "origins:equipped_item",
+            "equipment_slot": "legs",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:iron_leggings"
+                }
+            }
+        }
+    },
+    "boots_toughness":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.armor_toughness",
+            "operation": "addition",
+            "value": 1,
+            "name": "Additional Armor toughness"
+        },
+        "tick_rate": 20,
+        "condition":  {
+            "type": "origins:equipped_item",
+            "equipment_slot": "feet",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:iron_boots"
+                }
+            }
+        }
+    },
+    "hidden": false
+}

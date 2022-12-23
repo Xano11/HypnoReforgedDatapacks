@@ -1,0 +1,154 @@
+{
+    "name":"The Beast's Roar",
+    "description":" ",
+    "type": "origins:multiple",
+    "toggle":{
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">=",
+            "compare_to": 100
+        }
+    },
+    "strike":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[distance=0.1..24] hypno:playstyle/zeus/raiju/storm"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "resource change @e[distance=0.1..24] hypno:playstyle/zeus/raiju/storm_stacks 1"
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":
+                    {
+                        "type": "origins:and",
+                        "actions": [{
+                        "type": "origins:execute_command",
+                        "command": "spreadplayers ~ ~ 8 16 false @e[type=minecraft:armor_stand,tag=lightningbolt]"
+                    }
+                ]
+                    }
+            },
+            {
+                "type":"origins:delay",
+                "ticks":19,
+                "action":
+                {
+                    "type": "origins:and",
+                    "actions": [{
+                    "type": "origins:execute_command",
+                    "command": "execute at @e[type=minecraft:armor_stand,tag=lightningbolt] run summon minecraft:lightning_bolt"
+                }
+            ]
+                }
+        },
+        {
+            "type":"origins:delay",
+            "ticks":20,
+            "action":
+            {
+                "type": "origins:and",
+                "actions": [{
+                "type": "origins:execute_command",
+                "command": "kill @e[type=minecraft:armor_stand,tag=lightningbolt]"
+            }
+        ]
+            }
+        },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "change": -35
+                }
+            ]
+        },
+        "interval": 25,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/stormfield_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @e[type=minecraft:armor_stand,tag=lightningbolt] run particle minecraft:cloud ~ ~ ~ 0.3 0 0.3 0.01 10"
+                }
+            ]
+        },     
+        "interval": 2,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/stormfield_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "hidden": false
+}

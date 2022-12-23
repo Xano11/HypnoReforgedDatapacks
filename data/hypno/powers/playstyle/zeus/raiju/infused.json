@@ -14,13 +14,9 @@
             "command": "power grant @s hypno:playstyle/zeus/raiju/shocked"
         },
         {
-            "type": "origins:damage",
-            "amount": 1,
-            "source": {
-                "name": "lightningBolt",
-                "unblockable": true,
-                "bypasses_armor": true
-            }
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/shocked_stacks",
+            "change": -10
         }
     ]
     },
@@ -49,7 +45,7 @@
         }
     },
     "defibrillator":
-    {
+    { 
         "type": "origins:action_on_entity_use",
         "bientity_action": {
             "type": "origins:target_action",
@@ -123,6 +119,15 @@
             "change": -10
         },
         "interval": 10
+    },
+    "bar_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "change": 10
+        },
+        "interval": 20
     },
     "movement_buff":{
         "type": "origins:attribute",

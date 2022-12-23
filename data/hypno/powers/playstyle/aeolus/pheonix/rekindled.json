@@ -1,0 +1,66 @@
+{
+    "name":"Infused",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/aeolus/pheonix/rekindled"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/pheonix/rekindled_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "tag":
+    {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:execute_command",
+            "command": "tag @s add rekindled"
+        },
+        "entity_action_lost": {
+            "type": "origins:execute_command",
+            "command": "tag @s remove rekindled"
+        }
+    },
+    "fire_immune":{
+        "type": "origins:fire_immunity"
+    },
+    "healing":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+                    "type":"origins:and",
+                    "actions":[{
+                        "type": "origins:heal",
+                        "amount": 1
+                    },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 0.2 0 1 1 0.5 0 ~ ~1 ~ 0.5 0.5 0.5 0.1 50"
+                }
+            ]
+        },
+        "interval": 20
+    },
+    "energy_swirl":
+    {
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/item/blaze_powder.png",
+        "speed": 0.005
+    },
+    "hidden": true
+}

@@ -1,87 +1,193 @@
 {
-    "name":"Lightning Fast",
-    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "name":"The Beast's Roar",
+    "description":" ",
     "type": "origins:multiple",
-    "activation":{
-        "type": "origins:active_self",
+    "toggle":{
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/discharged",
+            "inverted": true
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">=",
+            "compare_to": 100
+        }
+        ]
+    }
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
-                    "type": "origins:raycast",
-                    "distance": 30,
-                    "block": true,
-                    "entity": true,
-                    "shape_type": "visual",
-                    "fluid_handling": "any",
-                    "command_at_hit": "summon armor_stand ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,Small:1b,Marker:1b,Invisible:1b,Tags:[\"lighttp\"]}",
-                    "command_along_ray": "particle supplementaries:stasis ~ ~ ~ 0.1 0.1 0.1 0.1 4 normal",
-                    "command_step": 2
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "change": -20
                 },
                 {
-                    "type":"origins:delay",
-                    "ticks":70,
-                    "action":
-                    {
-                        "type": "origins:and",
-                        "actions": [{
-                        "type": "origins:execute_command",
-                        "command": "tp @s @e[limit=1,sort=nearest,type=minecraft:armor_stand,tag=lighttp]"
-                    }
-                ]
-                    }
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:step_height 2"
+                }
+            ]
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "step_height":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:step_height 1"
+                }
+            ]
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle",
+            "inverted": true
+            }
+        ]
+    }
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run particle dust_color_transition 0.54 0.99 1 1 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 5"
+                }
+            ]
+        },     
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": false,
+        "condition":  {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+},
+    "speed":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "big speed",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 1.5,
+            "operation": "multiply_total"
+        },
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "no_jump":{
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "cancel":
+    {
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
             },
             {
-                "type":"origins:delay",
-                "ticks":71,
-                "action":
-                {
-                    "type": "origins:and",
-                    "actions": [{
-                        "type": "origins:execute_command",
-                        "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "effect give @s minecraft:glowing 5 0 true"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "kill @e[limit=1,sort=nearest,tag=lighttp]"
-                    }
-            ]
-                }
-        },
-                {
-                    "type": "origins:execute_command",
-                    "command": "playsound minecraft:entity.lightning_bolt.thunder player @s ~ ~ ~ 1 2"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
-                },
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/zeus/raiju/striked_resource",
-                    "change": -600
-                }
-            ]
-        },
+                "type": "origins:toggle",
+                "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+            }
+    ]
+    },
         "cooldown": 1,
         "hud_render": {
             "should_render": false
-        },
-        "key": {
-            "key": "key.origins.secondary_active",
-            "continuous": false
-        },
-        "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused"
         }
     },
     "hidden": false
