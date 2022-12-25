@@ -12,6 +12,10 @@
                     "y": 2
                 },
                 {
+                    "type": "origins:set_on_fire",
+                    "duration": 5
+                },
+                {
                     "type": "origins:execute_command",
                     "command": "power grant @s hypno:playstyle/aeolus/phoenix/winged"
                 },
@@ -48,12 +52,7 @@
         },
         "key": {
             "key": "key.origins.secondary_active"
-        },
-        "condition":
-        {
-            "type": "origins:on_fire"
-        }
-        
+        } 
     },
     "hidden": false
 }
