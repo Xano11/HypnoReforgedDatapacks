@@ -9,7 +9,8 @@
               "layer": "origins:blessing"
           },
           "origins": [
-            "hypno:playstyle/zeus/raiju"
+            "hypno:playstyle/zeus/raiju",
+             "hypno:playstyle/zeus/minotaur"
           ]
           }
       ],
