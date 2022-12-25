@@ -1,0 +1,17 @@
+{
+	"powers": [
+		"hypno:playstyle/zeus/minotaur/ram",
+		"hypno:playstyle/zeus/minotaur/slam",
+		"hypno:playstyle/zeus/minotaur/power_jump",
+		"hypno:playstyle/zeus/minotaur/size",
+		"hypno:playstyle/zeus/minotaur/daytime",
+		"hypno:playstyle/zeus/minotaur/nobows"
+	],
+	"icon": {
+		"item": "minecraft:goat_horn"
+	},
+	"order": 4,
+	"impact": 2,
+	"name": "Minotaur",
+	"description": "a monster with a bull's head and a man's body, which was confined in a labyrinth. until today"
+}
