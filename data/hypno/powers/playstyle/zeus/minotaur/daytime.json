@@ -1,0 +1,88 @@
+{
+	"type": "origins:multiple",
+    "day1":{
+        "type": "origins:stacking_status_effect",
+        "min_stacks": 0,
+        "max_stacks": 1,
+        "duration_per_stack": 80,
+        "effects": [
+            {
+                "effect": "minecraft:darkness",
+                "is_ambient": true,
+                "show_particles": false,
+                "show_icon": false,
+                "amplifier": 0
+            }
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:daytime",
+                    "inverted": false
+                },
+                {
+                    "type": "origins:in_rain",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+
+    "day2":{
+        "type": "origins:modify_exhaustion",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:daytime",
+                    "inverted": false
+                },
+                {
+                    "type": "origins:in_rain",
+                    "inverted": true
+                }
+            ]
+        },
+        "modifier": {
+            "name": "Increased exhaustion",
+            "operation": "multiply_base",
+            "value": 1.0
+        }
+    },
+
+    "day3":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": -0.30,
+            "name": "decreased speed"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+            {
+                "type": "origins:exposed_to_sky"
+            },
+            {
+                "type": "origins:daytime",
+                "inverted": false
+            },
+            {
+                "type": "origins:in_rain",
+                "inverted": true
+            }
+            ]
+        }
+    },
+    "name":"Used to the darkness",
+    "description":"Whilst exposed to the sun and it is not raining exhaust 2x faster, move 30% slower and gain the darkness effect."
+}

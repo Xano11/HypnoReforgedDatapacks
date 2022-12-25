@@ -1,0 +1,466 @@
+{
+  "type": "origins:multiple",
+  "remaining": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 40,
+    "hud_render": {
+      "should_render": true,
+      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+      "bar_index": 1,
+      "condition": {
+        "type": "origins:resource",
+        "resource": "*:*_remaining",
+        "comparison": ">",
+        "compare_to": 0
+      }
+    }
+  },
+  "cooldown": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 200,
+    "hud_render": {
+      "should_render": true,
+      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+      "bar_index": 23,
+      "condition": {
+        "type": "origins:and",
+        "conditions": [
+          {
+            "type": "origins:resource",
+            "resource": "*:*_cooldown",
+            "comparison": ">",
+            "compare_to": 0
+          },
+          {
+            "type": "origins:resource",
+            "resource": "*:*_cooldown",
+            "comparison": "<",
+            "compare_to": 200
+          }
+        ]
+      }
+    }
+  },
+  "run_noise": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:if_else",
+      "condition": {
+        "type": "origins:resource",
+        "resource": "*:*_remaining",
+        "comparison": ">",
+        "compare_to": 0
+      },
+      "if_action": {
+        "type": "origins:play_sound",
+        "sound": "minecraft:entity.goat.step"
+      }
+    },
+    "interval": 3
+  },
+  "run_out": {
+    "type": "origins:action_over_time",
+    "rising_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_cooldown",
+          "change": 0,
+          "operation": "set"
+        },
+        {
+          "type": "origins:trigger_cooldown",
+          "power": "*:*_activate"
+        }
+      ]
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": "==",
+      "compare_to": 0
+    }
+  },
+  "tick_down": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_remaining",
+          "change": -1,
+          "operation": "add"
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_cooldown",
+          "change": 1,
+          "operation": "add"
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_remaining",
+            "comparison": ">",
+            "compare_to": 0
+          },
+          "if_action": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_activate"
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:and",
+            "conditions": [
+              {
+                "type": "origins:resource",
+                "resource": "*:*_remaining",
+                "comparison": ">",
+                "compare_to": 0
+              },
+              {
+                "type": "origins:resource",
+                "resource": "*:*_remaining",
+                "comparison": "<",
+                "compare_to": 35
+              },
+              {
+                "type": "origins:moving",
+                "inverted": true
+              },
+              {
+                "type": "apoli:riding",
+                "inverted": true
+              }
+            ]
+          },
+          "if_action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:damage",
+                "source": {
+                  "name": "flyIntoWall"
+                },
+                "amount": 6
+              },
+              {
+                "type": "origins:change_resource",
+                "resource": "*:*_remaining",
+                "change": 0,
+                "operation": "set"
+              },
+              {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.goat.horn_break"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "interval": 1
+  },
+  "activate": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:add_velocity",
+          "z": 1,
+          "space": "local_horizontal"
+        },
+        {
+          "type": "origins:play_sound",
+          "sound": "minecraft:entity.goat.long_jump"
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_remaining",
+          "change": 40,
+          "operation": "set"
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:riding"
+          },
+          "if_action": {
+            "type": "origins:riding_action",
+            "bientity_action": {
+              "type": "origins:target_action",
+              "action": {
+                "type": "origins:if_else_list",
+                "actions": [
+                  {
+                    "condition": {
+                      "type": "origins:entity_type",
+                      "entity_type": "minecraft:pig"
+                    },
+                    "action": {
+                      "type": "origins:apply_effect",
+                      "effect": {
+                        "effect": "minecraft:speed",
+                        "amplifier": 29,
+                        "duration": 40,
+                        "show_particles": false
+                      }
+                    }
+                  },
+                  {
+                    "condition": {
+                      "type": "origins:entity_type",
+                      "entity_type": "minecraft:pig",
+                      "inverted": true
+                    },
+                    "action": {
+                      "type": "origins:apply_effect",
+                      "effect": {
+                        "effect": "minecraft:speed",
+                        "amplifier": 9,
+                        "duration": 40,
+                        "show_particles": false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:or",
+          "conditions": [
+            {
+              "type": "origins:on_block"
+            },
+            {
+              "type": "origins:riding"
+            }
+          ]
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_remaining",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
+    },
+    "hud_render": {
+      "should_render": false
+    },
+    "key": {
+      "key": "key.origins.primary_active"
+    },
+    "cooldown": 200
+  },
+  "movement_speed": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "attribute": "minecraft:generic.movement_speed",
+      "operation": "multiply_total",
+      "value": 0
+    },
+    "tick_rate": 5,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "slipperiness": {
+    "type": "origins:modify_slipperiness",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": 0.8
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "sprinting": {
+    "type": "origins:prevent_sprinting",
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "sleep": {
+    "type": "origins:prevent_sleep",
+    "message": "You're going too fast for that!",
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "item_use": {
+    "type": "origins:prevent_item_use",
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "jump": {
+    "type": "origins:modify_jump",
+    "modifier": {
+      "operation": "addition",
+      "value": -100
+    },
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "title @s actionbar {\"text\": \"You're going too fast for that!\", \"color\": \"white\"}"
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "interact": {
+    "type": "origins:prevent_entity_use",
+    "bientity_action": {
+      "type": "origins:actor_action",
+      "action": {
+        "type": "origins:execute_command",
+        "command": "title @s actionbar {\"text\": \"You're going too fast for that!\", \"color\": \"white\"}"
+      }
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "elytra_flight": {
+    "type": "origins:prevent_elytra_flight",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "title @s actionbar {\"text\": \"You're going too fast for that!\", \"color\": \"white\"}"
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "attack": {
+    "type": "origins:action_on_hit",
+    "bientity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:add_velocity",
+          "y": 0.8,
+          "space": "local_horizontal"
+        },
+        {
+          "type": "origins:target_action",
+          "action": {
+            "type": "origins:if_else",
+            "condition": {
+              "type": "origins:riding"
+            },
+            "if_action": {
+              "type": "origins:add_velocity",
+              "y": 1
+            },
+            "else_action": {
+              "type": "origins:add_velocity",
+              "y": 0.5
+            }
+          }
+        },
+        {
+          "type": "origins:actor_action",
+          "action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:change_resource",
+                "resource": "*:*_remaining",
+                "change": 0,
+                "operation": "set"
+              },
+              {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.goat.ram_impact",
+                "volume": 2
+              },
+              {
+                "type": "origins:add_velocity",
+                "z": 0,
+                "x": 0,
+                "set": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "damage_condition": {
+      "type": "origins:projectile",
+      "inverted": true
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+  "damage": {
+    "type": "origins:modify_damage_dealt",
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:on_block"
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_remaining",
+          "comparison": ">",
+          "compare_to": 0
+        }
+      ]
+    },
+    "damage_condition": {
+      "type": "origins:projectile",
+      "inverted": true
+    },
+    "modifier": {
+      "operation": "addition",
+      "value": 3
+    }
+  },
+  "name": "Ram",
+  "description": "You can activate a ram ability, launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit."
+}
