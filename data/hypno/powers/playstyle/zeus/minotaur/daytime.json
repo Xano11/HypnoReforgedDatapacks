@@ -1,6 +1,6 @@
 {
 	"type": "origins:multiple",
-    "day1":{
+    "darkness":{
         "type": "origins:stacking_status_effect",
         "min_stacks": 0,
         "max_stacks": 1,
@@ -18,21 +18,23 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:exposed_to_sky"
-                },
-                {
-                    "type": "origins:daytime",
-                    "inverted": false
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/minotaur/daytime_adjust",
+                    "comparison": "<=",
+                    "compare_to": 400
                 },
                 {
                     "type": "origins:in_rain",
                     "inverted": true
-                }
+                },
+                {
+                    "type": "origins:exposed_to_sun"
+                } 
             ]
         }
     },
 
-    "day2":{
+    "exhaust":{
         "type": "origins:modify_exhaustion",
         "condition": {
             "type": "origins:and",
@@ -57,7 +59,7 @@
         }
     },
 
-    "day3":{
+    "speed":{
         "type": "origins:conditioned_attribute",
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
@@ -83,6 +85,71 @@
             ]
         }
     },
+    "roll":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "combatroll:distance",
+            "operation": "multiply_base",
+            "value": -1,
+            "name": "decreased roll distance"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+            {
+                "type": "origins:exposed_to_sky"
+            },
+            {
+                "type": "origins:daytime",
+                "inverted": false
+            },
+            {
+                "type": "origins:in_rain",
+                "inverted": true
+            }
+            ]
+        }
+    },
+    "adjust":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 7
+    }
+    },
+    "adjusting":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/minotaur/daytime_adjust",
+            "change": 10
+        },
+        "interval": 10,
+        "condition":
+        {
+            "type": "origins:exposed_to_sun"
+        }   
+    },
+    "disadjusting":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/minotaur/daytime_adjust",
+            "change": -60
+        },
+        "interval": 10,
+        "condition":
+        {
+            "type": "origins:exposed_to_sun",
+            "inverted": true
+        }   
+    },
     "name":"Used to the darkness",
-    "description":"Whilst exposed to the sun and it is not raining exhaust 2x faster, move 30% slower and gain the darkness effect."
+    "description":"Whilst under the sun, you get greatly overwhelmed. You exhaust much faster, move much slower and have trouble seeing anything."
 }

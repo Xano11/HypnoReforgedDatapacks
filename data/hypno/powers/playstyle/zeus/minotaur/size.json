@@ -1,4 +1,6 @@
 {
+    "name": "Poseidon’s \"Gift\"",
+	"description": "Because you are half bovine, you have 2 extra hearts, are 1.25x size the normal player, deal 2x knockback. due to your thick skin, it takes extra hits to penetrate making you have 25% damage reduction when above 9 hearts.",
     "type": "origins:multiple",
     "scale": {
         "type": "origins:action_on_callback",
@@ -28,7 +30,7 @@
             },
 			{
                 "type": "origins:execute_command",
-                "command": "scale set pehkui:held_item 1",
+                "command": "scale set pehkui:held_item 0.75",
                 "permission_level": 4
             },
 			{
@@ -63,7 +65,7 @@
             },
 			{
                 "type": "origins:execute_command",
-                "command": "scale set pehkui:held_item 1",
+                "command": "scale set pehkui:held_item 0.75",
                 "permission_level": 4
             },
 			{
@@ -97,7 +99,5 @@
             "operation": "multiply_base",
             "value": -0.25
         }
-    },
-    "name": "Poseidon’s \"Gift\"",
-	"description": "do to you being half cow you have 2 extra hearts, are 1.25x size the normal player, deal 2x knockback. due to your thick skin, it takes extra hits to penetrate making you have 25% damage reduction when above 9 hearts."
+    }
 }
