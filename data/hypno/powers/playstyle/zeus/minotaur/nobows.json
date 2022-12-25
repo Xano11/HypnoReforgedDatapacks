@@ -1,0 +1,16 @@
+{
+	"type": "origins:prevent_item_use",
+	"item_condition": {
+		"type": "origins:or",
+		"conditions": [
+		{	
+		"type": "origins:ingredient",
+		"ingredient": {
+			"tag": "*:cant_use"
+		}
+	}
+    ]
+	},
+	"name": "Head-on mentality",
+    "description": "do to your beliefs you think ranged weapons are for cowardice, you refuse to stoop that low just to make combat easier."
+}

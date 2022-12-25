@@ -1,0 +1,235 @@
+{
+    "type": "origins:multiple",
+    "name": "Power Jump",
+    "description": "You can crouch to charge your punch meter. Jumping at any time during this will reset it, but you'll punch the ground making you jump much higher.",
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 16,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_resource",
+                "comparison": ">=",
+                "compare_to": 1
+            }
+        },
+        "max_action": {
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:entity.arrow.hit_player master @s ~ ~ ~ 1 0.5"
+        }
+    },
+    "charge": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_resource",
+                "comparison": "==",
+                "compare_to": 20
+            },
+            "if_action": {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.arrow.hit_player master @s ~ ~ ~ 1 0.5"
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_resource",
+                "change": 1
+            }
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": 0,
+            "operation": "set"
+        },
+        "interval": 5,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{OnGround:1b}"
+                }
+            ]
+        }
+    },
+    "level_1": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 2
+        }
+    },
+    "level_2": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 4
+        }
+    },
+    "level_3": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 6
+        }
+    },
+    "level_4": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 8
+        }
+    },
+    "level_5": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 10
+        }
+    },
+    "level_6": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 12
+        }
+    },
+    "level_7": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 14
+        }
+    },
+    "level_8": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 16
+        }
+    },
+    "level_9": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 18
+        }
+    },
+    "level_10": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "addition",
+            "value": 0.133
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle cloud ~ ~ ~ 0.3 0 0.3 0.01 16 normal @a"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": "==",
+            "compare_to": 20
+        }
+    }
+}
