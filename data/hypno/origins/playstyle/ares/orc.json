@@ -1,0 +1,14 @@
+{
+	"powers": [
+        "hypno:playstyle/ares/orc/chunky",
+        "hypno:playstyle/ares/orc/retribution"
+	],
+	"icon": {
+		"item": "minecraft:slimeball",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Orc",
+	"description": "A brutish, bulky species with an ambition for revenge in melee combat."
+}
