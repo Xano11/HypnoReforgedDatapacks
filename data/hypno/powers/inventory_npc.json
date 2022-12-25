@@ -1,0 +1,5 @@
+{
+    "type": "origins:inventory",
+    "container_type": "chest",
+    "drop_on_death": false
+}

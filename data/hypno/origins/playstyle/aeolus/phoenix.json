@@ -1,0 +1,15 @@
+{
+	"powers": [
+		"hypno:playstyle/aeolus/phoenix/rekindle",
+		"hypno:playstyle/aeolus/phoenix/wings",
+		"hypno:playstyle/aeolus/phoenix/firebird",
+		"hypno:playstyle/aeolus/phoenix/dash"
+	],
+	"icon": {
+		"item": "soulsweapons:lord_soul_red"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Phoenix",
+	"description": "An undying bird of fire that lives on to tell another tale of it's own."
+}

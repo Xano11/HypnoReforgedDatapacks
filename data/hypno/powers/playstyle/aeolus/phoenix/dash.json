@@ -1,0 +1,66 @@
+{
+    "name":"The Beast's Roar",
+    "description":" ",
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:raycast",
+            "distance": 12,
+            "block": true,
+            "entity": false,
+            "shape_type": "visual",
+            "fluid_handling": "any",
+            "command_along_ray": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"phoenixdash\"]}",
+            "command_step": 1,
+            "command_along_ray_only_on_hit": false
+        },
+        {
+            "type":"origins:delay",
+            "ticks":1,
+            "action":
+            {
+                "type": "origins:and",
+                "actions": [{
+                "type": "origins:execute_command",
+                "command": "tp @s @e[tag=phoenixdash,limit=1,sort=furthest]"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "execute at @e[tag=phoenixdash] run power grant @e[tag=!phoenixdash,distance=0.01..3] hypno:playstyle/aeolus/phoenix/burning"
+            }
+        ]
+            }
+        },
+        {
+            "type":"origins:delay",
+            "ticks":2,
+            "action":
+            {
+                "type": "origins:and",
+                "actions": [{
+                "type": "origins:execute_command",
+                "command": "kill @e[tag=phoenixdash,type=minecraft:armor_stand]"
+            }
+        ]
+            }
+        }
+            ]
+        },
+        "cooldown": 300,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition":
+        {
+            "type": "origins:on_fire"
+        } 
+    },
+    "hidden": false
+}

@@ -1,0 +1,90 @@
+{
+    "name":"Energetic",
+    "description":"You have an electro-bar. If your bar isn't at max, you suffer from reduced movement, attack speed, armor, attack damage, healing and health. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak",
+    "type": "origins:multiple",
+    "fire_immune":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition":  {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "name": "No fire damage",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "self_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+            "change": 10
+        }
+    },
+    "water_weakness":
+    {
+        "type": "origins:damage_over_time",
+        "interval": 20,
+        "onset_delay": 1,
+        "damage": 2,
+        "damage_easy": 2,
+        "damage_source": {
+            "name": "hurt_by_water",
+            "unblockable": true,
+            "bypasses_armor": true
+        },
+        "protection_enchantment": "origins:water_protection",
+        "protection_effectiveness": 1.0,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0.0
+                },
+                {
+                    "type": "origins:in_rain"
+                }
+            ]
+        }
+    },
+    "energy":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1200,
+        "start_value": 1200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15
+        },
+        "min_action":
+        {
+            "type": "origins:execute_command",
+            "command": "power remove @e hypno:playstyle/aeolus/phoenix/rekindled"
+        }
+    },
+    "energy_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+            "change": 20
+        },
+        "interval": 100
+    },
+    "firesteal":{
+        "type": "origins:self_action_on_hit",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+            "change": 50
+        },
+        "damage_condition": {
+            "type": "origins:amount",
+            "comparison": ">=",
+            "compare_to": 2.0
+        },
+        "cooldown": 20
+    },
+    "hidden": false
+}

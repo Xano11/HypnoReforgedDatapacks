@@ -14,16 +14,15 @@
         "type": "origins:modify_status_effect_amplifier",
         "status_effect": "minecraft:strength",
         "modifier": {
-            "operation": "add_base_early",
-            "value": -2
+            "operation": "set_total",
+            "value": 0
         },
         "condition": {
             "type": "origins:status_effect",
             "effect": "minecraft:strength",
-            "min_amplifier": 2,
-            "max_amplifier": 2
-        }
-    },
+            "min_amplifier": 2
+    }
+},
     "turtle_master1":{
         "type": "origins:modify_status_effect_duration",
         "status_effect": "minecraft:slowness",
@@ -36,14 +35,12 @@
             "conditions":[{
             "type": "origins:status_effect",
             "effect": "minecraft:resistance",
-            "min_amplifier": 1,
-            "max_amplifier": 3
+            "min_amplifier": 2
         },
         {
             "type": "origins:status_effect",
             "effect": "minecraft:slowness",
-            "min_amplifier": 3,
-            "max_amplifier": 5
+            "min_amplifier": 3
         }
     ]
 }
@@ -61,14 +58,12 @@
             "conditions":[{
             "type": "origins:status_effect",
             "effect": "minecraft:resistance",
-            "min_amplifier": 2,
-            "max_amplifier": 4
+            "min_amplifier": 2
         },
         {
             "type": "origins:status_effect",
             "effect": "minecraft:slowness",
-            "min_amplifier": 4,
-            "max_amplifier": 6
+            "min_amplifier": 3
         }
     ]
 }

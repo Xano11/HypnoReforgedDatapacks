@@ -1,0 +1,92 @@
+{
+    "name":"Sinking Thoughts",
+    "description":"Using your [PRIMARY ABILITY KEY], you can haunt everyone submerged in water in a 32 block radius. If the foes do not leave before their fear bar gets to max, they sink to the bottom of the water and get debuffed.",
+    "type": "origins:multiple",
+    "activation":{
+        "type": "origins:active_self",
+        "entity_action": {
+        "type": "origins:area_of_effect",
+        "radius": 32,
+        "bientity_action": { 
+        "type": "origins:target_action",
+        "action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:playstyle/artemis/kelpie/haunted"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.vex.charge player @s ~ ~ ~ 1 0.5"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle supplementaries:green_flame ~ ~ ~ 0.7 1 0.7 0.01 30"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:soul ~ ~1 ~ 0.2 0.2 0.2 0.5 30"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:dust_color_transition 0 0 0 1 0 1 0 ~ ~1 ~ 0.2 0.2 0.2 0.5 50"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "effect give @s minecraft:darkness 5 0"
+            }
+            ]
+        }
+        },
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water"
+            }
+        }
+        },
+        "cooldown": 1200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 5
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water"
+            }
+        ]
+    }
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @e[type=minecraft:armor_stand,tag=lightningbolt] run particle minecraft:cloud ~ ~ ~ 0.3 0 0.3 0.01 10"
+                }
+            ]
+        },     
+        "interval": 2,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/stormfield_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "hidden": false
+}

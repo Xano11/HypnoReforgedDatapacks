@@ -1,0 +1,48 @@
+{
+    "name":"Infused",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "fire_immune":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition":  {
+            "type": "origins:fire"
+        }
+        ,
+        "modifier": {
+            "name": "Weak to cursed items",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "healing":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+                    "type":"origins:and",
+                    "actions":[{
+                        "type": "origins:heal",
+                        "amount": 1
+                    },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 0.2 0 1 1 0.5 0 ~ ~1 ~ 0.5 0.5 0.5 0.1 50"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:small_flame ~ ~1 ~ 0.5 0.5 0.5 0.05 30"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound soulsweapons:restore player @s ~ ~ ~ 0.5 1.5"
+                }
+            ]
+        },
+        "interval": 30
+    },
+    "energy_swirl":
+    {
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/item/blaze_powder.png",
+        "speed": 0.005
+    },
+    "hidden": true
+}

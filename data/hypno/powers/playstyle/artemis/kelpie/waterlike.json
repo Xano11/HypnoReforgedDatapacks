@@ -1,0 +1,44 @@
+{
+    "name":"Water-like",
+    "description":"You do not take damage from lighting; In comparison, you get infused by it. Being infused makes you powerful and allows you to recharge your electro-bar faster. Additionally, you can inflict stacks of shock to your enemies. At 3 stacks, they get damaged by lighting.",
+    "type": "origins:multiple",
+    "water_breathing":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:gain_air",
+            "value": 2
+        },
+        "interval": 10,
+        "condition":{
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "swim_speed":{
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 1
+        }
+    },
+    "water_vision":{
+        "type": "origins:night_vision",
+        "strength": 0.5,
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "water_mining":{
+        "type": "origins:modify_break_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.5
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "hidden": false
+}

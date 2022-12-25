@@ -1,0 +1,111 @@
+{
+    "name":"Infused",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "tag":
+    {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:execute_command",
+            "command": "tag @s add haunted"
+        },
+        "entity_action_lost": {
+            "type": "origins:execute_command",
+            "command": "tag @s remove haunted"
+        }
+    },
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 60,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "effect_timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 50,
+        "start_value": 50,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/artemis/kelpie/haunted"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "effect_timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/artemis/kelpie/haunted_effect_timer",
+            "change": -10
+        },
+        "interval": 10,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "sounds":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:chance",
+            "action":  {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.vex.ambient player @s"
+            },
+            "chance": 0.2
+        },
+        "interval": 5
+    },
+    "no_move":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+                "type": "origins:on_block"
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+                "comparison": "==",
+                "compare_to": 0
+            }
+        ]
+    }
+      },
+      "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle supplementaries:green_flame ~ ~ ~ 0.7 1 0.7 0.01 15"
+        },
+        "interval": 5
+    },
+    "hidden": true
+}

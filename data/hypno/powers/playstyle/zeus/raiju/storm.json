@@ -1,6 +1,6 @@
 {
-    "name":"Infused",
-    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "name":"Stormed",
+    "description":"Electricity is building up...",
     "type": "origins:multiple",
     "stacks":
     {
@@ -10,13 +10,37 @@
         "start_value": 0,
         "hud_render": {
             "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+                    "change": -5
+                },
+                {
+                    "type": "origins:damage",
+                    "amount": 1,
+                    "source": {
+                        "name": "lightningBolt",
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                },
+                { 
+                    "type": "origins:execute_command",
+                    "command": "summon minecraft:lightning_bolt"
+                }
+               
+            ]
         }
     },
     "stacks_down":{
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
-            "resource": "hypno:playstyle/zeus/raiju/shocked_timer",
+            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "change": -1
         },
         "interval": 60
@@ -48,6 +72,24 @@
             "compare_to": 1
         }
     },
+    "overlay1":{
+        "type": "origins:overlay",
+        "texture": "twigs:textures/item/petrified_lichen.png",
+        "strength": 0.1,
+        "red": 0.2,
+        "green": 0.6,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
     "slow2":{
         "type": "origins:conditioned_attribute",
         "modifier": {
@@ -56,6 +98,24 @@
             "value": -0.10,
             "operation": "multiply_base"
         },
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+            "comparison": "==",
+            "compare_to": 2
+        }
+    },
+    "overlay2":{
+        "type": "origins:overlay",
+        "texture": "twigs:textures/item/petrified_lichen.png",
+        "strength": 0.2,
+        "red": 0.2,
+        "green": 0.6,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
         "condition":{
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
@@ -78,6 +138,24 @@
             "compare_to": 3
         }
     },
+    "overlay3":{
+        "type": "origins:overlay",
+        "texture": "twigs:textures/item/petrified_lichen.png",
+        "strength": 0.3,
+        "red": 0.2,
+        "green": 0.6,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
     "slow4":{
         "type": "origins:conditioned_attribute",
         "modifier": {
@@ -93,6 +171,24 @@
             "compare_to": 4
         }
     },
+    "overlay4":{
+        "type": "origins:overlay",
+        "texture": "twigs:textures/item/petrified_lichen.png",
+        "strength": 0.4,
+        "red": 0.2,
+        "green": 0.6,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+            "comparison": "==",
+            "compare_to": 4
+        }
+    },
     "slow5":{
         "type": "origins:conditioned_attribute",
         "modifier": {
@@ -101,6 +197,24 @@
             "value": -0.25,
             "operation": "multiply_base"
         },
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+            "comparison": "==",
+            "compare_to": 5
+        }
+    },
+    "overlay5":{
+        "type": "origins:overlay",
+        "texture": "twigs:textures/item/petrified_lichen.png",
+        "strength": 0.5,
+        "red": 0.2,
+        "green": 0.6,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
         "condition":{
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",

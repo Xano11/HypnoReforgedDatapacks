@@ -1,0 +1,13 @@
+{
+	"powers": [
+		"origins:like_water",
+		"hypno:playstyle/artemis/kelpie/waterlike"
+	],
+	"icon": {
+		"item": "twigs:bamboo_leaves"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Kelpie",
+	"description": "A mythical spirit of the waters, it uses the innate influence of fear to prey on it's foes."
+}

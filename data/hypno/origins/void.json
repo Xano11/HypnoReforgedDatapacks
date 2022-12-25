@@ -1,0 +1,14 @@
+{
+	"powers": [
+        "hypno:default"
+	],
+	"icon": {
+		"item": "origins:orb_of_origin",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+    "unchoosable": true,
+	"name": "Empty",
+	"description": "Empty"
+}

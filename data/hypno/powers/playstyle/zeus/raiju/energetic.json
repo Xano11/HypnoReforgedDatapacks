@@ -1,15 +1,29 @@
 {
     "name":"Energetic",
-    "description":"You have an electro-bar. If your bar isn't at max, you suffer from reduced movement, attack speed, armor, attack damage, healing and health. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak",
+    "description":"You have an electro-bar. If your bar is at 1 bar or lower, you suffer from reduced movement, attack speed, armor, attack damage and healing. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak.",
     "type": "origins:multiple",
     "bar_up":{
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
-            "resource": "hypno:playstyle/zeus/raiju/shocked_timer",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
             "change": 10
         },
         "interval": 100
+    },
+    "bar_up_rain":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "change": 10
+        },
+        "interval": 100,
+        "condition":
+        {
+            "type": "origins:in_rain"
+        }
+        
     },
     "leak":{
         "type": "origins:self_action_when_hit",
@@ -72,7 +86,7 @@
         "type": "origins:resource",
         "min": 0,
         "max": 700,
-        "start_value": 0,
+        "start_value": 700,
         "hud_render": {
             "sprite_location": "origins:textures/gui/resource_bar.png",
             "bar_index": 2

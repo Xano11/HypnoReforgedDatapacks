@@ -1,6 +1,6 @@
 {
-    "name":"The Beast's Roar",
-    "description":" ",
+    "name":"The Calm before the Storm",
+    "description":"Using your [PRIMARY ABILITY KEY], you create a storm field around you. In this 16 block radius area, lightning randomly hits the ground. Additionally, entities that stay in the field slowly lose speed up to 25% and take damage over a duration.",
     "type": "origins:multiple",
     "toggle":{
         "type": "origins:toggle",
@@ -55,11 +55,11 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "power grant @e[distance=0.1..24] hypno:playstyle/zeus/raiju/storm"
+                    "command": "power grant @e[distance=0.1..16] hypno:playstyle/zeus/raiju/storm"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "resource change @e[distance=0.1..24] hypno:playstyle/zeus/raiju/storm_stacks 1"
+                    "command": "execute as @e[distance=0.1..16] run resource change @s hypno:playstyle/zeus/raiju/storm_stacks 1"
                 },
                 {
                     "type":"origins:delay",

@@ -1,6 +1,6 @@
 {
-    "name":"The Beast's Roar",
-    "description":" ",
+    "name":"Thunderous",
+    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to move faster. Using this form costs energy over time.",
     "type": "origins:multiple",
     "toggle":{
         "type": "origins:toggle",
@@ -33,7 +33,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "change": -20
+                    "change": -40
                 },
                 {
                     "type": "origins:execute_command",
@@ -148,6 +148,65 @@
         ]
     }
     },
+    "no_damage":{
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "no_block_interaction":
+    {
+        "type": "origins:prevent_block_selection",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "no_block_use":
+    {
+        "type": "origins:prevent_block_use",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
     "no_jump":{
         "type": "origins:modify_jump",
         "modifier": {
@@ -156,6 +215,23 @@
         },
         "condition":
         {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "prevent_item_use":{
+        "type": "origins:prevent_item_use",
+        "condition": {
             "type": "origins:and",
             "conditions": [{
             "type": "origins:power_active",

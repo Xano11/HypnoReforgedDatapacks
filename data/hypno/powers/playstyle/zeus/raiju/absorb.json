@@ -1,6 +1,6 @@
 {
     "name":"Lightning Eater",
-    "description":"You do not take damage from lighting; In comparison, you get infused by it. Being infused allows you to use your main abilities : Call of the Thunder Beast and Requiem.",
+    "description":"You do not take damage from lighting; In comparison, you get infused by it. Being infused makes you powerful and allows you to recharge your electro-bar faster. Additionally, you can inflict stacks of shock to your enemies. At 3 stacks, they get damaged by lighting.",
     "type": "origins:multiple",
     "immunity":{
         "type": "origins:modify_damage_taken",
