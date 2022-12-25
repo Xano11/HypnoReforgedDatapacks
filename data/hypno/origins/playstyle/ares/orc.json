@@ -4,7 +4,7 @@
         "hypno:playstyle/ares/orc/retribution"
 	],
 	"icon": {
-		"item": "minecraft:slimeball",
+		"item": "minecraft:slime_ball",
 		"tag": "{Enchantments:[{}],CustomModelData:1}"
 	},
 	"order": 1,

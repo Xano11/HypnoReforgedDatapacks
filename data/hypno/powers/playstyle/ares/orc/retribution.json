@@ -2,7 +2,6 @@
     "type": "origins:multiple",
     "missinghealthbuff1": {
         "type": "origins:attribute",
-            "type": "origins:and",
             "modifiers": [
                 {
                     "name": "damage increase",
@@ -41,7 +40,6 @@
     },
     "missinghealthbuff2": {
         "type": "origins:attribute",
-            "type": "origins:and",
             "modifiers": [
                 {
                     "name": "damage increase",
@@ -80,7 +78,6 @@
     },
     "missinghealthbuff3": {
         "type": "origins:attribute",
-            "type": "origins:and",
             "modifiers": [
                 {
                     "name": "damage increase",
@@ -119,7 +116,6 @@
     },
     "missinghealthbuff4": {
         "type": "origins:attribute",
-            "type": "origins:and",
             "modifiers": [
                 {
                     "name": "damage increase",
@@ -158,7 +154,6 @@
     },
     "missinghealthbuff5": {
         "type": "origins:attribute",
-            "type": "origins:and",
             "modifiers": [
                 {
                     "name": "damage increase",
