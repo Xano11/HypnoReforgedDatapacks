@@ -45,6 +45,20 @@
                 }
             ]
         },
+        "condition":
+        {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:power",
+            "power": "hypno:playstyle/aeolus/phoenix/graceful",
+            "inverted": true
+                },
+                {
+                    "type": "origins:on_block",
+                    "inverted": false
+                }
+            ]
+        },
         "cooldown": 600,
         "hud_render": {
             "sprite_location": "origins:textures/gui/resource_bar.png",

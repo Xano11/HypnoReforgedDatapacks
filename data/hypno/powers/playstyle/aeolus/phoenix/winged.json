@@ -5,8 +5,7 @@
     "wings":
     {
         "type": "origins:elytra_flight",
-        "render_elytra": true,
-        "texture_location": "soulsweapons:textures/item/lord_soul_red.png"
+        "render_elytra": true
     },
     "timer":
     {

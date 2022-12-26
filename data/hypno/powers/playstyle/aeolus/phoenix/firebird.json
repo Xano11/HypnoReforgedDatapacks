@@ -18,6 +18,50 @@
             "change": 10
         }
     },
+    "health":
+    {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Reduced health",
+            "attribute": "minecraft:generic.max_health",
+            "value": -4,
+            "operation": "addition"
+        }
+    },
+    "healing":
+    {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:on_fire",
+            "inverted": true
+        }
+    },
+    "healingfire":
+    {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.25
+        },
+        "condition": {
+            "type": "origins:on_fire"
+        }
+    },
+    "heal":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:heal",
+            "amount": 1
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:on_fire"
+        }
+    },
     "water_weakness":
     {
         "type": "origins:damage_over_time",
@@ -84,6 +128,9 @@
             "comparison": ">=",
             "compare_to": 2.0
         },
+        "target_condition":{
+            "type": "origins:on_fire"
+        }, 
         "cooldown": 20
     },
     "hidden": false
