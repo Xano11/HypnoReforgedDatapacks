@@ -12,7 +12,7 @@
                   "type": "origins:and",
                     "actions": [{
                         "type": "origins:add_velocity",
-                        "y": 1.4,
+                        "y": 1,
                         "space": "local_horizontal"
                     },
                     {
@@ -22,12 +22,29 @@
                           "name": "cramming.player",
                           "bypasses_armor": false
                       }
+                    },
+                    {
+                      "type": "origins:target_action",
+                      "action": {                
+                      "type": "origins:execute_command",
+                      "command": "particle minecraft:cloud ~ ~ ~ 0.3 0.7 0.3 0.03 100"
                     }
+                  }
                   ]
                 },
                   "bientity_condition": {
+                    "type": "origins:and",
+                    "conditions": [{
                       "type": "origins:can_see"
+                },
+                {
+                  "type": "origins:target_condition",
+                  "condition": {
+                  "type": "origins:on_block"
                 }
+              }
+              ]
+            }
             },
             {
               "type": "origins:exhaust",
@@ -50,11 +67,11 @@
             },
             {
               "type": "origins:execute_command",
-              "command": "particle twigs:item_pebble ~ ~ ~ 1 0 1 0.1 300 normal @a"
+              "command": "particle twigs:item_pebble ~ ~ ~ 2.5 0 2.5 0.1 1000 normal @a"
             },
             {
               "type": "origins:execute_command",
-              "command": "particle supplementaries:ash ~ ~ ~ 1 0 1 0 100 normal @a"
+              "command": "particle supplementaries:ash ~ ~ ~ 2.5 0 2.5 0 400 normal @a"
             }
         ]
     },

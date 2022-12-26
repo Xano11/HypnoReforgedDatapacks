@@ -88,7 +88,33 @@
         "condition": {
             "type": "origins:and",
             "conditions": [{
-                "type": "origins:on_block"
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water"
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            {
+                "type":"origins:on_block"
+            }
+        ]
+    }
+      },
+      "sinked":{
+        "type": "origins:ignore_water"
+    },
+    "sinking":{
+        "type": "origins:modify_falling",
+        "velocity": 10.0,
+        "take_fall_damage": false,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water"
             },
             {
                 "type": "origins:resource",
@@ -98,7 +124,7 @@
             }
         ]
     }
-      },
+    },
       "particles":{
         "type": "origins:action_over_time",
         "entity_action": {
