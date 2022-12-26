@@ -150,5 +150,90 @@
         ]
     }
     },
+    "supraconductor":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 16,
+                    "block": false,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "hit_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                                "change": -100
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound soulsweapons:nightfall_bonk player @s ~ ~ ~ 1 2"
+                            }
+                        ]
+                    },
+                    "command_at_hit": "tp @s ~ ~ ~",
+                    "command_along_ray": "particle minecraft:dust_color_transition 1 1 0 1.5 0 0.3 0.8 ~ ~ ~ 0.3 0.1 0.3 1 30",
+                    "command_step": 0.5,
+                    "command_along_ray_only_on_hit": true,
+                    "bientity_condition": {
+                        "type":"origins:and",
+                        "conditions":[{
+                            "type": "origins:target_condition",
+                            "condition":{
+                                "type": "origins:living"
+                            }
+                        },
+                    {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+                            "comparison": "==",
+                            "compare_to": 5
+                        }
+                    },
+                    {
+                    "type": "origins:target_condition",
+                    "condition": 
+                    {
+                        "type": "origins:entity_type",
+                        "entity_type": "minecraft:lightning_bolt",
+                        "inverted": true
+                    }
+                }
+                ]
+                }
+                }
+            ]
+        },
+        "cooldown": 10,
+        "key": {
+            "key": "key.attack",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:on_block",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                }
+            ]
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
     "hidden": false
 }

@@ -22,8 +22,7 @@
         "condition":
         {
             "type": "origins:in_rain"
-        }
-        
+        }     
     },
     "leak":{
         "type": "origins:self_action_when_hit",
@@ -58,14 +57,14 @@
         }
     },
     "leak2":{
-        "type": "origins:self_action_on_hit",
+        "type": "origins:self_action_when_hit",
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
             "change": -300
         },
         "damage_condition": {
-            "type": "origins:target_condition",
+            "type": "origins:attacker",
             "condition": {
                 "type": "origins:using_item",
                 "item_condition": {
@@ -246,6 +245,51 @@
             "comparison": ">=",
             "compare_to": 100
         }
+    },
+    "water_leak":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "change": -50
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 8,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:damage",
+                            "amount": 3,
+                            "source": {
+                                "name": "lightningBolt",
+                                "unblockable": true,
+                                "bypasses_armor": true
+                            }
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:fluid_height",
+                            "fluid": "minecraft:water",
+                            "comparison": ">",
+                            "compare_to": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "interval": 5,
+        "condition":
+    {
+        "type": "origins:fluid_height",
+        "fluid": "minecraft:water",
+        "comparison": ">",
+        "compare_to": 0
+    }
     },
     "hidden": false
 }

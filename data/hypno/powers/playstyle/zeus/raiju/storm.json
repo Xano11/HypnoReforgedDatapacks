@@ -6,7 +6,7 @@
     {
         "type": "origins:resource",
         "min": 0,
-        "max": 5,
+        "max": 6,
         "start_value": 0,
         "hud_render": {
             "should_render": false
@@ -17,7 +17,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-                    "change": -5
+                    "change": -6
                 },
                 {
                     "type": "origins:damage",
@@ -53,7 +53,19 @@
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "change": -1
         },
-        "interval": 60
+        "interval": 20,
+        "condition":
+        {
+            "type": "apugli:entity_in_radius",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "hypno:playstyle/zeus/raiju",
+                "layer": "origins:zeus"
+            },
+            "radius": 16.0,
+            "comparison": "==",
+            "compare_to": 0
+        }
     },
     "tag":
     {
@@ -231,6 +243,35 @@
             "comparison": "==",
             "compare_to": 5
         }
+    },
+    "glow":{
+        "type": "origins:self_glow",
+        "use_teams": false,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "hypno:playstyle/zeus/raiju",
+                "layer": "origins:zeus"
+            }
+            },
+            {
+            "type":"origins:target_condition",
+            "condition":
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+                "comparison": "==",
+                "compare_to": 5
+            }
+        }
+    ]
+    }
     },
     "hidden": true
 }

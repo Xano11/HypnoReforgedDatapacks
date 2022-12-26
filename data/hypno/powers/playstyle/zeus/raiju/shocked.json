@@ -1,6 +1,6 @@
 {
-    "name":"Infused",
-    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "name":"Shocked",
+    "description":"You take more damage and can't move as well.",
     "type": "origins:multiple",
     "timer":
     {
@@ -113,7 +113,7 @@
         "modifier": {
             "name": "Weakened mitigation",
             "operation": "multiply_total",
-            "value": 0.10
+            "value": 0.20
         }
     },
     "slower_roll_recharge":{

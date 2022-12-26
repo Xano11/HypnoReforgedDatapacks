@@ -20,7 +20,7 @@
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
             "comparison": ">=",
-            "compare_to": 100
+            "compare_to": 150
         }
         ]
     }
@@ -33,15 +33,11 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "change": -40
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "scale set pehkui:step_height 2"
+                    "change": -150
                 }
             ]
         },
-        "interval": 20,
+        "interval": 15,
         "condition": {
             "type": "origins:and",
             "conditions": [{
@@ -54,28 +50,6 @@
             "comparison": ">",
             "compare_to": 0
         }
-        ]
-    }
-    },
-    "step_height":{
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:execute_command",
-                    "command": "scale set pehkui:step_height 1"
-                }
-            ]
-        },
-        "interval": 20,
-        "condition": {
-            "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle",
-            "inverted": true
-            }
         ]
     }
     },
@@ -124,13 +98,55 @@
         ]
     }
 },
-    "speed":{
-        "type": "origins:conditioned_attribute",
+    "no_move":
+    {
+        "type": "origins:modify_velocity",
         "modifier": {
-            "name": "big speed",
-            "attribute": "minecraft:generic.movement_speed",
-            "value": 1.5,
-            "operation": "multiply_total"
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+        ]
+    }
+      },
+    "move":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:raycast",
+            "distance": 8,
+            "block": true,
+            "entity": true,
+            "shape_type": "visual",
+            "fluid_handling": "any",
+            "command_at_hit": "summon minecraft:lightning_bolt",
+            "command_along_ray": "function hypno:lightningtp",
+            "command_step": 0.2,
+            "command_along_ray_only_on_hit": false
+        },
+        "cooldown": 15,
+        "key": {
+            "key": "key.sprint",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
         },
         "condition":
         {
@@ -259,6 +275,14 @@
                 "type": "origins:toggle",
                 "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
             }
+    ]
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [{
+        "type": "origins:power_active",
+        "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+    }
     ]
     },
         "cooldown": 1,
