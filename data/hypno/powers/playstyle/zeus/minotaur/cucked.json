@@ -1,14 +1,28 @@
 {
-    "name":"Winged",
-    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "name":"Stunned",
+    "description":"You're stunned and can no move.",
     "type": "origins:multiple",
-    "wings":
-    {
-        "type": "origins:elytra_flight",
-        "render_elytra": true
+    "res":{
+        "type": "origins:resource",
+        "min": 1,
+        "max": 2,
+        "start_value": 1,
+        "hud_render": {
+            "should_render": false
+        }
     },
-    "lose":
-    {
+
+	"res_adjust":{
+        "type": "origins:resource",
+        "min": 1,
+        "max": 2,
+        "start_value": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+
+    "lose":{
         "type": "origins:action_on_land",
         "entity_action": {
             "type": "origins:and",
@@ -23,7 +37,7 @@
                     "action":
                     {
                     "type": "origins:execute_command",
-                    "command": "power remove @s hypno:playstyle/aeolus/phoenix/winged"
+                    "command": "power remove @s hypno:playstyle/zeus/minotaur/cucked"
                     }
             }
             ]
