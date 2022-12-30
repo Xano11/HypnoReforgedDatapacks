@@ -1,11 +1,7 @@
 {
-    "name":"Infused",
-    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "name":"Graceful",
+    "description":"Massive dash.",
     "type": "origins:multiple",
-    "flying":
-    {
-        "type": "origins:swimming"
-    },
     "particle":
     {
         "type": "origins:particle",
@@ -13,9 +9,9 @@
         "frequency": 4,
         "condition":{
             "type": "origins:resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
             "comparison": "==",
-            "compare_to": 0
+            "compare_to": 100
         }
     },
     "particle_prep":
@@ -36,9 +32,9 @@
         "interval": 5,
         "condition":{
             "type": "origins:resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
-            "comparison": ">",
-            "compare_to": 0
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
+            "comparison": "<",
+            "compare_to": 100
         }
     },
     "particle_flying":
@@ -59,12 +55,12 @@
         "interval": 2,
         "condition":{
             "type": "origins:resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
             "comparison": "==",
-            "compare_to": 0
+            "compare_to": 100
         }
     },
-    "prep":
+    "wings":
     {
         "type": "origins:resource",
         "min": 0,
@@ -75,9 +71,48 @@
         },
         "min_action": {
             "type":"origins:and",
+            "actions":[
+            {
+                "type": "origins:execute_command",
+                "command": "power remove @s hypno:playstyle/aeolus/phoenix/graceful"
+            }
+            ]
+        }
+    },
+    "wings_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_wings",
+            "change": -10
+        },
+        "interval": 10,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
+            "comparison": "==",
+            "compare_to": 100
+        }
+    },
+    "buildup":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type":"origins:and",
             "actions":[{
-            "type": "origins:execute_command",
-            "command": "execute at @s positioned ~ ~5 ~ run function hypno:wings"
+                "type": "origins:add_velocity",
+                "z": 5,
+                "space":"local_horizontal"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "execute at @s positioned ~ ~5 ~ run function hypno:wings"
             },
             {
                 "type": "origins:execute_command",
@@ -86,14 +121,69 @@
             ]
         }
     },
-    "prep_down":{
+    "buildup_up":{
         "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
-            "change": -10
+        "entity_action":  {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:change_resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
+                "change": 10
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                "change": -200
+            }
+            ]
         },
-        "interval": 10
+        "interval": 10,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+            "comparison": ">=",
+            "compare_to": 200
+        }
+    },
+    "buildup_up_health":{
+        "type": "origins:action_over_time",
+        "entity_action":  {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:change_resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
+                "change": 10
+            },
+            {
+                "type": "origins:damage",
+                "amount": 2,
+                "source": {
+                    "name": "generic",
+                    "bypasses_armor": true,
+                    "unblockable": true
+                }
+            }
+            ]
+        },
+        "interval": 10,
+        "condition":{
+        "type":"origins:and",
+        "conditions":[
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+            "comparison": "<",
+            "compare_to": 200
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
+            "comparison": "<",
+            "compare_to": 100
+        }
+        ]
+    }
     },
     "no_move":
     {
@@ -109,105 +199,12 @@
         ],
         "condition":{
             "type": "origins:resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
-            "comparison": ">",
-            "compare_to": 0
+            "resource": "hypno:playstyle/aeolus/phoenix/graceful_buildup",
+            "comparison": "<",
+            "compare_to": 100
         }
       },
-    "timer":
-    {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 300,
-        "start_value": 300,
-        "hud_render": {
-            "should_render": false
-        },
-        "min_action": {
-            "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/aeolus/phoenix/graceful"
-        }
-    },
-    "timer_down":{
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_timer",
-            "change": -10
-        },
-        "interval": 10,
-        "condition":{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
-            "comparison": "==",
-            "compare_to": 0
-        }
-    },
-    "speed_bonus":
-    {
-        "type": "origins:modify_velocity",
-        "modifier": {
-          "value": 0.5,
-          "operation": "multiply_total"
-        },
-        "axes": [
-          "x",
-          "y",
-          "z"
-        ],
-        "condition":{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/graceful_prep",
-            "comparison": "==",
-            "compare_to": 0
-        }
-      },
-      "flames":{
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:area_of_effect",
-            "radius": 5,
-            "bientity_action": {
-                "type":"origins:and",
-                "actions":[{
-                "type": "origins:target_action",
-                "action":  {
-                    "type": "origins:heal",
-                    "amount": 2
-                }
-            },
-            {
-                "type": "origins:target_action",
-                "action":  {
-                    "type": "origins:execute_command",
-                    "command": "particle supplementaries:bottling_xp ~ ~ ~ 1 1 1 1 100"
-                }
-            }
-        ]
-        },
-            "bientity_condition": {
-                "type":"origins:and", 
-                "conditions":[{
-                "type": "origins:can_see"
-            },
-            {
-                "type": "origins:target_condition",
-                "condition": {
-                    "type": "origins:power",
-                    "power": "hypno:playstyle/aeolus/phoenix/rekindled"
-                }
-            },
-            {
-                "type": "origins:target_condition",
-                "condition":{
-                    "type": "origins:living"
-                }
-            }
-        ]
-        }
-        },
-        "interval": 20
-    },
+
     "takedown":{
         "type": "origins:self_action_when_hit",
         "entity_action": {
@@ -220,7 +217,7 @@
             "type": "origins:damage",
             "amount": 6 ,
             "source": {
-                "name": "player",
+                "name": "generic",
                 "bypasses_armor": true,
                 "unblockable": true
             }

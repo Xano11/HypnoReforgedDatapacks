@@ -1,6 +1,6 @@
 {
-    "name":"The Beast's Roar",
-    "description":" ",
+    "name":"Fiery Dash",
+    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward. Dashing puts you on fire for five seconds.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:active_self",

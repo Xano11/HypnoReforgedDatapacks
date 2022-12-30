@@ -2,7 +2,8 @@
 	"powers": [
 		"origins:like_water",
 		"hypno:playstyle/artemis/kelpie/waterlike",
-		"hypno:playstyle/artemis/kelpie/sinking"
+		"hypno:playstyle/artemis/kelpie/sinking",
+		"hypno:playstyle/artemis/kelpie/soulhook"
 	],
 	"icon": {
 		"item": "twigs:bamboo_leaves"

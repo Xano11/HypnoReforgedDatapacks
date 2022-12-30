@@ -1,6 +1,6 @@
 {
-    "name":"Energetic",
-    "description":"You have an electro-bar. If your bar isn't at max, you suffer from reduced movement, attack speed, armor, attack damage, healing and health. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak",
+    "name":"Firebird",
+    "description":"As a phoenix, you take no damage from fire. Quite the opposite, you can only heal when on fire and fire regenerates you slowly passively. Also, you have 2 lesser hearts and take damage whilst in water.",
     "type": "origins:multiple",
     "fire_immune":{
         "type": "origins:modify_damage_taken",
@@ -57,7 +57,7 @@
             "type": "origins:heal",
             "amount": 1
         },
-        "interval": 20,
+        "interval": 30,
         "condition": {
             "type": "origins:on_fire"
         }

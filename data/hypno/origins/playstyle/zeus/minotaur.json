@@ -5,7 +5,8 @@
 		"hypno:playstyle/zeus/minotaur/power_jump",
 		"hypno:playstyle/zeus/minotaur/size",
 		"hypno:playstyle/zeus/minotaur/daytime",
-		"hypno:playstyle/zeus/minotaur/nobows"
+		"hypno:playstyle/zeus/minotaur/nobows",
+		"hypno:playstyle/zeus/minotaur/vegetarian"
 	],
 	"icon": {
 		"item": "minecraft:goat_horn"

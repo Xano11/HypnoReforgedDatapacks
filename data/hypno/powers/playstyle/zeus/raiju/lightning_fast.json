@@ -33,7 +33,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "change": -150
+                    "change": -100
                 }
             ]
         },

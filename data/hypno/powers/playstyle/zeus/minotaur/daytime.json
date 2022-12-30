@@ -151,5 +151,11 @@
         }   
     },
     "name":"Used to the darkness",
-    "description":"Whilst under the sun, you get greatly overwhelmed. You exhaust much faster, move much slower and have trouble seeing anything."
+    "description":"Whilst under the sun, you get greatly overwhelmed. You exhaust much faster, move much slower and have trouble seeing anything.",
+    "badges": [
+        {
+            "sprite": "minecraft:textures/mob_effect/darkness.png",
+            "text": "Staying long enough in the daylight will adjust you to the sun. But, going back to the shade will disadjust you."
+        }
+    ]
 }

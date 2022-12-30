@@ -1,6 +1,6 @@
 {
   "name": "Ram",
-  "description": "You can activate a ram ability, launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit.",
+  "description": "You can activate a ram ability with your [PRIMARY ABILITY KEY], launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit.",
   "type": "origins:multiple",
   "remaining": {
     "type": "origins:resource",

@@ -90,5 +90,5 @@
       }
   },
   "name": "Slam",
-  "description": "You can activate a Slam ability, knocking up everyone within a 5 block radius dealing 3 damage."
+  "description": "You can activate a Slam ability with your [SECONDARY ABILITY KEY], knocking up everyone within a 5 block radius dealing 3 damage."
 }

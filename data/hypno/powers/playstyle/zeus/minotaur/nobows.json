@@ -12,5 +12,11 @@
     ]
 	},
 	"name": "Head-on mentality",
-    "description": "Due to your beliefs, you think ranged weapons are for cowardice. You refuse stoop to that low just to make combat easier."
+    "description": "Due to your beliefs, you think ranged weapons are for cowardice. You refuse stoop to that low just to make combat easier.",
+	"badges": [
+        {
+            "sprite": "minecraft:textures/item/bow.png",
+            "text": "No bows and crossbows for you."
+        }
+    ]
 }

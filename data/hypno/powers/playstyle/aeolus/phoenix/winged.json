@@ -1,5 +1,5 @@
 {
-    "name":"Infused",
+    "name":"Winged",
     "description":"You are infused. You are fire resistant and able to use new abilities.",
     "type": "origins:multiple",
     "wings":
@@ -7,28 +7,27 @@
         "type": "origins:elytra_flight",
         "render_elytra": true
     },
-    "timer":
+    "lose":
     {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 200,
-        "start_value": 200,
-        "hud_render": {
-            "should_render": false
-        },
-        "min_action": {
-            "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/aeolus/phoenix/winged"
-        }
-    },
-    "timer_down":{
-        "type": "origins:action_over_time",
+        "type": "origins:action_on_land",
         "entity_action": {
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/aeolus/phoenix/winged_timer",
-            "change": -10
-        },
-        "interval": 10
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "hypno:playstyle/aeolus/phoenix/wings"
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":
+                    {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/aeolus/phoenix/winged"
+                    }
+            }
+            ]
+        }  
     },
     "hidden": true
 }

@@ -1,6 +1,6 @@
 {
     "name":"Rekindle",
-    "description":"",
+    "description":"Sneaking and [RIGHT CLICKING] an entity will grant it the blessing of the Phoenix. Up to three blessings can be given at a time and those will heal the affected entities over time. But, it is to be noted that every entity that is affected by a blessing will drain your enerhy bar.",
     "type": "origins:multiple",
     "activation":{
         "type": "origins:action_on_entity_use",

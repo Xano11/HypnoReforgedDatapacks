@@ -1,6 +1,6 @@
 {
-    "name":"The Beast's Roar",
-    "description":" ",
+    "name":"Wings of the Eternal",
+    "description":"Pressing [SECONDARY ABILITY KEY] whilst on a block will launch you upwards and grant you wings. Those wings last indefinitely, but once you touch the ground again, they are removed.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:active_self",
@@ -9,7 +9,8 @@
             "actions": [
                 {
                     "type": "origins:add_velocity",
-                    "y": 2
+                    "y": 5,
+                    "space": "local_horizontal_normalized"
                 },
                 {
                     "type": "origins:set_on_fire",
@@ -59,10 +60,16 @@
                 }
             ]
         },
-        "cooldown": 600,
+        "cooldown": 1200,
         "hud_render": {
-            "sprite_location": "origins:textures/gui/resource_bar.png",
-            "bar_index": 4
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 0,
+            "condition":
+            {
+            "type": "origins:power",
+            "power": "hypno:playstyle/aeolus/phoenix/winged",
+            "inverted": true
+            }
         },
         "key": {
             "key": "key.origins.secondary_active"

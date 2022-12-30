@@ -6,7 +6,7 @@
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:gain_air",
-            "value": 2
+            "value": 30
         },
         "interval": 10,
         "condition":{

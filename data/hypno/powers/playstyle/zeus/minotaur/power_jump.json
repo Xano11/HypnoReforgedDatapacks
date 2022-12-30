@@ -2,6 +2,12 @@
     "type": "origins:multiple",
     "name": "Power Jump",
     "description": "You can crouch to charge your punch meter. Jumping at any time during this will reset it, but you'll punch the ground making you jump much higher.",
+    "badges": [
+        {
+            "sprite": "minecraft:textures/mob_effect/jump_boost.png",
+            "text": "It takes a total of 5 seconds to fully charge!"
+        }
+    ],
     "resource": {
         "type": "origins:resource",
         "min": 0,

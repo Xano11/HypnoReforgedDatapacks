@@ -14,6 +14,7 @@
             "command": "tag @s remove haunted"
         }
     },
+    
     "timer":
     {
         "type": "origins:resource",
@@ -22,7 +23,24 @@
         "start_value": 60,
         "hud_render": {
             "should_render": false
-        }
+        },
+        "min_action":
+        {
+            "type": "origins:and",
+            "actions": [{
+                "type": "origins:execute_command",
+                "command": "particle minecraft:soul ~ ~ ~ 1 1 1 3 100"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:sonic_boom ~ ~1 ~ 0 0 0 1 10"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.vex.death player @s ~ ~ ~ 1 0.5"
+            }
+        ]
+    }
     },
     "effect_timer":
     {
@@ -74,6 +92,46 @@
         },
         "interval": 5
     },
+    "no_see":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/block/polished_blackstone.png",
+        "strength": 1.0,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "eye":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/item/ender_eye.png",
+        "strength": 0.6,
+        "red": 0.1,
+        "green": 0.5,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
     "no_move":{
         "type": "origins:modify_velocity",
         "modifier": {
@@ -104,7 +162,14 @@
     }
       },
       "sinked":{
-        "type": "origins:ignore_water"
+        "type": "origins:ignore_water",
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/haunted_timer",
+            "comparison": "==",
+            "compare_to": 0
+        }
     },
     "sinking":{
         "type": "origins:modify_falling",
