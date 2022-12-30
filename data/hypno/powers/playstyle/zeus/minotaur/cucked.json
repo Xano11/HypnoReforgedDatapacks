@@ -34,19 +34,41 @@
     "lose":{
         "type": "origins:action_on_land",
         "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type":"origins:delay",
-                    "ticks":1,
+            "type": "origins:if_else",
+    		"condition": {
+        		"type": "origins:resource",
+    			"resource": "*:*_res",
+    			"comparison": "==",
+    			"compare_to": 1
+    		},
+    		"if_action": {
+        		"type": "origins:execute_command",
+                "command": "power remove @s hypno:playstyle/zeus/minotaur/cucked"
+    		},
+    		"else_action": {
+        		"type": "origins:and",
+    			"actions": [
+       			{
+            		"type": "origins:damage",
+                      "amount": 1,
+                      "source": {
+                          "name": "cramming.player",
+                          "bypasses_armor": true,
+						  "unblockable": true
+                      }
+        		},
+        		{    
+            		"type":"origins:delay",
+                    "ticks":15,
                     "action":
                     {
                     "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/zeus/minotaur/cucked"
                     }
-            }
-            ]
-        }  
+        		}
+    		]
+		}
+	}  
     },
     "hidden": true
 }
