@@ -31,6 +31,90 @@
 		}
     },
 
+	"no_move": {
+		"type": "origins:attribute",
+		"modifier": {
+			"name": "Decrease speed",
+			"attribute": "minecraft:generic.movement_speed",
+			"value": -1,
+			"operation": "multiply_total"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
+
+    "no_atk_speed": {
+		"type": "origins:attribute",
+		"modifier": {
+			"name": "Decrease speed",
+			"attribute": "minecraft:generic.attack_speed",
+			"value": -0.6,
+			"operation": "multiply_total"
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
+
+	"no_jump": {
+		"type": "origins:modify_jump",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -1
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
+
+	"no_elytra":{
+		"type": "origins:prevent_elytra_flight",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
+
+	"no_attack": {
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.99999999999
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
+
+	"no_air": {
+		"type": "origins:modify_air_speed",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -1
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
+
     "lose":{
         "type": "origins:action_on_land",
         "entity_action": {
