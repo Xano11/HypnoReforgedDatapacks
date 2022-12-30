@@ -114,6 +114,15 @@
 			"compare_to": 2
 		}
 	},
+	"ignore_water":{
+		"type": "origins:ignore_water",
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+			},
 
     "lose":{
         "type": "origins:action_on_land",
