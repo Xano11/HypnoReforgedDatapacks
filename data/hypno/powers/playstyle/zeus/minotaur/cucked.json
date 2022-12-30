@@ -13,13 +13,22 @@
     },
 
 	"res_adjust":{
-        "type": "origins:resource",
-        "min": 1,
-        "max": 2,
-        "start_value": 1,
-        "hud_render": {
-            "should_render": false
-        }
+    	"type": "origins:self_action_when_hit",
+    	"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+    				"resource": "*:*_res",
+   					"change": 1
+				},
+				{    
+					"type": "origins:add_velocity",
+                    "y": -100,
+                    "space": "local_horizontal"
+				}
+			]
+		}
     },
 
     "lose":{
@@ -27,10 +36,6 @@
         "entity_action": {
             "type": "origins:and",
             "actions": [
-                {
-                    "type": "origins:trigger_cooldown",
-                    "power": "hypno:playstyle/aeolus/phoenix/wings"
-                },
                 {
                     "type":"origins:delay",
                     "ticks":1,
