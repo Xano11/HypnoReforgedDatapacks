@@ -2,6 +2,7 @@
   "name": "Ram",
   "description": "You can activate a ram ability with your [PRIMARY ABILITY KEY], launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit.",
   "type": "origins:multiple",
+
   "remaining": {
     "type": "origins:resource",
     "min": 0,
@@ -18,6 +19,7 @@
       }
     }
   },
+
   "cooldown": {
     "type": "origins:resource",
     "min": 0,
@@ -45,6 +47,7 @@
       }
     }
   },
+
   "run_noise": {
     "type": "origins:action_over_time",
     "entity_action": {
@@ -62,6 +65,7 @@
     },
     "interval": 3
   },
+
   "run_particle_steam": {
     "type": "origins:action_over_time",
     "entity_action": {
@@ -79,6 +83,7 @@
     },
     "interval": 3
   },
+
   "run_particle_pebble": {
     "type": "origins:action_over_time",
     "entity_action": {
@@ -96,6 +101,7 @@
     },
     "interval": 3
   },
+
   "run_out": {
     "type": "origins:action_over_time",
     "rising_action": {
@@ -121,6 +127,7 @@
       "compare_to": 0
     }
   },
+
   "tick_down": {
     "type": "origins:action_over_time",
     "entity_action": {
@@ -205,6 +212,7 @@
     },
     "interval": 1
   },
+
   "activate": {
     "type": "origins:active_self",
     "entity_action": {
@@ -305,6 +313,7 @@
     },
     "cooldown": 200
   },
+
   "movement_speed": {
     "type": "origins:conditioned_attribute",
     "modifier": {
@@ -320,6 +329,7 @@
       "compare_to": 0
     }
   },
+
   "slipperiness": {
     "type": "origins:modify_slipperiness",
     "modifier": {
@@ -333,6 +343,7 @@
       "compare_to": 0
     }
   },
+
   "sprinting": {
     "type": "origins:prevent_sprinting",
     "condition": {
@@ -342,6 +353,7 @@
       "compare_to": 0
     }
   },
+
   "sleep": {
     "type": "origins:prevent_sleep",
     "message": "You're going too fast for that!",
@@ -352,6 +364,7 @@
       "compare_to": 0
     }
   },
+
   "item_use": {
     "type": "origins:prevent_item_use",
     "condition": {
@@ -361,6 +374,7 @@
       "compare_to": 0
     }
   },
+
   "jump": {
     "type": "origins:modify_jump",
     "modifier": {
@@ -378,6 +392,7 @@
       "compare_to": 0
     }
   },
+
   "interact": {
     "type": "origins:prevent_entity_use",
     "bientity_action": {
@@ -394,6 +409,7 @@
       "compare_to": 0
     }
   },
+
   "elytra_flight": {
     "type": "origins:prevent_elytra_flight",
     "entity_action": {
@@ -407,6 +423,7 @@
       "compare_to": 0
     }
   },
+
   "attack": {
     "type": "origins:action_on_hit",
     "bientity_action": {
@@ -472,6 +489,7 @@
       "compare_to": 0
     }
   },
+  
   "damage": {
     "type": "origins:modify_damage_dealt",
     "condition": {
