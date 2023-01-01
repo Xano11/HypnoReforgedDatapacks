@@ -1,64 +1,51 @@
 {
     "type": "origins:multiple",
-    "remaining": {
+    "activate": {
       "type": "origins:active_self",
       "entity_action": {
           "type": "origins:and",
           "actions": [
               {
-                  "type": "origins:area_of_effect",
-                  "radius": 5,
-                  "bientity_action": {
-                    "type": "origins:and",
-                      "actions": [{
-                          "type": "origins:add_velocity",
-                          "y": 1.4,
-                          "space": "local_horizontal"
-                      },
-                      {
-                        "type": "origins:damage",
-                        "amount": 3,
-                        "source": {
-                            "name": "cramming.player",
-                            "bypasses_armor": false
-                        }
-                      }
-                    ]
-                  },
-                    "bientity_condition": {
-                        "type": "origins:can_see"
+                "type": "origins:execute_command",
+                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"portal1\"]}"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"portal2\"]}"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:playstyle/hermes/ratatoskr/portaling"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:item.totem.use player @a ~ ~ ~ 2 2"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:block.conduit.deactivate player @a ~ ~ ~ 3 2"
+              },
+              {     
+                "type":"origins:delay",
+                "ticks":1,
+                "action":
+                  {
+                  "type": "origins:execute_command",
+                  "command": "power grant @e[limit=1,sort=nearest,tag=portal1] hypno:playstyle/hermes/ratatoskr/portaled"
                   }
               },
-              {
-                "type": "origins:exhaust",
-                "amount": 0.2
-              },
-              {
-                "type": "origins:change_resource",
-                "resource": "*:*_resource",
-                "change": 1
-              },
-              {
-                  "type": "origins:play_sound",
-                  "sound": "bettercombat:hammer_slam",
-                  "volume": 1.5
-              },
-              {
-                "type": "origins:play_sound",
-                "sound": "create:crushing_1",
-                "volume": 1.2
-              },
-              {
-                "type": "origins:execute_command",
-                "command": "particle twigs:item_pebble ~ ~ ~ 1 0 1 0.1 300 normal @a"
-              },
-              {
-                "type": "origins:execute_command",
-                "command": "particle supplementaries:ash ~ ~ ~ 1 0 1 0 100 normal @a"
+              {     
+                "type":"origins:delay",
+                "ticks":1,
+                "action":
+                  {
+                  "type": "origins:execute_command",
+                  "command": "power grant @e[limit=1,sort=nearest,tag=portal2] hypno:playstyle/hermes/ratatoskr/portaled"
+                  }
               }
           ]
       },
-      "cooldown": 140,
+      "cooldown": 3600,
       "hud_render": {
           "should_render": true,
           "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
@@ -67,11 +54,8 @@
       "key": {
           "key": "key.origins.secondary_active",
           "continuous": false
-        },
-        "condition": {
-          "type": "origins:on_block"
         }
     },
-    "name": "Slam",
+    "name": "Portals",
     "description": "You can activate a Slam ability, knocking up everyone within a 5 block radius dealing 3 damage."
   }

@@ -1,0 +1,251 @@
+{
+    "name": "Poseidon’s \"Gift\"",
+	"description": "Because you are half bovine, you have 2 extra hearts, are 1.25x size the normal player, deal 2x knockback. due to your thick skin, it takes extra hits to penetrate making you have 25% damage reduction when above 9 hearts.",
+    "type": "origins:multiple",
+    "scale": {
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:height 0.75",
+                "permission_level": 4
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:width 0.75",
+                "permission_level": 4
+            },
+			{
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:view_bobbing 1.25",
+                "permission_level": 4
+            },
+			{
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:step_height 1",
+                "permission_level": 4
+            },
+			{
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:held_item 1.25",
+                "permission_level": 4
+            }
+        ]
+    },
+    "entity_action_respawned": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:height 0.75",
+                "permission_level": 4
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:width 0.75",
+                "permission_level": 4
+            },
+			{
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:view_bobbing 1.25",
+                "permission_level": 4
+            },
+			{
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:step_height 1",
+                "permission_level": 4
+            },
+			{
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:held_item 1.25",
+                "permission_level": 4
+            }
+        ]
+    },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:height @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:width @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:view_bobbing @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:step_height @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:held_item @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:knockback @s",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+
+    "lessheart": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health increase",
+            "attribute": "minecraft:generic.max_health",
+            "value": -6,
+            "operation": "addition"
+        }
+    },
+    "roll_uses":
+    {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health increase",
+            "attribute": "combatroll:count",
+            "value": 2,
+            "operation": "addition"
+        }
+    },
+    "roll_recharge":
+    {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health increase",
+            "attribute": "combatroll:recharge",
+            "value": 0.25,
+            "operation": "multiply_total"
+        }
+    },
+    "climbing":{
+        "type": "origins:climbing",
+        "condition":  {
+            "type": "origins:collided_horizontally"
+        },
+        "hold_condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:collided_horizontally"
+                }
+            ]
+        }
+    },
+    "no_fall_damage":
+    {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:from_falling"
+        },
+        "modifier": {
+            "name": "Invulnerable to fall",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "branch":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "y"
+        ],
+        "condition":{
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:on_block",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/ratatoskr/squirrel_resource",
+                    "comparison": ">=",
+                    "compare_to": 5
+                }
+            ]
+        }
+      },
+      "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        }
+      },
+      "resource_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hermes/ratatoskr/squirrel_resource",
+            "change": -5
+                },
+            {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:dust_color_transition 0 0.6 0.6 1 0 0.9 0.5 ~ ~ ~ 0.3 0 0.3 1 100",
+            "permission_level": 4
+            },
+            {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:glow ~ ~ ~ 0.2 0 0.2 0.01 100",
+            "permission_level": 4
+            }
+            ]
+        },
+        "interval": 5,
+        "condition":{
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/ratatoskr/squirrel_resource",
+                    "comparison": ">=",
+                    "compare_to": 5
+                }
+            ]
+        }
+    },
+    "resource_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hermes/ratatoskr/squirrel_resource",
+            "change": 5
+        },
+        "interval": 5,
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type": "origins:on_block"
+                }
+            ]
+        }
+    }
+}
