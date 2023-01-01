@@ -22,17 +22,26 @@
     				"resource": "*:*_res",
    					"change": 1
 				},
-				{    
-					"type": "origins:add_velocity",
-                    "y": -100,
-                    "space": "local_horizontal"
+				{
+					"type": "origins:execute_command",
+					"command": "particle supplementaries:bomb_explosion ~ ~1 ~ 0.4 0.3 0.4 0.5 20"
 				}
 			]
 		}
     },
-
+	"fall_speed":{
+		"type": "origins:modify_falling",
+		"velocity": 2.0,
+		"take_fall_damage": true,
+		"condition": {
+			"type": "origins:resource",
+			"resource": "*:*_res",
+			"comparison": "==",
+			"compare_to": 2
+		}
+	},
 	"no_move": {
-		"type": "origins:attribute",
+		"type": "origins:conditioned_attribute",
 		"modifier": {
 			"name": "Decrease speed",
 			"attribute": "minecraft:generic.movement_speed",
@@ -48,7 +57,7 @@
 	},
 
     "no_atk_speed": {
-		"type": "origins:attribute",
+		"type": "origins:conditioned_attribute",
 		"modifier": {
 			"name": "Decrease speed",
 			"attribute": "minecraft:generic.attack_speed",
@@ -124,16 +133,36 @@
 		}
 			},
 
+	"particles":{
+		"type": "origins:action_over_time",
+		"entity_action": {
+		"type": "origins:and",
+		"actions": [
+				{
+				"type": "origins:execute_command",
+				"command": "particle supplementaries:air_burst ~ ~1 ~ 0.15 0.3 0.15 0.02 10"
+				}
+					]
+				},     
+				"interval": 1,
+				"condition": {
+					"type": "origins:resource",
+					"resource": "*:*_res",
+					"comparison": "==",
+					"compare_to": 2
+				}
+			},
+
     "lose":{
         "type": "origins:action_on_land",
         "entity_action": {
             "type": "origins:if_else",
-    		"condition": {
-        		"type": "origins:resource",
-    			"resource": "*:*_res",
-    			"comparison": "==",
-    			"compare_to": 1
-    		},
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_res",
+				"comparison": "==",
+				"compare_to": 1
+			},
     		"if_action": {
         		"type": "origins:execute_command",
                 "command": "power remove @s hypno:playstyle/zeus/minotaur/cucked"

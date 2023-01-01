@@ -11,10 +11,13 @@
                 "bientity_action": {
                   "type": "origins:and",
                     "actions": [{
+                      "type": "origins:target_action",
+                      "action": {
                         "type": "origins:add_velocity",
                         "y": 1,
-                        "space": "local_horizontal"
-                    },
+                        "space": "local_horizontal_normalized"
+                    }
+                  },
                     {
                       "type": "origins:damage",
                       "amount": 3,
