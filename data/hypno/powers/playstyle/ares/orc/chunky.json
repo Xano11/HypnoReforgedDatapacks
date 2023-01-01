@@ -52,7 +52,32 @@
                 "permission_level": 4
             }
             ]
-        }
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:height",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:width",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:view_bobbing",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:held_item",
+                    "permission_level": 4
+                }
+                ]
+            }
     },
 
     "extraheart": {
