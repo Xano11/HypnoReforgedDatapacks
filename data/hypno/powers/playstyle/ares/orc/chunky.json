@@ -91,12 +91,12 @@
     },
 
     "lowerattackspeed":{
-        "type": "origins:modify_attribute",
-        "attribute": "minecraft:generic.attack_speed",
+        "type": "origins:attribute",
         "modifier": {
-            "operation": "multiply_total",
-            "resource": "example:resource",
-            "value": -0.2
+            "name": "Max health increase",
+            "attribute": "minecraft:generic.attack_speed",
+            "value": -0.2,
+            "operation": "multiply_total"
         }
     },
     "name": "Orc Physique",

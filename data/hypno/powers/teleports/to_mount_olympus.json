@@ -44,5 +44,9 @@
             "main_hand"
         ]
     },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
     "hidden": true
 }

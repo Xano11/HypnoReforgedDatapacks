@@ -1,7 +1,8 @@
 {
 	"powers": [
         "hypno:playstyle/ares/orc/chunky",
-        "hypno:playstyle/ares/orc/retribution"
+        "hypno:playstyle/ares/orc/retribution",
+		"hypno:playstyle/ares/orc/sacrifice"
 	],
 	"icon": {
 		"item": "minecraft:slime_ball",
