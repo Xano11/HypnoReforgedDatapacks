@@ -1,0 +1,60 @@
+{
+    "name":"Shocked",
+    "description":"You take more damage and can't move as well.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/ares/orc/bloodthirsty_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                "type": "apoli:execute_command",
+                "command": "function hypno:spiral"
+                   
+                },
+                {
+                "type": "apoli:execute_command",
+                "command": "scoreboard players add @s spiral1 1"
+                }
+                ]
+            },
+        "interval": 1
+    },
+    "particles_reset":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                "type": "apoli:execute_command",
+                "command": "scoreboard players reset @s spiral1"
+                }
+                ]
+            },
+        "interval": 21
+    },
+    "hidden": true
+}
