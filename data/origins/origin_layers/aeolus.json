@@ -9,7 +9,8 @@
               "layer": "origins:blessing"
           },
           "origins": [
-            "hypno:playstyle/aeolus/phoenix"
+            "hypno:playstyle/aeolus/phoenix",
+            "hypno:playstyle/aeolus/konakadeit"
           ]
           }
       ],
