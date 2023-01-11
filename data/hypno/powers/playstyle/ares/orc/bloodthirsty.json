@@ -3,7 +3,7 @@
     "description":"You take more damage and can't move as well.",
     "type": "origins:multiple",
     "timer":
-    {
+    { 
         "type": "origins:resource",
         "min": 0,
         "max": 300,
@@ -579,7 +579,7 @@
                                     "type":"origins:and",
                                     "actions":[{
                                     "type": "origins:add_velocity",
-                                    "y": 2
+                                    "y": 1.3
                                 },
                                 {
                                     "type":"origins:delay",
@@ -649,6 +649,7 @@
                                     "command": "playsound minecraft:entity.iron_golem.damage player @a ~ ~ ~ 2 0.5"
                                 },
                                 {
+                                    
                                 "type":"origins:delay",
                                  "ticks":1,
                                  "action":{
@@ -658,7 +659,15 @@
                                 },
                                 {
                                     "type":"origins:delay",
-                                    "ticks":10,
+                                     "ticks":22,
+                                     "action":{
+                                        "type": "origins:execute_command",
+                                        "command": "function hypno:sacrifice"
+                                    }
+                                },
+                                {
+                                    "type":"origins:delay",
+                                    "ticks":23,
                                     "action":
                                     {
                                     "type": "origins:execute_command",

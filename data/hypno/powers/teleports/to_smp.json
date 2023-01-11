@@ -1,0 +1,39 @@
+{
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:action_on_being_used",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                  "actions": [
+                  {             
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:stasis ~ ~1 ~ 0.3 0.7 0.3 0.1 100"
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":
+                    {
+                        "type": "origins:and",
+                        "actions": [{
+                        "type": "origins:execute_command",
+                        "command": "server smp"
+                    }
+                    ]
+                    }
+                }
+                ]
+              }
+        },
+        "hands": [
+            "main_hand"
+        ]
+    },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "hidden": true
+}

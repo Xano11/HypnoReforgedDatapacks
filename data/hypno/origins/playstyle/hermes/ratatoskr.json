@@ -2,7 +2,9 @@
 	"powers": [
 		"hypno:playstyle/hermes/ratatoskr/portal",
 		"hypno:playstyle/hermes/ratatoskr/squirrel",
-		"hypno:playstyle/hermes/ratatoskr/branches"
+		"hypno:playstyle/hermes/ratatoskr/branches",
+		"hypno:playstyle/hermes/ratatoskr/blink",
+		"hypno:playstyle/hermes/ratatoskr/armor"
 	],
 	"icon": {
 		"item": "naturalist:antler",

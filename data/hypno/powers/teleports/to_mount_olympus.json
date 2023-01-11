@@ -30,6 +30,23 @@
                     "action":
                     {
                         "type": "origins:and",
+                        "actions": [{             
+                            "type": "origins:execute_command",
+                            "command": "particle supplementaries:stasis ~ ~1 ~ 0.3 0.7 0.3 0.1 100"
+                        },
+                        {             
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:entity.enderman.teleport player @s ~ ~ ~ 1 2"
+                        }
+                    ]
+                    }
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":3,
+                    "action":
+                    {
+                        "type": "origins:and",
                         "actions": [{
                         "type": "origins:execute_command",
                         "command": "power remove @s hypno:teleports/to_mount_olympus"

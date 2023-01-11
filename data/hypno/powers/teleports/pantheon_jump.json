@@ -1,0 +1,61 @@
+{
+    "type": "origins:multiple",
+    "leap":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:area_of_effect",
+            "radius": 1,
+            "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[{
+                        "type": "origins:add_velocity",
+                        "y": 1,
+                        "space":"world"
+                    },
+                    {
+                        "type": "origins:add_velocity",
+                        "z": -3,
+                        "space":"world"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:teleports/pantheon_particles"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:entity.evoker.cast_spell player @s ~ ~ ~ 2 1.6"
+                    }
+                    ]
+            }
+            },
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:player"
+                }
+            }
+        },
+        "interval": 5
+    },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+          {
+            "type": "origins:execute_command",
+            "command": "particle supplementaries:rotation_trail_emitter ~ ~ ~ 0 0 0 1 4"
+          }
+        ]
+        },
+        "interval": 15
+    },
+    "hidden": true
+}

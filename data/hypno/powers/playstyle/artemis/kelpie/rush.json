@@ -1,0 +1,54 @@
+{
+    "name": "Ram",
+    "description": "You can activate a ram ability with your [PRIMARY ABILITY KEY], launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit.",
+    "type": "origins:multiple",
+  
+    "activate": {
+      "type": "origins:active_self",
+      "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:playstyle/artemis/kelpie/rushing"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.vex.charge player @s ~ ~ ~ 1 0.5"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle supplementaries:green_flame ~ ~ ~ 0.7 1 0.7 0.01 30"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:soul ~ ~1 ~ 0.2 0.2 0.2 0.5 30"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:dust_color_transition 0 0 0 1 0 1 0 ~ ~1 ~ 0.2 0.2 0.2 0.5 50"
+            }
+        ]
+    },
+      "condition": {
+        "type": "origins:and",
+        "conditions": [
+          {
+            "type": "origins:resource",
+            "resource": "*:*_remaining",
+            "comparison": "==",
+            "compare_to": 0
+          }
+        ]
+      },
+      "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+        "bar_index": 10
+      },
+      "key": {
+        "key": "key.origins.primary_active"
+      },
+      "cooldown": 600
+    }
+  }
