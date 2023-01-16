@@ -1,0 +1,41 @@
+{
+    "name":"Eagle",
+    "description":"",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type":"origins:and",
+            "actions":[
+        {
+            "type": "origins:execute_command",
+            "command": "kill @s"
+    }
+    ]
+  }
+},
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/heads_timer",
+            "change": -10
+        },
+        "condition":
+        {
+            "type": "origins:command",
+            "command": "execute as @e[distance=..5,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "interval": 10
+    },
+    "hidden": false
+}

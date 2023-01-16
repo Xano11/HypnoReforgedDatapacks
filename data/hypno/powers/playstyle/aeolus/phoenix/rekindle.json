@@ -30,7 +30,8 @@
                 {
                 "type": "origins:actor_action",
                 "action": {
-                    "type":[{
+                    "type": "origins:and",
+                    "actions": [{
                             "type": "origins:change_resource",
                             "resource": "hypno:playstyle/aeolus/phoenix/rekindle_healed",
                             "change": 1

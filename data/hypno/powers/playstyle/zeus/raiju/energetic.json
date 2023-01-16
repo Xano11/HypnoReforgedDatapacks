@@ -210,6 +210,28 @@
         ]
     }
     },
+    "air_speed":{
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.4
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": "<",
+            "compare_to": 100
+        },  
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/infused",
+            "inverted": true
+        }
+        ]
+    }
+    },
     "roll_reduction":{
         "type": "origins:conditioned_attribute",
         "modifier": {

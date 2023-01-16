@@ -4,7 +4,8 @@
 		"hypno:playstyle/zeus/raiju/stormfield",
 		"hypno:playstyle/zeus/raiju/lightning_fast",
 		"hypno:playstyle/zeus/raiju/energetic",
-		"hypno:playstyle/zeus/raiju/armor"
+		"hypno:playstyle/zeus/raiju/armor",
+		"hypno:playstyle/zeus/raiju/carnivore"
 	],
 	"icon": {
 		"item": "minecraft:bell"

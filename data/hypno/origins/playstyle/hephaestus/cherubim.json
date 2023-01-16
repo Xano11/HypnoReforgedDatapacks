@@ -1,0 +1,12 @@
+{
+	"powers": [
+		"hypno:playstyle/hephaestus/cherubim/blessings"
+	],
+	"icon": {
+		"item": "soulsweapons:essence_of_eventide"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Cherubim",
+	"description": "Guardian of the Eden's garden, these mythical angels will confuse the simple-minded."
+}
