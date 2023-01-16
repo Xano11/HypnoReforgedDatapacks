@@ -56,6 +56,6 @@
           "continuous": false
         }
     },
-    "name": "Portals",
-    "description": "You can activate a Slam ability, knocking up everyone within a 5 block radius dealing 3 damage."
+    "name": "Realm between Dimensions",
+    "description": "As a descendant of a divine messenger, you can tear rifts into existence; linking two points in space together. By pressing your [Secondary Ability Key], you phase into the Realm between Dimensions, allowing you to move extremely fast and leaving an initial rift behind you. After a certain amount of time, you will go back to reality, where a second rift will be created. Entering the first rift will teleport you to the second, but not vice-versa. "
   }

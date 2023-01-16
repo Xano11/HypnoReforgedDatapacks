@@ -62,6 +62,10 @@
                     "command": "execute as @e[distance=0.1..16] run resource change @s hypno:playstyle/zeus/raiju/storm_stacks 1"
                 },
                 {
+                    "type": "origins:execute_command",
+                    "command": "function hypno:stormfield"
+                },
+                {
                     "type":"origins:delay",
                     "ticks":1,
                     "action":
@@ -188,6 +192,13 @@
                                 "type": "origins:living"
                             }
                         },
+                        {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:in_tag",
+                                "tag": "hypno:living"
+                            }
+                            },
                     {
                         "type": "origins:target_condition",
                         "condition": {

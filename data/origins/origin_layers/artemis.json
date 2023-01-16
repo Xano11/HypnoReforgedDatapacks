@@ -9,7 +9,8 @@
               "layer": "origins:blessing"
           },
           "origins": [
-            "hypno:playstyle/artemis/kelpie"
+            "hypno:playstyle/artemis/kelpie",
+            "hypno:playstyle/artemis/fenrirkin"
           ]
           }
       ],

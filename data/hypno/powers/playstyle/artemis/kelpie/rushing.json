@@ -6,18 +6,27 @@
     "type": "origins:resource",
     "min": 0,
     "max": 140,
-    "start_value": 0,
+    "start_value": 140,
     "hud_render": {
         "should_render": true,
         "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-        "bar_index": 20,
-        "condition": {
-        "type": "origins:resource",
-        "resource": "*:*_remaining",
-        "comparison": ">",
-        "compare_to": 0
-        }
-    }
+        "bar_index": 20
+    },
+    "min_action":
+    {
+      "type": "origins:execute_command",
+      "command": "power remove @s hypno:playstyle/artemis/kelpie/rushing"
+  }
+},
+
+"timer_down":{
+  "type": "origins:action_over_time",
+  "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "hypno:playstyle/artemis/kelpie/rushing_remaining",
+      "change": -10
+  },
+  "interval": 10
 },
 
 "movement": {
@@ -26,12 +35,13 @@
       "type": "origins:and",
       "actions": [
           {
-              "type": "origins:execute_command",
-              "command": "power grant @s hypno:playstyle/artemis/kelpie/rushing"
+              "type": "origins:add_velocity",
+              "z": 1.5,
+              "space": "local"
           },
           {
               "type": "origins:execute_command",
-              "command": "playsound minecraft:entity.vex.charge player @s ~ ~ ~ 1 0.5"
+              "command": "playsound minecraft:entity.horse.angry player @a ~ ~ ~ 2 0.8"
           },
           {
               "type": "origins:execute_command",
@@ -51,22 +61,19 @@
       "type": "origins:and",
       "conditions": [
         {
-          "type": "origins:resource",
-          "resource": "*:*_remaining",
-          "comparison": "==",
-          "compare_to": 0
-        }
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water"
+      }
       ]
     },
     "hud_render": {
-      "should_render": true,
-      "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-      "bar_index": 10
+      "should_render": false
     },
     "key": {
-      "key": "key.origins.primary_active"
+      "key": "key.forward",
+      "continuous": true
     },
-    "cooldown": 600
+    "cooldown": 15
   },
 
 "movement_speed": {
@@ -74,7 +81,7 @@
   "modifier": {
     "attribute": "minecraft:generic.movement_speed",
     "operation": "multiply_total",
-    "value": 0
+    "value": -1
   },
   "tick_rate": 5
 },

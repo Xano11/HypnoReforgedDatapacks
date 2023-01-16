@@ -1,6 +1,7 @@
 {
 	"powers": [
-		"hypno:playstyle/aeolus/konakadeit/pounce"
+		"hypno:playstyle/aeolus/konakadeit/pounce",
+		"hypno:playstyle/aeolus/konakadeit/hunting"
 	],
 	"icon": {
 		"item": "minecraft:salmon"

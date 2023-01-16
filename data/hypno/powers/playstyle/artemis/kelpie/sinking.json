@@ -1,6 +1,6 @@
 {
     "name":"Sinking Thoughts",
-    "description":"Using your [PRIMARY ABILITY KEY], you can haunt everyone submerged in water in a 32 block radius. If the foes do not leave before their fear bar gets to max, they sink to the bottom of the water and get debuffed.",
+    "description":"Using your [SECONDARY ABILITY KEY], you can haunt everyone submerged in water in a 32 block radius. If the foes do not leave before their fear bar gets to max, they sink to the bottom of the water and get debuffed.",
     "type": "origins:multiple",
     "activation":{
         "type": "origins:active_self",
@@ -42,9 +42,18 @@
         "bientity_condition": {
             "type": "origins:target_condition",
             "condition": {
+                "type":"origins:and",
+                "conditions":[{
                 "type": "origins:submerged_in",
                 "fluid": "minecraft:water"
-            }
+                },
+                {
+                    "type": "origins:entity_group",
+                    "group": "aquatic",
+                    "inverted": true
+                }
+            ]
+        }
         }
         },
         "cooldown": 1200,
@@ -61,33 +70,6 @@
                 "type": "origins:submerged_in",
                 "fluid": "minecraft:water"
             }
-        ]
-    }
-    },
-    "particles":{
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:execute_command",
-                    "command": "execute at @e[type=minecraft:armor_stand,tag=lightningbolt] run particle minecraft:cloud ~ ~ ~ 0.3 0 0.3 0.01 10"
-                }
-            ]
-        },     
-        "interval": 2,
-        "condition": {
-            "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/stormfield_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
-        }
         ]
     }
     },

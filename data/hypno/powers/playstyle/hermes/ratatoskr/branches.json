@@ -31,7 +31,7 @@
             {
               "type": "origins:add_velocity",
               "set": true,
-              "y": 0.8
+              "y": 0.5
             },
             {
               "type": "origins:execute_command",
@@ -91,6 +91,6 @@
       }
     },
     "name":"Branches of the World Tree",
-    "description":"You can summon the branches of the World Tree to help you traverse the land."
+    "description":"You can summon the branches of the World Tree to help you traverse the land. By using your [Jump Key] after you initial jump, you can jump for 2 additional times."
   }
   

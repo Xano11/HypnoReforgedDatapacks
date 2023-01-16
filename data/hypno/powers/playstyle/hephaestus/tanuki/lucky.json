@@ -1,0 +1,26 @@
+{
+    "name":"Lucky",
+    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to move faster. Using this form costs energy over time.",
+    "type": "origins:multiple",
+    "fortune":{
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:fortune",
+        "modifiers": [
+            {
+                "operation": "addition",
+                "value": 1
+            }
+        ]
+    },
+    "looting":{
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:looting",
+        "modifiers": [
+            {
+                "operation": "addition",
+                "value": 1
+            }
+        ]
+    },
+    "hidden": false
+}

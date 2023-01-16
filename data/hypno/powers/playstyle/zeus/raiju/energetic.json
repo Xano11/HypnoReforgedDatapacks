@@ -1,6 +1,6 @@
 {
     "name":"Energetic",
-    "description":"You have an electro-bar. If your bar is at 1 bar or lower, you suffer from reduced movement, attack speed, armor, attack damage and healing. The bar recharges passively and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak.",
+    "description":"You have an electro-bar. If your bar is at 1 bar or lower, you suffer from reduced movement, attack speed, armor, attack damage and healing. The bar recharges passively, whhen you get hit by lightning and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak.",
     "type": "origins:multiple",
     "bar_up":{
         "type": "origins:action_over_time",
@@ -261,6 +261,8 @@
                     "bientity_action": {
                         "type": "origins:target_action",
                         "action": {
+                            "type":"origins:and",
+                            "actions":[{
                             "type": "origins:damage",
                             "amount": 3,
                             "source": {
@@ -268,7 +270,13 @@
                                 "unblockable": true,
                                 "bypasses_armor": true
                             }
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run particle supplementaries:stasis ~ ~ ~ 0.3 0 0.3 0.01 10"
                         }
+                    ]
+                    }
                     },
                     "bientity_condition": {
                         "type": "origins:target_condition",

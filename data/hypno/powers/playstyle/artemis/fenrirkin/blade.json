@@ -1,0 +1,104 @@
+{
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                { 
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "stacks_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:area_of_effect",
+            "radius": 12,
+            "bientity_action": {
+                "type":"origins:and",
+                "actions":[{
+                "type": "origins:target_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[{
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
+                    "change": 1
+                },
+                { 
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:block minecraft:blue_ice ~ ~1 ~ 0.5 0.5 0.5 1 10"
+                },
+                { 
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/artemis/fenrirkin/freezing"
+                },
+                { 
+                    "type": "origins:execute_command",
+                    "command": "tag @s add freezing"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/freezing_timer",
+                    "change": 25
+                }
+            ]
+                }
+            }
+                ]
+            },
+            "bientity_condition": {
+                "type":"origins:target_condition",
+                "condition":{
+                "type":"origins:and",
+                "conditions":[{
+                    "type": "origins:origin",
+                    "origin": "hypno:playstyle/artemis/fenrirkin",
+                    "layer": "origins:artemis",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:living"
+                },
+                {
+                    "type": "origins:in_tag",
+                    "tag": "hypno:living"
+                }
+            ]
+            }
+            }
+        },
+        "interval": 20
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:change_resource",
+                "resource": "hypno:playstyle/artemis/fenrirkin/blade_timer",
+                "change": -20
+            },
+        { 
+            "type": "origins:execute_command",
+            "command": "particle minecraft:dust_color_transition 0 0.5 1 1 0 0.7 1 ~-0.45 ~ ~-0.4 0.1 0.2 0.1 0.1 20"
+        },
+        { 
+            "type": "origins:execute_command",
+            "command": "function hypno:hailstorm"
+        }
+    ]
+        },
+        "interval": 20
+}
+}

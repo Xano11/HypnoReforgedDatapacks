@@ -1,0 +1,12 @@
+{
+	"powers": [
+		"hypno:default"
+	],
+	"icon": {
+		"item": "minecraft:player_head"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Blessingless",
+	"description": "You do not have a blessing."
+}

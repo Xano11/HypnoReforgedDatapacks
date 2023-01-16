@@ -1,6 +1,6 @@
 {
-    "name":"Grace of the Phoenix",
-    "description":"Using your [PRIMARY ABILITY KEY] whilst winged, you will start siphoning your energy to charge up your boost. If you do not have enough, all of the energy missing will drawn from your health. Once charged, you will get a massive flying boost.",
+    "name":"Awakening",
+    "description":"Using your [PRIMARY ABILITY KEY] whilst winged will unleash your Awakening. You will start siphoning your energy to charge up your boost, but if you do not have enough, all of the energy missing will be drawn from your health. Once charged, you will get a massive flying boost.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:active_self",

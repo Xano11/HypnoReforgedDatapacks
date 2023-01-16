@@ -90,6 +90,13 @@
             }
         },
         {
+        "type": "origins:target_condition",
+        "condition": {
+            "type": "origins:in_tag",
+            "tag": "hypno:living"
+        }
+        },
+        {
             "type": "origins:target_condition",
             "condition":{
             "type": "origins:power",

@@ -1,0 +1,244 @@
+{
+    "name":"Invisible",
+    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to move faster. Using this form costs energy over time.",
+    "type": "origins:multiple",
+    "toggle":{
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "cooldown":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 0,
+        "hud_render": {
+            "should_render":false
+        }
+    },
+    "cooldown_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+                    "change": -20
+                }
+            ]
+        },
+        "interval": 20
+    },
+    "fwoosh_resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 0,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 8,
+            "condition":
+            {
+                "type": "origins:power_active",
+                "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+            }
+        }
+    },
+    "fwoosh_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_fwoosh_resource",
+                    "change": 5
+                }
+            ]
+        },
+        "interval": 5,
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "on_hit":
+    {
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+            "change": 140
+        },
+        {
+            "type": "origins:toggle",
+            "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+        }
+            ]
+        },
+        "cooldown": 10,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+        }
+    },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": false,
+        "condition":  {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        }
+        ]
+    }
+    },
+    "ignore":
+    {
+        "type": "apugli:mobs_ignore",
+            "condition":  {
+                "type": "origins:and",
+                "conditions": [{
+                "type": "origins:power_active",
+                "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        }
+    },
+    "use":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type": "origins:area_of_effect",
+            "radius": 6,
+            "bientity_action": {
+                "type":"origins:and",
+                "actions":[{
+                "type": "origins:target_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[{
+                        "type": "origins:add_velocity",
+                        "y": 1.5
+                    }
+            ]
+        }
+            },
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:block minecraft:oak_leaves ~ ~0.5 ~ 3 0.1 3 0.1 500"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle supplementaries:air_burst ~ ~0.5 ~ 3 0.1 3 0.1 100"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:item.trident.throw player @a ~ ~ ~ 2 0.8"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:item.trident.hit player @a ~ ~ ~ 2 0.5"
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_fwoosh_resource",
+                            "change": -300
+                        }
+            ]
+        }
+            }
+        ]
+    }
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle",
+            "inverted": false
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_fwoosh_resource",
+                "comparison": "==",
+                "compare_to": 300
+            }
+        ]
+        },
+        "cooldown": 10,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "glow":{
+        "type": "origins:self_glow",
+        "use_teams": false,
+        "red": 0.0,
+        "green": 0.2,
+        "blue": 1.0,
+        "bientity_condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "hypno:playstyle/hephaestus/tanuki",
+                "layer": "origins:hephaestus"
+            }
+        }]
+    }
+    },
+    "hidden": false
+}

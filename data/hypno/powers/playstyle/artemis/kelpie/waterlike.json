@@ -40,5 +40,9 @@
             "fluid": "minecraft:water"
         }
     },
+    "watertype":{
+        "type": "origins:entity_group",
+        "group": "aquatic"
+    },
     "hidden": false
 }

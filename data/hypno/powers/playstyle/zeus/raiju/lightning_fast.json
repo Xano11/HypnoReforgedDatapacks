@@ -1,6 +1,6 @@
 {
     "name":"Thunderous",
-    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to move faster. Using this form costs energy over time.",
+    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to teleport short distances. Using this form costs energy over time.",
     "type": "origins:multiple",
     "toggle":{
         "type": "origins:toggle",
@@ -135,6 +135,18 @@
             "entity": true,
             "shape_type": "visual",
             "fluid_handling": "any",
+            "before_action": {
+                "type": "origins:and",
+                "actions": [{
+                "type": "origins:execute_command",
+                "command": "playsound soulsweapons:gatling_gun_startup player @s ~ ~ ~ 0.5 2"
+                    },
+                    {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:block.respawn_anchor.charge player @s ~ ~ ~ 0.5 2"
+                    }
+                ]
+            },
             "command_at_hit": "summon minecraft:lightning_bolt",
             "command_along_ray": "function hypno:lightningtp",
             "command_step": 0.2,

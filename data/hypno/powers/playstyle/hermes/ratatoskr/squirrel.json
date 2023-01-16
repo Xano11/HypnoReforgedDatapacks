@@ -1,6 +1,6 @@
 {
-    "name": "Poseidon’s \"Gift\"",
-	"description": "Because you are half bovine, you have 2 extra hearts, are 1.25x size the normal player, deal 2x knockback. due to your thick skin, it takes extra hits to penetrate making you have 25% damage reduction when above 9 hearts.",
+    "name": "Horned Squirrel",
+	"description": "As a descendant of Ratatsokr, you've inherited a few traits. You're smaller, weaker (three less hearts), have the ability to climb and have negated fall damage. Also, you can [Sneak] in mid-air to stop any vertical momentum for a certain amount of time. ",
     "type": "origins:multiple",
     "scale": {
         "type": "origins:action_on_callback",
@@ -192,7 +192,21 @@
         "max": 100,
         "start_value": 100,
         "hud_render": {
-            "should_render": false
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 2,
+            "condition":{
+            "type":"origins:and",
+            "conditions":[
+            {
+                "type": "origins:sneaking"
+            },
+            {
+                "type": "origins:on_block",
+                "inverted": true
+            }
+            ]
+        }
         }
       },
       "resource_down":{
@@ -227,6 +241,10 @@
                     "resource": "hypno:playstyle/hermes/ratatoskr/squirrel_resource",
                     "comparison": ">=",
                     "compare_to": 5
+                },
+                {
+                    "type": "origins:on_block",
+                    "inverted": true
                 }
             ]
         }

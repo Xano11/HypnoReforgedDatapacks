@@ -5,11 +5,10 @@
           {
             "condition": {
               "type": "origins:origin",
-              "origin": "hypno:playstyle/hephaestus",
+              "origin": "hypno:playstyle/blessingless",
               "layer": "origins:blessing"
           },
           "origins": [
-            "hypno:playstyle/hephaestus/tanuki"
           ]
           }
       ],

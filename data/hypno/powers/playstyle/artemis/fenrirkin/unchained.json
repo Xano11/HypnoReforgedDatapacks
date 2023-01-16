@@ -1,0 +1,177 @@
+{
+    "name":"Unchained",
+    "type": "origins:multiple",
+    "timer1_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer1",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "timer_main_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer_main",
+            "change": -5
+        },
+        "interval": 5,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer1",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "timer1":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 30,
+        "start_value": 30,
+        "min_action":{
+            "type": "origins:and",
+            "actions": [{ 
+            "type": "origins:execute_command",
+            "command": "execute positioned ~ ~1 ~ run function hypno:unleash"
+                },
+                { 
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:block.chain.break player @a ~ ~ ~ 2 0.5"
+                }]
+        }
+    },
+    "timer_main":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "min_action":
+        {
+            "type": "origins:and",
+            "actions": [
+                { 
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/artemis/fenrirkin/unchained"
+                }
+            ]
+        }
+    },
+    "movement_increase":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.6,
+            "operation": "multiply_base"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer_main",
+            "comparison": "<",
+            "compare_to": 140
+        }
+        ]
+    }
+    },
+    "air_speed":
+    {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.6
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer_main",
+            "comparison": "<",
+            "compare_to": 140
+        }
+        ]
+    }
+    },
+    "healing_boost":
+    {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.25
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer_main",
+            "comparison": "<",
+            "compare_to": 140
+        }
+        ]
+    }
+    },
+    "attackspeed_increase":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Attack speed decrease",
+            "attribute": "minecraft:generic.attack_speed",
+            "value": 0.10,
+            "operation": "multiply_base"
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer_main",
+            "comparison": "<",
+            "compare_to": 140
+        }
+        ]
+    }
+    },
+    "particles":
+    {
+        "type": "origins:action_over_time",
+        "entity_action": { 
+            "type": "origins:execute_command",
+            "command": "execute positioned ~ ~1 ~ run function hypno:chains"
+        },
+        "interval": 4,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer1",
+            "comparison": ">",
+            "compare_to": 10
+        }
+    },
+    "no_move":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer1",
+                    "comparison": ">",
+                    "compare_to": 2
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

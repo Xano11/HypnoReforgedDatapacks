@@ -1,0 +1,26 @@
+{
+    "name": "Break free",
+    "description": "Eternal chains bind you down, but you can temporarily break free. Pressing your [Primary Ability Key] will break you free, granting you temporary powerful buffs.",
+    "type": "origins:multiple",
+    "activate": {
+      "type": "origins:active_self",
+      "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:playstyle/artemis/fenrirkin/unchained"
+            }
+        ]
+    },
+      "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+        "bar_index": 10
+      },
+      "key": {
+        "key": "key.origins.primary_active"
+      },
+      "cooldown": 300
+    }
+  }

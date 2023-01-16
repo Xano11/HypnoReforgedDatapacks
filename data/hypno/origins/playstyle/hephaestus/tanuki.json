@@ -1,0 +1,15 @@
+{
+	"powers": [
+		"hypno:playstyle/hephaestus/tanuki/fortunate",
+		"hypno:playstyle/hephaestus/tanuki/lucky",
+		"hypno:playstyle/hephaestus/tanuki/fluff",
+		"hypno:playstyle/hephaestus/tanuki/invisibility"
+	],
+	"icon": {
+		"item": "naturalist:bear_fur"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Tanuki",
+	"description": "A japanese trickster, this yokai always makes a fool of others... and themselves."
+}

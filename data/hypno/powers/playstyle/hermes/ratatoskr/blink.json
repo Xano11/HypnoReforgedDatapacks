@@ -1,6 +1,6 @@
 {
     "name":"In the blink of Odin's eye",
-    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to move faster. Using this form costs energy over time.",
+    "description":"Using your [Primary Ability Key], you can teleport 6 blocks in front of you. This ability can be used up to 4 times in a row, requiring a recharge for the rest.",
     "type": "origins:multiple",
     "resource": {
         "type": "origins:resource",

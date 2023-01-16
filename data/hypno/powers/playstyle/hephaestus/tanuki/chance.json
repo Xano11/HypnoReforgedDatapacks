@@ -1,0 +1,182 @@
+{
+    "name":"Infused",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 60,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type": "origins:choice",
+            "actions": [
+                {
+                    "element": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:power",
+                            "power": "hypno:playstyle/hephaestus/tanuki/unlucky"
+                        },
+                        "if_action": { 
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/hephaestus/tanuki/effects/freezing"
+                        },
+                        "else_action": { 
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:playstyle/hephaestus/tanuki/effects/resistance"
+                        }
+                    },
+                    "weight": 1
+                },
+                {
+                    "element": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:power",
+                            "power": "hypno:playstyle/hephaestus/tanuki/unlucky"
+                        },
+                        "if_action": { 
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/hephaestus/tanuki/effects/poison"
+                        },
+                        "else_action": { 
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:playstyle/hephaestus/tanuki/effects/heal"
+                        }
+                    },
+                    "weight": 1
+                },
+                {
+                    "element": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:power",
+                            "power": "hypno:playstyle/hephaestus/tanuki/unlucky"
+                        },
+                        "if_action": { 
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/hephaestus/tanuki/effects/fire"
+                        },
+                        "else_action": { 
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:playstyle/hephaestus/tanuki/effects/speed"
+                        }
+                    },
+                    "weight": 1
+                }
+            ]
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/chance_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "particles":
+    {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.8 0.2 0 1 0.9 0.6 0 ~ ~1 ~ 0.5 0.5 0.5 1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1.5"
+                },
+                {
+                "type":"origins:delay",
+                 "ticks":10,
+                 "action":{
+                    "type":"origins:and",
+                    "actions":[{
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:dust_color_transition 0 0.6 1 1 0 0.4 1 ~ ~1 ~ 0.5 0.5 0.5 1 100"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1.5"
+                    }
+            ]
+        }
+                },
+                {
+                    "type":"origins:delay",
+                     "ticks":20,
+                     "action":{
+                        "type":"origins:and",
+                        "actions":[{
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:dust_color_transition 1 0 0.7 1 1 0 0.3 ~ ~1 ~ 0.5 0.5 0.5 1 100"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1.5"
+                        }
+                ]
+            }
+                    },
+                    {
+                        "type":"origins:delay",
+                         "ticks":30,
+                         "action":{
+                            "type":"origins:and",
+                            "actions":[{
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 0 0.6 0 1 0 0.3 0 ~ ~1 ~ 0.5 0.5 0.5 1 100"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1.5"
+                            }
+                    ]
+                }
+                        },
+                        {
+                            "type":"origins:delay",
+                             "ticks":40,
+                             "action":{
+                                "type":"origins:and",
+                                "actions":[{
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:dust_color_transition 1 1 1 1 0.7 0.7 0.7 ~ ~1 ~ 0.5 0.5 0.5 1 100"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1.5"
+                                }
+                        ]
+                    }
+                            },
+                            {
+                                "type":"origins:delay",
+                                 "ticks":50,
+                                 "action":{
+                                    "type":"origins:and",
+                                    "actions":[{
+                                        "type": "origins:execute_command",
+                                        "command": "particle minecraft:dust_color_transition 0.5 0.5 0 1 1 1 0 ~ ~1 ~ 0.5 0.5 0.5 1 100"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1.5"
+                                    }
+                            ]
+                        }
+                                }
+        ]
+    },
+        "execute_chosen_when_orb": false
+    },
+    "hidden": true
+}

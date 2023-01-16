@@ -1,6 +1,6 @@
 {
     "name":"Fiery Dash",
-    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward. Dashing puts you on fire for five seconds.",
+    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:active_self",

@@ -3,7 +3,8 @@
 		"origins:like_water",
 		"hypno:playstyle/artemis/kelpie/waterlike",
 		"hypno:playstyle/artemis/kelpie/sinking",
-		"hypno:playstyle/artemis/kelpie/soulhook"
+		"hypno:playstyle/artemis/kelpie/soulhook",
+		"hypno:playstyle/artemis/kelpie/rush"
 	],
 	"icon": {
 		"item": "twigs:bamboo_leaves"

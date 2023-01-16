@@ -34,11 +34,9 @@
         "type": "origins:and",
         "conditions": [
           {
-            "type": "origins:resource",
-            "resource": "*:*_remaining",
-            "comparison": "==",
-            "compare_to": 0
-          }
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
         ]
       },
       "hud_render": {

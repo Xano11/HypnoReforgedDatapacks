@@ -97,13 +97,10 @@
                 "command": "playsound minecraft:block.chain.place player @a ~ ~ ~ 3 0.5",
                 "permission_level": 4
             },
-            "bientity_action": {
-                "type": "origins:actor_action",
-                "action": {
+            "hit_action": {
                     "type": "origins:add_velocity",
                     "z": 2,
-                    "space":"local_horizontal"
-                }
+                    "space":"local"
             },
             "command_at_hit": "particle supplementaries:green_flame ~ ~1 ~ 0.2 0.2 0.2 0.1 100",
             "command_along_ray": "particle supplementaries:green_flame",
