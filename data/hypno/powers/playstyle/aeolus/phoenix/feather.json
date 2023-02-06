@@ -1,0 +1,127 @@
+{ 
+    "name":"Feather",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type":"origins:and",
+            "actions":[
+        {
+            "type": "origins:execute_command",
+            "command": "kill @e[limit=1,sort=nearest,tag=fieryfeather,type=item]"
+        },
+        {
+            "type":"origins:delay",
+            "ticks":1,
+            "action":
+        {
+            "type": "origins:execute_command",
+            "command": "kill @s"
+        }
+    }
+    ]
+  }
+},
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/feather_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "on_use":{
+        "type": "origins:action_on_being_used",
+        "bientity_action": { 
+            "type": "origins:and",
+            "actions": [
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/aeolus/phoenix/transcendant"
+                    },
+                    {
+                        "type":"origins:delay",
+                        "ticks":1,
+                        "action":{
+                        "type": "origins:execute_command",
+                        "command": "execute store result score @s feather run data get entity @e[limit=1,sort=nearest,tag=feather] UUID[0] 1"
+                        }
+                    }
+                ]
+            }
+            },
+            {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [{
+                        "type": "origins:execute_command",
+                        "command": "summon armor_stand ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:[\"fierytp\"]}"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tag @s add feather"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "forceload add ~ ~ ~ ~ "
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "kill @e[limit=1,sort=nearest,tag=fieryfeather,type=item]"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
+                    },
+                    {
+                        "type":"origins:delay",
+                        "ticks":1,
+                        "action":{
+                            "type": "origins:execute_command",
+                            "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=fierytp] feather run data get entity @s UUID[0] 1"
+                        }
+                    },
+                    {
+                        "type":"origins:delay",
+                        "ticks":2,
+                        "action":{
+                        "type": "origins:execute_command",
+                        "command": "kill @s"
+                    }
+                    }
+                ]
+            }
+            }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:power",
+                "power": "hypno:playstyle/aeolus/phoenix/transcendant",
+                "inverted": true
+            }   
+        }
+    },
+    "hidden": false
+}

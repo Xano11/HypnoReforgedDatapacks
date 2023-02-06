@@ -193,8 +193,8 @@
         "start_value": 100,
         "hud_render": {
             "should_render": true,
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 2,
+            "sprite_location": "horigins:textures/resource_bar01.png",
+            "bar_index": 14,
             "condition":{
             "type":"origins:and",
             "conditions":[

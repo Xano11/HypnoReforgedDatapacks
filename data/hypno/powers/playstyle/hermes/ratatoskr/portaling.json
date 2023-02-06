@@ -112,5 +112,8 @@
     "prevent_item_use":{
         "type": "origins:prevent_item_use"
     },
+    "mobs_ignore":{
+        "type": "apugli:mobs_ignore"
+    },
     "hidden": false
 }

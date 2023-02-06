@@ -1,0 +1,249 @@
+{
+    "type": "origins:multiple",
+    "up": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "scoreboard players add @s elevator 1"
+          },
+        "interval": 1
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute if block ~ ~-1 ~ create:linear_chassis run particle farmersdelight:steam ~ ~ ~ 2 0 2 0.1 10"
+          },
+        "interval": 4
+    },
+    "close_doors":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "tp @p[tag=party1] -318.5 23 -42.5"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 899
+        }
+    },
+    "tp1":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "tp @p[tag=party1] -318.5 23 -42.5"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "tp2":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "tp @p[tag=party2] -318.5 23 -41.5"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "tp3":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "tp @p[tag=party3] -318.5 23 -43.5"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "tp4":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "tp @p[tag=party4] -319.5 23 -43"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "tp5":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "tp @p[tag=party5] -319.5 23 -42"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "sfx1":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "execute as @a[tag=partied] at @a[tag=partied] run playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1 1"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 840
+        }
+    },
+    "sfx2":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "execute as @a[tag=partied] at @a[tag=partied] run playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1 1"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 860
+        }
+    },
+    "sfx3":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "execute as @a[tag=partied] at @a[tag=partied] run playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1 1"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 880
+        }
+    },
+    "sfx4":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type": "origins:execute_command",
+            "command": "execute as @a[tag=partied] at @a[tag=partied] run playsound minecraft:block.note_block.bell player @s ~ ~ ~ 1 2"
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "blindness":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "effect give @a[tag=partied] minecraft:blindness 3 0 true"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "title @a[tag=partied] title {\"text\":\"You are entering...","color":"white\"}"
+        }
+        ]
+    },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 960
+        }
+    },
+    "tp_tower":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "tp @a[tag=partied] -247 82 -42"
+        }
+        ]
+    },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 999
+        }
+    },
+    "elevator_back_up":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "setblock -320 76 -44 minecraft:redstone_block replace"
+        }
+        ]
+    },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 900
+        }
+    },
+    "kill":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "kill @s"
+        }
+        ]
+    },
+        "interval": 1,
+        "condition":{
+            "type": "origins:scoreboard",
+            "objective": "elevator",
+            "comparison": ">",
+            "compare_to": 1001
+        }
+    }
+}

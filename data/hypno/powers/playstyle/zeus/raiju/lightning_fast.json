@@ -5,15 +5,20 @@
     "toggle":{
         "type": "origins:toggle",
         "active_by_default": false,
+        "retain_state": false,
         "key": {
             "key": "key.origins.secondary_active"
         },
-        "condition":
-        {
+        "condition":{
             "type": "origins:and",
             "conditions": [{
             "type": "origins:power_active",
             "power": "hypno:playstyle/zeus/raiju/discharged",
+            "inverted": true
+        },
+        {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/stormfield_toggle",
             "inverted": true
         },
         {
@@ -33,7 +38,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "change": -100
+                    "change": -50
                 }
             ]
         },
@@ -172,6 +177,43 @@
             "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
             "comparison": ">",
             "compare_to": 0
+        }
+        ]
+    }
+    },
+    "emp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "power grant @s hypno:playstyle/zeus/raiju/emp"
+                },
+            {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/zeus/raiju/lightning_fast"
+            }
+            ]
+        },
+        "cooldown": 30,
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":
+        {
+            "type": "origins:and",
+            "conditions": [{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "comparison": ">=",
+            "compare_to": 100
         }
         ]
     }

@@ -1,0 +1,87 @@
+{
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:action_on_block_use",
+        "block_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "setblock -320 76 -44 air replace"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:sculk_soul ~ ~ ~ 0.1 0.1 0.1 0.05 100"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "summon armor_stand -318.46 23.00 -42.53 {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"elevator\"]}"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "execute store result score @s queue_owner run data get entity @s UUID[0] 1"
+        },
+        {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+            "type": "origins:execute_command",
+            "command": "power grant @e[limit=1,sort=nearest,type=armor_stand,tag=elevator] hypno:tower/readying"
+        }
+    }
+    ]
+},
+"entity_action":{
+    "type":"origins:and",
+    "actions":[{ 
+        "type": "origins:execute_command",
+        "command": "execute as @a[tag=towered] run resource set @s hypno:tower/start_queue_timer 600"
+    },
+{ 
+    "type": "origins:execute_command",
+    "command": "function hypno:elevator_queue1"
+}
+]
+},
+        "block_condition": {
+            "type":"origins:and",
+            "conditions":[
+        {
+            "type": "origins:block",
+            "block": "minecraft:chain"
+        }]
+    },
+    "hands": [
+        "main_hand"
+    ],
+    "condition": {
+        "type": "origins:resource",
+        "resource": "hypno:tower/start_queue_timer",
+        "comparison": "==",
+        "compare_to": 0
+    },
+    "item_condition": {
+        "type": "origins:empty"
+    }
+    },
+"timer":
+{
+"type": "origins:resource",
+"min": 0,
+"max": 600,
+"start_value": 0,
+"hud_render": {
+"should_render": false
+    }
+},
+"timer_down":
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:change_resource",
+        "resource": "hypno:tower/start_queue_timer",
+        "change": -10
+    },
+    "interval": 10
+},
+    "hidden": true
+}

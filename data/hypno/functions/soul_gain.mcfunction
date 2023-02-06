@@ -1,0 +1,2 @@
+tellraw @p ["","You picked up a Soul of the Damned! You now have ",{"score":{"name":"@s","objective":"souls_currency"},"bold":true,"color":"aqua"}," soul!"]
+particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 0.5 0.5 0.01 50

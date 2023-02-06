@@ -115,12 +115,12 @@
     ]
         }
     },
-    "weakened_resistance":{
-        "type": "origins:modify_damage_taken",
+    "weakened_damage":{
+        "type": "origins:modify_damage_dealt",
         "modifier": {
-            "name": "Weakened mitigation",
+            "name": "Weakened damage",
             "operation": "multiply_total",
-            "value": 0.20
+            "value": -0.20
         }
     },
     "slower_roll_recharge":{

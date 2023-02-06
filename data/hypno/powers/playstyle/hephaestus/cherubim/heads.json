@@ -16,7 +16,24 @@
             "actions":[
         {
             "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=eagle] as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run resource set @s hypno:playstyle/hephaestus/cherubim/blessings_eagle 0"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=eagle] as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run resource set @s hypno:playstyle/hephaestus/cherubim/blessings_ox 0"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=eagle] as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run resource set @s hypno:playstyle/hephaestus/cherubim/blessings_lion 0"
+        },
+        {
+            "type":"origins:delay",
+            "ticks":1,
+            "action":
+        {
+            "type": "origins:execute_command",
             "command": "kill @s"
+        }
     }
     ]
   }

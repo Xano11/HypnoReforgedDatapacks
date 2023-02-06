@@ -9,8 +9,8 @@
     "max": 40,
     "hud_render": {
       "should_render": true,
-      "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-      "bar_index": 20,
+      "sprite_location": "horigins:textures/resource_bar01.png",
+      "bar_index": 1,
       "condition": {
         "type": "origins:resource",
         "resource": "*:*_remaining",
@@ -26,8 +26,8 @@
     "max": 200,
     "hud_render": {
       "should_render": true,
-      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-      "bar_index": 23,
+      "sprite_location": "horigins:textures/resource_bar01.png",
+      "bar_index": 0,
       "condition": {
         "type": "origins:and",
         "conditions": [

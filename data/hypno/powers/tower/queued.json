@@ -1,0 +1,129 @@
+{
+    "type": "origins:multiple",
+    "no_move":
+    {
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "z"
+        ],
+        "condition":{
+            "type": "origins:command",
+            "command": "execute if score @e[limit=1,sort=nearest,tag=elevator] elevator matches 900..",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+      },
+    "no_damage":{
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_block_interaction":
+    {
+        "type": "origins:prevent_block_selection"
+    },
+    "no_block_use":
+    {
+        "type": "origins:prevent_block_use"
+    },
+    "no_jump":{
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition":{
+            "type": "origins:command",
+            "command": "execute if score @e[limit=1,sort=nearest,tag=elevator] elevator matches 900..",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    },
+    "prevent_item_use":{
+        "type": "origins:prevent_item_use"
+    },
+    "remove_tags":
+    {
+        "type": "origins:action_over_time",
+        "rising_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "tag @s remove partied"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "tag @s remove party1"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "tag @s remove party2"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "tag @s remove party4"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "tag @s remove party5"
+        },
+        {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "power remove @s hypno:tower/queued"
+            }
+        }
+        ]
+    },
+        "interval": 1,
+        "condition":{
+            "type": "origins:command",
+            "command": "execute if score @e[limit=1,sort=nearest,tag=elevator] elevator matches 1000..",
+            "comparison": ">=",
+            "compare_to": 1
+        }
+    },
+    "leave":
+    {
+        "type": "origins:action_on_callback",
+        "entity_action_removed": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=party1] run function hypno:disband"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=party2] run function hypno:elevator_queue_left2"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=party3] run function hypno:elevator_queue_left3"
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=party4] run function hypno:elevator_queue_left4"
+        },
+        {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "power remove @s hypno:tower/queued"
+            }
+        }
+        ]
+    }
+},
+    "hidden": true
+}

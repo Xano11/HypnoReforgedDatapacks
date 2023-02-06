@@ -40,6 +40,10 @@
             "command": "execute as @e[distance=..12,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
     },
     {
+        "type": "origins:execute_command",
+        "command": "scoreboard players set @s blessed 0 "
+    },
+    {
         "type":"origins:delay",
         "ticks":1,
         "action":{
@@ -65,6 +69,152 @@
             "compare_to": 0
         },
         "interval": 10
+    },
+    "run_resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 20,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "run_up":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "change": 1
+        },
+        "condition":{
+        "type":"origins:and",
+        "conditions":[
+        {
+            "type": "origins:sprinting"
+        },
+        {
+            "type": "origins:on_block"
+        }
+    ]
+    },
+        "interval": 10
+    },
+    "run_down":
+    {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "change": -1
+        },
+        "condition":{
+        "type":"origins:or",
+        "conditions":[
+        {
+            "type": "origins:sprinting",
+            "inverted": true
+        },
+        {
+            "type": "origins:on_block",
+            "inverted": true
+        }
+    ]
+    },
+        "interval": 5
+    },
+    "speed1":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.2,
+            "name": "Increased sprinting speed"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "comparison": ">=",
+            "compare_to": 4
+        }
+    },
+    "speed2":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.2,
+            "name": "Increased sprinting speed"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "comparison": ">=",
+            "compare_to": 8
+        }
+    },
+    "speed3":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.2,
+            "name": "Increased sprinting speed"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "comparison": ">=",
+            "compare_to": 12
+        }
+    },
+    "speed4":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.2,
+            "name": "Increased sprinting speed"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "comparison": ">=",
+            "compare_to": 16
+        }
+    },
+    "speed5":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.2,
+            "name": "Increased sprinting speed"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
+            "comparison": "==",
+            "compare_to": 20
+        }
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 1 1 0.1 0.1 0 ~ ~1 ~ 0.5 0.2 0.5 1 4"
+                }
+            ]
+        },
+        "interval": 5
     },
     "hidden": false
 }

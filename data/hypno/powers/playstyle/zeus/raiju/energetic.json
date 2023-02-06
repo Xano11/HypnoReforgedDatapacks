@@ -87,8 +87,8 @@
         "max": 700,
         "start_value": 700,
         "hud_render": {
-            "sprite_location": "origins:textures/gui/resource_bar.png",
-            "bar_index": 2
+            "sprite_location": "horigins:textures/resource_bar01.png",
+            "bar_index": 5
         }
     },
     "movement_reduction":{
@@ -124,12 +124,7 @@
         },
         "condition":{
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },
+            "conditions": [
         {
             "type": "origins:power",
             "power": "hypno:playstyle/zeus/raiju/infused",
@@ -255,6 +250,54 @@
         }
         ]
     }
+    },
+    "sneaking_dmg":
+    {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 1,
+            "source": {
+                "name":"generic",
+                "bypasses_armor": true,
+                "unblockable": true
+        }
+        },
+        "interval": 60,
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+    "sneaking_speed":
+    {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Sneak speed decrease",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.4,
+            "operation": "multiply_total"
+        },
+        "tick_rate": 5,
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+    "sneaking_particles":
+    {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:electric_spark ~ ~ ~ 0.3 0 0.3 0.1 5"
+                }
+            ]
+        },     
+        "interval": 2,
+        "condition": {
+            "type": "origins:sneaking"
+        }
     },
     "particle":
     {

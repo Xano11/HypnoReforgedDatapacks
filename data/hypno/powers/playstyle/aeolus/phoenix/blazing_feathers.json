@@ -1,0 +1,73 @@
+{
+    "name":"Eternal",
+    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:action_on_block_use",
+        "block_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:set_block",
+                "block": "minecraft:air"
+            },
+            {
+            "type": "origins:execute_command",
+            "command": "summon item ~ ~ ~ {HasVisualFire:1b,Glowing:1b,Age:-32768,Health:1000,PickupDelay:32767,Invulnerable:1b,Tags:[\"fieryfeather\"],Item:{id:\"minecraft:feather\",Count:1b}}"
+            },
+            {
+            "type": "origins:execute_command",
+            "command": "summon armor_stand ~ ~ ~ {Silent:1b,Invulnerable:1b,Small:1b,Invisible:1b,PersistenceRequired:1b,Tags:[\"fieryfeather\"]}"
+            },
+            {
+                "type":"origins:delay",
+                "ticks":1,
+                "action":{
+                "type": "origins:execute_command",
+                "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=fieryfeather] feather run data get entity @p[tag=feather] UUID[0] 1"
+                }
+            },
+            {
+                "type":"origins:delay",
+                "ticks":1,
+                "action":{
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[limit=1,sort=nearest,type=armor_stand,tag=fieryfeather] hypno:playstyle/aeolus/phoenix/feather"
+                }
+            }
+            ]
+        },
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s add feather"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @s feather run data get entity @s UUID[0] 1"
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":2,
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "tag @s remove feather"
+                    }
+                }
+            ]
+        },
+        "block_condition": {
+            "type": "origins:offset",
+            "condition": {
+                "type": "origins:block",
+                "block": "minecraft:fire"
+            }
+        },
+        "directions": ["north", "east", "south", "west", "up", "down"],
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+    "hidden": false
+}

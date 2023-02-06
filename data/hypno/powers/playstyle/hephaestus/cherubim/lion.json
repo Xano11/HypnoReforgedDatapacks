@@ -40,6 +40,10 @@
             "command": "execute as @e[distance=..12,tag=lion] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
     },
     {
+        "type": "origins:execute_command",
+        "command": "scoreboard players set @s blessed 0 "
+    },
+    {
         "type":"origins:delay",
         "ticks":1,
         "action":{
@@ -65,6 +69,21 @@
             "compare_to": 0
         },
         "interval": 10
+    },
+    "mitigation":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Damage Mitigation",
+            "operation": "multiply_base",
+            "value": -0.2
+        }
+    },
+    "healing":{
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.2
+        }
     },
     "hidden": false
 }

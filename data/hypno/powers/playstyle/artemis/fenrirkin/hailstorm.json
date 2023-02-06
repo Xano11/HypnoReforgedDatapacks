@@ -24,12 +24,36 @@
               "command": "particle minecraft:snowflake ~ ~ ~ 0.1 0.1 0.1 1 100"
             },
             {
+              "type": "origins:execute_command",
+              "command": "tag @s add hailstorm_blade"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "execute store result score @s hailstorm_blade run data get entity @s UUID[0] 1"
+            },
+            {
                 "type": "origins:delay",
                 "ticks": 1,
                 "action":  {
                     "type": "origins:execute_command",
                     "command": "power grant @e[limit=1,sort=nearest,tag=hailstorm] hypno:playstyle/artemis/fenrirkin/blade"
                 }
+            },
+            {
+              "type": "origins:delay",
+              "ticks": 1,
+              "action":  {
+                  "type": "origins:execute_command",
+                  "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=hailstorm] hailstorm_blade run data get entity @p[tag=hailstorm] UUID[0] 1"
+              }
+            },
+            {
+              "type":"origins:delay",
+              "ticks":2,
+              "action":{
+                  "type": "origins:execute_command",
+                  "command": "tag @s remove hailstorm"
+              }
             }
         ]
     },

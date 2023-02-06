@@ -1,6 +1,6 @@
 {
-    "name":"Blessings",
-    "description":"Sneaking and [RIGHT CLICKING] an entity will grant it the blessing of the Phoenix. Up to three blessings can be given at a time and those will heal the affected entities over time. But, it is to be noted that every entity that is affected by a blessing will drain your energy bar.",
+    "name":"Blessings of the Guardian",
+    "description":"Sneaking and [RIGHT CLICKING] an entity will grant one of three heads: Eagle, Ox or Lion. These heads all have different effects and will tether to the entities infinitely until the Cherubim is not close or not present.",
     "type": "origins:multiple",
     "eagle_activation":{
         "type": "origins:action_on_entity_use",
@@ -38,10 +38,10 @@
                         },
                         {
                             "type":"origins:delay",
-                            "ticks":1,
+                            "ticks":2,
                             "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @e[limit=1,sort=nearest,tag=eagle] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/eagle"
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
                             }
                         }
                     ]
@@ -71,6 +71,10 @@
                             "type": "origins:change_resource",
                             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
                             "change": 1
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
                         }
                     ]
                 }
@@ -86,9 +90,23 @@
         "bientity_condition":  {
             "type": "origins:target_condition",
             "condition": {
+                "type":"origins:and",
+                "conditions":[{
                 "type": "origins:power",
                 "power": "hypno:playstyle/hephaestus/cherubim/eagle",
                 "inverted": true
+            },
+            {
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/ox",
+                "inverted": true
+            },
+            {
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/lion",
+                "inverted": true
+            }
+                ]
             }
         },
         "condition": {
@@ -100,6 +118,18 @@
         {
             "type": "origins:resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
             "comparison": "==",
             "compare_to": 0
         }
@@ -141,6 +171,14 @@
                     {
                         "type": "origins:execute_command",
                         "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "scoreboard players set @s blessed 0 "
                     }
                 ]
             }
@@ -180,6 +218,18 @@
                 "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
                 "comparison": "==",
                 "compare_to": 1
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                "comparison": "==",
+                "compare_to": 1
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                "comparison": "==",
+                "compare_to": 0
             }
         ]
     }
@@ -217,6 +267,14 @@
                             "type": "origins:execute_command",
                             "command": "execute store result score @e[limit=1,sort=nearest,tag=ox] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
                             }
+                        },
+                        {
+                            "type":"origins:delay",
+                            "ticks":2,
+                            "action":{
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                            }
                         }
                     ]
                 }
@@ -245,6 +303,10 @@
                             "type": "origins:change_resource",
                             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
                             "change": 1
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
                         }
                     ]
                 }
@@ -260,9 +322,23 @@
         "bientity_condition":  {
             "type": "origins:target_condition",
             "condition": {
+                "type":"origins:and",
+                "conditions":[{
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/eagle",
+                "inverted": true
+            },
+            {
                 "type": "origins:power",
                 "power": "hypno:playstyle/hephaestus/cherubim/ox",
                 "inverted": true
+            },
+            {
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/lion",
+                "inverted": true
+            }
+                ]
             }
         },
         "condition": {
@@ -274,6 +350,18 @@
         {
             "type": "origins:resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+            "comparison": "==",
+            "compare_to": 2
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
             "comparison": "==",
             "compare_to": 0
         }
@@ -310,11 +398,11 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
+                        "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                        "command": "scoreboard players set @s blessed 0 "
                     }
                 ]
             }
@@ -354,6 +442,18 @@
                 "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
                 "comparison": "==",
                 "compare_to": 1
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                "comparison": "==",
+                "compare_to": 2
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                "comparison": "==",
+                "compare_to": 0
             }
         ]
     }
@@ -391,6 +491,14 @@
                             "type": "origins:execute_command",
                             "command": "execute store result score @e[limit=1,sort=nearest,tag=lion] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
                             }
+                        },
+                        {
+                            "type":"origins:delay",
+                            "ticks":2,
+                            "action":{
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                            }
                         }
                     ]
                 }
@@ -419,6 +527,10 @@
                             "type": "origins:change_resource",
                             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
                             "change": 1
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
                         }
                     ]
                 }
@@ -434,9 +546,23 @@
         "bientity_condition":  {
             "type": "origins:target_condition",
             "condition": {
+                "type":"origins:and",
+                "conditions":[{
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/eagle",
+                "inverted": true
+            },
+            {
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/ox",
+                "inverted": true
+            },
+            {
                 "type": "origins:power",
                 "power": "hypno:playstyle/hephaestus/cherubim/lion",
                 "inverted": true
+            }
+                ]
             }
         },
         "condition": {
@@ -448,6 +574,18 @@
         {
             "type": "origins:resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+            "comparison": "==",
+            "compare_to": 3
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
             "comparison": "==",
             "compare_to": 0
         }
@@ -484,11 +622,11 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
+                        "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                        "command": "scoreboard players set @s blessed 0 "
                     }
                 ]
             }
@@ -528,9 +666,183 @@
                 "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
                 "comparison": "==",
                 "compare_to": 1
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                "comparison": "==",
+                "compare_to": 3
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                "comparison": "==",
+                "compare_to": 0
             }
         ]
     }
+    },
+    "toggle_resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "toggling":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                            "change": 1
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound naturalist:entity.vulture.hurt player @a ~ ~ ~ 2 0.5"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle supplementaries:feather ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                        }
+                    ]
+                }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                            "change": 1
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:entity.cow.ambient player @s ~ ~ ~ 2 0.7"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:dust_color_transition 1 1 1 1 0.1 0.1 0 ~ ~1 ~ 0.5 0.2 0.5 1 40"
+                        }
+                    ]
+                }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                        "comparison": "==",
+                        "compare_to": 2
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                            "change": 1
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:angry_villager ~ ~ ~ 0.5 0.2 0.5 0.1 10"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound naturalist:entity.lion.roar player @a ~ ~ ~ 2 1"
+                        }
+                    ]
+                }
+                },
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                        "comparison": "==",
+                        "compare_to": 3
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                            "change": -3
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute positioned ~ ~1.84 ~ run function hypno:halo"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound create:haunted_bell_use player @a ~ ~ ~ 2 0.5"
+                        }
+                    ]
+                }
+                }
+            ]
+        },
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": false
+          }
+      },
+      "cooldown":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 0,
+            "condition":{
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                "comparison": ">",
+                "compare_to": 0
+            }
+        }
+    },
+    "cooldown_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "change": -10
+                }
+            ]
+        },
+        "interval": 10
     },
     "hidden": false
 }

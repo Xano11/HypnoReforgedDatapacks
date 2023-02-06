@@ -1,0 +1,63 @@
+{ 
+    "name":"Feather",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1200,
+        "start_value": 1200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type":"origins:and",
+            "actions":[
+        {
+            "type": "origins:execute_command",
+            "command": "execute as @e[tag=fierytp] if score @s feather = @p feather run tp @p @s"
+        },
+        {
+            "type":"origins:delay",
+            "ticks":1,
+            "action":
+        {
+            "type": "origins:execute_command",
+            "command": "kill @e[limit=1,sort=nearest,tag=fierytp]"
+        }
+    }
+    ]
+  }
+},
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/transcendant_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "prevent_death":{
+        "type": "origins:prevent_death",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=fierytp] if score @s feather = @p feather run tp @p @s"
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @e[limit=1,sort=nearest,tag=fierytp]"
+                }
+            }
+            ]
+        }
+    },
+    "hidden": false
+}

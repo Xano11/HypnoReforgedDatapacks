@@ -1,0 +1,68 @@
+{
+    "name":"Identity Theft",
+    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward. Dashing puts you on fire for five seconds.",
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type": "origins:area_of_effect",
+            "radius": 16,
+            "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type":"origins:and",
+                    "actions":[{
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/hephaestus/tanuki/chance"
+                    }
+            ]
+        }
+            }
+        },
+        "condition":{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle",
+            "inverted": true
+        },
+        "cooldown": 400,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "hit":{
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:heal",
+                        "amount": 2
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle heart ~ ~0.5 ~ 0.3 0.3 0.3 0.009 4 normal @a"
+                    }
+                ]
+            }
+        },
+        "bientity_condition": {
+            "type": "origins:owner"
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+    "hidden": false
+}

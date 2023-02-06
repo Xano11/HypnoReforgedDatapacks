@@ -1,0 +1,55 @@
+{
+    "name":"Shocked",
+    "description":"You take more damage and can't move as well.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/zeus/raiju/dazed"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/dazed_timer",
+            "change": -1
+        },
+        "interval": 1
+    },
+    "weakened_damage":{
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "Weakened damage",
+            "operation": "multiply_total",
+            "value": -0.50
+        }
+    },
+    "slower_roll_recharge":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower recharge",
+            "attribute": "combatroll:recharge",
+            "value": -1,
+            "operation": "multiply_base"
+        }
+    },
+    "weakened_roll":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower recharge",
+            "attribute": "combatroll:distance",
+            "value": -1,
+            "operation": "multiply_base"
+        }
+    },
+    "hidden": true
+}

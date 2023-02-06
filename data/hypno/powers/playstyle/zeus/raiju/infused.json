@@ -90,5 +90,13 @@
         "texture_location": "minecraft:textures/entity/trident_riptide.png",
         "speed": 0.01
     },
+    "healing_boost":
+    {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.25
+        }
+    },
     "hidden": true
 }

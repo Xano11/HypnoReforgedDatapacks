@@ -1,23 +1,15 @@
 {
-    "name":"Fiery Dash",
+    "name":"Eternal",
     "description":"Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:active_self",
         "entity_action":{
             "type":"origins:and",
-            "actions":[{
-                "type": "origins:add_velocity",
-                "z": 2,
-                "space": "local_horizontal"
-            },
-            {
-                "type": "origins:set_on_fire",
-                "duration": 5
-            },
+            "actions":[
             {
                 "type": "origins:execute_command",
-                "command": "particle minecraft:dust_color_transition 1 0 0 1.5 1 1 0 ~ ~1 ~ 0.5 0.2 0.5 1 100"
+                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"totemphoenix\"]}"
             },
             {
                 "type": "origins:execute_command",
@@ -40,8 +32,8 @@
         },
         "cooldown": 300,
         "hud_render": {
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
-            "bar_index": 5
+            "sprite_location": "horigins:textures/resource_bar01.png",
+            "bar_index": 7
         },
         "key": {
             "key": "key.origins.primary_active"

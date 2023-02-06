@@ -1,0 +1,6 @@
+power grant @s hypno:tower/queued
+tellraw @a[tag=towered] ["",{"selector":"@s","italic":true},{"text":" started a queue!","bold":true,"color":"gold"},{"text":" Click here to join the queue! ","clickEvent":{"action":"run_command","value":"/execute if entity @s[tag=!partied] if score @e[limit=1,sort=nearest,type=minecraft:armor_stand,tag=elevator] elevator matches ..839 run function hypno:elevator_queue2"}},{"text":"[1/5]","underlined":true}]
+tellraw @s ["",{"text":"[START EXPEDITION]","bold":true,"color":"gold","clickEvent":{"action":"run_command","value":"/execute if score @e[limit=1,sort=nearest,type=minecraft:armor_stand,tag=elevator] elevator matches ..839 run function hypno:preemptive_start"}},{"text":" [DISBAND]","bold":true,"color":"dark_red","clickEvent":{"action":"run_command","value":"/execute if score @e[limit=1,sort=nearest,type=minecraft:armor_stand,tag=elevator] elevator matches ..839 run function hypno:disband"}}]
+scoreboard players set @e[limit=1,sort=nearest,type=minecraft:armor_stand,tag=elevator] elevator 0
+tag @s add party1
+tag @s add partied

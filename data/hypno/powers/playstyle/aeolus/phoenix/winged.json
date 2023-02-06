@@ -5,7 +5,8 @@
     "wings":
     {
         "type": "origins:elytra_flight",
-        "render_elytra": true
+        "render_elytra": true,
+        "texture_location": "horigins:textures/entities/phoenix.png"
     },
     "lose":
     {

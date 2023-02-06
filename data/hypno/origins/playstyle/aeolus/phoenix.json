@@ -4,7 +4,8 @@
 		"hypno:playstyle/aeolus/phoenix/wings",
 		"hypno:playstyle/aeolus/phoenix/firebird",
 		"hypno:playstyle/aeolus/phoenix/dash",
-		"hypno:playstyle/aeolus/phoenix/grace"
+		"hypno:playstyle/aeolus/phoenix/grace",
+		"hypno:playstyle/aeolus/phoenix/blazing_feathers"
 	],
 	"icon": {
 		"item": "soulsweapons:lord_soul_red"
