@@ -1,7 +1,52 @@
 {
   "name": "Ram",
-  "description": "You can activate a ram ability with your [PRIMARY ABILITY KEY], launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit.",
+  "description": "You can trigger a ram ability with your [PRIMARY ABILITY KEY], launching you forward at high speeds, Increasing your damage by 3 and launching anyone you hit.",
   "type": "origins:multiple",
+
+  "trigger": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:add_velocity",
+          "z": 1,
+          "space": "local_horizontal"
+        },
+        {
+          "type": "origins:play_sound",
+          "sound": "minecraft:entity.goat.long_jump"
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_remaining",
+          "change": 40,
+          "operation": "set"
+        }
+      ]
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:on_block"
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_remaining",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
+    },
+    "hud_render": {
+      "should_render": false
+    },
+    "key": {
+      "key": "key.origins.primary_active"
+    },
+    "cooldown": 200
+  },
 
   "remaining": {
     "type": "origins:resource",
@@ -48,7 +93,7 @@
     }
   },
 
-  "run_noise": {
+  "run_effects": {
     "type": "origins:action_over_time",
     "entity_action": {
       "type": "origins:if_else",
@@ -59,46 +104,23 @@
         "compare_to": 0
       },
       "if_action": {
-        "type": "origins:play_sound",
-        "sound": "minecraft:entity.goat.step"
-      }
-    },
-    "interval": 3
-  },
-
-  "run_particle_steam": {
-    "type": "origins:action_over_time",
-    "entity_action": {
-      "type": "origins:if_else",
-      "condition": {
-        "type": "origins:resource",
-        "resource": "*:*_remaining",
-        "comparison": ">",
-        "compare_to": 0
+        "type": "origins:and",
+          "actions": [
+            {
+              "type": "origins:execute_command",
+              "command": "particle twigs:item_pebble ~ ~ ~ 0.4 0 0.4 10 50"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "particle create:steam_jet 0.2 ~ ~ ~ 0.25 0 0.25 1 6"
+            },
+            {
+              "type": "origins:play_sound",
+              "sound": "minecraft:entity.goat.step"
+            }
+          ]
+        }
       },
-      "if_action": {
-        "type": "origins:execute_command",
-        "command": "particle create:steam_jet 0.2 ~ ~ ~ 0.25 0 0.25 1 6"
-      }
-    },
-    "interval": 3
-  },
-
-  "run_particle_pebble": {
-    "type": "origins:action_over_time",
-    "entity_action": {
-      "type": "origins:if_else",
-      "condition": {
-        "type": "origins:resource",
-        "resource": "*:*_remaining",
-        "comparison": ">",
-        "compare_to": 0
-      },
-      "if_action": {
-        "type": "origins:execute_command",
-        "command": "particle twigs:item_pebble ~ ~ ~ 0.4 0 0.4 10 50"
-      }
-    },
     "interval": 3
   },
 
@@ -115,7 +137,7 @@
         },
         {
           "type": "origins:trigger_cooldown",
-          "power": "*:*_activate"
+          "power": "*:*_trigger"
         }
       ]
     },
@@ -155,7 +177,7 @@
           },
           "if_action": {
             "type": "origins:trigger_cooldown",
-            "power": "*:*_activate"
+            "power": "*:*_trigger"
           }
         },
         {
@@ -177,10 +199,6 @@
               },
               {
                 "type": "origins:moving",
-                "inverted": true
-              },
-              {
-                "type": "apoli:riding",
                 "inverted": true
               }
             ]
@@ -213,107 +231,6 @@
     "interval": 1
   },
 
-  "activate": {
-    "type": "origins:active_self",
-    "entity_action": {
-      "type": "origins:and",
-      "actions": [
-        {
-          "type": "origins:add_velocity",
-          "z": 1,
-          "space": "local_horizontal"
-        },
-        {
-          "type": "origins:play_sound",
-          "sound": "minecraft:entity.goat.long_jump"
-        },
-        {
-          "type": "origins:change_resource",
-          "resource": "*:*_remaining",
-          "change": 40,
-          "operation": "set"
-        },
-        {
-          "type": "origins:if_else",
-          "condition": {
-            "type": "origins:riding"
-          },
-          "if_action": {
-            "type": "origins:riding_action",
-            "bientity_action": {
-              "type": "origins:target_action",
-              "action": {
-                "type": "origins:if_else_list",
-                "actions": [
-                  {
-                    "condition": {
-                      "type": "origins:entity_type",
-                      "entity_type": "minecraft:pig"
-                    },
-                    "action": {
-                      "type": "origins:apply_effect",
-                      "effect": {
-                        "effect": "minecraft:speed",
-                        "amplifier": 29,
-                        "duration": 40,
-                        "show_particles": false
-                      }
-                    }
-                  },
-                  {
-                    "condition": {
-                      "type": "origins:entity_type",
-                      "entity_type": "minecraft:pig",
-                      "inverted": true
-                    },
-                    "action": {
-                      "type": "origins:apply_effect",
-                      "effect": {
-                        "effect": "minecraft:speed",
-                        "amplifier": 9,
-                        "duration": 40,
-                        "show_particles": false
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
-      ]
-    },
-    "condition": {
-      "type": "origins:and",
-      "conditions": [
-        {
-          "type": "origins:or",
-          "conditions": [
-            {
-              "type": "origins:on_block"
-            },
-            {
-              "type": "origins:riding"
-            }
-          ]
-        },
-        {
-          "type": "origins:resource",
-          "resource": "*:*_remaining",
-          "comparison": "==",
-          "compare_to": 0
-        }
-      ]
-    },
-    "hud_render": {
-      "should_render": false
-    },
-    "key": {
-      "key": "key.origins.primary_active"
-    },
-    "cooldown": 200
-  },
-
   "movement_speed": {
     "type": "origins:conditioned_attribute",
     "modifier": {
@@ -334,7 +251,7 @@
     "type": "origins:modify_slipperiness",
     "modifier": {
       "operation": "multiply_total",
-      "value": 0.8
+      "value": 0.85
     },
     "condition": {
       "type": "origins:resource",
@@ -356,7 +273,7 @@
 
   "sleep": {
     "type": "origins:prevent_sleep",
-    "message": "You're going too fast for that!",
+    "message": "CHARGE NOW, THINK LATER",
     "condition": {
       "type": "origins:resource",
       "resource": "*:*_remaining",
@@ -383,7 +300,7 @@
     },
     "entity_action": {
       "type": "origins:execute_command",
-      "command": "title @s actionbar {\"text\": \"You're going too fast for that!\", \"color\": \"white\"}"
+      "command": "title @s actionbar {\"text\": \"CHARGE NOW, THINK LATER\", \"color\": \"white\"}"
     },
     "condition": {
       "type": "origins:resource",
@@ -399,7 +316,7 @@
       "type": "origins:actor_action",
       "action": {
         "type": "origins:execute_command",
-        "command": "title @s actionbar {\"text\": \"You're going too fast for that!\", \"color\": \"white\"}"
+        "command": "title @s actionbar {\"text\": \"CHARGE NOW, THINK LATER\", \"color\": \"white\"}"
       }
     },
     "condition": {
@@ -414,7 +331,7 @@
     "type": "origins:prevent_elytra_flight",
     "entity_action": {
       "type": "origins:execute_command",
-      "command": "title @s actionbar {\"text\": \"You're going too fast for that!\", \"color\": \"white\"}"
+      "command": "title @s actionbar {\"text\": \"CHARGE NOW, THINK LATER\", \"color\": \"white\"}"
     },
     "condition": {
       "type": "origins:resource",
@@ -437,18 +354,8 @@
         {
           "type": "origins:target_action",
           "action": {
-            "type": "origins:if_else",
-            "condition": {
-              "type": "origins:riding"
-            },
-            "if_action": {
-              "type": "origins:add_velocity",
-              "y": 0.8
-            },
-            "else_action": {
               "type": "origins:add_velocity",
               "y": 0.3
-            }
           }
         },
         {
