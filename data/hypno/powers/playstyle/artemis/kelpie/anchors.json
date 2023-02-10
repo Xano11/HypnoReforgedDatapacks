@@ -1,0 +1,378 @@
+{
+    "name": "Anchor",
+    "description": "Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
+    "type": "origins:multiple",
+    "use": {
+        "type": "origins:action_on_block_use",
+        "block_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon drowned ~ ~-0.5 ~ {NoGravity:1b,Silent:1b,Invulnerable:0b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,Tags:[\"anchor\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[limit=1,sort=nearest,type=drowned,tag=anchor] hypno:playstyle/artemis/kelpie/anchored"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:soul ~ ~ ~ 0.3 0 0.3 0.05 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.drowned.death_water player @a ~ ~ ~ 2 0.5"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "execute store result score @e[limit=1,sort=nearest,type=drowned,tag=anchor] anchors run data get entity @p[tag=kelpie_anchor] UUID[0] 1"
+                    }
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s add kelpie_anchor"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/anchors_cooldown",
+                    "change": 1200
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @s anchors run data get entity @s UUID[0] 1"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "tag @s remove kelpie_anchor"
+                    }
+                }
+            ]
+        },
+        "block_condition": {
+            "type": "origins:offset",
+            "condition": {
+                "type": "origins:block",
+                "block": "minecraft:water"
+            },
+            "y": 1
+        },
+        "directions": [
+            "up"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/anchors_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1200,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cooldown_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/artemis/kelpie/anchors_cooldown",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "binded": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove hook"
+                }
+            ]
+        }
+    },
+    "binded_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/artemis/kelpie/anchors_binded",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "tether": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=anchor,distance=..24] if score @s anchors = @a[limit=1,sort=nearest] anchors at @s anchored eyes facing entity @e[tag=hooked,limit=1,sort=nearest] eyes run tp @s ~ ~ ~ ~ ~"
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 72,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:raycast",
+                                    "distance": 24,
+                                    "block": true,
+                                    "entity": true,
+                                    "shape_type": "visual",
+                                    "fluid_handling": "none",
+                                    "command_along_ray": "particle minecraft:soul ~ ~ ~ 0 0 0 0 2",
+                                    "command_step": 0.3,
+                                    "command_along_ray_only_on_hit": true
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "anchors",
+                                "target_objective": "anchors",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:entity_type",
+                                            "entity_type": "minecraft:drowned"
+                                        },
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @e[distance=..24,tag=hooked]",
+                                            "comparison": ">=",
+                                            "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "feed": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 72,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:feed",
+                                    "food": 1,
+                                    "saturation": 0.5
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "anchors",
+                                "target_objective": "anchors",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:entity_type",
+                                            "entity_type": "minecraft:drowned"
+                                        },
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @e[distance=..24,tag=hooked]",
+                                            "comparison": ">=",
+                                            "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "tether_transfer": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add hooked"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/artemis/kelpie/fearful"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.chain.step player @a ~ ~ ~ 1 0.5"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:block minecraft:chain ~ ~1 ~ 0.3 0.3 0.3 1 100"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle supplementaries:green_flame ~ ~1 ~ 0.3 0.3 0.3 0.05 10"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @s anchors run data get entity @p[tag=kelpie_anchor] UUID[0] 1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s remove hook"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add kelpie_anchor"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s anchors run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove kelpie_anchor"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[tag=hook]",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[tag=hooked]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[tag=anchor]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:in_tag",
+                                "tag": "hypno:living"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "condition": {
+            "type": "origins:sneaking"
+        }
+    },
+    "hidden": false
+}

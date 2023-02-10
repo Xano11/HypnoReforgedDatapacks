@@ -1,70 +1,70 @@
 {
     "name": "Horned Squirrel",
-	"description": "As a descendant of Ratatsokr, you've inherited a few traits. You're smaller, weaker (three less hearts), have the ability to climb and have negated fall damage. Also, you can [Sneak] in mid-air to stop any vertical momentum for a certain amount of time. ",
+    "description": "As a descendant of Ratatsokr, you've inherited a few traits. You're smaller, weaker (three less hearts), have the ability to climb and have negated fall damage. Also, you can [Sneak] in mid-air to stop any vertical momentum for a certain amount of time.",
     "type": "origins:multiple",
     "scale": {
         "type": "origins:action_on_callback",
         "execute_chosen_when_orb": true,
         "entity_action_added": {
-        "type": "origins:and",
-        "actions": [
-            {
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:height 0.95",
-                "permission_level": 4
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:width 0.95",
-                "permission_level": 4
-            },
-			{
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:view_bobbing 1.05",
-                "permission_level": 4
-            },
-			{
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:step_height 1",
-                "permission_level": 4
-            },
-			{
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:held_item 1.05",
-                "permission_level": 4
-            }
-        ]
-    },
-    "entity_action_respawned": {
-        "type": "origins:and",
-        "actions": [
-            {
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:height 0.95",
-                "permission_level": 4
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:width 0.95",
-                "permission_level": 4
-            },
-			{
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:view_bobbing 1.05",
-                "permission_level": 4
-            },
-			{
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:step_height 1",
-                "permission_level": 4
-            },
-			{
-                "type": "origins:execute_command",
-                "command": "scale set pehkui:held_item 1.05",
-                "permission_level": 4
-            }
-        ]
-    },
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:height 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:width 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:view_bobbing 1.05",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:step_height 1",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:held_item 1.05",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "entity_action_respawned": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:height 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:width 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:view_bobbing 1.05",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:step_height 1",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:held_item 1.05",
+                    "permission_level": 4
+                }
+            ]
+        },
         "entity_action_lost": {
             "type": "origins:and",
             "actions": [
@@ -101,7 +101,6 @@
             ]
         }
     },
-
     "lessheart": {
         "type": "origins:attribute",
         "modifier": {
@@ -111,7 +110,7 @@
             "operation": "addition"
         }
     },
-    "slower":{
+    "slower": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower speed",
@@ -119,25 +118,25 @@
             "value": -0.2,
             "operation": "multiply_base"
         },
-        "condition":{
-            "type": "origins:power",
-            "power": "hypno:playstyle/artemis/fenrirkin/unchained",
-            "inverted": true
-        } 
-    },
-    "air_speed":{
-        "type": "origins:modify_air_speed",
-        "modifier": {
-            "operation": "multiply_total",
-            "value": -0.2
-        },
-        "condition":{
+        "condition": {
             "type": "origins:power",
             "power": "hypno:playstyle/artemis/fenrirkin/unchained",
             "inverted": true
         }
     },
-    "fire":{
+    "air_speed": {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.2
+        },
+        "condition": {
+            "type": "origins:power",
+            "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+            "inverted": true
+        }
+    },
+    "fire": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
             "type": "origins:fire"

@@ -433,5 +433,48 @@
       "operation": "addition",
       "value": 3
     }
-  }
+  },
+  "launch":{
+    "type": "origins:action_on_block_use",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:play_sound",
+          "sound": "minecraft:entity.goat.ram_impact",
+          "volume": 2
+        },
+        {
+          "type": "origins:add_velocity",
+          "z": -0.4,
+          "y": 0.4,
+          "client": false,
+          "space": "local"
+        },
+        {     
+          "type":"origins:delay",
+          "ticks":1,
+          "action":{
+            "type": "origins:change_resource",
+            "resource": "*:*_remaining",
+            "change": 0,
+            "operation": "set"
+          }
+        }
+      ]
+    },
+    "block_action":{
+      "type": "origins:execute_command",
+      "command": "particle minecraft:cloud ~ ~1 ~ 0.25 0 0.25 0.01 100"
+    },
+    "directions": [
+        "up"
+    ],
+    "condition":{
+      "type": "origins:resource",
+      "resource": "*:*_remaining",
+      "comparison": ">",
+      "compare_to": 0
+    }
+}
 }

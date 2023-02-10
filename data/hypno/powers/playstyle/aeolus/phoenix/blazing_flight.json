@@ -1,0 +1,153 @@
+{
+    "name":"Eternal",
+    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "z": 0.1,
+                    "space": "local"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                    "change": -20
+                },
+                {
+                    "type": "origins:set_on_fire",
+                    "duration": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:feather ~ ~ ~ 0.5 0.3 0.5 0.01 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:flame ~ ~ ~ 0.5 0.3 0.5 0.01 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 0.5 0 ~ ~ ~ 0.5 0.3 0.5 0.01 1"   
+                }
+            ]
+        },
+        "condition":
+        {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                "comparison": ">",
+                "compare_to": 5
+            },
+            {
+                "type": "origins:fluid_height",
+                "fluid": "minecraft:water",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        } 
+    },
+    "speed":
+    {
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                "comparison": ">",
+                "compare_to": 5
+            },
+            {
+                "type": "apugli:key_pressed",
+                "key": {
+                    "key": "key.origins.primary_active",
+                    "continuous": true
+                }
+            },
+            {
+                "type": "origins:fluid_height",
+                "fluid": "minecraft:water",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        }
+    },
+    "camera_speed":
+    {
+        "type": "eggolib:modify_mouse_sensitivity",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                "comparison": ">",
+                "compare_to": 5
+            },
+            {
+                "type": "apugli:key_pressed",
+                "key": {
+                    "key": "key.origins.primary_active",
+                    "continuous": true
+                }
+            },
+            {
+                "type": "origins:fluid_height",
+                "fluid": "minecraft:water",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        }
+    },
+    "flying":{
+        "type": "origins:swimming",
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                "comparison": ">",
+                "compare_to": 5
+            },
+            {
+                "type": "apugli:key_pressed",
+                "key": {
+                    "key": "key.origins.primary_active",
+                    "continuous": true
+                }
+            },
+            {
+                "type": "origins:fluid_height",
+                "fluid": "minecraft:water",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        }
+    },
+    "hidden": false
+}

@@ -115,5 +115,11 @@
     "mobs_ignore":{
         "type": "apugli:mobs_ignore"
     },
+    "shader":
+    {
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/sobel.json",
+        "toggleable": false
+    },
     "hidden": false
 }

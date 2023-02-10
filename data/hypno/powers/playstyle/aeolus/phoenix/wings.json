@@ -18,10 +18,6 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "power grant @s hypno:playstyle/aeolus/phoenix/winged"
-                },
-                {
-                    "type": "origins:execute_command",
                     "command": "particle supplementaries:feather ~ ~ ~ 1 1 1 0.01 10"
                 },
                 {
@@ -43,7 +39,16 @@
                 {
                     "type": "origins:execute_command",
                     "command": "playsound minecraft:item.trident.throw player @s ~ ~ ~ 1 0.5"   
-                }
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":
+                    {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/aeolus/phoenix/winged"
+                    }
+            }
             ]
         },
         "condition":

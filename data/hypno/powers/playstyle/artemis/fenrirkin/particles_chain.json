@@ -1,0 +1,32 @@
+{
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:raycast",
+                "distance": 16,
+                "block": true,
+                "entity": true,
+                "shape_type": "visual",
+                "fluid_handling": "any",
+                "command_along_ray": "particle minecraft:block minecraft:chain ~ ~ ~ 0 0 0 0 2",
+                "command_step": 0.1,
+                "command_along_ray_only_on_hit": true
+            },
+        {
+          "type":"origins:delay",
+          "ticks":1,
+          "action":
+          {
+              "type": "origins:and",
+              "actions": [{
+              "type": "origins:execute_command",
+              "command": "kill @s"
+          }
+      ]
+          }
+      }
+    ]
+    }
+}

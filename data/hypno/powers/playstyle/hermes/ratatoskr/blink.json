@@ -84,6 +84,16 @@
             "resource": "hypno:playstyle/hermes/ratatoskr/blink_resource",
             "comparison": ">=",
             "compare_to": 25
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/hermes/ratatoskr/dysfunction",
+            "inverted": true
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/hermes/ratatoskr/portaling",
+            "inverted": true
         }
         ]
     }

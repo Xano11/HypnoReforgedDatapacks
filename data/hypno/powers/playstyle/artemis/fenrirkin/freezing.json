@@ -1,8 +1,8 @@
 {
-    "name":"Freezing",
-    "description":"The cold is felt along your spine...",
+    "name": "Freezing",
+    "description": "The cold is felt along your spine...",
     "type": "origins:multiple",
-    "freeze":{
+    "freeze": {
         "type": "origins:stacking_status_effect",
         "min_stacks": -1,
         "max_stacks": 5,
@@ -15,12 +15,12 @@
                 "show_icon": true
             }
         ],
-        "condition":{
+        "condition": {
             "type": "origins:nbt",
             "nbt": "{Tags: ['freezing']}"
         }
     },
-    "timer":{
+    "timer": {
         "type": "origins:resource",
         "min": 0,
         "max": 25,
@@ -28,18 +28,17 @@
         "hud_render": {
             "should_render": false
         },
-        "min_action":{
+        "min_action": {
             "type": "origins:and",
             "actions": [
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "tag @s remove freezing"
                 }
-               
             ]
         }
     },
-    "stacks":{
+    "stacks": {
         "type": "origins:resource",
         "min": 0,
         "max": 5,
@@ -50,49 +49,52 @@
         "min_action": {
             "type": "origins:and",
             "actions": [
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/artemis/fenrirkin/freezing"
                 }
-               
             ]
         }
     },
-    "stacks_down":{
+    "stacks_down": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
-            "change": -1
-        }
-        ]},
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
+                    "change": -1
+                }
+            ]
+        },
         "interval": 10,
-        "condition":
-        {
-            "type":"origins:and",
-            "conditions":[{
-                "type": "origins:nbt",
-                "nbt": "{Tags: ['freezing']}",
-                "inverted": true
-            }
-        ]
-    }
-},
-"timer_down":{
-    "type": "origins:action_over_time",
-    "entity_action": {
-        "type":"origins:and",
-        "actions":[{
-        "type": "origins:change_resource",
-        "resource": "hypno:playstyle/artemis/fenrirkin/freezing_timer",
-        "change": -5
-    }
-    ]},
-    "interval": 5
-},
-    "tag":{
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags: ['freezing']}",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/freezing_timer",
+                    "change": -5
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "tag": {
         "type": "origins:action_on_callback",
         "entity_action_gained": {
             "type": "origins:execute_command",
@@ -103,43 +105,44 @@
             "command": "tag @s remove freezing"
         }
     },
-    "damage":
-    {
+    "damage": {
         "type": "origins:self_action_when_hit",
         "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-                "type": "origins:change_resource",
-                "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
-                "change": -4
-            },
-        {
-            "type": "origins:damage",
-            "amount": 5,
-            "source": {
-                "name": "generic",
-                "bypasses_armor": true
-            }
-        }
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
+                    "change": -4
+                },
+                {
+                    "type": "origins:damage",
+                    "amount": 5,
+                    "source": {
+                        "name": "generic",
+                        "bypasses_armor": true
+                    }
+                }
             ]
-        },   
+        },
         "damage_condition": {
             "type": "origins:attacker",
             "entity_condition": {
-                "type":"origins:and",
-                "conditions":[{
-                    "type": "origins:origin",
-                    "origin": "hypno:playstyle/artemis/fenrirkin",
-                    "layer": "origins:artemis"
-                },
-                {
-                    "type": "origins:in_tag",
-                    "tag": "hypno:living"
-                }
-            ]
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:origin",
+                        "origin": "hypno:playstyle/artemis/fenrirkin",
+                        "layer": "origins:artemis"
+                    },
+                    {
+                        "type": "origins:in_tag",
+                        "tag": "hypno:living"
+                    }
+                ]
             }
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": ">=",
@@ -147,7 +150,7 @@
         },
         "cooldown": 10
     },
-    "slow1":{
+    "slow1": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -155,40 +158,40 @@
             "value": -0.1,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 1
         }
     },
-    "air_speed1":{
+    "air_speed1": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.1
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 1
         }
     },
-    "model1":{
+    "model1": {
         "type": "origins:model_color",
         "red": 0,
         "green": 0.2,
         "blue": 0.5,
         "alpha": 1,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 1
         }
     },
-    "slow2":{
+    "slow2": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -196,40 +199,40 @@
             "value": -0.2,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 2
         }
     },
-    "air_speed2":{
+    "air_speed2": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.2
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 2
         }
     },
-    "model2":{
+    "model2": {
         "type": "origins:model_color",
         "red": 0,
         "green": 0.25,
         "blue": 0.6,
         "alpha": 1,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 2
         }
     },
-    "slow3":{
+    "slow3": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -237,40 +240,40 @@
             "value": -0.3,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 3
         }
     },
-    "air_speed3":{
+    "air_speed3": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.3
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 3
         }
     },
-    "model3":{
+    "model3": {
         "type": "origins:model_color",
         "red": 0,
         "green": 0.3,
         "blue": 0.7,
         "alpha": 0.9,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 3
         }
     },
-    "slow4":{
+    "slow4": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -278,40 +281,40 @@
             "value": -0.4,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 4
         }
     },
-    "air_speed4":{
+    "air_speed4": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.4
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 4
         }
     },
-    "model4":{
+    "model4": {
         "type": "origins:model_color",
         "red": 0,
         "green": 0.35,
         "blue": 0.8,
         "alpha": 0.8,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 4
         }
     },
-    "slow5":{
+    "slow5": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -319,67 +322,67 @@
             "value": -0.5,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 5
         }
     },
-    "air_speed5":{
+    "air_speed5": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.5
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 5
         }
     },
-    "model5":{
+    "model5": {
         "type": "origins:model_color",
         "red": 0,
         "green": 0.4,
         "blue": 0.9,
         "alpha": 0.7,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
             "comparison": "==",
             "compare_to": 5
         }
     },
-    "glow":{
+    "glow": {
         "type": "origins:self_glow",
         "use_teams": false,
         "red": 0.0,
         "green": 0.6,
         "blue": 1.0,
         "bientity_condition": {
-            "type":"origins:and",
-            "conditions":[{
-            "type": "origins:actor_condition",
-            "condition": {
-                "type": "origins:origin",
-                "origin": "hypno:playstyle/artemis/fenrirkin",
-                "layer": "origins:artemis"
-            }
-            },
-            {
-            "type":"origins:target_condition",
-            "condition":
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
-                "comparison": "==",
-                "compare_to": 5
-            }
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "hypno:playstyle/artemis/fenrirkin",
+                        "layer": "origins:artemis"
+                    }
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:playstyle/artemis/fenrirkin/freezing_stacks",
+                        "comparison": "==",
+                        "compare_to": 5
+                    }
+                }
+            ]
         }
-    ]
-    }
     },
     "hidden": true
 }

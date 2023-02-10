@@ -1,0 +1,166 @@
+{
+    "name": "Anchored",
+    "type": "origins:multiple",
+    "pull":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:area_of_effect",
+                "radius": 24,
+                "bientity_action": {
+                    "type": "origins:add_velocity",
+                    "z": -0.1
+                },
+                "bientity_condition": {
+                    "type":"origins:and",
+                    "conditions":[{
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "anchors",
+                    "target_objective": "anchors",
+                    "comparison": "=="
+                },
+                {
+                    "type":"origins:target_condition",
+                    "condition":{
+                    "type":"origins:and",
+                    "conditions":[{
+                        "type": "origins:command",
+                        "command": "execute if entity @s[tag=hooked]",
+                        "comparison": ">=",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:origin",
+                        "origin": "hypno:playstyle/artemis/kelpie",
+                        "layer": "origins:artemis",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:in_tag",
+                        "tag": "hypno:living"
+                    }
+                ]
+                }
+                }
+            ]
+        }
+            }
+            ]
+        },
+        "interval": 1
+    },
+    "damage":
+    {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 2,
+            "source": {
+                "name": "generic",
+                "bypasses_armor": true
+            }
+        },
+        "interval": 30,
+        "condition":
+        {
+            "type": "apugli:entity_in_radius",
+            "bientity_condition": {
+                "type":"origins:and",
+                "conditions":[{
+                "type": "eggolib:compare_score",
+                "actor_objective": "anchors",
+                "target_objective": "anchors",
+                "comparison": "=="
+            },
+            {
+                "type":"origins:target_condition",
+                "condition":{
+                "type":"origins:and",
+                "conditions":[
+                {
+                    "type": "origins:origin",
+                    "origin": "hypno:playstyle/artemis/kelpie",
+                    "layer": "origins:artemis",
+                    "inverted": false
+                },
+                {
+                    "type": "origins:in_tag",
+                    "tag": "hypno:living"
+                }
+            ]
+            }
+            }
+        ]
+    },
+            "radius": 72.0,
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "model":{
+        "type": "origins:model_color",
+        "red": 0,
+        "green": 0.5,
+        "blue": 0.2,
+        "alpha": 0.2
+    },
+    "reduced_damage":
+    {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Tougher",
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "ignore":
+    {
+        "type": "apugli:mobs_ignore"
+    },
+    "prevent_item_use":{
+        "type": "origins:prevent_item_use"
+    },
+    "prevent_collision":{
+        "type": "origins:prevent_entity_collision"
+    },
+    "no_damage_dealt":
+    {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_momentum":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+        "x",
+        "y",
+        "z"
+        ]
+      },
+      "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:execute_command",
+                "command": "kill @s"
+            } 
+            ]
+        }
+      },
+    "hidden":false
+}

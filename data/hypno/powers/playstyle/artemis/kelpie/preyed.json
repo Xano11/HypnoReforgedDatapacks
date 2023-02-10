@@ -1,0 +1,73 @@
+{
+    "name": "Freezing",
+    "description": "The cold is felt along your spine...",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/artemis/kelpie/preyed"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/preyed_timer",
+                    "change": -10
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.warden.heartbeat player @s ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:entity.allay.item_taken player @s ~ ~ ~ 3 0.5"
+                    },
+                    "chance": 0.25
+                }
+            ]
+        },
+        "interval": 10
+    },
+    "decrease_max_health":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health decrease",
+            "attribute": "minecraft:generic.max_health",
+            "value": -0.5,
+            "operation": "multiply_total",
+            "update_health": true
+        }
+    },
+    "overlay":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/block/crimson_stem.png",
+        "strength": 0.3,
+        "red": 1.0,
+        "green": 0.1,
+        "blue": 0.1,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true
+    },
+    "hidden": true
+}

@@ -1,6 +1,6 @@
 {
     "name":"Eternal",
-    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
+    "description":"[SNEAKING] and interacting with fire will put down a phoenix feather. This feather can be picked by any close players to grant them Transcendance, preventing their next death and teleporting them to the feather they picked.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:action_on_block_use",
@@ -16,14 +16,18 @@
             },
             {
             "type": "origins:execute_command",
-            "command": "summon armor_stand ~ ~ ~ {Silent:1b,Invulnerable:1b,Small:1b,Invisible:1b,PersistenceRequired:1b,Tags:[\"fieryfeather\"]}"
+            "command": "summon wither_skeleton ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,CustomNameVisible:0b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,Tags:[\"fieryfeather\"]}"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @e[limit=1,sort=nearest,type=wither_skeleton,tag=fieryfeather] hypno:playstyle/aeolus/phoenix/feather"
             },
             {
                 "type":"origins:delay",
                 "ticks":1,
                 "action":{
                 "type": "origins:execute_command",
-                "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=fieryfeather] feather run data get entity @p[tag=feather] UUID[0] 1"
+                "command": "execute store result score @e[limit=1,sort=nearest,type=wither_skeleton,tag=fieryfeather] feather run data get entity @p[tag=feather] UUID[0] 1"
                 }
             },
             {
@@ -31,7 +35,7 @@
                 "ticks":1,
                 "action":{
                     "type": "origins:execute_command",
-                    "command": "power grant @e[limit=1,sort=nearest,type=armor_stand,tag=fieryfeather] hypno:playstyle/aeolus/phoenix/feather"
+                    "command": "power grant @e[limit=1,sort=nearest,type=wither_skeleton,tag=fieryfeather] hypno:playstyle/aeolus/phoenix/feather"
                 }
             }
             ]
@@ -42,6 +46,11 @@
                 {
                     "type": "origins:execute_command",
                     "command": "tag @s add feather"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/blazing_feathers_cooldown",
+                    "change": 18000
                 },
                 {
                     "type": "origins:execute_command",
@@ -64,10 +73,38 @@
                 "block": "minecraft:fire"
             }
         },
-        "directions": ["north", "east", "south", "west", "up", "down"],
+        "directions": ["up"],
         "condition": {
+            "type":"origins:and",
+            "conditions":[{
             "type": "origins:sneaking"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/blazing_feathers_cooldown",
+            "comparison": "==",
+            "compare_to": 0
         }
+    ]
+    }   
+    },
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 18000,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cooldown_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/blazing_feathers_cooldown",
+            "change": -10
+        },
+        "interval": 10
     },
     "hidden": false
 }

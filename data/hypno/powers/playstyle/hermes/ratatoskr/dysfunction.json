@@ -1,0 +1,42 @@
+{
+    "name":"Dysfunction",
+    "type": "origins:multiple",
+    "resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/hermes/ratatoskr/dysfunction"
+        }
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/ratatoskr/dysfunction_resource",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "shader":
+    {
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/sobel.json",
+        "toggleable": false
+    },
+    "no_entity":{
+        "type": "origins:prevent_entity_render"
+    },
+    "hidden": true
+}

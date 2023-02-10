@@ -65,7 +65,7 @@
     "water_weakness":
     {
         "type": "origins:damage_over_time",
-        "interval": 20,
+        "interval": 10,
         "onset_delay": 1,
         "damage": 2,
         "damage_easy": 2,
@@ -75,7 +75,7 @@
             "bypasses_armor": true
         },
         "protection_enchantment": "origins:water_protection",
-        "protection_effectiveness": 1.0,
+        "protection_effectiveness": 0.5,
         "condition": {
             "type": "origins:or",
             "conditions": [
@@ -132,6 +132,19 @@
             "type": "origins:on_fire"
         }, 
         "cooldown": 20
+    },
+    "no_firework":
+    {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:firework_rocket"
+            }
+        },
+        "condition":{
+            "type": "origins:fall_flying"
+        }
     },
     "hidden": false
 }

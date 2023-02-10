@@ -66,11 +66,6 @@
               "amount": 0.2
             },
             {
-              "type": "origins:change_resource",
-              "resource": "*:*_resource",
-              "change": 1
-            },
-            {
                 "type": "origins:play_sound",
                 "sound": "bettercombat:hammer_slam",
                 "volume": 1.5
@@ -104,6 +99,215 @@
         "type": "origins:on_block"
       }
   },
+  "activation_falling": {
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+              "type": "origins:change_resource",
+              "resource": "*:*_falling_resource",
+              "change": 1
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "particle minecraft:cloud ~ ~ ~ 0 0 0 0.2 10"
+            }
+        ]
+    },
+    "cooldown": 1,
+    "hud_render": {
+        "should_render": false
+    },
+    "key": {
+        "key": "key.origins.secondary_active",
+        "continuous": true
+      },
+      "condition": {
+        "type":"origins:and",
+        "conditions":[{
+        "type": "origins:on_block",
+        "inverted": true
+      },
+      {
+        "type": "origins:resource",
+        "resource": "*:*_activation",
+        "comparison": "==",
+        "compare_to": 0
+      },
+      {
+        "type": "apugli:velocity",
+        "axes": [
+            "y"
+        ],
+        "compare_to": -1,
+        "comparison": ">="
+    }
+  ]
+}
+  },
+  "falling_decay": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+          {
+            "type": "origins:change_resource",
+            "resource": "*:*_falling_resource",
+            "change": -1
+          }
+      ]
+  },
+    "interval": 1,
+    "condition":{
+      "type": "apugli:key_pressed",
+      "key": {
+        "key": "key.origins.secondary_active",
+        "continuous": true
+      },
+      "inverted": true
+  }
+  },
+  "falling_resource": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 30,
+    "hud_render": {
+      "should_render": true,
+      "sprite_location": "horigins:textures/resource_bar01.png",
+      "bar_index": 1,
+      "condition": {
+        "type": "origins:resource",
+        "resource": "*:*_falling_resource",
+        "comparison": ">",
+        "compare_to": 0
+      }
+    }
+  },
+  "landing":{
+    "type": "origins:modify_falling",
+    "velocity": 0.15,
+    "take_fall_damage": true,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_falling_resource",
+      "comparison": "==",
+      "compare_to": 30
+    }
+  },
+  "fall_reduction":{
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+      "type": "origins:from_falling"
+  },
+    "modifier": {
+        "name": "lesser fall damage",
+        "operation": "multiply_total",
+        "value": -0.9
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_falling_resource",
+      "comparison": "==",
+      "compare_to": 30
+    }
+},
+  "landing_damage":{
+    "type": "origins:action_on_land",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+          {
+              "type": "origins:area_of_effect",
+              "radius": 7,
+              "bientity_action": {
+                "type": "origins:and",
+                  "actions": [{
+                    "type": "origins:target_action",
+                    "action": {
+                      "type": "origins:add_velocity",
+                      "y": 2,
+                      "space": "local_horizontal_normalized"
+                  }
+                },
+                  {
+                    "type": "origins:damage",
+                    "amount": 5,
+                    "source": {
+                        "name": "cramming.player",
+                        "bypasses_armor": false
+                    }
+                  },
+                  {
+                    "type": "origins:target_action",
+                    "action": {                
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:cloud ~ ~ ~ 0.3 0.7 0.3 0.03 100"
+                  }
+                },
+                {
+                  "type": "origins:target_action",
+                  "action": {     
+                  "type":"origins:delay",
+                  "ticks":2,
+                  "action":
+                    {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/zeus/minotaur/cucked"
+                    }
+                }
+                }
+                ]
+              },
+                "bientity_condition": {
+                  "type": "origins:and",
+                  "conditions": [{
+                    "type": "origins:can_see"
+              },
+              {
+                "type": "origins:target_condition",
+                "condition": {
+                "type": "origins:on_block"
+              }
+            }
+            ]
+          }
+          },
+          {
+            "type": "origins:exhaust",
+            "amount": 0.2
+          },
+          {
+              "type": "origins:play_sound",
+              "sound": "bettercombat:hammer_slam",
+              "volume": 2
+          },
+          {
+            "type": "origins:play_sound",
+            "sound": "create:crushing_1",
+            "volume": 2
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "particle twigs:item_pebble ~ ~ ~ 3 0 3 0.1 1300 normal @a"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "particle supplementaries:ash ~ ~ ~ 3 0 3 0 600 normal @a"
+          },
+          {
+            "type": "origins:trigger_cooldown",
+            "power": "hypno:playstyle/zeus/minotaur/slam_activation"
+        }
+      ]
+  },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_falling_resource",
+      "comparison": "==",
+      "compare_to": 30
+    }
+  },
   "name": "Ground Slam",
-  "description": "You can activate a Slam ability with your [SECONDARY ABILITY KEY], knocking up everyone within a 5 block radius dealing 3 damage."
+  "description": "You can activate a Slam ability with your [SECONDARY ABILITY KEY], knocking up everyone within a 5 block radius dealing 3 damage. If you hold the key whilst falling at a fast enough speed, you can charge a more powerful landing slam, nullifying 90% of all falling damage."
 }

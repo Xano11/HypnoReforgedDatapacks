@@ -44,5 +44,34 @@
         "type": "origins:entity_group",
         "group": "aquatic"
     },
+    "spectral_hunger":{
+        "type": "origins:modify_food",
+        "food_modifier": {
+            "name": "No food points",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "saturation_modifier":{
+            "name": "No saturation points",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "spectral_exhaust":
+    {
+        "type": "origins:modify_exhaustion",
+        "modifier": {
+            "name": "Increased exhaustion",
+            "operation": "multiply_base",
+            "value": -0.5
+        }
+    },
+    "effect_immune":{
+        "type": "origins:effect_immunity",
+        "effects": [
+            "minecraft:saturation",
+            "minecraft:hunger"
+        ]
+    },
     "hidden": false
 }

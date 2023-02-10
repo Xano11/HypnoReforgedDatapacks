@@ -1,0 +1,79 @@
+{
+    "name":"Knocked",
+    "type": "origins:multiple",
+    "resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "tag @s remove hooked"
+        },
+        {
+            "type":"origins:delay",
+            "ticks":1,
+            "action":{
+                "type": "origins:execute_command",
+                "command": "power remove @s hypno:playstyle/artemis/kelpie/fearful"
+            }
+        }
+    ]
+    }
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/fearful_resource",
+                    "change": -1
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:entity.allay.item_taken player @s ~ ~ ~ 3 0.5"
+                    },
+                    "chance": 0.025
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "shader":
+    {
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/sobel.json",
+        "toggleable": false
+    },
+    "prevent_render_kelpie":{
+        "type": "origins:prevent_entity_render",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "hypno:playstyle/artemis/kelpie",
+                        "layer": "origins:artemis"
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "hidden": true
+}

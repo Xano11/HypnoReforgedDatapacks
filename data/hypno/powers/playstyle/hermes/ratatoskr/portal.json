@@ -46,6 +46,16 @@
           ]
       },
       "cooldown": 3600,
+      "condition": {
+        "type":"origins:and",
+        "conditions":[
+          {
+            "type": "origins:power",
+            "power": "hypno:playstyle/hermes/ratatoskr/dysfunction",
+            "inverted": true
+          }
+        ]
+      },
       "hud_render": {
           "should_render": true,
           "sprite_location": "horigins:textures/resource_bar01.png",

@@ -2,9 +2,9 @@
 	"powers": [
 		"origins:like_water",
 		"hypno:playstyle/artemis/kelpie/waterlike",
-		"hypno:playstyle/artemis/kelpie/sinking",
 		"hypno:playstyle/artemis/kelpie/soulhook",
-		"hypno:playstyle/artemis/kelpie/rush"
+		"hypno:playstyle/artemis/kelpie/anchors",
+		"hypno:playstyle/artemis/kelpie/stalk"
 	],
 	"icon": {
 		"item": "twigs:bamboo_leaves"
@@ -12,5 +12,5 @@
 	"order": 1,
 	"impact": 0,
 	"name": "Kelpie",
-	"description": "A mythical spirit of the waters, it uses the innate influence of fear to prey on it's foes."
+	"description": "A horse-like mythical spirit of the waters said to inhabit the haunted bodies of water. It's sole existence fuels the fear in those aware of it."
 }

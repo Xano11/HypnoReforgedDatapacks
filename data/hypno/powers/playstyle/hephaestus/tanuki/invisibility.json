@@ -115,6 +115,7 @@
     "invisibility":{
         "type": "origins:invisibility",
         "render_armor": false,
+        "render_outline": true,
         "condition":  {
             "type": "origins:and",
             "conditions": [{
@@ -237,6 +238,23 @@
                 "origin": "hypno:playstyle/hephaestus/tanuki",
                 "layer": "origins:hephaestus"
             }
+        },
+        {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [{
+                "type": "origins:power_active",
+                "power": "hypno:playstyle/hephaestus/tanuki/invisibility_toggle"
+            },
+            {
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/hephaestus/tanuki/invisibility_cooldown",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        }
         }]
     }
     },
