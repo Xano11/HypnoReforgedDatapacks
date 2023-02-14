@@ -57,9 +57,29 @@
                     "type": "origins:delay",
                     "ticks": 1,
                     "action": {
+                        "type":"origins:and",
+                        "actions":[{
                         "type": "origins:execute_command",
                         "command": "kill @e[limit=1,sort=nearest,tag=fierytp]"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 1 300"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:ash ~ ~1 ~ 0.7 0.7 0.7 0.5 100"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:dust_color_transition 1 0.6 0 1.5 1 0 0 ~ ~1 ~ 1 1 1 1 100"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_03 player @s ~ ~ ~ 1 1"
                     }
+                ]
+            }
                 },
                 {
                     "type": "origins:delay",

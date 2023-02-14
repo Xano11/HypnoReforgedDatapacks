@@ -1,0 +1,198 @@
+{
+    "name": "Deafened",
+    "description": "You can't hear anything",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/artemis/kelpie/deafened"
+                }
+            ]
+        }
+    },
+    "overlay_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 2,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/deafened_timer",
+                    "change": -10
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.warden.heartbeat player @s ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:entity.allay.item_taken player @s ~ ~ ~ 3 0.5"
+                    },
+                    "chance": 0.25
+                }
+            ]
+        },
+        "interval": 10
+    }, 
+    "switch_overlay": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+                    "change": 1
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":{
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+                        "change": 1
+                    }
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":2,
+                    "action":{
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+                        "change": -1
+                    }
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":3,
+                    "action":{
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "interval": 4
+    },
+    "overlay1":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/vignette.png",
+        "strength": 0.2,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+            "comparison": "==",
+            "compare_to": 0
+    }
+    },
+    "overlay2":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/vignette.png",
+        "strength": 0.4,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+            "comparison": "==",
+            "compare_to": 1
+    }
+    },
+    "overlay3":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/vignette.png",
+        "strength": 0.6,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/deafened_overlay_resource",
+            "comparison": "==",
+            "compare_to": 2
+    }
+    },
+    "deaf":
+    {
+        "type": "apugli:prevent_sound",
+        "categories": [
+            "BLOCKS",
+            "AMBIENT", 
+            "HOSTILE", 
+            "MASTER",
+            "MUSIC", 
+            "NEUTRAL", 
+            "PLAYERS", 
+            "RECORDS", 
+            "WEATHER"
+        ],
+        "whitelist": [
+            "minecraft:entity.warden.heartbeat",
+            "minecraft:entity.allay.item_taken"
+        ]
+    },
+    "glow":
+    {
+        "type": "origins:self_glow",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "screech",
+                    "target_objective": "screech",
+                    "comparison": "=="
+                }
+            ]
+        },
+        "use_teams": false,
+        "red": 1.0,
+        "green": 0.0,
+        "blue": 0.0
+    },
+    "hidden": true
+}

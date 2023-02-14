@@ -28,6 +28,11 @@
       "inverted": true
   },
   {
+    "type": "origins:power",
+    "power": "hypno:playstyle/artemis/fenrirkin/wild",
+    "inverted": true
+},
+  {
     "type": "origins:resource",
     "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
     "comparison": "==",

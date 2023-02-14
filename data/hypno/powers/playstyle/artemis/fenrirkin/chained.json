@@ -1,0 +1,82 @@
+{
+    "name":"Leaping",
+    "type": "origins:multiple",
+    "resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 40,
+        "start_value": 40,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 2
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/artemis/fenrirkin/chained"
+        }
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute positioned ~ ~1 ~ run function hypno:chains"
+                }
+            ]
+        },
+        "interval": 2
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/chained_resource",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "no_movement":
+    {
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ]
+    },
+    "no_block_interaction":{
+        "type": "origins:prevent_block_selection"
+    },
+    "no_block_use":{
+        "type": "origins:prevent_block_use"
+    },
+    "prevent_item_use":{
+        "type": "origins:prevent_item_use"
+    },
+    "overlay":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/block/blue_ice.png",
+        "strength": 0.5,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true
+    },
+    "hidden": true
+}

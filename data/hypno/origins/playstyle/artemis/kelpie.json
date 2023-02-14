@@ -1,10 +1,11 @@
 {
 	"powers": [
 		"origins:like_water",
-		"hypno:playstyle/artemis/kelpie/waterlike",
+		"hypno:playstyle/artemis/kelpie/spectre",
 		"hypno:playstyle/artemis/kelpie/soulhook",
 		"hypno:playstyle/artemis/kelpie/anchors",
-		"hypno:playstyle/artemis/kelpie/stalk"
+		"hypno:playstyle/artemis/kelpie/stalk",
+		"hypno:playstyle/artemis/kelpie/screech"
 	],
 	"icon": {
 		"item": "twigs:bamboo_leaves"

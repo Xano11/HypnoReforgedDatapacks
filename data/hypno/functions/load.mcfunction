@@ -10,6 +10,8 @@ scoreboard objectives add hailstorm_blade dummy
 scoreboard objectives add disguised dummy
 scoreboard objectives add anchors dummy
 scoreboard objectives add stalking dummy
+scoreboard objectives add screech dummy
+scoreboard objectives add chaining dummy
 
 #Tower
 scoreboard objectives add elevator dummy

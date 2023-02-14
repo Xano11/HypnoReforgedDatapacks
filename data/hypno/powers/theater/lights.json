@@ -1,0 +1,71 @@
+{
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:action_on_being_used",
+        "bientity_action": {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                  "actions": [
+                    {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "hypno:theater/lights_toggle",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        "if_action": {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:theater/lights_toggle",
+                            "change": 1
+                        },
+                        "else_action": {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:theater/lights_toggle",
+                            "change": -1
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.stone_button.click_off player @a ~ ~ ~ 1 0.7"
+                    }
+                ]
+              }
+        },
+        "hands": [
+            "main_hand"
+        ]
+    },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "toggle":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "function hypno:lights_on"
+        }
+    ]
+    },
+    "min_action": {
+        "type":"origins:and",
+        "actions":[{
+        "type": "origins:execute_command",
+        "command": "function hypno:lights_out"
+    }
+]
+}
+    },
+    "hidden": true
+}

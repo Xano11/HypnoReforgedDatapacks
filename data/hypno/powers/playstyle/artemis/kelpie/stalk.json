@@ -476,6 +476,16 @@
         "compare_to": 10
     }
 },
+"ignore":
+    {
+        "type": "apugli:mobs_ignore",
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/artemis/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    },
 "nametag":{
     "type": "eggolib:modify_label_render",
     "render_mode": "hide_completely",

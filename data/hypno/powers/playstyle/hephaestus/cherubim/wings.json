@@ -1,0 +1,109 @@
+{
+    "type": "origins:multiple",
+    "wing_flaps": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "flap_reset": {
+        "type": "origins:action_on_land",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_wing_flaps",
+            "change": 1
+        }
+    },
+    "activating_jump": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.jump"
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "set": true,
+                    "y": 0.7
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:feather ~ ~ ~ 0 0.4 0 0.2 20",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:slow_falling 3 0",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:cloud ~ ~ ~ 0 0.4 0 0.2 30",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 1 1 0.8 0.8 0.8 ~ ~ ~ 0.5 0.4 0.5 01 100",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:elemental_bow_holy_shoot_flyby_02 player @a ~ ~ ~ 1 0.7",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:moving"
+                    },
+                    "if_action": {
+                        "type": "origins:add_velocity",
+                        "space": "local",
+                        "z": 0.2
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_wing_flaps",
+                    "change": -1
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:on_block",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_wing_flaps",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:lava",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "name": "Heavenly Wings",
+    "description": "Using your wings, you can flap upwards. Whilst in the air, pressing [Jump Key] will boost you up and grant you slow falling temporarily."
+}

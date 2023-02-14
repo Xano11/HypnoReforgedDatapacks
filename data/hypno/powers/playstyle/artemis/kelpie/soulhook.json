@@ -137,6 +137,13 @@
                 {
                     "type": "origins:entity_type",
                     "entity_type": "minecraft:drowned"
+                },
+                {
+                    "type": "origins:living"
+                },
+                {
+                    "type": "origins:in_tag",
+                    "tag": "hypno:living"
                 }
             ]
             }

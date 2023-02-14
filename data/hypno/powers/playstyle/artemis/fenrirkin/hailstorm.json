@@ -1,8 +1,8 @@
 {
     "name": "Hailstorm",
-    "description": "You've acquired Freyr's sword and can use it to unleash Hailstorm. Pressing your [Secondary Ability Key] will plant the legendary sword into the ground, creating a hailstorm. In the hailstorm, entities cumulate stacks of frost, slowing them down and allowing for Fenrir to use devastating abilities.",
+    "description": "You've acquired Freyr's sword and can use it to unleash Hailstorm. Pressing your [Secondary Ability Key] whilst chained will plant the legendary sword into the ground, creating a hailstorm. In the hailstorm, icicles fall; dealing damage and freezing entities over time. Whilst Unchained, you can channel the energy of the sword to Leap. Leaping will launch you in the air, and stop you, letting you choose your landing area (Press your [USE] keybind).",
     "type": "origins:multiple",
-    "activate": {
+    "activate_sword": {
       "type": "origins:active_self",
       "entity_action": {
         "type": "origins:and",
@@ -44,7 +44,7 @@
               "ticks": 1,
               "action":  {
                   "type": "origins:execute_command",
-                  "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=hailstorm] hailstorm_blade run data get entity @p[tag=hailstorm] UUID[0] 1"
+                  "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=hailstorm] hailstorm_blade run data get entity @p[tag=hailstorm_blade] UUID[0] 1"
               }
             },
             {
@@ -62,7 +62,12 @@
         "conditions": [
           {
             "type": "origins:on_block"
-        }
+        },
+        {
+          "type": "origins:power",
+          "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+          "inverted": true
+      }
         ]
       },
       "hud_render": {
@@ -74,5 +79,143 @@
         "key": "key.origins.secondary_active"
       },
       "cooldown": 900
+    },
+    "pickup_sword": {
+      "type": "origins:active_self",
+      "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:playstyle/artemis/fenrirkin/wild"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.wolf.howl player @a ~ ~ ~ 3 0.5"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "playsound simplyswords:magic_sword_spell_01 player @a ~ ~ ~ 3 0.8"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "particle minecraft:snowflake ~ ~ ~ 0.1 0.1 0.1 1 100"
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 1,
+                "action":  {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[distance=..5,type=armor_stand] if score @s hailstorm_blade = @p hailstorm_blade run kill @s"
+                }
+            }
+        ]
+    },
+      "condition": {
+        "type": "origins:and",
+        "conditions": [
+        {
+          "type": "origins:power",
+          "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+          "inverted": true
+      },
+      {
+        "type": "origins:sneaking"
+    },
+    {
+      "type": "apugli:entity_in_radius",
+      "bientity_condition": {
+          "type":"origins:and",
+          "conditions":[{
+          "type": "eggolib:compare_score",
+          "actor_objective": "hailstorm_blade",
+          "target_objective": "hailstorm_blade",
+          "comparison": "=="
+      },
+      {
+          "type":"origins:target_condition",
+          "condition":{
+          "type":"origins:and",
+          "conditions":[
+          {
+            "type": "origins:entity_type",
+            "entity_type": "minecraft:armor_stand"
+        }
+      ]
+      }
+      }
+  ]
+},
+      "radius": 3.0,
+      "comparison": "==",
+      "compare_to": 1
+  }
+        ]
+      },
+      "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+        "bar_index": 0
+      },
+      "key": {
+        "key": "key.origins.secondary_active"
+      },
+      "cooldown": 6000
+    },
+    "activate_leap": {
+      "type": "origins:active_self",
+      "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+              "type": "origins:add_velocity",
+              "y": 1,
+              "set": false
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound simplyswords:elemental_sword_ice_attack_03 player @a ~ ~ ~ 2 0.7"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "particle minecraft:block minecraft:blue_ice ~ ~ ~ 1.5 0 1.5 0.1 400"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "particle minecraft:snowflake ~ ~ ~ 1.5 0.3 1.5 0.01 200"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "particle minecraft:dust_color_transition 1 1 1 1.5 0 0 1 ~ ~ ~ 1.5 0 1.5 0.01 200"
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 5,
+                "action":  {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/artemis/fenrirkin/leaping"
+                }
+            }
+        ]
+    },
+      "condition": {
+        "type": "origins:and",
+        "conditions": [
+        {
+          "type": "origins:power",
+          "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+          "inverted": false
+      }
+        ]
+      },
+      "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+        "bar_index": 0
+      },
+      "key": {
+        "key": "key.origins.secondary_active"
+      },
+      "cooldown": 300
     }
   }
