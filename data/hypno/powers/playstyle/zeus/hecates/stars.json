@@ -1,0 +1,404 @@
+{
+    "name": "Vision of the Astral",
+    "description": "Using your [PRIMARY ABILITY KEY], you will be granted perception capable of viewing a specific star. Looking at a star with a spyglass will grant you buffs.",
+    "type": "origins:multiple",
+    "use": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_full_moon"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"full_moon\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_new_moon"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"new_moon\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_first_quarter"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"first_quarter\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waxing_gibbous"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"waxing_gibbous\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waxing_crescent"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"waxing_crescent\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waning_gibbous"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"waning_gibbous\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waning_crescent"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"waning_crescent\"],DisabledSlots:4144959}"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_third_quarter"
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:[\"stars\",\"third_quarter\"],DisabledSlots:4144959}"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @s stars run data get entity @s UUID[0] 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:magic_bow_charge_long_version player @a ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:magic_sword_block_02 player @a ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:glow ~ ~ ~ 1 0 1 1 100"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[limit=1,sort=nearest,tag=stars] hypno:playstyle/zeus/hecates/star"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @e[limit=1,sort=nearest,tag=stars] stars run data get entity @s UUID[0] 1"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 0
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:nether",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:daytime",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "spyglass": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 200,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "outline",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a ~ ~ ~ 1 1.7",
+                                            "permission_level": 4
+                                        },
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "hypno:playstyle/zeus/hecates/star_looking_at",
+                                            "change": 1
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @s ~ ~ ~ 1 2",
+                                            "permission_level": 4
+                                        },
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "hypno:playstyle/zeus/hecates/stars_looking_at",
+                                            "change": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "stars",
+                                "target_objective": "stars",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:entity_type",
+                                            "entity_type": "minecraft:armor_stand"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "command_step": 0.5,
+                    "command_along_ray_only_on_hit": false
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:spyglass"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:spyglass"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "looking_at": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/zeus/hecates/starblessed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:dark_sword_spell player @a ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:end_rod ~ ~1 ~ 0.5 0.5 0.5 0.3 30"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/stars_looking_at",
+                    "change": -3
+                },
+                {
+                    "type": "moborigins:show_floating_item",
+                    "item_stack": {
+                      "item": "minecraft:nether_star"
+                    }
+                  },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_full_moon"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 0
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_new_moon"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 1
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_first_quarter"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 2
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waxing_gibbous"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 3
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waxing_crescent"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 4
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waning_gibbous"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 5
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_waning_crescent"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 6
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:predicate",
+                                "predicate": "hypno:at_night/is_third_quarter"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/starblessed_moon_phase",
+                                "change": 7
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

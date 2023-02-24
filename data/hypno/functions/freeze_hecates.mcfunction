@@ -1,0 +1,2 @@
+summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Tags:["icereplace"],DisabledSlots:4144959}
+execute at @e[type=minecraft:armor_stand,tag=icereplace] run fill ~1 ~1 ~1 ~-1 ~-1 ~-1 minecraft:frosted_ice replace minecraft:water

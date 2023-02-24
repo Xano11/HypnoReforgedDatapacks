@@ -1,6 +1,6 @@
 {
     "name": "Angelic",
-	"description": "As a descendant of Ratatsokr, you've inherited a few traits. You're smaller, weaker (three less hearts), have the ability to climb and have negated fall damage. Also, you can [Sneak] in mid-air to stop any vertical momentum for a certain amount of time. ",
+	"description": "As an angel, you have characteristic traits that discern you from other beings. ",
     "type": "origins:multiple",
     "scale": {
         "type": "origins:action_on_callback",
@@ -212,14 +212,14 @@
     },
     "no_fall_damage":
     {
-        "type": "origins:modify_damage_taken",
-        "damage_condition": {
-            "type": "origins:from_falling"
-        },
-        "modifier": {
-            "name": "Invulnerable to fall",
-            "operation": "multiply_total",
-            "value": -1
+        "type": "origins:modify_falling",
+        "velocity": 0.08,
+        "take_fall_damage": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/wings_wing_flaps",
+            "comparison": "==",
+            "compare_to": 0
         }
     },
     "air_speed_increase":{

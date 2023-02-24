@@ -1,0 +1,251 @@
+{
+    "name": "Marked for death",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/ares/yatagarasu/deathmarked"
+                }
+            ]
+        }
+    },
+    "dead": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 5,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "kill @s"
+        }
+    },
+    "dead_ticking": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_duration",
+                    "change": -5
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sculk_soul ~ ~1 ~ 0.5 0.5 0.5 0.1 10"
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "fog": {
+        "type": "moborigins:fog",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "start": -1,
+        "end": 30
+    },
+    "fog_death": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 2
+    },
+    "deathmarked": {
+        "type": "origins:prevent_death",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+                    "change": 5
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,ShowArms:1b,ArmorItems:[{},{},{},{}],HandItems:[{id:\"simplyswords:netherite_scythe\",Count:1b},{}],Tags:[\"soul_collector\"],DisabledSlots:2047807,Pose:{RightArm:[320f,120f,100f]}}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.warden.heartbeat player @s ~ ~ ~ 2 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "data modify entity @e[limit=1,sort=nearest,tag=soul_collector] set value 320f"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @e[limit=1,sort=nearest,tag=soul_collector] Pose.RightArm[0] set value 0f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "data modify entity @e[limit=1,sort=nearest,tag=soul_collector] set value 40f"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:dark_sword_attack_with_blood_01 player @a ~ ~ ~ 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:soul_fire_flame ~ ~ ~ 0.5 0.5 0.5 0.5 100"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 3,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "data modify entity @e[limit=1,sort=nearest,tag=soul_collector] set value 80f"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "kill @e[limit=1,sort=nearest,tag=soul_collector]"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 4,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:playstyle/ares/yatagarasu/deathmarked_deathmarked"
+                    }
+                }
+            ]
+        },
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:origin",
+                "origin": "hypno:playstyle/ares/yatagarasu",
+                "layer": "origins:ares"
+            }
+        }
+    },
+    "no_movement": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -1,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ],
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "no_damage": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "no_sprint": {
+        "type": "origins:prevent_sprinting",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "no_block_interaction": {
+        "type": "origins:prevent_block_selection",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "no_block_use": {
+        "type": "origins:prevent_block_use",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "prevent_item_use": {
+        "type": "origins:prevent_item_use",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "no_camera_move": {
+        "type": "eggolib:modify_mouse_sensitivity",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/deathmarked_dead",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}

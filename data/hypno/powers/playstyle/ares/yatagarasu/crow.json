@@ -1,0 +1,47 @@
+{
+    "name": "Witch (Or wizard, really)",
+    "description": "The Hecates cult are known for having similar traits. They are slightly smaller, have a lesser heart.",
+    "type": "origins:multiple",
+    "lesser_heart": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health decrease",
+            "attribute": "minecraft:generic.max_health",
+            "value": -2,
+            "operation": "addition"
+        }
+    },
+    "souls": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 10,
+        "start_value": 10,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 5
+        }
+    },
+    "soulcollector":
+    {
+        "type": "apugli:action_on_target_death",
+        "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "summon allay ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+            "permission_level": 4
+        },
+        {
+            "type": "origins:execute_command",
+            "command": "power grant @e[limit=1,sort=nearest,type=minecraft:allay,tag=yatagarasu_soul] hypno:playstyle/ares/yatagarasu/collectable_soul",
+            "permission_level": 4
+        }
+    ]
+        }
+        },
+        "includes_prime_adversary": false
+    }
+}

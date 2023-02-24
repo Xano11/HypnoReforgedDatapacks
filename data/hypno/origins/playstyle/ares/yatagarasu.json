@@ -1,0 +1,15 @@
+{
+	"powers": [
+        "hypno:playstyle/ares/yatagarasu/traveler",
+        "hypno:playstyle/ares/yatagarasu/reaper",
+		"hypno:playstyle/ares/yatagarasu/crow"
+	],
+	"icon": {
+		"item": "soulsweapons:chaos_orb",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Yatagarasu",
+	"description": "A crow spirit bound to live inside of a soulless human body, they use their special living condition to interact with the plane of the dead and the living."
+}

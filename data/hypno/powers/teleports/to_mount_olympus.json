@@ -37,6 +37,10 @@
                         {             
                             "type": "origins:execute_command",
                             "command": "playsound minecraft:entity.enderman.teleport player @s ~ ~ ~ 1 2"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:olympus/atmosphere"
                         }
                     ]
                     }

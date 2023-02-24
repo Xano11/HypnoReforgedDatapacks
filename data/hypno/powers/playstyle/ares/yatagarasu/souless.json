@@ -1,0 +1,50 @@
+{
+    "name": "Wither skeleton",
+    "type": "origins:multiple",
+    "damaged":
+    {
+        "type": "origins:action_when_damage_taken",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a if score @s souless = @e[limit=1,sort=nearest] souless run tp @s @e[limit=1,sort=nearest]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a if score @s souless = @e[limit=1,sort=nearest] souless run resource set @s hypno:playstyle/ares/yatagarasu/traveler_living_dead 0"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a if score @s souless = @e[limit=1,sort=nearest] souless run power remove @s hypno:playstyle/ares/yatagarasu/dead"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        },
+        "cooldown": 1
+    },
+    "no_damage": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "swirl":{
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/block/soul_sand.png",
+        "speed": 0.01
+    },
+    "particle":
+    {
+        "type": "origins:particle",
+        "particle": "minecraft:soul",
+        "frequency": 2
+    },
+    "hidden": false
+}

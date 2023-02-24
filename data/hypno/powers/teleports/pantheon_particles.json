@@ -42,5 +42,21 @@
         ]
     }  
 },
+"no_mouse_moving":
+{
+    "type": "eggolib:modify_mouse_sensitivity",
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -1
+    }
+},
+"air_speed":
+{
+    "type": "origins:modify_air_speed",
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -1
+    }
+},
 "hidden": true
 }

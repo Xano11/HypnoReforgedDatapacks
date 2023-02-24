@@ -10,14 +10,15 @@
                 "action": {
                     "type":"origins:and",
                     "actions":[{
-                        "type": "origins:add_velocity",
-                        "y": 1,
-                        "space":"world"
-                    },
+                        "type": "origins:execute_command",
+                        "command": "execute anchored eyes facing -158.5 81.5 -101.00 run tp @s ~ ~ ~ ~ ~"
+                    }, 
                     {
                         "type": "origins:add_velocity",
-                        "z": -3,
-                        "space":"world"
+                        "z": -12,
+                        "y": 1.2,
+                        "space":"world",
+                        "set": true
                     },
                     {
                         "type": "origins:execute_command",

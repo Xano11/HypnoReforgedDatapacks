@@ -34,14 +34,14 @@
                                             "compare_to": 1
                                         },
                                         {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        },
+                                        {
                                             "type": "origins:origin",
                                             "origin": "hypno:playstyle/artemis/kelpie",
                                             "layer": "origins:artemis",
                                             "inverted": true
-                                        },
-                                        {
-                                            "type": "origins:in_tag",
-                                            "tag": "hypno:living"
                                         }
                                     ]
                                 }
@@ -84,6 +84,10 @@
                             "type": "origins:and",
                             "conditions": [
                                 {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                },
+                                {
                                     "type": "origins:command",
                                     "command": "execute if entity @s[tag=hooked]",
                                     "comparison": ">=",
@@ -94,10 +98,6 @@
                                     "origin": "hypno:playstyle/artemis/kelpie",
                                     "layer": "origins:artemis",
                                     "inverted": true
-                                },
-                                {
-                                    "type": "origins:in_tag",
-                                    "tag": "hypno:living"
                                 }
                             ]
                         }
@@ -137,14 +137,14 @@
                             "type": "origins:and",
                             "conditions": [
                                 {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                },
+                                {
                                     "type": "origins:origin",
                                     "origin": "hypno:playstyle/artemis/kelpie",
                                     "layer": "origins:artemis",
                                     "inverted": false
-                                },
-                                {
-                                    "type": "origins:in_tag",
-                                    "tag": "hypno:living"
                                 }
                             ]
                         }

@@ -1,0 +1,45 @@
+{
+    "type":"origins:multiple",
+
+    "particles":{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type":"origins:and",
+        "actions":[{
+        "type": "origins:execute_command",
+        "command": "particle minecraft:snowflake ~ ~3 ~ 2 0 2 0.1 10 force @s"
+      },
+      {
+        "type": "origins:execute_command",
+        "command": "particle minecraft:falling_dust minecraft:snow ~ ~3 ~ 2 0 2 1 5 force @s"
+      }
+    ]
+    },
+    "interval": 2
+},
+"sounds":{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type":"origins:and",
+        "actions":[{
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:ambient.soul_sand_valley.additions ambient @a ~ ~ ~ 1 0.5"
+        },
+      {
+        "type": "origins:execute_command",
+        "command": "playsound minecraft:ambient.soul_sand_valley.additions ambient @a ~ ~ ~ 1 0.5"
+      }
+    ]
+    },
+    "interval": 30
+},
+"fog": {
+    "type": "moborigins:fog",
+    "red": 1,
+    "green": 1,
+    "blue": 1,
+    "start": -1,
+    "end": 7
+},
+"hidden": true
+}

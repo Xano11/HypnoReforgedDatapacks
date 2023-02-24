@@ -234,6 +234,11 @@
             "permission_level": 4
             },
             {
+                "type": "origins:add_velocity",
+                "y": 0,
+                "set": true
+            },
+            {
             "type": "origins:execute_command",
             "command": "particle minecraft:glow ~ ~ ~ 0.2 0 0.2 0.01 100",
             "permission_level": 4

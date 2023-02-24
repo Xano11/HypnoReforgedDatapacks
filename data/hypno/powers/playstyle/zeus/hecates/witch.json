@@ -1,0 +1,415 @@
+{
+    "name": "Witch (Or wizard, really)",
+    "description": "The Hecates cult are known for having similar traits. They are slightly smaller, have a lesser heart.",
+    "type": "origins:multiple",
+    "scale": {
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:height 0.9",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:width 0.9",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:view_bobbing 1.1",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "entity_action_respawned": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:height 0.9",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:width 0.9",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:view_bobbing 1.1",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:height @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:width @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:view_bobbing @s",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "lesser_heart": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health decrease",
+            "attribute": "minecraft:generic.max_health",
+            "value": -2,
+            "operation": "addition"
+        }
+    },
+    "mana": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1400,
+        "start_value": 1400,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 13
+        }
+    },
+    "mana_up": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_mana",
+                    "change": 1
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:nether",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:daytime",
+                    "inverted": true
+                }
+            ]
+        },
+        "interval": 20
+    },
+    "moonshard_use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 33,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:nbt",
+                            "nbt": "{Tags:[\"moonshard\"]}"
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "mainhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/witch_moonshard_use",
+                                "change": -33
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/witch_particles_using",
+                                "change": 5
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/witch_mana",
+                                "change": 140
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 1 0 1 1 1 1 1 ~ ~1 ~ 0.6 0.2 0.6 1 50",
+                                "permission_level": 4
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "offhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/witch_moonshard_use",
+                                "change": -33
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/witch_particles_using",
+                                "change": 5
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/hecates/witch_mana",
+                                "change": 140
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 1 0 1 1 1 1 1 ~ ~1 ~ 0.6 0.2 0.6 1 50",
+                                "permission_level": 4
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "particles_using": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 5,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:magic_bow_shoot_miss_02 player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 0 1 1 1 1 1 ~ ~1 ~ 0.6 0.2 0.6 1 50",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_particles_using",
+                    "change": -5
+                }
+            ]
+        }
+    },
+    "using_moonshard": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_moonshard_use",
+                    "change": 1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_particles_using",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags:[\"moonshard\"]}"
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags:[\"moonshard\"]}"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_mana",
+                    "comparison": "<",
+                    "compare_to": 1400
+                }
+            ]
+        }
+    },
+    "reset_use": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_moonshard_use",
+                    "change": -33
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/witch_particles_using",
+                    "change": -5
+                }
+            ]
+        },
+        "condition": {
+            "type": "apugli:key_pressed",
+            "key": {
+                "key": "key.use",
+                "continuous": true
+            },
+            "inverted": true
+        },
+        "interval": 2
+    },
+    "slowdown": {
+        "type": "origins:prevent_sprinting",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:or",
+                            "conditions": [
+                                {
+                                    "type": "origins:equipped_item",
+                                    "equipment_slot": "mainhand",
+                                    "item_condition": {
+                                        "type": "origins:nbt",
+                                        "nbt": "{Tags:[\"moonshard\"]}"
+                                    }
+                                },
+                                {
+                                    "type": "origins:equipped_item",
+                                    "equipment_slot": "offhand",
+                                    "item_condition": {
+                                        "type": "origins:nbt",
+                                        "nbt": "{Tags:[\"moonshard\"]}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "apugli:key_pressed",
+                            "key": {
+                                "key": "key.use",
+                                "continuous": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.use",
+                        "continuous": true
+                    }
+                }
+            ]
+        }
+    },
+    "slowdown2": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -0.6,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags:[\"moonshard\"]}"
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags:[\"moonshard\"]}"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.use",
+                        "continuous": true
+                    }
+                }
+            ]
+        }
+    }
+}

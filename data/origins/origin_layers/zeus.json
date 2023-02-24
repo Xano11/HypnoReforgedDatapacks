@@ -10,7 +10,8 @@
           },
           "origins": [
             "hypno:playstyle/zeus/raiju",
-             "hypno:playstyle/zeus/minotaur"
+            "hypno:playstyle/zeus/minotaur",
+            "hypno:playstyle/zeus/hecates"
           ]
           }
       ],

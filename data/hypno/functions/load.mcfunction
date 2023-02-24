@@ -1,3 +1,6 @@
+#Message
+tellraw @a ["",{"text":"Hypno's","bold":true,"color":"dark_purple"}," origins were ",{"text":"updated","bold":true,"underlined":true,"color":"gold"},"! ",{"text":"(RELOAD)","bold":true,"underlined":true,"clickEvent":{"action":"run_command","value":"/reload"},"hoverEvent":{"action":"show_text","contents":["Clicking here will reload datapacks."]}}]
+
 #Particles
 scoreboard objectives add spiral1 dummy
 scoreboard objectives add spiral_slash dummy
@@ -12,6 +15,11 @@ scoreboard objectives add anchors dummy
 scoreboard objectives add stalking dummy
 scoreboard objectives add screech dummy
 scoreboard objectives add chaining dummy
+scoreboard objectives add stars dummy
+scoreboard objectives add souless dummy
+scoreboard objectives add marktp dummy
+scoreboard objectives add scythe dummy
+scoreboard objectives add scythe_owner dummy
 
 #Tower
 scoreboard objectives add elevator dummy

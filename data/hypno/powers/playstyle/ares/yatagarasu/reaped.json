@@ -1,0 +1,69 @@
+{
+    "name": "Victim",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/ares/yatagarasu/reaped"
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/reaped_duration",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "approaching": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 36,
+                    "bientity_action": {
+                        "type": "origins:add_velocity",
+                        "z": -0.2
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "scythe",
+                                "target_objective": "scythe",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @s[tag=scythe]",
+                                            "comparison": ">=",
+                                            "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": false
+}

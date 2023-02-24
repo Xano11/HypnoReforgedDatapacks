@@ -1,0 +1,158 @@
+{
+    "name": "Scythin",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 15,
+        "start_value": 15,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action":{
+            "type": "origins:execute_command",
+            "command": "kill @s"
+        }
+    },
+    "rotating": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "data modify entity @s Pose.RightArm[0] set value 36f"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/scythe_duration",
+                    "change": -1
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:collided_horizontally"
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "tp @s ~ ~1 ~"
+                    }
+                },
+                {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:area_of_effect",
+                            "radius": 1.5,
+                            "bientity_action": {
+                                "type": "origins:damage",
+                                "amount": 2,
+                                "source": {
+                                    "name": "cramming",
+                                    "bypasses_armor": true
+                                }
+                            },
+                            "bientity_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "eggolib:compare_score",
+                                        "actor_objective": "scythe",
+                                        "target_objective": "scythe",
+                                        "comparison": "=="
+                                    },
+                                    {
+                                        "type": "origins:target_condition",
+                                        "condition": {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:in_tag",
+                                                    "tag": "hypno:living"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 72f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 108f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 3,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 144f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 4,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 180f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 5,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 216f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 6,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 252f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 7,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 288f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 8,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 324f"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 9,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "data modify entity @s Pose.RightArm[0] set value 360f"
+                    }
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": false
+}

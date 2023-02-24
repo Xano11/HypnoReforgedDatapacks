@@ -1,36 +1,42 @@
 {
-    "name":"Thunderous",
-    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to teleport short distances. Using this form costs energy over time.",
+    "name": "Thunderous",
+    "description": "You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to teleport short distances. Using this form costs energy over time.",
     "type": "origins:multiple",
-    "toggle":{
+    "toggle": {
         "type": "origins:toggle",
         "active_by_default": false,
         "retain_state": false,
         "key": {
             "key": "key.origins.secondary_active"
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/discharged",
-            "inverted": true
-        },
-        {
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/stormfield_toggle",
-            "inverted": true
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">=",
-            "compare_to": 150
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/stormfield_toggle",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 150
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/emp",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "resource_use":{
+    "resource_use": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -45,20 +51,21 @@
         "interval": 15,
         "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "particles":{
+    "particles": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -68,70 +75,71 @@
                     "command": "execute at @s run particle dust_color_transition 0.54 0.99 1 1 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 5"
                 }
             ]
-        },     
+        },
         "interval": 1,
         "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "invisibility":{
+    "invisibility": {
         "type": "origins:invisibility",
         "render_armor": false,
-        "condition":  {
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
-},
-    "no_move":
-    {
+    },
+    "no_move": {
         "type": "origins:modify_velocity",
         "modifier": {
-          "value": -1,
-          "operation": "multiply_total"
+            "value": -1,
+            "operation": "multiply_total"
         },
         "axes": [
-          "x",
-          "y",
-          "z"
+            "x",
+            "y",
+            "z"
         ],
-        "condition":
-        {
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
-      },
-    "move":{
+    },
+    "move": {
         "type": "origins:active_self",
         "entity_action": {
             "type": "origins:raycast",
@@ -142,13 +150,19 @@
             "fluid_handling": "any",
             "before_action": {
                 "type": "origins:and",
-                "actions": [{
-                "type": "origins:execute_command",
-                "command": "playsound soulsweapons:gatling_gun_startup player @s ~ ~ ~ 0.5 2"
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound soulsweapons:gatling_gun_startup player @s ~ ~ ~ 0.5 2"
                     },
                     {
-                "type": "origins:execute_command",
-                "command": "playsound minecraft:block.respawn_anchor.charge player @s ~ ~ ~ 0.5 2"
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.respawn_anchor.charge player @s ~ ~ ~ 0.5 2"
+                    },
+                    {
+                        "type": "origins:add_velocity",
+                        "y": 0,
+                        "set": true
                     }
                 ]
             },
@@ -165,34 +179,35 @@
         "hud_render": {
             "should_render": false
         },
-        "condition":
-        {
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "emp":{
+    "emp": {
         "type": "origins:active_self",
         "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:execute_command",
-            "command": "power grant @s hypno:playstyle/zeus/raiju/emp"
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/zeus/raiju/emp"
                 },
-            {
-            "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/zeus/raiju/lightning_fast"
-            }
+                {
+                    "type": "origins:toggle",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                }
             ]
         },
         "cooldown": 30,
@@ -202,143 +217,145 @@
         "hud_render": {
             "should_render": false
         },
-        "condition":
-        {
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">=",
-            "compare_to": 100
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                }
+            ]
         }
-        ]
-    }
     },
-    "no_damage":{
+    "no_damage": {
         "type": "origins:modify_damage_dealt",
         "modifier": {
             "name": "No damage",
             "operation": "multiply_total",
             "value": -1
         },
-        "condition":
-        {
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "no_block_interaction":
-    {
+    "no_block_interaction": {
         "type": "origins:prevent_block_selection",
         "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "no_block_use":
-    {
+    "no_block_use": {
         "type": "origins:prevent_block_use",
         "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "no_jump":{
+    "no_jump": {
         "type": "origins:modify_jump",
         "modifier": {
             "operation": "multiply_total",
             "value": -1
         },
-        "condition":
-        {
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "prevent_item_use":{
+    "prevent_item_use": {
         "type": "origins:prevent_item_use",
         "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:power_active",
-            "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": ">",
-            "compare_to": 0
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
-        ]
-    }
     },
-    "cancel":
-    {
+    "cancel": {
         "type": "origins:self_action_when_hit",
         "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:execute_command",
-            "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
-            },
-            {
-                "type": "origins:toggle",
-                "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-            }
-    ]
-    },
-    "condition": {
-        "type": "origins:and",
-        "conditions": [{
-        "type": "origins:power_active",
-        "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
-    }
-    ]
-    },
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
+                },
+                {
+                    "type": "origins:toggle",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                }
+            ]
+        },
         "cooldown": 1,
         "hud_render": {
             "should_render": false

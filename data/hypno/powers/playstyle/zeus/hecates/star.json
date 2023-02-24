@@ -1,0 +1,130 @@
+{
+    "name": "Star",
+    "type": "origins:multiple",
+    "tp": {
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "spreadplayers ~ ~ 72 72 false @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "tp @s ~ ~100 ~",
+                        "permission_level": 4
+                    }
+                }
+            ]
+        }
+    },
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "looking_at": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/hecates/star_duration",
+                    "change": -20
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:glow ~ ~1 ~ 1 1 1 1 10 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:end_rod ~ ~1 ~ 1 1 1 0.1 10 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=full_moon] run particle minecraft:dust_color_transition 1 1 1 2 0 0 0 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=new_moon] run particle minecraft:dust_color_transition 0 0 0 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=first_quarter] run particle minecraft:dust_color_transition 1 0 0 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=third_quarter] run particle minecraft:dust_color_transition 1 0 1 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=waning_gibbous] run particle minecraft:dust_color_transition 0.5 0 1 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=waning_crescent] run particle particle minecraft:dust_color_transition 1 0 0.4 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=waxing_gibbous] run particle minecraft:dust_color_transition 0 0 1 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=waxing_crescent] run particle minecraft:dust_color_transition 1 0.6 0 2 1 1 1 ~ ~1 ~ 0.05 0.05 0.05 1 100 force @a"
+                }
+            ]
+        },
+        "interval": 20
+    },
+    "no_velocity": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -1,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+    "hidden": true
+}

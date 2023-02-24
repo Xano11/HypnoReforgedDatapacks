@@ -18,8 +18,13 @@
             "compare_to": 100
         },
         {
-            "type": "origins:power_active",
+            "type": "origins:power",
             "power": "hypno:playstyle/zeus/raiju/discharged",
+            "inverted": true
+        },
+        {
+            "type": "origins:power",
+            "power": "hypno:playstyle/zeus/raiju/emp",
             "inverted": true
         }
     ]
@@ -247,7 +252,7 @@
                 }
             ]
         },
-        "cooldown": 10,
+        "cooldown": 5,
         "key": {
             "key": "key.attack",
             "continuous": false
@@ -277,7 +282,7 @@
         "min": 0,
         "max": 3,
         "start_value": 0,
-        "max_value":{
+        "max_action":{
             "type": "origins:and",
             "actions": [
                 {

@@ -131,13 +131,13 @@
                 "type": "origins:and",
                 "conditions": [
                     {
+                        "type": "origins:in_tag",
+                        "tag": "hypno:living"
+                    },
+                    {
                         "type": "origins:origin",
                         "origin": "hypno:playstyle/artemis/fenrirkin",
                         "layer": "origins:artemis"
-                    },
-                    {
-                        "type": "origins:in_tag",
-                        "tag": "hypno:living"
                     }
                 ]
             }
@@ -354,6 +354,15 @@
             "comparison": "==",
             "compare_to": 5
         }
+    },
+    "fog":
+    {
+        "type": "moborigins:fog",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "start": -1,
+        "end": 20
     },
     "glow": {
         "type": "origins:self_glow",

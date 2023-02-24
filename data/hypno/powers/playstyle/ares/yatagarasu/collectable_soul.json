@@ -1,0 +1,63 @@
+{
+    "name": "Collectable Soul",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "kill @s"
+        }
+    },
+    "invisible": {
+        "type": "eggolib:invisibility",
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:power",
+                "power": "hypno:playstyle/ares/yatagarasu/dead"
+            },
+            "inverted": true
+        },
+        "render_armor": false
+    },
+    "swirl": {
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/block/warped_stem.png",
+        "speed": 0.01
+    },
+    "duration_usage": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/collectable_soul_duration",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "prevent_collision": {
+        "type": "origins:prevent_entity_collision"
+    },
+    "prevent_usage": {
+        "type": "origins:prevent_being_used",
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:power",
+                "power": "hypno:playstyle/ares/yatagarasu/dead"
+            },
+            "inverted": true
+        }
+    },
+    "hidden": false
+}

@@ -1,0 +1,29 @@
+{
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type":"origins:and",
+        "actions":[{
+            "type": "origins:add_velocity",
+            "y": 1.2
+        },
+    {
+        "type": "origins:execute_command",
+        "command": "particle minecraft:cloud ~ ~ ~ 0.3 1 0.3 0.1 100"
+    },
+    {
+        "type":"origins:delay",
+        "ticks":1,
+        "action":
+        {
+            "type": "origins:and",
+            "actions": [{
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/hephaestus/golem/concussed"
+        }
+    ]
+        }
+    }
+]
+},
+    "hidden": true
+}
