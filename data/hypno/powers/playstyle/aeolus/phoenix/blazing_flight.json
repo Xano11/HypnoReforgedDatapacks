@@ -61,6 +61,47 @@
             "continuous": true
         } 
     },
+    "sound":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:elemental_bow_fire_shoot_flyby_02 player @s ~ ~ ~ 1 0.7"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound naturalist:entity.vulture.death player @a ~ ~ ~ 1 0.7"
+                }
+            ]
+        },
+        "condition":
+        {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:resource",
+                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                "comparison": ">",
+                "compare_to": 5
+            },
+            {
+                "type": "origins:fluid_height",
+                "fluid": "minecraft:water",
+                "comparison": "==",
+                "compare_to": 0
+            }
+            ]
+        },
+        "cooldown": 5,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        } 
+    },
     "speed":
     {
         "type": "origins:modify_swim_speed",

@@ -1,9 +1,8 @@
 {
-    "name":"Stormed",
-    "description":"Electricity is building up...",
+    "name": "Stormed",
+    "description": "Electricity is building up...",
     "type": "origins:multiple",
-    "stacks":
-    {
+    "stacks": {
         "type": "origins:resource",
         "min": 0,
         "max": 6,
@@ -28,25 +27,23 @@
                         "unblockable": true
                     }
                 },
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "summon minecraft:lightning_bolt"
                 }
-               
             ]
         },
         "min_action": {
             "type": "origins:and",
             "actions": [
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/zeus/raiju/storm"
                 }
-               
             ]
         }
     },
-    "stacks_down":{
+    "stacks_down": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
@@ -54,21 +51,27 @@
             "change": -1
         },
         "interval": 20,
-        "condition":
-        {
+        "condition": {
             "type": "apugli:entity_in_radius",
             "condition": {
-                "type": "origins:origin",
-                "origin": "hypno:playstyle/zeus/raiju",
-                "layer": "origins:zeus"
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:in_tag",
+                        "tag": "hypno:living"
+                    },
+                    {
+                        "type": "origins:power_active",
+                        "power": "hypno:playstyle/zeus/raiju/stormfield_toggle"
+                    }
+                ]
             },
             "radius": 16.0,
             "comparison": "==",
             "compare_to": 0
         }
     },
-    "tag":
-    {
+    "tag": {
         "type": "origins:action_on_callback",
         "entity_action_gained": {
             "type": "origins:execute_command",
@@ -79,7 +82,7 @@
             "command": "tag @s remove shocked"
         }
     },
-    "slow1":{
+    "slow1": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -87,14 +90,14 @@
             "value": -0.05,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 1
         }
     },
-    "overlay1":{
+    "overlay1": {
         "type": "origins:overlay",
         "texture": "twigs:textures/item/petrified_lichen.png",
         "strength": 0.1,
@@ -105,14 +108,14 @@
         "draw_phase": "below_hud",
         "hide_with_hud": false,
         "visible_in_third_person": false,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 1
         }
     },
-    "slow2":{
+    "slow2": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -120,14 +123,14 @@
             "value": -0.10,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 2
         }
     },
-    "overlay2":{
+    "overlay2": {
         "type": "origins:overlay",
         "texture": "twigs:textures/item/petrified_lichen.png",
         "strength": 0.2,
@@ -138,14 +141,14 @@
         "draw_phase": "below_hud",
         "hide_with_hud": false,
         "visible_in_third_person": false,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 2
         }
     },
-    "slow3":{
+    "slow3": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -153,14 +156,14 @@
             "value": -0.15,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 3
         }
     },
-    "overlay3":{
+    "overlay3": {
         "type": "origins:overlay",
         "texture": "twigs:textures/item/petrified_lichen.png",
         "strength": 0.3,
@@ -171,14 +174,14 @@
         "draw_phase": "below_hud",
         "hide_with_hud": false,
         "visible_in_third_person": false,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 3
         }
     },
-    "slow4":{
+    "slow4": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -186,14 +189,14 @@
             "value": -0.20,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 4
         }
     },
-    "overlay4":{
+    "overlay4": {
         "type": "origins:overlay",
         "texture": "twigs:textures/item/petrified_lichen.png",
         "strength": 0.4,
@@ -204,14 +207,14 @@
         "draw_phase": "below_hud",
         "hide_with_hud": false,
         "visible_in_third_person": false,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 4
         }
     },
-    "slow5":{
+    "slow5": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
@@ -219,14 +222,14 @@
             "value": -0.25,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 5
         }
     },
-    "overlay5":{
+    "overlay5": {
         "type": "origins:overlay",
         "texture": "twigs:textures/item/petrified_lichen.png",
         "strength": 0.5,
@@ -237,41 +240,41 @@
         "draw_phase": "below_hud",
         "hide_with_hud": false,
         "visible_in_third_person": false,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 5
         }
     },
-    "glow":{
+    "glow": {
         "type": "origins:self_glow",
         "use_teams": false,
         "red": 1.0,
         "green": 1.0,
         "blue": 0.0,
         "bientity_condition": {
-            "type":"origins:and",
-            "conditions":[{
-            "type": "origins:actor_condition",
-            "condition": {
-                "type": "origins:origin",
-                "origin": "hypno:playstyle/zeus/raiju",
-                "layer": "origins:zeus"
-            }
-            },
-            {
-            "type":"origins:target_condition",
-            "condition":
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-                "comparison": "==",
-                "compare_to": 5
-            }
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "hypno:playstyle/zeus/raiju",
+                        "layer": "origins:zeus"
+                    }
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
+                        "comparison": "==",
+                        "compare_to": 5
+                    }
+                }
+            ]
         }
-    ]
-    }
     },
     "hidden": true
 }

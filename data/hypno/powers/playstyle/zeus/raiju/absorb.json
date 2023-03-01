@@ -1,62 +1,68 @@
 {
-    "name":"Lightning Eater",
-    "description":"You do not take damage from lighting; In comparison, you get infused by it. Being infused makes you powerful and allows you to recharge your electro-bar faster. Additionally, you can inflict stacks of shock to your enemies. At 3 stacks, they get damaged by lighting.",
+    "name": "Lightning Eater",
+    "description": "You do not take damage from lighting; In comparison, you get infused by it. Being infused makes you powerful and allows you to recharge your electro-bar faster. Additionally, you can inflict stacks of SHOCK to your enemies.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Entities affected by SHOCK deal 20% less damage. Upon reaching the third stack of SHOCK, they will be hit with lightning for additional damage!"
+        }
+    ],
     "type": "origins:multiple",
-    "immunity":{
+    "immunity": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
-            "type":"origins:or",
-            "conditions":[ 
-        {
-            "type": "origins:name",
-            "name": "lightningBolt"
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:name",
+                    "name": "lightningBolt"
+                },
+                {
+                    "type": "origins:name",
+                    "name": "lightningBolt.player"
+                }
+            ]
         },
-        {
-            "type": "origins:name",
-            "name": "lightningBolt.player"
-        }
-    ]
-},
         "modifier": {
-            "name": "immune",
+            "name": "Immune",
             "operation": "multiply_total",
-            "value": -0.99
+            "value": -1
+        },
+        "self_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/zeus/raiju/infused"
+                },
+                {
+                    "type": "origins:extinguish"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:power_active",
+                        "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
+                            },
+                            {
+                                "type": "origins:toggle",
+                                "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     },
-    "infused":{
-        "type": "origins:self_action_when_hit",
-        "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:execute_command",
-            "command": "power grant @s hypno:playstyle/zeus/raiju/infused"
-        },
-        {
-            "type": "origins:extinguish"
-        }
-        ]
-        },
-        "damage_condition": {
-            "type":"origins:or",
-            "conditions":[ 
-        {
-            "type": "origins:name",
-            "name": "lightningBolt"
-        },
-        {
-            "type": "origins:name",
-            "name": "lightningBolt.player"
-        }
-    ]
-    },
-        "cooldown": 20,
-        "hud_render": {
-            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-            "bar_index": 5,
-            "should_render": false
-        }
-    },
-    "redirect":{
+    "redirect": {
         "type": "apugli:redirect_lightning",
         "chance": 0.50
     },

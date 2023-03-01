@@ -1,6 +1,6 @@
 {
-    "name": "Witch (Or wizard, really)",
-    "description": "The Hecates cult are known for having similar traits. They are slightly smaller, have a lesser heart.",
+    "name": "Soul-thirsty spirit",
+    "description": "You're the soul of a legendary crow, but stuck in mortal flesh. Through this body, you're able to interact with the living and the unliving. To feast upon souls, you must travel to the Realm in Between and [USE] the souls left there. But, beware of Smite, it will destroy the fragile bond between your frail body and your soul.",
     "type": "origins:multiple",
     "lesser_heart": {
         "type": "origins:attribute",
@@ -14,34 +14,108 @@
     "souls": {
         "type": "origins:resource",
         "min": 0,
-        "max": 10,
-        "start_value": 10,
+        "max": 15,
+        "start_value": 15,
         "hud_render": {
             "should_render": true,
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
             "bar_index": 5
         }
     },
-    "soulcollector":
+    "refill":
     {
+        "type": "origins:action_on_callback",
+        "entity_action_respawned": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
+            "change": 15
+        },
+        "execute_chosen_when_orb": true
+    },
+    "undead":{
+        "type": "origins:entity_group",
+        "group": "undead"
+    },
+    "soulcollector": {
         "type": "apugli:action_on_target_death",
         "bientity_action": {
-        "type": "origins:target_action",
-        "action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:execute_command",
-            "command": "summon allay ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
-            "permission_level": 4
-        },
-        {
-            "type": "origins:execute_command",
-            "command": "power grant @e[limit=1,sort=nearest,type=minecraft:allay,tag=yatagarasu_soul] hypno:playstyle/ares/yatagarasu/collectable_soul",
-            "permission_level": 4
-        }
-    ]
-        }
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "summon allay ~ ~1 ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @e[limit=1,sort=nearest,type=minecraft:allay,tag=yatagarasu_soul] hypno:playstyle/ares/yatagarasu/collectable_soul",
+                        "permission_level": 4
+                    }
+                ]
+            }
         },
         "includes_prime_adversary": false
+    },
+    "smite":{
+        "type": "apugli:modify_enchantment_damage_taken",
+        "enchantment": "minecraft:smite",
+        "base_value": 3,
+        "modifier": {
+            "operation": "addition",
+            "value": 1
+        },
+        "bientity_action": {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:chance",
+                "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "summon allay ~ ~1 ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @e[limit=1,sort=nearest,type=minecraft:allay,tag=yatagarasu_soul] hypno:playstyle/ares/yatagarasu/collectable_soul",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:sonic_boom ~ ~1 ~ 0 0 0 1 1",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:entity.warden.sonic_charge player @a ~ ~ ~ 1 2",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
+                        "change": -1
+                    }
+                ]
+            },
+            "chance": 0.20
+        }
+        }
+    },
+    "weakened_link":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Instant Death",
+            "operation": "multiply_total",
+            "value": 10
+        },
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
+            "comparison": "==",
+            "compare_to": 0
+        }
     }
 }

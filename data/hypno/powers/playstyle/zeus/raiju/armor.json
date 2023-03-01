@@ -1,6 +1,13 @@
 {
-    "name":"Energetic",
-    "description":"You can't wear armor that is equal or better than diamond armor. Being a being of colossal energy, diamonds insulate your energy and prevents you from using any of that same energy. Additionally, iron armor gives you a slight amount of toughness.",
+    "name":"Conductive Armor",
+    "description":"You can't wear armor that is equal or better than diamond armor. Being a being of colossal energy, diamonds insulate your energy and prevents you from using any of that same energy.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Additionally, iron armor gives you a slight amount of toughness."
+        }
+    ],
     "type": "origins:multiple",
     "restrict":{
         "type": "origins:restrict_armor",

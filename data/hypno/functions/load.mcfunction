@@ -20,6 +20,7 @@ scoreboard objectives add souless dummy
 scoreboard objectives add marktp dummy
 scoreboard objectives add scythe dummy
 scoreboard objectives add scythe_owner dummy
+scoreboard objectives add rekindle dummy
 
 #Tower
 scoreboard objectives add elevator dummy

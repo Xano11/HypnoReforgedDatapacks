@@ -1,6 +1,13 @@
 {
-    "name":"The Calm before the Storm",
-    "description":"Using your [PRIMARY ABILITY KEY], you create a storm field around you. In this 16 block radius area, lightning randomly hits the ground. Additionally, entities that stay in the field slowly lose speed up to 25% and take damage over a duration.",
+    "name":"Land of the Storms",
+    "description":"Using your [PRIMARY ABILITY KEY], you create a storm field around you. In this 16 block radius area, lightning randomly hits the ground. Additionally, entities that stay in the field slowly lose speed up to 25% and take damage over a duration. Finally, holding [SECONDARY ABILITY KEY] with Stormfield toggled on will cast lighting to recharge your bar.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Upon staying too long in the stormfield, entities will glow yellow, allowing you to teleport to them upon attacking whilst in mid-air."
+        }
+    ],
     "type": "origins:multiple",
     "toggle":{
         "type": "origins:toggle",
@@ -252,7 +259,7 @@
                 }
             ]
         },
-        "cooldown": 5,
+        "cooldown": 3,
         "key": {
             "key": "key.attack",
             "continuous": false

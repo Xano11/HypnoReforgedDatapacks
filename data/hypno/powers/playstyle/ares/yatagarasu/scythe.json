@@ -24,6 +24,10 @@
                     "command": "data modify entity @s Pose.RightArm[0] set value 36f"
                 },
                 {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:soul_fire_flame ~ ~1 ~ 0 0 0 0 1"
+                },
+                {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/ares/yatagarasu/scythe_duration",
                     "change": -1

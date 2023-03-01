@@ -2,7 +2,8 @@
 	"powers": [
         "hypno:playstyle/ares/yatagarasu/traveler",
         "hypno:playstyle/ares/yatagarasu/reaper",
-		"hypno:playstyle/ares/yatagarasu/crow"
+		"hypno:playstyle/ares/yatagarasu/crow",
+		"hypno:playstyle/ares/yatagarasu/souleater"
 	],
 	"icon": {
 		"item": "soulsweapons:chaos_orb",

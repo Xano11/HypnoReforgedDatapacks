@@ -1,9 +1,16 @@
 {
     "name": "Wither skeleton",
     "type": "origins:multiple",
-    "damaged":
-    {
-        "type": "origins:action_when_damage_taken",
+    "lesser_damage": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Nearly Invulnerable",
+            "operation": "multiply_total",
+            "value": -0.99
+        }
+    },
+    "on_hit": {
+        "type": "origins:self_action_when_hit",
         "entity_action": {
             "type": "origins:and",
             "actions": [
@@ -17,6 +24,10 @@
                 },
                 {
                     "type": "origins:execute_command",
+                    "command": "execute as @a if score @s souless = @e[limit=1,sort=nearest] souless run power grant @s hypno:playstyle/ares/yatagarasu/forced_back"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "execute as @a if score @s souless = @e[limit=1,sort=nearest] souless run power remove @s hypno:playstyle/ares/yatagarasu/dead"
                 },
                 {
@@ -25,7 +36,7 @@
                 }
             ]
         },
-        "cooldown": 1
+        "cooldown": 10
     },
     "no_damage": {
         "type": "origins:modify_damage_dealt",
@@ -35,13 +46,12 @@
             "value": -1
         }
     },
-    "swirl":{
+    "swirl": {
         "type": "apugli:energy_swirl",
         "texture_location": "minecraft:textures/block/soul_sand.png",
         "speed": 0.01
     },
-    "particle":
-    {
+    "particle": {
         "type": "origins:particle",
         "particle": "minecraft:soul",
         "frequency": 2

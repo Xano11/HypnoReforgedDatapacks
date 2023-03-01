@@ -1,6 +1,6 @@
 {
     "name": "Anchor",
-    "description": "Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
+    "description": "Upon [USING] the top of an underwater block, you will create a SOUL ANCHOR. Soul anchors will ",
     "type": "origins:multiple",
     "use": {
         "type": "origins:action_on_block_use",
@@ -174,6 +174,72 @@
                                             "command": "execute if entity @e[distance=..24,tag=hooked]",
                                             "comparison": ">=",
                                             "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "max_anchor": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 72,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:damage",
+                                    "amount": 3,
+                                    "source": {
+                                        "name": "generic",
+                                        "unblockable": true,
+                                        "bypasses_armor": true
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:actor_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "apugli:entity_in_radius",
+                                            "bientity_condition":{
+                                            "type": "origins:and",
+                                            "conditions": [{
+                                                "type": "eggolib:compare_score",
+                                                "actor_objective": "anchors",
+                                                "target_objective": "anchors",
+                                                "comparison": "=="
+                                            },
+                                            {
+                                                "type": "origins:target_condition",
+                                                "condition": {
+                                                "type": "origins:entity_type",
+                                                "entity_type": "minecraft:drowned"
+                                            }
+                                        }
+                                        ]
+                                        },
+                                            "radius": 72,
+                                            "comparison": ">",
+                                            "compare_to": 3
                                         }
                                     ]
                                 }

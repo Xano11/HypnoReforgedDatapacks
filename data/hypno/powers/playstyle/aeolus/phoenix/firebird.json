@@ -15,7 +15,7 @@
         "self_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
-            "change": 10
+            "change": 5
         }
     },
     "health":

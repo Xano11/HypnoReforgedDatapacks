@@ -143,6 +143,10 @@
                             },
                             {
                                 "type": "origins:execute_command",
+                                "command": "execute as @a if score @s scythe_owner = @p scythe_owner at @s run resource change @s hypno:playstyle/ares/yatagarasu/crow_souls 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
                                 "command": "kill @e[limit=1,sort=nearest,tag=soul_collector]"
                             }
                         ]

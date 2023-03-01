@@ -8,49 +8,49 @@
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/tropical"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/tropical"
                     },
                     "weight": 2
                 },
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/cod"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/cod"
                     },
                     "weight": 2
                 },
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/misc1"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/misc1"
                     },
                     "weight": 1
                 },
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/misc2"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/misc2"
                     },
                     "weight": 2
                 },
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/misc3"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/misc3"
                     },
                     "weight": 3
                 },
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/salmon"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/salmon"
                     },
                     "weight": 2
                 },
                 {
                     "element": {
                         "type": "origins:execute_command",
-                        "command": "power grant @s hypno:playstyle/aeolus/konakadeit/fishing/pufferfish"
+                        "command": "power grant @s hypno:playstyle/aeolus/akhlut/fishing/pufferfish"
                     },
                     "weight": 1
                 }

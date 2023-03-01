@@ -175,7 +175,7 @@
             },
             {
                 "type": "origins:execute_command",
-                "command": "execute as @e[tag=disguise_tp,limit=1,sort=nearest] run scoreboard players set @s disguised 0 "
+                "command": "execute as @e[tag=disguise_tp,limit=1,sort=nearest] run scoreboard players reset @s disguised"
             },
             {
                 "type": "origins:execute_command",

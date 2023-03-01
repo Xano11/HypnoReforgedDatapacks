@@ -303,7 +303,7 @@
             },
             {
             "type": "origins:execute_command",
-            "command": "resource set @s hypno:playstyle/hermes/ratatoskr/dysfunction_resource 20",
+            "command": "resource set @s hypno:playstyle/hermes/ratatoskr/dysfunction_resource 15",
             "permission_level": 4
             },
             {

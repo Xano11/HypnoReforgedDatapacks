@@ -8,7 +8,8 @@
 		"hypno:playstyle/aeolus/phoenix/blazing_flight"
 	],
 	"icon": {
-		"item": "soulsweapons:lord_soul_red"
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:5,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":1}"
 	},
 	"order": 1,
 	"impact": 0,

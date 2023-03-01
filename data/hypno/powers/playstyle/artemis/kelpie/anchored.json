@@ -218,5 +218,12 @@
             ]
         }
     },
+    "no_healing":{
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
     "hidden": false
 }

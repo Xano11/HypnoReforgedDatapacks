@@ -302,6 +302,11 @@
           {
             "type": "origins:trigger_cooldown",
             "power": "hypno:playstyle/zeus/minotaur/slam_activation"
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_falling_resource",
+          "change": -30
         }
       ]
   },

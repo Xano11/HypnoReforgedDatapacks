@@ -23,6 +23,9 @@
                     "command": "power remove @s hypno:playstyle/artemis/fenrirkin/wild"
                 }
             ]
+        },
+        "hud_render": {
+            "should_render": false
         }
     },
     "movement_increase": {

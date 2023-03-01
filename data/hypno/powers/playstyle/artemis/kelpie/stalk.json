@@ -45,6 +45,160 @@
             ]
         }
     },
+    "hook": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 32,
+                    "block": false,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add hooked"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/artemis/kelpie/fearful"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:block.chain.step player @a ~ ~ ~ 1 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:block minecraft:chain ~ ~1 ~ 0.3 0.3 0.3 1 100"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle supplementaries:green_flame ~ ~1 ~ 0.3 0.3 0.3 0.05 10"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "execute store result score @s anchors run data get entity @p[tag=kelpie_anchor] UUID[0] 1"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s remove hook"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add kelpie_anchor"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute store result score @s anchors run data get entity @s UUID[0] 1"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 2,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "tag @s remove kelpie_anchor"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @s[tag=hooked]",
+                                            "comparison": "==",
+                                            "compare_to": 0
+                                        },
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @s[tag=anchor]",
+                                            "comparison": "==",
+                                            "compare_to": 0
+                                        },
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "command_at_hit": "particle supplementaries:green_flame ~ ~1 ~ 0.2 0.2 0.2 0.1 100",
+                    "command_step": 0.4,
+                    "command_along_ray_only_on_hit": false
+                }
+            ]
+        },
+        "cooldown": 5,
+        "key": {
+            "key": "key.attack",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @s[tag=hook]",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water"
+                },
+                {
+                    "type": "origins:swimming",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:moving",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/artemis/kelpie/stalk_transparency",
+                    "comparison": "==",
+                    "compare_to": 10
+                }
+            ]
+        }
+    },
     "stalking": {
         "type": "origins:active_self",
         "entity_action": {

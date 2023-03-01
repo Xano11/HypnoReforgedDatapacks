@@ -13,7 +13,7 @@
             "type":"origins:and",
             "actions":[{
             "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/aeolus/konakadeit/fishing/tropical"
+            "command": "power remove @s hypno:playstyle/aeolus/akhlut/fishing/pufferfish"
                 }
             ]
         }
@@ -43,14 +43,14 @@
             "type":"origins:and",
             "actions":[{
         "type": "origins:execute_command",
-         "command": "summon item ~ ~ ~ {PickupDelay:30,Motion:[0.0,0.0,0.1],Item:{id:\"minecraft:tropical_fish\",Count:1b}}"
+         "command": "summon item ~ ~ ~ {PickupDelay:30,Motion:[0.0,0.0,0.1],Item:{id:\"minecraft:pufferfish\",Count:1b}}"
             },
             {
         "type":"origins:delay",
         "ticks":1,
         "action":{
         "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/aeolus/konakadeit/fishing/tropical"
+        "command": "power remove @s hypno:playstyle/aeolus/akhlut/fishing/pufferfish"
             }
         }
         ]
@@ -63,7 +63,7 @@
             "actions": [
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
                     "change": 4
                 }
             ]
@@ -84,7 +84,7 @@
             "actions": [
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
                     "change": -4
                 }
             ]
@@ -112,23 +112,23 @@
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
-                        "change": 10
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
+                        "change": -15
                     },
                     "weight": 1
                 },
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
-                        "change": 15
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
+                        "change": -5
                     },
-                    "weight": 2
+                    "weight": 4
                 },
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
                         "change": -10
                     },
                     "weight": 4
@@ -136,8 +136,16 @@
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
                         "change": 5
+                    },
+                    "weight": 4
+                },
+                {
+                    "element": {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
+                        "change": 3
                     },
                     "weight": 4
                 }
@@ -152,7 +160,7 @@
             "actions": [
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_reward",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_reward",
                     "change": 1
                 },
                 {
@@ -167,13 +175,13 @@
             "conditions": [
                 {
                     "type": "origins:resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
                     "comparison": ">=",
                     "compare_to": 300
                 },
                 {
                     "type": "origins:resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/tropical_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/pufferfish_bar",
                     "comparison": "<=",
                     "compare_to": 400
                 }

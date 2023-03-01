@@ -27,6 +27,9 @@
                     "command": "playsound minecraft:block.chain.break player @a ~ ~ ~ 2 0.5"
                 }
             ]
+        },
+        "hud_render": {
+            "should_render": false
         }
     },
     "movement_increase": {
@@ -172,89 +175,6 @@
             "type": "origins:amount",
             "comparison": ">=",
             "compare_to": 4.0
-        },
-        "cooldown": 20
-    },
-    "wallrun": {
-        "type": "apugli:hover",
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:or",
-                    "conditions": [
-                        {
-                            "type": "origins:block_collision",
-                            "offset_x": 0.2,
-                            "offset_y": 0,
-                            "offset_z": 0.2
-                        },
-                        {
-                            "type": "origins:block_collision",
-                            "offset_x": -0.2,
-                            "offset_y": 0,
-                            "offset_z": -0.2
-                        }
-                    ]
-                },
-                {
-                    "type": "origins:resource",
-                    "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer",
-                    "comparison": "==",
-                    "compare_to": 0
-                }
-            ]
-        }
-    },
-    "leap": {
-        "type": "origins:active_self",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:add_velocity",
-                    "z": 1,
-                    "space": "local"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "particle minecraft:snowflake ~ ~ ~ 0.1 0.1 0.1 1 100"
-                }
-            ]
-        },
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:or",
-                    "conditions": [
-                        {
-                            "type": "origins:block_collision",
-                            "offset_x": 0.2,
-                            "offset_y": 0,
-                            "offset_z": 0.2
-                        },
-                        {
-                            "type": "origins:block_collision",
-                            "offset_x": -0.2,
-                            "offset_y": 0,
-                            "offset_z": -0.2
-                        }
-                    ]
-                },
-                {
-                    "type": "origins:resource",
-                    "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer",
-                    "comparison": "==",
-                    "compare_to": 0
-                }
-            ]
-        },
-        "hud_render": {
-            "should_render": false
-        },
-        "key": {
-            "key": "key.jump"
         },
         "cooldown": 20
     },

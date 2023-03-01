@@ -1,27 +1,27 @@
 {
-    "name":"Rekindled",
-    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "name": "Rekindled",
+    "description": "You are infused. You are fire resistant and able to use new abilities.",
     "type": "origins:multiple",
-    "fire_immune":{
+    "fire_immune": {
         "type": "origins:modify_damage_taken",
-        "damage_condition":  {
+        "damage_condition": {
             "type": "origins:fire"
-        }
-        ,
+        },
         "modifier": {
-            "name": "Weak to cursed items",
+            "name": "No fire damage",
             "operation": "multiply_total",
             "value": -1
         }
     },
-    "healing":{
+    "healing": {
         "type": "origins:action_over_time",
         "entity_action": {
-                    "type":"origins:and",
-                    "actions":[{
-                        "type": "origins:heal",
-                        "amount": 1
-                    },
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:heal",
+                    "amount": 1
+                },
                 {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:dust_color_transition 1 0.2 0 1 1 0.5 0 ~ ~1 ~ 0.5 0.5 0.5 0.1 50"
@@ -38,11 +38,103 @@
         },
         "interval": 30
     },
-    "energy_swirl":
-    {
+    "energy_swirl": {
         "type": "apugli:energy_swirl",
         "texture_location": "minecraft:textures/item/blaze_powder.png",
         "speed": 0.005
+    },
+    "head_follow": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @e[limit=1,sort=nearest] rekindle store result entity @s Rotation[0] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[0] 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @e[limit=1,sort=nearest] rekindle store result entity @s Rotation[1] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[1] 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @e[limit=1,sort=nearest] rekindle run tp @s ^-0.5 ^ ^-1"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @e[limit=1,sort=nearest] rekindle run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/aeolus/phoenix/rekindled"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/phoenix/rekindled_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "death": {
+        "type": "epoli:action_on_death",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @e[limit=1,sort=nearest] rekindle run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s rekindle"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/aeolus/phoenix/rekindled"
+                }
+            ]
+        }
+    },
+    "leave": {
+        "type": "origins:action_on_callback",
+        "entity_action_removed": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @e[limit=1,sort=nearest] rekindle run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s rekindle"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/aeolus/phoenix/rekindled"
+                }
+            ]
+        },
+        "execute_chosen_when_orb": false
     },
     "hidden": true
 }

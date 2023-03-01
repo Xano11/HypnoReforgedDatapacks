@@ -1,6 +1,13 @@
 {
     "name":"Energetic",
-    "description":"You have an electro-bar. If your bar is at 1 bar or lower, you suffer from reduced movement, attack speed, armor, attack damage and healing. The bar recharges passively, whhen you get hit by lightning and during thunderstorms, it recharges faster. Additionally, being hit by an arrow with piercing will create an energy leak.",
+    "description":"You have an electro-bar. If your bar is at 1 bar or lower, you suffer from weakned attributes. The bar recharges passively and when you get hit by lightning and during thunderstorms. Additionally, being hit by an arrow with piercing will create an energy leak.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Weakened attributes are the following : -40% movement speed, -50% healing received, -4 armor points, -25% melee damage and -30% attack speed."
+        }
+    ],
     "type": "origins:multiple",
     "bar_up":{
         "type": "origins:action_over_time",
@@ -57,12 +64,20 @@
         }
     },
     "leak2":{
-        "type": "origins:self_action_when_hit",
+        "type": "origins:self_action_on_hit",
         "entity_action": {
+            "type":"origins:and",
+            "actions":[{
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "change": -300
+            "change": -100
         },
+        {
+        "type": "origins:execute_command",
+        "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
+    }
+    ]
+    },
         "damage_condition": {
             "type": "origins:attacker",
             "condition": {

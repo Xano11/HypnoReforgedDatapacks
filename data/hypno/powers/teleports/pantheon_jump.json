@@ -4,19 +4,22 @@
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:area_of_effect",
-            "radius": 1,
+            "radius": 1.5,
             "bientity_action": {
                 "type": "origins:target_action",
                 "action": {
                     "type":"origins:and",
                     "actions":[{
+                        "type": "moborigins:jump"
+                      }, 
+                        {
                         "type": "origins:execute_command",
                         "command": "execute anchored eyes facing -158.5 81.5 -101.00 run tp @s ~ ~ ~ ~ ~"
                     }, 
                     {
                         "type": "origins:add_velocity",
-                        "z": -12,
-                        "y": 1.2,
+                        "z": -15,
+                        "y": 1.4,
                         "space":"world",
                         "set": true
                     },

@@ -188,7 +188,10 @@
                 "command": "playsound minecraft:block.chain.break player @a ~ ~ ~ 2 0.5"
             }
         ]
-    }
+    },
+    "hud_render": {
+      "should_render": false
+  }
 },
 "no_move": {
   "type": "origins:modify_velocity",

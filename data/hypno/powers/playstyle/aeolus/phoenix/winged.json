@@ -16,17 +16,12 @@
             "actions": [
                 {
                     "type": "origins:trigger_cooldown",
-                    "power": "hypno:playstyle/aeolus/phoenix/wings"
+                    "power": "hypno:playstyle/aeolus/phoenix/wings_use"
                 },
                 {
-                    "type":"origins:delay",
-                    "ticks":1,
-                    "action":
-                    {
                     "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/aeolus/phoenix/winged"
-                    }
-            }
+                }
             ]
         }  
     },

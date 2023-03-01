@@ -1,0 +1,95 @@
+{
+    "name": "Marked for death",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/ares/yatagarasu/forced_back"
+                }
+            ]
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/forced_back_duration",
+                    "change": -5
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sculk_soul ~ ~1 ~ 0.5 0.5 0.5 0.1 10"
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "fog": {
+        "type": "moborigins:fog",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "start": -1,
+        "end": 30
+    },
+    "fog_death": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 2
+    },
+    "health":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Decreased health",
+            "attribute": "minecraft:generic.max_health",
+            "value": -10,
+            "operation": "addition"
+        }
+    },
+      "no_movement": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -0.5,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+    "no_damage": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "Less damage",
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "no_sprint": {
+        "type": "origins:prevent_sprinting"
+    },
+    "no_camera_move": {
+        "type": "eggolib:modify_mouse_sensitivity",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.25
+        }
+    }
+}

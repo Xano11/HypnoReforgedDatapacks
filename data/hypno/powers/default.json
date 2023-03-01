@@ -14,8 +14,8 @@
         "type": "origins:modify_status_effect_amplifier",
         "status_effect": "minecraft:strength",
         "modifier": {
-            "operation": "set_total",
-            "value": 0
+            "operation": "multiply_total",
+            "value": -1
         },
         "condition": {
             "type": "origins:status_effect",
@@ -27,7 +27,7 @@
         "type": "origins:modify_status_effect_duration",
         "status_effect": "minecraft:slowness",
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base",
             "value": -0.60
         },
         "condition": {
@@ -50,7 +50,7 @@
         "type": "origins:modify_status_effect_duration",
         "status_effect": "minecraft:resistance",
         "modifier": {
-            "operation": "multiply_base_multiplicative",
+            "operation": "multiply_base",
             "value": -0.60
         },
         "condition": {
@@ -67,6 +67,13 @@
         }
     ]
 }
+    },
+    "no_block_interaction":{
+        "type": "origins:prevent_block_selection",
+        "block_condition":{
+            "type": "origins:block",
+            "block": "minecraft:barrier"
+        }
     },
     "hidden": true
 }

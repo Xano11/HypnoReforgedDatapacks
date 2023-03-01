@@ -41,7 +41,7 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "scoreboard players set @s blessed 0"
+        "command": "scoreboard players reset @s blessed"
     },
     {
         "type":"origins:delay",
@@ -107,7 +107,7 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "scoreboard players set @s blessed 0"
+        "command": "scoreboard players reset @s blessed"
     },
     {
         "type": "origins:execute_command",
@@ -136,7 +136,7 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "scoreboard players set @s blessed 0"
+        "command": "scoreboard players reset @s blessed"
     },
     {
         "type": "origins:execute_command",

@@ -13,7 +13,7 @@
             "type":"origins:and",
             "actions":[{
             "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/aeolus/konakadeit/fishing/salmon"
+            "command": "power remove @s hypno:playstyle/aeolus/akhlut/fishing/cod"
                 }
             ]
         }
@@ -43,14 +43,14 @@
             "type":"origins:and",
             "actions":[{
         "type": "origins:execute_command",
-         "command": "summon item ~ ~ ~ {PickupDelay:30,Motion:[0.0,0.0,0.1],Item:{id:\"minecraft:salmon\",Count:1b}}"
+         "command": "summon item ~ ~ ~ {PickupDelay:30,Motion:[0.0,0.0,0.1],Item:{id:\"minecraft:cod\",Count:1b}}"
             },
             {
         "type":"origins:delay",
         "ticks":1,
         "action":{
         "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/aeolus/konakadeit/fishing/salmon"
+        "command": "power remove @s hypno:playstyle/aeolus/akhlut/fishing/cod"
             }
         }
         ]
@@ -63,7 +63,7 @@
             "actions": [
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                     "change": 4
                 }
             ]
@@ -84,7 +84,7 @@
             "actions": [
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                     "change": -4
                 }
             ]
@@ -112,34 +112,34 @@
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                         "change": -10
                     },
-                    "weight": 1
+                    "weight": 2
                 },
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                         "change": 10
                     },
-                    "weight": 1
-                },
-                {
-                    "element": {
-                        "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
-                        "change": -5
-                    },
                     "weight": 2
                 },
                 {
                     "element": {
                         "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                         "change": 5
                     },
-                    "weight": 2
+                    "weight": 4
+                },
+                {
+                    "element": {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
+                        "change": -5
+                    },
+                    "weight": 4
                 }
             ]
         },
@@ -152,7 +152,7 @@
             "actions": [
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_reward",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_reward",
                     "change": 1
                 },
                 {
@@ -167,13 +167,13 @@
             "conditions": [
                 {
                     "type": "origins:resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                     "comparison": ">=",
                     "compare_to": 300
                 },
                 {
                     "type": "origins:resource",
-                    "resource": "hypno:playstyle/aeolus/konakadeit/fishing/salmon_bar",
+                    "resource": "hypno:playstyle/aeolus/akhlut/fishing/cod_bar",
                     "comparison": "<=",
                     "compare_to": 400
                 }

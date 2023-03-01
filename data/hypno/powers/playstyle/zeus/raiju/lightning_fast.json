@@ -153,11 +153,11 @@
                 "actions": [
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound soulsweapons:gatling_gun_startup player @s ~ ~ ~ 0.5 2"
+                        "command": "playsound simplyswords:elemental_sword_thunder_attack_01 player @a ~ ~ ~ 1 2"
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound minecraft:block.respawn_anchor.charge player @s ~ ~ ~ 0.5 2"
+                        "command": "playsound minecraft:block.respawn_anchor.charge player @a ~ ~ ~ 1 2"
                     },
                     {
                         "type": "origins:add_velocity",

@@ -8,7 +8,8 @@
 		"hypno:playstyle/zeus/raiju/carnivore"
 	],
 	"icon": {
-		"item": "minecraft:bell"
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:2,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":4}"
 	},
 	"order": 1,
 	"impact": 0,

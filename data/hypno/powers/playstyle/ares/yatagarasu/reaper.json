@@ -1,7 +1,35 @@
 {
-    "name": "Wanderer of living and the dead",
-    "description": "Using your [PRIMARY ABILITY KEY], you can leave your body and go into the land of the dead.",
+    "name": "Reaper.",
+    "description": "Whilst holding [PRIMARY ABILITY KEY], you can press [ATTACK] to throw a scythe at the entity you're looking at. The scythe will follow said entity and deal damage once reached. Using the ability whilst the scythe is out will recall it, applying Marked For Death to nearby entities. Enemies marked will grant a soul upon death.",
     "type": "origins:multiple",
+    "holding_key": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle create:soul ~ ~1 ~ 0.3 0.5 0.3 1 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0 1 1 1 0 0 0 ~ ~ ~ 0.3 0.1 0.3 1 10"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:particle.soul_escape player @s ~ ~ ~ 1"
+                }
+            ]
+        },
+        "interval": 4,
+        "condition": {
+            "type": "apugli:key_pressed",
+            "key": {
+                "key": "key.origins.primary_active",
+                "continuous": true
+            }
+        }
+    },
     "activation": {
         "type": "origins:active_self",
         "entity_action": {
@@ -105,13 +133,25 @@
             "bar_index": 17
         },
         "key": {
-            "key": "key.origins.primary_active",
+            "key": "key.attack",
             "continuous": false
         },
         "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/ares/yatagarasu/dead",
-            "inverted": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/ares/yatagarasu/dead",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                }
+            ]
         }
     },
     "recall": {
@@ -141,6 +181,10 @@
                 },
                 {
                     "type": "origins:execute_command",
+                    "command": "execute as @e[tag=scythe,type=minecraft:armor_stand] if score @s scythe_owner = @p scythe_owner at @s store result score @e[distance=..3] scythe_owner run scoreboard players get @s scythe_owner"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "execute as @e[tag=scythe,type=minecraft:armor_stand] if score @s scythe_owner = @p scythe_owner at @s run playsound simplyswords:dark_sword_attack_with_blood_03 player @a ~ ~ ~ 1 0.8"
                 },
                 {
@@ -154,13 +198,73 @@
             "should_render": false
         },
         "key": {
-            "key": "key.origins.primary_active",
+            "key": "key.attack",
             "continuous": false
         },
         "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/ares/yatagarasu/dead",
-            "inverted": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/ares/yatagarasu/dead",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                }
+            ]
+        }
+    },
+    "slowdown": {
+        "type": "origins:prevent_sprinting",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/ares/yatagarasu/dead",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                }
+            ]
+        }
+    },
+    "slowdown2": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -0.6,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/ares/yatagarasu/dead",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                }
+            ]
         }
     },
     "hidden": false

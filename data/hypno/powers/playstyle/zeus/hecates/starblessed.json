@@ -74,7 +74,7 @@
             "value": -0.75
         }
     },
-    "star_fog":{
+    "star_fog": {
         "type": "moborigins:fog",
         "red": 0.6,
         "green": 0,

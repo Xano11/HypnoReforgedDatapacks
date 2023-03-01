@@ -32,15 +32,15 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..64,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed run scoreboard players set @s blessed 0"
+                    "command": "execute as @e[distance=..64,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed run scoreboard players reset @s blessed"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..64,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed run scoreboard players set @s blessed 0"
+                    "command": "execute as @e[distance=..64,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed run scoreboard players reset @s blessed"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..64,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed run scoreboard players set @s blessed 0"
+                    "command": "execute as @e[distance=..64,type=!minecraft:armor_stand] if score @s blessed = @e[limit=1,sort=nearest] blessed run scoreboard players reset @s blessed"
                 },
                 {
                     "type": "origins:change_resource",

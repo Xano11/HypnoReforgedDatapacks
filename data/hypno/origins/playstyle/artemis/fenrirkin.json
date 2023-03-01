@@ -5,7 +5,8 @@
 		"hypno:playstyle/artemis/fenrirkin/wolf"
 	],
 	"icon": {
-		"item": "soulsweapons:lost_soul"
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:4,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":3}"
 	},
 	"order": 1,
 	"impact": 0,

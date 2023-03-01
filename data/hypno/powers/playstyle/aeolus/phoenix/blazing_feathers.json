@@ -12,7 +12,7 @@
             },
             {
             "type": "origins:execute_command",
-            "command": "summon item ~ ~ ~ {HasVisualFire:1b,Glowing:1b,Age:-32768,Health:1000,PickupDelay:32767,Invulnerable:1b,Tags:[\"fieryfeather\"],Item:{id:\"minecraft:feather\",Count:1b}}"
+            "command": "summon item ~ ~ ~ {HasVisualFire:1b,Glowing:1b,Age:-32768,Health:1000,PickupDelay:32767,Invulnerable:1b,Tags:[\"fieryfeather\"],Item:{id:\"minecraft:diamond\",Count:1b,tag:{CustomModelData:1}}}"
             },
             {
             "type": "origins:execute_command",
