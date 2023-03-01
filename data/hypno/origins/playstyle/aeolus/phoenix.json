@@ -5,7 +5,8 @@
 		"hypno:playstyle/aeolus/phoenix/firebird",
 		"hypno:playstyle/aeolus/phoenix/grace",
 		"hypno:playstyle/aeolus/phoenix/blazing_feathers",
-		"hypno:playstyle/aeolus/phoenix/blazing_flight"
+		"hypno:playstyle/aeolus/phoenix/blazing_flight",
+		"hypno:playstyle/aeolus/phoenix/nomineiron"
 	],
 	"icon": {
 		"item": "minecraft:diamond",
