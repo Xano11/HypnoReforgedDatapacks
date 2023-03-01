@@ -60,6 +60,14 @@
             "operation": "multiply_base"
         }
     },
+    "break_speed":
+    {
+        "type": "origins:modify_break_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.25
+        }
+    },
     "chainless": {
         "type": "origins:modify_damage_taken",
         "modifier": {
@@ -88,7 +96,7 @@
                     "type":"origins:and",
                     "actions":[{
                         "type": "origins:add_velocity",
-                        "y": 1.5,
+                        "y": 1.0,
                         "set": false
                       },
                 { 
@@ -142,7 +150,7 @@
                 },
                 {
                     "type": "origins:delay",
-                    "ticks": 4,
+                    "ticks": 2,
                     "action":  {
                         "type": "origins:execute_command",
                         "command": "execute as @e[limit=4,sort=nearest,type=armor_stand,tag=chaining] run power grant @s hypno:playstyle/artemis/fenrirkin/particles_chain_wild"
@@ -150,7 +158,7 @@
                 },
                 {
                     "type": "origins:delay",
-                    "ticks": 4,
+                    "ticks": 2,
                     "action":  {
                         "type": "origins:execute_command",
                         "command": "spreadplayers ~ ~ 1 4 false @e[type=minecraft:armor_stand,limit=4,sort=nearest,tag=chaining]"
@@ -158,7 +166,7 @@
                 },
                 {
                     "type": "origins:delay",
-                    "ticks": 5,
+                    "ticks": 2,
                     "action":  {
                         "type": "origins:execute_command",
                         "command": "power grant @s hypno:playstyle/artemis/fenrirkin/chained"

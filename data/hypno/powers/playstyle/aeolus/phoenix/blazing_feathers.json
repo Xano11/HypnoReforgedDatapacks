@@ -1,6 +1,13 @@
 {
     "name":"Eternal",
     "description":"[SNEAKING] and interacting with fire will put down a phoenix feather. This feather can be picked by any close players to grant them Transcendance, preventing their next death and teleporting them to the feather they picked.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "After 1 minute, if the player with Transcendance does not die, they will be teleported back to the feather's original position."
+        }
+    ],
     "type": "origins:multiple",
     "use":{
         "type": "origins:action_on_block_use",

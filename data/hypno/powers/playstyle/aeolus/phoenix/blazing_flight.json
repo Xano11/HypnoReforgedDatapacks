@@ -1,10 +1,10 @@
 {
-    "name":"Eternal",
-    "description":"Using your [PRIMARY ABILITY KEY], you can dash forward, putting you on fire for five seconds. Additionally, using it whilst winged will trigger your Awakening ability.",
+    "name": "Eternal",
+    "description": "Holding [PRIMARY ABILITY KEY] will initiate Blazing Flight. Using Blazing Fight will use energy over time.",
     "type": "origins:multiple",
-    "use":{
+    "use": {
         "type": "origins:active_self",
-        "entity_action":{
+        "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
@@ -31,25 +31,25 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 0.5 0 ~ ~ ~ 0.5 0.3 0.5 0.01 1"   
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 0.5 0 ~ ~ ~ 0.5 0.3 0.5 0.01 1"
                 }
             ]
         },
-        "condition":
-        {
-            "type":"origins:and",
-            "conditions":[{
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
-                "comparison": ">",
-                "compare_to": 5
-            },
-            {
-                "type": "origins:fluid_height",
-                "fluid": "minecraft:water",
-                "comparison": "==",
-                "compare_to": 0
-            }
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                    "comparison": ">",
+                    "compare_to": 5
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
             ]
         },
         "cooldown": 1,
@@ -59,11 +59,11 @@
         "key": {
             "key": "key.origins.primary_active",
             "continuous": true
-        } 
+        }
     },
-    "sound":{
+    "sound": {
         "type": "origins:active_self",
-        "entity_action":{
+        "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
@@ -76,21 +76,21 @@
                 }
             ]
         },
-        "condition":
-        {
-            "type":"origins:and",
-            "conditions":[{
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
-                "comparison": ">",
-                "compare_to": 5
-            },
-            {
-                "type": "origins:fluid_height",
-                "fluid": "minecraft:water",
-                "comparison": "==",
-                "compare_to": 0
-            }
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                    "comparison": ">",
+                    "compare_to": 5
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
             ]
         },
         "cooldown": 5,
@@ -100,93 +100,94 @@
         "key": {
             "key": "key.origins.primary_active",
             "continuous": false
-        } 
+        }
     },
-    "speed":
-    {
+    "speed": {
         "type": "origins:modify_swim_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -1
         },
         "condition": {
-            "type":"origins:and",
-            "conditions":[{
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
-                "comparison": ">",
-                "compare_to": 5
-            },
-            {
-                "type": "apugli:key_pressed",
-                "key": {
-                    "key": "key.origins.primary_active",
-                    "continuous": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                    "comparison": ">",
+                    "compare_to": 5
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
                 }
-            },
-            {
-                "type": "origins:fluid_height",
-                "fluid": "minecraft:water",
-                "comparison": "==",
-                "compare_to": 0
-            }
             ]
         }
     },
-    "camera_speed":
-    {
+    "camera_speed": {
         "type": "eggolib:modify_mouse_sensitivity",
         "modifier": {
             "operation": "multiply_total",
             "value": -1
         },
         "condition": {
-            "type":"origins:and",
-            "conditions":[{
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
-                "comparison": ">",
-                "compare_to": 5
-            },
-            {
-                "type": "apugli:key_pressed",
-                "key": {
-                    "key": "key.origins.primary_active",
-                    "continuous": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                    "comparison": ">",
+                    "compare_to": 5
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
                 }
-            },
-            {
-                "type": "origins:fluid_height",
-                "fluid": "minecraft:water",
-                "comparison": "==",
-                "compare_to": 0
-            }
             ]
         }
     },
-    "flying":{
+    "flying": {
         "type": "origins:swimming",
         "condition": {
-            "type":"origins:and",
-            "conditions":[{
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
-                "comparison": ">",
-                "compare_to": 5
-            },
-            {
-                "type": "apugli:key_pressed",
-                "key": {
-                    "key": "key.origins.primary_active",
-                    "continuous": true
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/aeolus/phoenix/firebird_energy",
+                    "comparison": ">",
+                    "compare_to": 5
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
                 }
-            },
-            {
-                "type": "origins:fluid_height",
-                "fluid": "minecraft:water",
-                "comparison": "==",
-                "compare_to": 0
-            }
             ]
         }
     },

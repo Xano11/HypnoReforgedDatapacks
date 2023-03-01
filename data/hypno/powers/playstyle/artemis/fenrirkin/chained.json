@@ -1,8 +1,7 @@
 {
-    "name":"Leaping",
+    "name": "Leaping",
     "type": "origins:multiple",
-    "resource":
-    {
+    "resource": {
         "type": "origins:resource",
         "min": 0,
         "max": 40,
@@ -16,7 +15,7 @@
             "command": "power remove @s hypno:playstyle/artemis/fenrirkin/chained"
         }
     },
-    "particles":{
+    "particles": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -29,7 +28,7 @@
         },
         "interval": 2
     },
-    "resource_use":{
+    "resource_use": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -43,30 +42,28 @@
         },
         "interval": 1
     },
-    "no_movement":
-    {
+    "no_movement": {
         "type": "origins:modify_velocity",
         "modifier": {
-          "value": -1,
-          "operation": "multiply_total"
+            "value": -1,
+            "operation": "multiply_total"
         },
         "axes": [
-          "x",
-          "y",
-          "z"
+            "x",
+            "y",
+            "z"
         ]
     },
-    "no_block_interaction":{
+    "no_block_interaction": {
         "type": "origins:prevent_block_selection"
     },
-    "no_block_use":{
+    "no_block_use": {
         "type": "origins:prevent_block_use"
     },
-    "prevent_item_use":{
+    "prevent_item_use": {
         "type": "origins:prevent_item_use"
     },
-    "overlay":
-    {
+    "overlay": {
         "type": "origins:overlay",
         "texture": "minecraft:textures/block/blue_ice.png",
         "strength": 0.5,
