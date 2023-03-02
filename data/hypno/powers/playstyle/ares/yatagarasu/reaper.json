@@ -119,6 +119,11 @@
                             }
                         ]
                     },
+                    "miss_action": {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/ares/yatagarasu/reaper_activation",
+                        "change": 0
+                    },
                     "command_at_hit": "particle minecraft:soul ~ ~ ~ 0.3 0.3 0.3 0.01 100 @a",
                     "command_along_ray": "particle minecraft:soul_fire_flame",
                     "command_step": 0.4,

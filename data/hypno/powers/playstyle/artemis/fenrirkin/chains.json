@@ -2,16 +2,139 @@
   "name": "Break free",
   "description": "Eternal chains bind you down, but you can break free of them and go rampant. Using [PRIMARY ABILITY KEY], you can go into your Unchained form, granting you extra speed and the ability to jump off walls. But, being in this form consumes alot of hunger and makes you more reckless (Less invincibility frames and more damage taken). Hitting an entity will replenish some food whilst unchained.",
   "type": "origins:multiple",
-  "activate": {
-    "type": "origins:active_self",
-    "entity_action": {
+  "toggle": {
+    "type": "origins:toggle",
+    "active_by_default": false,
+    "key": {
+      "key": "key.origins.primary_active"
+    },
+    "condition": {
       "type": "origins:and",
-      "actions": [
+      "conditions": [
         {
-          "type": "origins:execute_command",
-          "command": "power grant @s hypno:playstyle/artemis/fenrirkin/unchained"
+          "type": "origins:power",
+          "power": "hypno:playstyle/artemis/fenrirkin/wild",
+          "inverted": true
+        },
+        {
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+          "comparison": "==",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer_unchained",
+          "comparison": "==",
+          "compare_to": 0
         }
       ]
+    }
+  },
+  "toggle_activate": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:if_else",
+      "condition":  {
+        "type": "origins:power_active",
+        "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+        "inverted": true
+      },
+      "if_action": {
+        "type": "origins:execute_command",
+        "command": "resource set @s hypno:playstyle/artemis/fenrirkin/chains_timer_unchained 30"
+      },
+      "else_action": {
+        "type":"origins:and",
+        "actions":[{
+          "type": "origins:execute_command",
+          "command": "resource set @s hypno:playstyle/artemis/fenrirkin/chains_timer 10"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
+        },
+        {
+          "type": "origins:delay",
+          "ticks": 1,
+          "action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:execute_command",
+                "command": "spreadplayers ~ ~ 1 4 false @e[type=minecraft:armor_stand,tag=chained]"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "tag @s add chain_particles"
+              }
+            ]
+          }
+        },
+        {
+          "type": "origins:delay",
+          "ticks": 2,
+          "action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:execute_command",
+                "command": "execute as @e[type=minecraft:armor_stand,tag=chained] at @s anchored eyes facing entity @p[tag=chain_particles] eyes run tp @s ~ ~ ~ ~ ~"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "execute as @e[type=minecraft:armor_stand,tag=chained] run power grant @s hypno:playstyle/artemis/fenrirkin/particles_chain"
+              }
+            ]
+          }
+        },
+        {
+          "type": "origins:delay",
+          "ticks": 3,
+          "action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:execute_command",
+                "command": "execute positioned ~ ~1 ~ run function hypno:chains"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "tag @s remove chain_particles"
+              }
+            ]
+          }
+        }
+      ]
+      }
     },
     "hud_render": {
       "should_render": false
@@ -21,198 +144,415 @@
     },
     "cooldown": 1,
     "condition": {
-      "type":"origins:and",
-      "conditions":[{
-      "type": "origins:power",
-      "power": "hypno:playstyle/artemis/fenrirkin/unchained",
-      "inverted": true
-  },
-  {
-    "type": "origins:power",
-    "power": "hypno:playstyle/artemis/fenrirkin/wild",
-    "inverted": true
-},
-  {
-    "type": "origins:resource",
-    "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
-    "comparison": "==",
-    "compare_to": 0
-}
-      ]
-    }
-  },
-  "deactivate": {
-    "type": "origins:active_self",
-    "entity_action": {
       "type": "origins:and",
-      "actions": [
+      "conditions": [
         {
-          "type": "origins:execute_command",
-          "command": "resource set @s hypno:playstyle/artemis/fenrirkin/chains_timer 10"
+          "type": "origins:power",
+          "power": "hypno:playstyle/artemis/fenrirkin/wild",
+          "inverted": true
         },
         {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-          "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"chained\"]}"
-      },
-      {
-        "type":"origins:delay",
-        "ticks":1,
-        "action":
-        {
-            "type": "origins:and",
-            "actions": [{
-            "type": "origins:execute_command",
-            "command": "spreadplayers ~ ~ 1 4 false @e[type=minecraft:armor_stand,tag=chained]"
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+          "comparison": "==",
+          "compare_to": 0
         },
         {
-          "type": "origins:execute_command",
-          "command": "power remove @s hypno:playstyle/artemis/fenrirkin/unchained"
-        },
-        {
-          "type": "origins:execute_command",
-          "command": "tag @s add chain_particles"
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer_unchained",
+          "comparison": "==",
+          "compare_to": 0
         }
-    ]
-        }
-    },
-    {
-      "type":"origins:delay",
-      "ticks":2,
-      "action":
-      {
-          "type": "origins:and",
-          "actions": [{
-          "type": "origins:execute_command",
-          "command": "execute as @e[type=minecraft:armor_stand,tag=chained] at @s anchored eyes facing entity @p[tag=chain_particles] eyes run tp @s ~ ~ ~ ~ ~"
-      },
-      {
-        "type": "origins:execute_command",
-        "command": "execute as @e[type=minecraft:armor_stand,tag=chained] run power grant @s hypno:playstyle/artemis/fenrirkin/particles_chain"
-    }
-  ]
-      }
-  },
-  {
-    "type":"origins:delay",
-    "ticks":3,
-    "action":
-    {
-        "type": "origins:and",
-        "actions": [{
-        "type": "origins:execute_command",
-        "command": "execute positioned ~ ~1 ~ run function hypno:chains"
-    },
-    {
-      "type": "origins:execute_command",
-      "command": "tag @s remove chain_particles"
-    }
-]
-    }
-}
       ]
-    },
-    "hud_render": {
-      "should_render": false
-    },
-    "key": {
-      "key": "key.origins.primary_active"
-    },
-    "cooldown": 1,
-    "condition":{
-      "type": "origins:and",
-      "conditions":[{
-      "type": "origins:power",
-      "power": "hypno:playstyle/artemis/fenrirkin/unchained",
-      "inverted": false
-  },
-  {
-    "type": "origins:resource",
-    "resource": "hypno:playstyle/artemis/fenrirkin/unchained_timer",
-    "comparison": "==",
-    "compare_to": 0
-}
-]
     }
   },
   "timer_down": {
     "type": "origins:action_over_time",
     "entity_action": {
-        "type": "origins:change_resource",
-        "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
-        "change": -1
+      "type": "origins:change_resource",
+      "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+      "change": -1
     },
     "interval": 1
-},
-"timer": {
+  },
+  "timer": {
     "type": "origins:resource",
     "min": 0,
     "max": 10,
     "start_value": 0,
     "min_action": {
-        "type": "origins:and",
-        "actions": [
-            {
-                "type": "origins:execute_command",
-                "command": "execute positioned ~ ~1 ~ run function hypno:unleash"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "playsound minecraft:block.chain.break player @a ~ ~ ~ 2 0.5"
-            }
-        ]
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:execute_command",
+          "command": "execute positioned ~ ~1 ~ run function hypno:unleash"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "playsound minecraft:block.chain.break player @a ~ ~ ~ 2 0.5"
+        }
+      ]
     },
     "hud_render": {
       "should_render": false
-  }
-},
-"no_move": {
-  "type": "origins:modify_velocity",
-  "modifier": {
+    }
+  },
+  "no_move": {
+    "type": "origins:modify_velocity",
+    "modifier": {
       "value": -0.8,
       "operation": "multiply_total"
-  },
-  "axes": [
+    },
+    "axes": [
       "x",
       "z"
-  ],
-  "condition": {
+    ],
+    "condition": {
+      "type": "origins:or",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+          "comparison": ">",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer_unchained",
+          "comparison": ">",
+          "compare_to": 0
+        }
+      ]
+    }
+  },
+  "timer_unchained_down": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer_unchained",
+      "change": -1
+    },
+    "interval": 1
+  },
+  "timer_unchained": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 30,
+    "start_value": 0,
+    "min_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:execute_command",
+          "command": "execute positioned ~ ~1 ~ run function hypno:unleash"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "playsound minecraft:block.chain.break player @a ~ ~ ~ 2 0.5"
+        }
+      ]
+    },
+    "hud_render": {
+      "should_render": false
+    }
+  },
+  "movement_increase": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "name": "Speed increase",
+      "attribute": "minecraft:generic.movement_speed",
+      "value": 0.6,
+      "operation": "multiply_base"
+    },
+    "condition": {
       "type": "origins:and",
       "conditions": [
-          {
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
               "type": "origins:resource",
               "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
-              "comparison": ">=",
-              "compare_to": 1
-          }
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
       ]
+    }
+  },
+  "air_speed": {
+    "type": "origins:modify_air_speed",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": 0.6
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "healing_boost": {
+    "type": "origins:modify_healing",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": 0.25
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "attackspeed_increase": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "name": "Attack speed decrease",
+      "attribute": "minecraft:generic.attack_speed",
+      "value": 0.10,
+      "operation": "multiply_base"
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "particles": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "execute positioned ~ ~1 ~ run function hypno:chains"
+    },
+    "interval": 2,
+    "condition": {
+      "type": "origins:or",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+          "comparison": ">",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer_unchained",
+          "comparison": ">",
+          "compare_to": 0
+        }
+      ]
+    }
+  },
+  "chainless": {
+    "type": "origins:modify_damage_taken",
+    "modifier": {
+      "name": "Chainless",
+      "operation": "multiply_total",
+      "value": 0.25
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reckless": {
+    "type": "eggolib:modify_hurt_ticks",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": -0.25
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "exhaust": {
+    "type": "origins:exhaust",
+    "interval": 5,
+    "exhaustion": 2.0,
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "feast": {
+    "type": "origins:self_action_on_hit",
+    "entity_action": {
+      "type": "origins:feed",
+      "food": 20,
+      "saturation": 0.1
+    },
+    "damage_condition": {
+      "type": "origins:amount",
+      "comparison": ">=",
+      "compare_to": 4.0
+    },
+    "cooldown": 20,
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:power_active",
+              "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+              "inverted": false
+            },
+            {
+              "type": "origins:power",
+              "power": "hypno:playstyle/artemis/fenrirkin/wild",
+              "inverted": true
+            },
+            {
+              "type": "origins:resource",
+              "resource": "hypno:playstyle/artemis/fenrirkin/chains_timer",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          ]
+        }
+      ]
+    }
   }
-}
 }

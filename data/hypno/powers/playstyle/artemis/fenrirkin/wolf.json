@@ -119,10 +119,10 @@
             "operation": "multiply_base"
         },
         "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
             "inverted": true
-        }
+          }
     },
     "air_speed": {
         "type": "origins:modify_air_speed",
@@ -131,10 +131,10 @@
             "value": -0.2
         },
         "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
             "inverted": true
-        }
+          }
     },
     "fire": {
         "type": "origins:modify_damage_taken",
@@ -151,11 +151,11 @@
     {
         "type": "apugli:custom_footstep",
         "sound": "minecraft:block.chain.place",
-        "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+        "condition":{
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
             "inverted": true
-        }
+          }
     },
     "bad_regen": {
         "type": "origins:modify_healing",
@@ -164,9 +164,9 @@
             "value": -0.25
         },
         "condition": {
-            "type": "origins:power",
-            "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
             "inverted": true
-        }
+          }
     }
 }

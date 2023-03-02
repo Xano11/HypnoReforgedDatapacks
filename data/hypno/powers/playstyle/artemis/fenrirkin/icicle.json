@@ -42,6 +42,8 @@
     "landing": {
         "type": "origins:action_over_time",
         "rising_action": {
+            "type":"origins:and",
+            "actions":[{
             "type": "origins:area_of_effect",
             "radius": 3,
             "bientity_action": {
@@ -116,6 +118,20 @@
                     ]
                 }
             }
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:block minecraft:blue_ice ~ ~ ~ 1 0 1 0 20"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:dust_color_transition 0 1 1 1.4 1 1 1 ~ ~ ~ 1 0 1 0 50"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound simplyswords:elemental_bow_ice_shoot_impact_03 player @a ~ ~ ~ 0.5 2"
+            }
+        ]
         },
         "interval": 1,
         "condition": {

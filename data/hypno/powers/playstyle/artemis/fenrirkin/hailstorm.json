@@ -64,10 +64,10 @@
             "type": "origins:on_block"
         },
         {
-          "type": "origins:power",
-          "power": "hypno:playstyle/artemis/fenrirkin/unchained",
+          "type": "origins:power_active",
+          "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
           "inverted": true
-      }
+        }
         ]
       },
       "hud_render": {
@@ -201,11 +201,11 @@
       "condition": {
         "type": "origins:and",
         "conditions": [
-        {
-          "type": "origins:power",
-          "power": "hypno:playstyle/artemis/fenrirkin/unchained",
-          "inverted": false
-      }
+          {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+            "inverted": false
+          }
         ]
       },
       "hud_render": {

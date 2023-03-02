@@ -23,11 +23,11 @@
         "type":"origins:and",
         "actions":[{
             "type": "origins:execute_command",
-            "command": "playsound minecraft:ambient.soul_sand_valley.additions ambient @a ~ ~ ~ 1 0.5"
+            "command": "playsound minecraft:ambient.soul_sand_valley.additions ambient @s ~ ~ ~ 1 0.5"
         },
       {
         "type": "origins:execute_command",
-        "command": "playsound minecraft:ambient.soul_sand_valley.additions ambient @a ~ ~ ~ 1 0.5"
+        "command": "playsound minecraft:ambient.soul_sand_valley.additions ambient @s ~ ~ ~ 1 0.5"
       }
     ]
     },

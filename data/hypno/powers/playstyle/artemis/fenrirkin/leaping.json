@@ -89,7 +89,7 @@
             "block": true,
             "entity": true,
             "shape_type": "visual",
-            "fluid_handling": "none",
+            "fluid_handling": "any",
             "hit_action": {
                 "type": "origins:and",
                 "actions": [
@@ -183,6 +183,19 @@
                         "command": "playsound simplyswords:elemental_bow_ice_shoot_flyby_02 player @a ~ ~ ~ 1 0.5"
                     }
                 ]
+            },
+            "block_action":{
+                "type": "eggolib:area_of_effect",
+                "radius": 3,
+                "shape": "star",
+                "block_action": {
+                    "type": "apoli:set_block",
+                    "block": "minecraft:frosted_ice"
+                },
+                "block_condition":  {
+                    "type": "origins:block",
+                    "block": "minecraft:water"
+                }
             },
             "command_along_ray": "function hypno:leaping",
             "command_step": 0.2,

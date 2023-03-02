@@ -63,7 +63,35 @@
                 }
             ]
         },
-        "interval": 7
+        "interval": 7,
+        "condition":{
+            "type": "apugli:entity_in_radius",
+            "bientity_condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "eggolib:compare_score",
+                        "actor_objective": "hailstorm",
+                        "target_objective": "hailstorm",
+                        "comparison": "!="
+                    },
+                    {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:living"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "radius": 9.0,
+            "comparison": ">=",
+            "compare_to": 1
+        }
     },
     "timer_down": {
         "type": "origins:action_over_time",
