@@ -3,7 +3,8 @@
 		"hypno:default"
 	],
 	"icon": {
-		"item": "minecraft:feather"
+		"item": "minecraft:feather",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
 	},
 	"order": 1,
 	"impact": 0,
