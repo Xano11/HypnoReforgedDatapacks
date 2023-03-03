@@ -1,0 +1,75 @@
+{
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15
+        },
+        "min_action":
+        {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/zeus/ifrit/extinguished"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/extinguished_timer",
+            "change": -20
+        },
+        "interval": 20
+    },
+    "damage": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:and",
+            "actions":[
+                {
+                    "type": "origins:damage",
+                    "amount": 10,
+                    "source": {
+                        "name": "dryout",
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                }
+            ]
+        },
+        "execute_chosen_when_orb": true
+    },
+    "slowerair": {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "slowerwalk": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Walk speed decrease",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.5,
+            "operation": "multiply_total"
+        }
+    },
+    "slowerattack": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Attack speed decrease",
+            "attribute": "minecraft:generic.attack_speed",
+            "value": -0.25,
+            "operation": "multiply_total"
+        }
+    },
+    "hidden": true
+
+}
+
+    
