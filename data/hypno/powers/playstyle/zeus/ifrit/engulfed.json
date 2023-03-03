@@ -1,0 +1,300 @@
+{
+    "name": "Engulfed",
+    "description": "Pressing [PRIMARY ABILITY KEY] will engulf oneself in hellfire. This will allow the user to create Corrupted Kindling and to flame dash.",
+    "type": "origins:multiple",
+    "toggle": {
+        "type": "origins:toggle",
+        "active_by_default": false,
+        "retain_state": false,
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "energy": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 900,
+        "start_value": 900,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power grant @s hypno:playstyle/zeus/ifrit/extinguished"
+        }
+    },
+    "energy_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": -10
+        },
+        "interval": 10,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+            "inverted": false
+        }
+    },
+    "energy_up": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": 10
+        },
+        "interval": 10,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+            "inverted": true
+        }
+    },
+    "dash": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 10,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "dash_up": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": 1
+        },
+        "interval": 15,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                    "inverted": false
+                },
+                {
+                    "type": "origins:sprinting"
+                },
+                {
+                    "type": "origins:moving"
+                },
+                {
+                    "type": "origins:on_block"
+                }
+            ]
+        }
+    },
+    "dash_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": -1
+        },
+        "interval": 5,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:sprinting",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:moving",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:on_block",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "speed1": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.15,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "speed2": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.3,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 2
+        }
+    },
+    "speed3": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.45,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
+    "speed4": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.6,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 4
+        }
+    },
+    "speed5": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.75,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 5
+        }
+    },
+    "speed6": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.9,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 6
+        }
+    },
+    "speed7": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 1.05,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 7
+        }
+    },
+    "speed8": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 1.2,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 8
+        }
+    },
+    "speed9": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 1.35,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 9
+        }
+    },
+    "speed10": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Walk speed increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 1.5,
+            "operation": "multiply_total"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    },
+    "lavarun": {
+        "type": "origins:walk_on_fluid",
+        "fluid": "minecraft:lava",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    }
+}
