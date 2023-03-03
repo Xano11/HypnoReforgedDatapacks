@@ -1,6 +1,6 @@
 {
     "name":"Demonic",
-    "description":"As a phoenix, you take no damage from fire. Quite the opposite, you can only heal when ablaze and fire regenerates health passively. Also, you have 2 lesser hearts and take immense damage whilst in water.",
+    "description":"As a being from hell, you take no damage from fire. You ignite your surroundings and burn through any potions or food at twice the rate. But be careful, unless you are engulfed, water is your worst enemy.",
     "type": "origins:multiple",
     "fire_immune":{
         "type": "origins:modify_damage_taken",
