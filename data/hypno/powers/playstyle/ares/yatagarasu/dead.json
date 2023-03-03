@@ -438,13 +438,6 @@
                         "entity_type": "minecraft:allay",
                         "inverted": true
                     }
-                },
-                {
-                    "type": "origins:actor_condition",
-                    "condition": {
-                        "type": "origins:empty",
-                        "inverted": true
-                    }
                 }
             ]
         }

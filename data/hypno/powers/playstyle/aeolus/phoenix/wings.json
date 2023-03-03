@@ -1,6 +1,6 @@
 {
     "name":"Wings of the Eternal",
-    "description":"Pressing [SECONDARY ABILITY KEY] whilst on a block will launch you upwards and grant you wings. Those wings last indefinitely, but once you touch the ground again, they are removed.",
+    "description":"Pressing [SECONDARY ABILITY KEY] whilst on a block will launch you upwards and grant you wings. Those wings last indefinitely, but once you've landed, they are lost.",
     "type": "origins:multiple",
     "use":{
         "type": "origins:active_self",
