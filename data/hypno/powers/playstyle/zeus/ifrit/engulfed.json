@@ -449,7 +449,7 @@
             "radius": 7,
             "shape": "sphere",
             "block_action": {
-                "type": "apugli:light_up_block",
+                "type": "apugli:light_up",
                 "burn_time": 1200,
                 "brew_time": 10,
                 "light_campfire": true,
@@ -457,6 +457,11 @@
                 "particle_count": 15,
                 "sound": "minecraft:entity.ghast.shoot"
             }
+        },
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": -300
         },
         "block_condition": {
             "type": "origins:block",
