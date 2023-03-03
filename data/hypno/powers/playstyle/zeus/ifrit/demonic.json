@@ -1,10 +1,10 @@
 {
-    "name":"Demonic",
-    "description":"As a phoenix, you take no damage from fire. Quite the opposite, you can only heal when ablaze and fire regenerates health passively. Also, you have 2 lesser hearts and take immense damage whilst in water.",
+    "name": "Demonic",
+    "description": "As a phoenix, you take no damage from fire. Quite the opposite, you can only heal when ablaze and fire regenerates health passively. Also, you have 2 lesser hearts and take immense damage whilst in water.",
     "type": "origins:multiple",
-    "fire_immune":{
+    "fire_immune": {
         "type": "origins:modify_damage_taken",
-        "damage_condition":  {
+        "damage_condition": {
             "type": "origins:fire"
         },
         "modifier": {
@@ -13,8 +13,7 @@
             "value": -1
         }
     },
-    "water_weakness":
-    {
+    "water_weakness": {
         "type": "origins:damage_over_time",
         "interval": 10,
         "onset_delay": 1,
@@ -28,32 +27,71 @@
         "protection_enchantment": "origins:water_protection",
         "protection_effectiveness": 0.5,
         "condition": {
-            "type": "origins:or",
+            "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:fluid_height",
-                    "fluid": "minecraft:water",
-                    "comparison": ">",
-                    "compare_to": 0.0
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:fluid_height",
+                            "fluid": "minecraft:water",
+                            "comparison": ">",
+                            "compare_to": 0.0
+                        },
+                        {
+                            "type": "origins:in_rain"
+                        }
+                    ]
                 },
                 {
-                    "type": "origins:in_rain"
-                },
-                {
-                    "type": "origins:resource",
-                    "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
-                    "comparison": "==",
-                    "compare_to": 0
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                            "inverted": true
+                        }
+                    ]
                 }
             ]
         }
     },
-    "waterlogged":{
+    "waterlogged": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
             "change": -50
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:fluid_height",
+                            "fluid": "minecraft:water",
+                            "comparison": ">",
+                            "compare_to": 0.0
+                        },
+                        {
+                            "type": "origins:in_rain"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                    "inverted": false
+                }
+            ]
         },
         "interval": 5
     },
