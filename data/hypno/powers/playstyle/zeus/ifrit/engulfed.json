@@ -27,6 +27,23 @@
             ]
         }
     },
+    "fire_overlay": {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/block/red_glazed_terracotta.png",
+        "strength": 0.4,
+        "red": 1.0,
+        "green": 0.7,
+        "blue": 0.3,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+            "inverted": false
+        }
+    },
     "energy": {
         "type": "origins:resource",
         "min": 0,
@@ -48,6 +65,26 @@
             "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
             "change": -10
         },
+        "rising_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:execute_command",
+                "command": "particle minecraft:flame ~ ~ ~ 0.1 0 0.1 0.01 20"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:dust_color_transition 0 0 0 1.3 1 0.5 0 ~ ~1 ~ 0.4 0 0.4 0.1 100"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:item.bottle.fill_dragonbreath player @a ~ ~ ~ 1 0.5"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 0.5"
+            }
+    ]
+        },
         "interval": 10,
         "condition": {
             "type": "origins:power_active",
@@ -61,6 +98,26 @@
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
             "change": 10
+        },
+        "rising_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:execute_command",
+                "command": "particle minecraft:ash ~ ~ ~ 0.1 0 0.1 0.01 20"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:dust_color_transition 1 0.5 0 1.3 0 0 0 ~ ~1 ~ 0.4 0 0.4 0.1 100"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:item.bottle.fill_dragonbreath player @a ~ ~ ~ 1 1"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 1"
+            }
+    ]
         },
         "interval": 10,
         "condition": {
@@ -82,7 +139,7 @@
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
-            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
             "change": 1
         },
         "interval": 15,
@@ -110,7 +167,7 @@
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
-            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
             "change": -1
         },
         "interval": 5,
@@ -128,10 +185,6 @@
                 },
                 {
                     "type": "origins:moving",
-                    "inverted": true
-                },
-                {
-                    "type": "origins:on_block",
                     "inverted": true
                 }
             ]
@@ -285,6 +338,45 @@
             "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
             "comparison": "==",
             "compare_to": 10
+        }
+    },
+    "particles": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:flame ~ ~ ~ 0.1 0 0.1 0.01 20"
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                    "inverted": false
+                },
+                {
+                    "type": "origins:on_block"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+                    "comparison": "==",
+                    "compare_to": 10
+                }
+            ]
+        }
+    },
+    "color": {
+        "type": "origins:model_color",
+        "red": 1.0,
+        "green": 0,
+        "blue": 0,
+        "alpha": 1,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+            "inverted": false
         }
     },
     "lavarun": {
