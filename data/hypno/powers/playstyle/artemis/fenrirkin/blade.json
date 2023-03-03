@@ -18,7 +18,7 @@
             ]
         }
     },
-    "stacks_up": {
+    "icicles": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -44,16 +44,7 @@
                             {
                                 "type": "origins:execute_command",
                                 "command": "power grant @e[tag=icicle] hypno:playstyle/artemis/fenrirkin/icicle"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 2,
-                    "action": {
-                        "type": "origins:and",
-                        "actions": [
+                            },
                             {
                                 "type": "origins:execute_command",
                                 "command": "tag @e[tag=icicle] remove icicle"
@@ -71,8 +62,8 @@
                 "conditions": [
                     {
                         "type": "eggolib:compare_score",
-                        "actor_objective": "hailstorm",
-                        "target_objective": "hailstorm",
+                        "actor_objective": "hailstorm_blade",
+                        "target_objective": "hailstorm_blade",
                         "comparison": "!="
                     },
                     {

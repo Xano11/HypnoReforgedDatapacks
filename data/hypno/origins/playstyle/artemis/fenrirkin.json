@@ -2,7 +2,8 @@
 	"powers": [
 		"hypno:playstyle/artemis/fenrirkin/hailstorm",
 		"hypno:playstyle/artemis/fenrirkin/chains",
-		"hypno:playstyle/artemis/fenrirkin/wolf"
+		"hypno:playstyle/artemis/fenrirkin/wolf",
+		"hypno:playstyle/artemis/fenrirkin/carnivore"
 	],
 	"icon": {
 		"item": "minecraft:diamond",
