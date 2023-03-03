@@ -66,24 +66,25 @@
             "change": -10
         },
         "rising_action": {
-            "type":"origins:and",
-            "actions":[{
-                "type": "origins:execute_command",
-                "command": "particle minecraft:flame ~ ~ ~ 0.1 0 0.1 0.01 20"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "particle minecraft:dust_color_transition 0 0 0 1.3 1 0.5 0 ~ ~1 ~ 0.4 0 0.4 0.1 100"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "playsound minecraft:item.bottle.fill_dragonbreath player @a ~ ~ ~ 1 0.5"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 0.5"
-            }
-    ]
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:flame ~ ~ ~ 0.1 0 0.1 0.01 20"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0 0 0 1.3 1 0.5 0 ~ ~1 ~ 0.4 0 0.4 0.1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:item.bottle.fill_dragonbreath player @a ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 0.5"
+                }
+            ]
         },
         "interval": 10,
         "condition": {
@@ -100,24 +101,25 @@
             "change": 10
         },
         "rising_action": {
-            "type":"origins:and",
-            "actions":[{
-                "type": "origins:execute_command",
-                "command": "particle minecraft:ash ~ ~ ~ 0.1 0 0.1 0.01 20"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "particle minecraft:dust_color_transition 1 0.5 0 1.3 0 0 0 ~ ~1 ~ 0.4 0 0.4 0.1 100"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "playsound minecraft:item.bottle.fill_dragonbreath player @a ~ ~ ~ 1 1"
-            },
-            {
-                "type": "origins:execute_command",
-                "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 1"
-            }
-    ]
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:ash ~ ~ ~ 0.1 0 0.1 0.01 20"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 0.5 0 1.3 0 0 0 ~ ~1 ~ 0.4 0 0.4 0.1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:item.bottle.fill_dragonbreath player @a ~ ~ ~ 1 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 1"
+                }
+            ]
         },
         "interval": 10,
         "condition": {
@@ -382,6 +384,63 @@
     "lavarun": {
         "type": "origins:walk_on_fluid",
         "fluid": "minecraft:lava",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    },
+    "firestun": {
+        "type": "origins:action_on_hit",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:add_velocity",
+                                "x": 0,
+                                "z": 0,
+                                "y": 0,
+                                "space": "local_horizontal",
+                                "set": true
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
+                                "change": -10
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:add_velocity",
+                                "z": -4.2069,
+                                "y": 0.5,
+                                "space": "local_horizontal"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/zeus/ifrit/hellfire"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
         "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
