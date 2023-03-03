@@ -4,8 +4,8 @@
         "hypno:playstyle/zeus/ifrit/demonic"
 	],
 	"icon": {
-		"item": "minecraft:diamond",
-		"tag": "{CustomModelData:2,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":4}"
+		"item": "minecraft:fire_coral_fan",
+		"tag": "{Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":14}"
 	},
 	"order": 1,
 	"impact": 0,
