@@ -32,25 +32,16 @@
                     "command": "spreadplayers ~ ~ 2 8 false @e[type=minecraft:armor_stand,tag=icicle]"
                 },
                 {
-                    "type": "origins:delay",
-                    "ticks": 1,
-                    "action": {
-                        "type": "origins:and",
-                        "actions": [
-                            {
-                                "type": "origins:execute_command",
-                                "command": "execute as @e[tag=icicle] at @s run tp @s ~ ~7 ~"
-                            },
-                            {
-                                "type": "origins:execute_command",
-                                "command": "power grant @e[tag=icicle] hypno:playstyle/artemis/fenrirkin/icicle"
-                            },
-                            {
-                                "type": "origins:execute_command",
-                                "command": "tag @e[tag=icicle] remove icicle"
-                            }
-                        ]
-                    }
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=icicle] at @s run tp @s ~ ~7 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[tag=icicle] hypno:playstyle/artemis/fenrirkin/icicle"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @e[tag=icicle] remove icicle"
                 }
             ]
         },
