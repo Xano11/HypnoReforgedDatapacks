@@ -1,0 +1,26 @@
+{
+    "name": "Disguised Entity",
+    "type": "origins:multiple",
+    "prevent_use":
+    {
+        "type": "origins:prevent_being_used",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:execute_command",
+                "command": "title @s actionbar [\"\",\"Something is....\",{\"text\":\"  off.\",\"italic\":true}]"
+            }
+        }
+    },
+    "no_movement_ai":
+    {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health increase",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -1,
+            "operation": "multiply_total"
+        }
+    },
+    "hidden":false
+}

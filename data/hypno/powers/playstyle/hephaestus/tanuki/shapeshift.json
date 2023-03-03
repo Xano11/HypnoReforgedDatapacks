@@ -1,0 +1,80 @@
+{
+    "name": "Shapeshift",
+    "description": "Using your [PRIMARY ABILITY KEY], you can dash forward. Dashing puts you on fire for five seconds.",
+    "type": "origins:multiple",
+    "use": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/hephaestus/tanuki/shapeshifting"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s add shapeshifter"
+                },
+                {
+                    "type": "origins:choice",
+                    "actions": [
+                        {
+                            "element":  {
+                                "type": "origins:execute_command",
+                                "command": "summon llama ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Tags:[\"shapeshift\"]}"
+                            },
+                            "weight": 1
+                        },
+                        {
+                            "element": {
+                                "type": "origins:execute_command",
+                                "command": "summon wolf ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Tags:[\"shapeshift\"]}"
+                            },
+                            "weight": 1
+                        },
+                        {
+                            "element": {
+                                "type": "origins:execute_command",
+                                "command": "summon polar_bear ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Tags:[\"shapeshift\"]}"
+                            },
+                            "weight": 1
+                        },
+                        {
+                            "element": {
+                                "type": "origins:execute_command",
+                                "command": "summon villager ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Willing:0b,Tags:[\"shapeshift\"],VillagerData:{profession:\"minecraft:nitwit\"}}"
+                            },
+                            "weight": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @s shapeshift run data get entity @s UUID[0] 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @e[limit=1,sort=nearest,tag=shapeshift] shapeshift run data get entity @s UUID[0] 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[limit=1,sort=nearest,tag=shapeshift] hypno:playstyle/hephaestus/tanuki/shapeshifted"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:power",
+            "power": "hypno:playstyle/hephaestus/tanuki/shapeshifting",
+            "inverted": true
+        },
+        "cooldown": 1200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    },
+    "hidden": false
+}

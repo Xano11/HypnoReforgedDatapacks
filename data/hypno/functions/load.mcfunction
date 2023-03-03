@@ -21,6 +21,7 @@ scoreboard objectives add marktp dummy
 scoreboard objectives add scythe dummy
 scoreboard objectives add scythe_owner dummy
 scoreboard objectives add rekindle dummy
+scoreboard objectives add shapeshift dummy
 
 #Tower
 scoreboard objectives add elevator dummy

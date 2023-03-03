@@ -1,0 +1,423 @@
+{
+    "name": "Disguised",
+    "type": "origins:multiple",
+    "teleport": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=shapeshift] if score @s shapeshift = @p[tag=shapeshifter] shapeshift at @s run tp @p[tag=shapeshifter] ~ ~ ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=shapeshift] if score @s shapeshift = @p shapeshift store result entity @s Rotation[0] float 1 run data get entity @p Rotation[0] 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=shapeshift] if score @s shapeshift = @p shapeshift store result entity @s Rotation[1] float 1 run data get entity @p Rotation[1] 1"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "control_forward": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "z": 0.08,
+                            "space": "local_horizontal"
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "shapeshift",
+                                "target_objective": "shapeshift",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.forward",
+            "continuous": true
+        }
+    },
+    "control_backward":
+    {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "z": -0.05,
+                            "space": "local_horizontal"
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "shapeshift",
+                                "target_objective": "shapeshift",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.back",
+            "continuous": true
+        }
+    },
+    "control_right":
+    {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "x": -0.07,
+                            "space": "local_horizontal"
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "shapeshift",
+                                "target_objective": "shapeshift",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.right",
+            "continuous": true
+        }
+    },
+    "control_left":
+    {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "x": 0.07,
+                            "space": "local_horizontal"
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "shapeshift",
+                                "target_objective": "shapeshift",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.left",
+            "continuous": true
+        }
+    },
+    "control_jump":
+    {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:add_velocity",
+                            "y": 0.5,
+                            "space": "local_horizontal"
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "shapeshift",
+                                "target_objective": "shapeshift",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        },
+                                        {
+                                            "type": "origins:on_block"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.jump",
+            "continuous": true
+        }
+    },
+    "ignore": {
+        "type": "apugli:mobs_ignore"
+    },
+    "invisible": {
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "no_block_interaction": {
+        "type": "origins:prevent_block_selection"
+    },
+    "no_jump": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "prevent_item_use": {
+        "type": "origins:prevent_item_use"
+    },
+    "prevent_collision": {
+        "type": "origins:prevent_entity_collision"
+    },
+    "no_damage_taken": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_damage_dealt": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_momentum": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -1,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+    "resource_up": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/disguised_resource",
+            "change": 10
+        },
+        "interval": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[distance=..2] if score @s disguised = @p disguised",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "jump_out": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=shapeshift] if score @s shapeshift = @p[tag=shapeshifter] shapeshift at @s run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove shapeshifter"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/tanuki/shapeshifting_leave",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.sneak"
+        }
+    },
+    "leave": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/hephaestus/tanuki/shapeshifting_no_momentum"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:add_velocity",
+                        "z": -0.5,
+                        "y": 0.5,
+                        "space": "local"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:playstyle/hephaestus/tanuki/shapeshifting"
+                    }
+                }
+            ]
+        }
+    },
+    "hidden": false
+}
