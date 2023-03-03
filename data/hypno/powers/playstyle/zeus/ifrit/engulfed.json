@@ -424,7 +424,7 @@
                         "actions": [
                             {
                                 "type": "origins:add_velocity",
-                                "z": -4.2069,
+                                "z": -4.5,
                                 "y": 0.5,
                                 "space": "local_horizontal"
                             },
@@ -446,6 +446,43 @@
             "resource": "hypno:playstyle/zeus/ifrit/engulfed_dash",
             "comparison": "==",
             "compare_to": 10
+        }
+    },
+    "lightup": {
+        "type": "origins:action_on_block_use",
+        "block_action": {
+            "type": "eggolib:area_of_effect",
+            "radius": 7,
+            "shape": "sphere",
+            "block_action": {
+                "type": "apugli:light_up_block",
+                "burn_time": 1200,
+                "brew_time": 10,
+                "light_campfire": true,
+                "particle": "minecraft:flame",
+                "particle_count": 15,
+                "sound": "minecraft:entity.ghast.shoot"
+            }
+        },
+        "block_condition": {
+            "type": "origins:block",
+            "block": "minecraft:fire"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+                    "comparison": ">=",
+                    "compare_to": 300
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                    "inverted": false
+                }
+            ]
         }
     }
 }

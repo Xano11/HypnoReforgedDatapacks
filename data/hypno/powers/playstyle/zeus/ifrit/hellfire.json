@@ -35,8 +35,7 @@
                     "source": {
                         "name": "onfire",
                         "bypasses_armor": true,
-                        "unblockable": true,
-                        "fire": true
+                        "unblockable": true
                     }
                 }
             ]
