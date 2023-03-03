@@ -130,6 +130,22 @@
             {
                 "type": "origins:execute_command",
                 "command": "playsound simplyswords:elemental_bow_ice_shoot_impact_03 player @a ~ ~ ~ 0.5 2"
+            },
+            {
+                "type": "origins:block_action_at",
+                "block_action": {
+                    "type": "eggolib:area_of_effect",
+                    "radius": 3,
+                    "shape": "star",
+                    "block_action": {
+                        "type": "apoli:set_block",
+                        "block": "minecraft:frosted_ice"
+                    },
+                    "block_condition":  {
+                        "type": "origins:block",
+                        "block": "minecraft:water"
+                    }
+                }
             }
         ]
         },

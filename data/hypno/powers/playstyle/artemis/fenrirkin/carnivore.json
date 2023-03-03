@@ -1,0 +1,30 @@
+{
+    "name": "Carnivore",
+	"description": "As a wolf, you've always been the hunter, eating meat. Anything else is foreign to you. Additionally, you get exhausted quicker.",
+    "type": "origins:multiple",
+    "unedible_items": {
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+        "type":"origins:and",
+        "conditions":[{
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "hypno:meat"
+        },
+        "inverted": true
+    },
+    {
+        "type": "origins:food"
+    }
+    ]
+    }
+    },
+    "more_exhaust":{
+        "type": "origins:modify_exhaustion",
+        "modifier": {
+            "name": "Increased exhaustion",
+            "operation": "multiply_total",
+            "value": 1.0
+        }
+    }
+}
