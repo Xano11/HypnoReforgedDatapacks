@@ -1,0 +1,81 @@
+{
+    "name":"Demonic",
+    "description":"As a phoenix, you take no damage from fire. Quite the opposite, you can only heal when ablaze and fire regenerates health passively. Also, you have 2 lesser hearts and take immense damage whilst in water.",
+    "type": "origins:multiple",
+    "fire_immune":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition":  {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "name": "No fire damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "water_weakness":
+    {
+        "type": "origins:damage_over_time",
+        "interval": 10,
+        "onset_delay": 1,
+        "damage": 2,
+        "damage_easy": 2,
+        "damage_source": {
+            "name": "hurt_by_water",
+            "unblockable": true,
+            "bypasses_armor": true
+        },
+        "protection_enchantment": "origins:water_protection",
+        "protection_effectiveness": 0.5,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0.0
+                },
+                {
+                    "type": "origins:in_rain"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "waterlogged":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": -50
+        },
+        "interval": 5
+    },
+    "burningstomach": {
+        "type": "origins:modify_food",
+        "food_modifier": {
+            "name": "Decreased food points",
+            "operation": "multiply_total",
+            "value": -0.5
+        },
+        "saturation_modifier": {
+            "name": "Decreased saturation points",
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "boilingblood": {
+        "type": "origins:modify_status_effect_duration",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "hidden": false
+}

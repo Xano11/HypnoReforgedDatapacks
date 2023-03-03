@@ -17,12 +17,6 @@
                     "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
                     "comparison": ">",
                     "compare_to": 0
-                },
-                {
-                    "type": "origins:fluid_height",
-                    "fluid": "minecraft:water",
-                    "comparison": "==",
-                    "compare_to": 0
                 }
             ]
         }

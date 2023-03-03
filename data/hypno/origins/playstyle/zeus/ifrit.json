@@ -1,6 +1,7 @@
 {
 	"powers": [
-		"hypno:playstyle/zeus/ifrit/engulfed"
+		"hypno:playstyle/zeus/ifrit/engulfed",
+        "hypno:playstyle/zeus/ifrit/demonic"
 	],
 	"icon": {
 		"item": "minecraft:diamond",
