@@ -95,14 +95,6 @@
         },
         "interval": 10
     },
-    "energy_depleted": {
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:execute_command",
-            "command": "execute as @a if score @s rekindle = @e[limit=1,sort=nearest] rekindle run power remove @s hypno:playstyle/aeolus/phoenix/rekindled"
-        },
-        "interval": 10
-    },
     "death": {
         "type": "epoli:action_on_death",
         "entity_action": {
