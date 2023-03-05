@@ -122,5 +122,18 @@
         "hands": [
             "off_hand"
         ]
+    },
+    "soul_sleep":{
+        "type": "origins:prevent_sleep",
+        "message": "You need a soul campfire close to rest your soul.",
+        "block_condition":{
+        "type": "origins:adjacent",
+        "adjacent_condition": {
+            "type": "origins:block",
+            "block": "minecraft:soul_campfire"
+        },
+        "comparison": "==",
+        "compare_to": 0
     }
+}
 }

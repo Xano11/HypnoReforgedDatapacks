@@ -56,9 +56,18 @@
                             "change": -280
                         }, 
                         "else_action": {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/zeus/hecates/witch_mana",
-                            "change": -400
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "hypno:playstyle/zeus/hecates/witch_mana",
+                                    "change": -400
+                                },
+                                {
+                                    "type": "origins:exhaust",
+                                    "amount": 3
+                                }
+                            ]
                         }
                     },
                     {

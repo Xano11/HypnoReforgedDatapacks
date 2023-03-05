@@ -1,6 +1,6 @@
 {
     "name": "Witch (Or wizard, really)",
-    "description": "The Hecates cult are known for having similar traits. They are slightly smaller, have a lesser heart.",
+    "description": "The Hecates cult are known for having similar traits. They are slightly smaller, have a lesser heart .",
     "type": "origins:multiple",
     "scale": {
         "type": "origins:action_on_callback",
@@ -71,7 +71,16 @@
         "modifier": {
             "name": "Max health decrease",
             "attribute": "minecraft:generic.max_health",
-            "value": -2,
+            "value": -4,
+            "operation": "addition"
+        }
+    },
+    "no_toughness": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "No toughness",
+            "attribute": "minecraft:generic.armor_toughness",
+            "value": -12,
             "operation": "addition"
         }
     },
