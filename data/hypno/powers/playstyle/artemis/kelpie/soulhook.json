@@ -1,5 +1,7 @@
 {
     "type": "origins:multiple",
+    "name": "Soul Hook",
+    "description": "Holding [USE] whilst having an empty offhand and an item in the mainhand will allow you to charge Soul Hook. Using Soul hook will pull toward the desired block or entity grappled, whilst hitting your Soul Anchor will tie your hook around it.",
     "use": {
         "type": "origins:active_self",
         "entity_action": {
@@ -316,7 +318,5 @@
                 }
             ]
         }
-    },
-    "name": "Soul Hook",
-    "description": ""
+    }
 }
