@@ -1,0 +1,55 @@
+{
+    "name": "Sweet tooth",
+    "description": "You have favoritism for sweets when it comes to eating. Any food not considered \"sweet\" will feed you 60% less than usual. Additionally, you aren't able to eat meat.",
+    "type": "origins:multiple",
+
+    "sweets":{
+    "type": "origins:modify_food",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "hypno:sweets"
+        }
+    },
+    "food_modifier": {
+        "name": "Increased food points",
+        "operation": "addition",
+        "value": 2.0
+    },
+    "saturation_modifier": {
+        "name": "Increased saturation points",
+        "operation": "addition",
+        "value": 2
+    }
+},
+"others":{
+    "type": "origins:modify_food",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "hypno:sweets"
+        },
+        "inverted": true
+    },
+    "food_modifier": {
+        "name": "Decreased food points",
+        "operation": "multiply_total",
+        "value": -0.6
+    },
+    "saturation_modifier": {
+        "name": "Decreased saturation points",
+        "operation": "multiply_total",
+        "value": -0.6
+    }
+},
+"no_meat":
+{
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "hypno:meat"
+        }
+    }
+    }
+}

@@ -51,5 +51,16 @@
             "operation": "multiply_total"
         }
     },
+    "inverted_momentum":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -2,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "z"
+        ]
+      },
     "hidden": true
 }

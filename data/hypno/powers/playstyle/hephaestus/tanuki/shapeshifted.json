@@ -1,8 +1,7 @@
 {
     "name": "Disguised Entity",
     "type": "origins:multiple",
-    "prevent_use":
-    {
+    "prevent_use": {
         "type": "origins:prevent_being_used",
         "bientity_action": {
             "type": "origins:actor_action",
@@ -12,15 +11,114 @@
             }
         }
     },
-    "no_movement_ai":
-    {
-        "type": "origins:attribute",
-        "modifier": {
-            "name": "Max health increase",
-            "attribute": "minecraft:generic.movement_speed",
-            "value": -1,
-            "operation": "multiply_total"
+    "prevent_death": {
+        "type": "origins:prevent_death",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @p[tag=shapeshifter] hypno:playstyle/hephaestus/tanuki/shapeshifting_no_momentum"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @p[tag=shapeshifter] hypno:playstyle/hephaestus/tanuki/knocked"
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "z": -0.5,
+                    "y": 0.5,
+                    "space": "local"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @p[tag=shapeshifter] hypno:playstyle/hephaestus/tanuki/shapeshifting"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset @p[tag=shapeshifter]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @p[tag=shapeshifter] if score @s shapeshift = @p shapeshift run tag @s remove shapeshifter"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
         }
     },
-    "hidden":false
+    "counter":{
+        "type": "origins:action_when_hit",
+        "bientity_action": { 
+            "type": "origins:and",
+            "actions": [
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @p[tag=shapeshifter] run scale reset @s"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @p[tag=shapeshifter] run resource set @s hypno:playstyle/hephaestus/tanuki/shapeshifting_leave 1"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @e[tag=surprised,limit=1,sort=nearest] at @s run tp @s[tag=shapeshifter] ^ ^ ^-1"
+                        },
+                        {
+                            "type": "origins:delay",
+                            "ticks": 1,
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "execute as @p[tag=shapeshifter] run tag @s remove shapeshifter"
+                            }
+                        },
+                        {
+                            "type": "origins:delay",
+                            "ticks": 2,
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "kill @s"
+                            }
+                        }
+                ]
+            }
+            },
+            {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [{
+                    "type": "origins:execute_command",
+                    "command": "tag @s add surprised"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/hephaestus/tanuki/knocked"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "tag @s remove surprised"
+                    }
+                }
+                ]
+            }
+            }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "hidden": false
 }
