@@ -1,0 +1,87 @@
+{
+    "type": "origins:multiple",
+    "particles": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run particle dust_color_transition 0.008 1 0.949 2 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 5"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "sounds": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.lightning_bolt.thunder player @a ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[distance=0.1..3] hypno:playstyle/zeus/raiju/storm"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[distance=0.1..3] run resource change @s hypno:playstyle/zeus/raiju/storm_stacks 1"
+                }
+            ]
+        },
+        "interval": 10
+    },
+    "invisibility": {
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "move": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute if block ^ ^ ^0.2 minecraft:air run tp @s ^ ^ ^0.2"
+        },
+        "interval": 1
+    },
+    "no_collision": {
+        "type": "origins:prevent_entity_collision"
+    },
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon lightning_bolt"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a if score @s electric_orb = @e[limit=1,sort=nearest] electric_orb run tp @s ~ ~ ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/orb_timer",
+            "change": -1
+        },
+        "interval": 1
+    }
+}

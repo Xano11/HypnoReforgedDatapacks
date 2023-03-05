@@ -26,41 +26,18 @@
                     "type": "origins:resource",
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
                     "comparison": ">=",
-                    "compare_to": 150
+                    "compare_to": 50
                 },
                 {
                     "type": "origins:power",
-                    "power": "hypno:playstyle/zeus/raiju/emp",
+                    "power": "hypno:playstyle/zeus/raiju/emp",  
                     "inverted": true
-                }
-            ]
-        }
-    },
-    "resource_use": {
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "change": -50
-                }
-            ]
-        },
-        "interval": 15,
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:power_active",
-                    "power": "hypno:playstyle/zeus/raiju/lightning_fast_toggle"
                 },
                 {
                     "type": "origins:resource",
-                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "comparison": ">",
-                    "compare_to": 0
+                    "resource": "hypno:playstyle/zeus/raiju/lightning_orb_resource",
+                    "comparison": "<",
+                    "compare_to": 50
                 }
             ]
         }
@@ -158,6 +135,11 @@
                     {
                         "type": "origins:execute_command",
                         "command": "playsound minecraft:block.respawn_anchor.charge player @a ~ ~ ~ 1 2"
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                        "change": -50
                     },
                     {
                         "type": "origins:add_velocity",
