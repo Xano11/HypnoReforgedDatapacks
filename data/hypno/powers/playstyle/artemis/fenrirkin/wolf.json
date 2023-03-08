@@ -168,5 +168,14 @@
             "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
             "inverted": true
           }
+    },
+    "status_bar":{
+        "type": "origins:status_bar_texture",
+        "texture": "horigins:textures/gui/chained_icons.png",
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/artemis/fenrirkin/chains_toggle",
+            "inverted": true
+        }
     }
 }
