@@ -6,7 +6,8 @@
 		"hypno:playstyle/zeus/hecates/spells/magic_missile",
 		"hypno:playstyle/zeus/hecates/spells/teleport",
 		"hypno:playstyle/zeus/hecates/spells/invert_gravity",
-		"hypno:playstyle/zeus/hecates/spells/meteor"
+		"hypno:playstyle/zeus/hecates/spells/meteor",
+		"hypno:playstyle/zeus/hecates/spells/ice"
 	],
 	"icon": {
 		"item": "handcrafted:stackable_book"

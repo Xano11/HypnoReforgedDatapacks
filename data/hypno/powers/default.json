@@ -73,7 +73,12 @@
         "block_condition":{
             "type": "origins:block",
             "block": "minecraft:barrier"
-        }
+        },
+        "condition":{
+            "type": "origins:gamemode",
+            "gamemode": "creative",
+            "inverted": true
+          }
     },
     "hidden": true
 }
