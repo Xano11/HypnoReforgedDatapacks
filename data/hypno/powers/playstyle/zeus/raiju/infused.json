@@ -57,6 +57,10 @@
         },
         "interval": 20
     },
+    "status_bar":{
+        "type": "origins:status_bar_texture",
+        "texture": "horigins:textures/gui/infused_icons.png"
+    },
     "movement_buff":{
         "type": "origins:attribute",
         "modifier": {

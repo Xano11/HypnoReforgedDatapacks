@@ -1,0 +1,97 @@
+{
+    "name": "Strike",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 3,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:damage",
+                                "amount": 6,
+                                "source": {
+                                    "name": "lightningBolt",
+                                    "bypasses_armor": true
+                                }
+                            },
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "effect give @s minecraft:slowness 1 3 true"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                },
+                                {
+                                    "type": "origins:living"
+                                }                                
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon lightning_bolt"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:instant_effect ~ ~ ~ 1 0 1 0 50"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.1 0.3 0.8 1 1 1 0 ~ ~ ~ 1 0 1 0 50"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/thunderstrike_timer",
+                    "change": -1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:cloud ~ ~0.3 ~ 0.3 0 0.3 0 10"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": true
+}

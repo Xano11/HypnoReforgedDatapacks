@@ -43,96 +43,60 @@
             "type": "origins:and",
             "actions": [
                 {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"lightningbolt\"]}"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "power grant @e[distance=0.1..16] hypno:playstyle/zeus/raiju/storm"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "execute as @e[distance=0.1..16] run resource change @s hypno:playstyle/zeus/raiju/storm_stacks 1"
+                    "type": "origins:area_of_effect",
+                    "radius": 16,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "power grant @s hypno:playstyle/zeus/raiju/storm"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "resource change @s hypno:playstyle/zeus/raiju/storm_stacks 1"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_01 player @s ~ ~ ~ 0.1 1.5"
+                                }
+                            ]
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                },
+                                {
+                                    "type": "origins:living"
+                                }                                
+                            ]
+                        }
+                    }
                 },
                 {
                     "type": "origins:execute_command",
                     "command": "function hypno:stormfield"
                 },
                 {
-                    "type":"origins:delay",
-                    "ticks":1,
-                    "action":
-                    {
-                        "type": "origins:and",
-                        "actions": [{
-                        "type": "origins:execute_command",
-                        "command": "spreadplayers ~ ~ 8 16 false @e[type=minecraft:armor_stand,tag=lightningbolt]"
-                    }
-                ]
-                    }
-            },
-            {
-                "type":"origins:delay",
-                "ticks":19,
-                "action":
-                {
-                    "type": "origins:and",
-                    "actions": [{
-                    "type": "origins:execute_command",
-                    "command": "execute at @e[type=minecraft:armor_stand,tag=lightningbolt] run summon minecraft:lightning_bolt"
-                }
-            ]
-                }
-        },
-        {
-            "type":"origins:delay",
-            "ticks":20,
-            "action":
-            {
-                "type": "origins:and",
-                "actions": [{
-                "type": "origins:execute_command",
-                "command": "kill @e[type=minecraft:armor_stand,tag=lightningbolt]"
-            }
-        ]
-            }
-        },
-                {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-                    "change": -35
+                    "change": -20
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:elemental_sword_thunder_attack_03 player @a ~ ~ ~ 0.5 2"
                 }
             ]
         },
-        "interval": 25,
+        "interval": 15,
         "condition": {
             "type": "origins:and",
             "conditions": [{

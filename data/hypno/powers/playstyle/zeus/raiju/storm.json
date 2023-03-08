@@ -5,7 +5,7 @@
     "stacks": {
         "type": "origins:resource",
         "min": 0,
-        "max": 6,
+        "max": 4,
         "start_value": 0,
         "hud_render": {
             "should_render": false
@@ -16,20 +16,16 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-                    "change": -6
+                    "change": -4
                 },
                 {
-                    "type": "origins:damage",
-                    "amount": 1,
-                    "source": {
-                        "name": "lightningBolt",
-                        "bypasses_armor": true,
-                        "unblockable": true
+                    "type": "origins:spawn_entity",
+                    "entity_type": "minecraft:armor_stand",
+                    "tag": "{NoGravity:1b,Silent:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:[\"thunderstrike\"]}",
+                    "entity_action": {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:playstyle/zeus/raiju/thunderstrike"
                     }
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon minecraft:lightning_bolt"
                 }
             ]
         },
@@ -50,7 +46,7 @@
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "change": -1
         },
-        "interval": 20,
+        "interval": 15,
         "condition": {
             "type": "apugli:entity_in_radius",
             "condition": {
@@ -71,23 +67,12 @@
             "compare_to": 0
         }
     },
-    "tag": {
-        "type": "origins:action_on_callback",
-        "entity_action_gained": {
-            "type": "origins:execute_command",
-            "command": "tag @s add shocked"
-        },
-        "entity_action_lost": {
-            "type": "origins:execute_command",
-            "command": "tag @s remove shocked"
-        }
-    },
     "slow1": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Slower recharge",
             "attribute": "minecraft:generic.movement_speed",
-            "value": -0.05,
+            "value": -0.15,
             "operation": "multiply_base"
         },
         "condition": {
@@ -99,10 +84,10 @@
     },
     "overlay1": {
         "type": "origins:overlay",
-        "texture": "twigs:textures/item/petrified_lichen.png",
-        "strength": 0.1,
-        "red": 0.2,
-        "green": 0.6,
+        "texture": "horigins:thundered1.png",
+        "strength": 0.7,
+        "red": 1.0,
+        "green": 1.0,
         "blue": 1.0,
         "draw_mode": "texture",
         "draw_phase": "below_hud",
@@ -120,7 +105,7 @@
         "modifier": {
             "name": "Slower recharge",
             "attribute": "minecraft:generic.movement_speed",
-            "value": -0.10,
+            "value": -0.3,
             "operation": "multiply_base"
         },
         "condition": {
@@ -132,10 +117,10 @@
     },
     "overlay2": {
         "type": "origins:overlay",
-        "texture": "twigs:textures/item/petrified_lichen.png",
-        "strength": 0.2,
-        "red": 0.2,
-        "green": 0.6,
+        "texture": "horigins:thundered2.png",
+        "strength": 0.8,
+        "red": 1.0,
+        "green": 1.0,
         "blue": 1.0,
         "draw_mode": "texture",
         "draw_phase": "below_hud",
@@ -153,7 +138,7 @@
         "modifier": {
             "name": "Slower recharge",
             "attribute": "minecraft:generic.movement_speed",
-            "value": -0.15,
+            "value": -0.45,
             "operation": "multiply_base"
         },
         "condition": {
@@ -165,10 +150,10 @@
     },
     "overlay3": {
         "type": "origins:overlay",
-        "texture": "twigs:textures/item/petrified_lichen.png",
-        "strength": 0.3,
-        "red": 0.2,
-        "green": 0.6,
+        "texture": "horigins:thundered3.png",
+        "strength": 0.9,
+        "red": 1.0,
+        "green": 1.0,
         "blue": 1.0,
         "draw_mode": "texture",
         "draw_phase": "below_hud",
@@ -179,72 +164,6 @@
             "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
             "comparison": "==",
             "compare_to": 3
-        }
-    },
-    "slow4": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "name": "Slower recharge",
-            "attribute": "minecraft:generic.movement_speed",
-            "value": -0.20,
-            "operation": "multiply_base"
-        },
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-            "comparison": "==",
-            "compare_to": 4
-        }
-    },
-    "overlay4": {
-        "type": "origins:overlay",
-        "texture": "twigs:textures/item/petrified_lichen.png",
-        "strength": 0.4,
-        "red": 0.2,
-        "green": 0.6,
-        "blue": 1.0,
-        "draw_mode": "texture",
-        "draw_phase": "below_hud",
-        "hide_with_hud": false,
-        "visible_in_third_person": false,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-            "comparison": "==",
-            "compare_to": 4
-        }
-    },
-    "slow5": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "name": "Slower recharge",
-            "attribute": "minecraft:generic.movement_speed",
-            "value": -0.25,
-            "operation": "multiply_base"
-        },
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-            "comparison": "==",
-            "compare_to": 5
-        }
-    },
-    "overlay5": {
-        "type": "origins:overlay",
-        "texture": "twigs:textures/item/petrified_lichen.png",
-        "strength": 0.5,
-        "red": 0.2,
-        "green": 0.6,
-        "blue": 1.0,
-        "draw_mode": "texture",
-        "draw_phase": "below_hud",
-        "hide_with_hud": false,
-        "visible_in_third_person": false,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
-            "comparison": "==",
-            "compare_to": 5
         }
     },
     "glow": {
@@ -270,7 +189,7 @@
                         "type": "origins:resource",
                         "resource": "hypno:playstyle/zeus/raiju/storm_stacks",
                         "comparison": "==",
-                        "compare_to": 5
+                        "compare_to": 3
                     }
                 }
             ]
