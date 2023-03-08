@@ -309,5 +309,10 @@
             "comparison": "==",
             "compare_to": 1
         }
+    },
+    "illuminate":
+    {
+        "type": "moborigins:illuminate",
+        "light": 15
     }
 }

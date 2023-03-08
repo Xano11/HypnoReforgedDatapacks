@@ -3,7 +3,8 @@
 		"hypno:playstyle/hephaestus/cherubim/blessings",
 		"hypno:playstyle/hephaestus/cherubim/choir",
 		"hypno:playstyle/hephaestus/cherubim/angel",
-		"hypno:playstyle/hephaestus/cherubim/wings"
+		"hypno:playstyle/hephaestus/cherubim/wings",
+		"hypno:playstyle/hephaestus/cherubim/multiheaded"
 	],
 	"icon": {
 		"item": "soulsweapons:essence_of_eventide"

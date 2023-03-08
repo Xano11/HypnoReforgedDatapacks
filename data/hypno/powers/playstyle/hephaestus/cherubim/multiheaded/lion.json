@@ -1,0 +1,37 @@
+{
+    "name": "Lion",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
+                    "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/hephaestus/cherubim/multiheaded/lion"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/lion_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "hidden": true
+}

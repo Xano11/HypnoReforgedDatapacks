@@ -1,0 +1,165 @@
+{
+    "name": "Heavenly Choir",
+    "description": "Using your [Primary Ability Key] whilst equipped with your original head will cast Heavenly Choir. Heavenly Choir will recall all heads and use a special ability on the blessed ones.",
+    "type": "origins:multiple",
+    "use_eagle": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/hephaestus/cherubim/multiheaded/eagle"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "change": 600
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 600,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "use_ox": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/hephaestus/cherubim/multiheaded/ox"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "change": 600
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 600,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 2
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "use_lion": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:playstyle/hephaestus/cherubim/multiheaded/lion"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "change": 600
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 600,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 3
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

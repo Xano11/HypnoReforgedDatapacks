@@ -1,30 +1,28 @@
 {
-    "name":"Eagle",
-    "description":"",
+    "name": "Eagle",
     "type": "origins:multiple",
-    "head_follow":{
+    "head_follow": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[0] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[0] 1"
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[0] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[0] 1"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[1] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[1] 1"
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[1] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[1] 1"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run tp @s ^0.5 ^ ^-1"
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run tp @s ^0.5 ^ ^-1"
                 }
             ]
         },
         "interval": 1
     },
-    "timer":
-    {
+    "timer": {
         "type": "origins:resource",
         "min": 0,
         "max": 300,
@@ -32,37 +30,36 @@
         "hud_render": {
             "should_render": false
         },
-        "min_action":{
-            "type":"origins:and",
-            "actions":[
-        {
-            "type": "origins:execute_command",
-            "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-    },
-    {
-        "type": "origins:execute_command",
-        "command": "scoreboard players reset @s blessed"
-    },
-    {
-        "type":"origins:delay",
-        "ticks":1,
-        "action":{
-        "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s blessed"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
+                    }
+                }
+            ]
         }
-    }
-    ]
-  }
-},
-    "timer_down":{
+    },
+    "timer_down": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/eagle_timer",
             "change": -10
         },
-        "condition":
-        {
+        "condition": {
             "type": "origins:command",
             "command": "execute as @a[distance=..40] if score @s blessed = @e[limit=1,sort=nearest] blessed",
             "comparison": "==",
@@ -70,19 +67,19 @@
         },
         "interval": 10
     },
-    "air_speed":{
+    "air_speed": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": 0.25
         }
     },
-    "falling_speed":{
+    "falling_speed": {
         "type": "origins:modify_falling",
         "velocity": 0.04,
         "take_fall_damage": false
     },
-    "particles":{
+    "particles": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -94,65 +91,27 @@
             ]
         },
         "interval": 5
-    },
-    "death":
-    {
-        "type": "epoli:action_on_death",
-        "entity_action": {
-            "type":"origins:and",
-            "actions":[
-        {
-            "type": "origins:execute_command",
-            "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-    },
-    {
-        "type": "origins:execute_command",
-        "command": "scoreboard players reset @s blessed"
-    },
-    {
-        "type": "origins:execute_command",
-        "command": "execute as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run resource set @s hypno:playstyle/hephaestus/cherubim/blessings_eagle 0"
-    },
-    {
-        "type":"origins:delay",
-        "ticks":1,
-        "action":{
-        "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
-        }
-    }
-    ]
-  }
-    },
-    "leave":
-    {
+    },      
+    "leave": {
         "type": "origins:action_on_callback",
         "entity_action_removed": {
-            "type":"origins:and",
-            "actions":[
-        {
-            "type": "origins:execute_command",
-            "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-    },
-    {
-        "type": "origins:execute_command",
-        "command": "scoreboard players reset @s blessed"
-    },
-    {
-        "type": "origins:execute_command",
-        "command": "execute as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run resource set @s hypno:playstyle/hephaestus/cherubim/blessings_eagle 0"
-    },
-    {
-        "type":"origins:delay",
-        "ticks":1,
-        "action":{
-        "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
-        }
-    }
-    ]
-    },
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s blessed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
+                }
+            ]
+        },
         "execute_chosen_when_orb": false
     },
-    "hidden": false
+    "hidden": true
 }

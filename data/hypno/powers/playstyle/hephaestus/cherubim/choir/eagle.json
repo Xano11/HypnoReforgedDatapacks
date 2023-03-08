@@ -2,7 +2,7 @@
     "name":"Eagle",
     "description":"",
     "type": "origins:multiple",
-    "head_follow":{
+    "head":{
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -39,6 +39,10 @@
         {
             "type": "origins:execute_command",
             "command": "effect give @a[distance=..8] minecraft:jump_boost 10 1 true"
+    },
+    {
+        "type": "origins:execute_command",
+        "command": "execute as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
     },
     {
         "type": "origins:execute_command",
