@@ -6,7 +6,7 @@
     {
         "type": "origins:elytra_flight",
         "render_elytra": true,
-        "texture_location": "horigins:textures/entities/phoenix.png"
+        "texture_location": "horigins:phoenix.png"
     },
     "lose":
     {

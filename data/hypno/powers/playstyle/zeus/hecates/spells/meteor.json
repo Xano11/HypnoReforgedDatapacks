@@ -108,6 +108,11 @@
                                 },
                                 {
                                     "type": "origins:execute_command",
+                                    "command": "summon marker ~ ~ ~ {Tags:[\"meteor_particles\"]}",
+                                    "permission_level": 4
+                                },
+                                {
+                                    "type": "origins:execute_command",
                                     "command": "tp @e[limit=1,sort=nearest,type=armor_stand,tag=meteor] ~ ~20 ~",
                                     "permission_level": 4
                                 },
@@ -127,6 +132,11 @@
                             {
                                 "type": "origins:execute_command",
                                 "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,Tags:[\"meteor\"],DisabledSlots:4144959}",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon marker ~ ~1 ~ {Tags:[\"meteor_particles\"]}",
                                 "permission_level": 4
                             },
                             {

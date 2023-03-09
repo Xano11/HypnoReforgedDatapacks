@@ -47,6 +47,10 @@
         },
         "interval": 5
     },
+    "status_bar":{
+        "type": "origins:status_bar_texture",
+        "texture": "horigins:textures/gui/starblessed_icons.png"
+    },
     "mana_up":
     {
         "type": "origins:action_over_time",

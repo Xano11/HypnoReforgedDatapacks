@@ -1,0 +1,12 @@
+{
+    "name":"Winged",
+    "description":"You are infused. You are fire resistant and able to use new abilities.",
+    "type": "origins:multiple",
+    "wings":
+    {
+        "type": "origins:elytra_flight",
+        "render_elytra": true,
+        "texture_location": "horigins:textures/entities/phoenix.png"
+    },
+    "hidden": true
+}

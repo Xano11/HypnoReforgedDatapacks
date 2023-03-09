@@ -1,5 +1,6 @@
 {
-    "name": "Wild",
+    "name": "Wild and Free",
+    "description": "[SNEAKING] and pressing [SECONDARY ABILITY KEY] whilst near Freyr's sword will consume the sword and unleash your final form. Whilst in this form, [PRIMARY ABILITY KEY] will drop icicles on nearby entities, whilst [SECONDARY ABILITY KEY] will end the frenzy and create an ice shield around you. Enemies inside the ice shield will be totally frozen, preventing them from moving entirely, but also from taking any damage.",
     "type": "origins:multiple",
     "timer_down": {
         "type": "origins:action_over_time",
@@ -122,18 +123,6 @@
                                 {
                                     "type": "origins:execute_command",
                                     "command": "playsound simplyswords:elemental_sword_ice_attack_03 player @a ~ ~ ~ 2 0.7"
-                                },
-                                {
-                                    "type": "origins:execute_command",
-                                    "command": "particle minecraft:block minecraft:blue_ice ~ ~ ~ 2.5 0 2.5 0.1 400"
-                                },
-                                {
-                                    "type": "origins:execute_command",
-                                    "command": "particle minecraft:snowflake ~ ~ ~ 2.5 0.3 2.5 0.01 200"
-                                },
-                                {
-                                    "type": "origins:execute_command",
-                                    "command": "particle minecraft:dust_color_transition 1 1 1 2.5 0 0 1 ~ ~ ~ 2.5 0 2.5 0.01 200"
                                 }
                             ]
                         }
@@ -172,7 +161,7 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,ArmorItems:[{},{},{},{}],HandItems:[{},{}],Tags:[\"ice_shield\"],DisabledSlots:4144959}"
+                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoGravity:1b,NoBasePlate:1b,ArmorItems:[{},{},{},{}],HandItems:[{},{}],Tags:[\"ice_shield\"],DisabledSlots:4144959}"
                 },
                 {
                     "type": "origins:execute_command",
@@ -192,7 +181,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "draw sphere ~ ~ ~ 5 minecraft:frosted_ice replace minecraft:air"
+                    "command": "draw sphere ~ ~ ~ 5 minecraft:ice replace minecraft:air"
                 },
                 {
                     "type": "origins:area_of_effect",

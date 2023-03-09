@@ -9,7 +9,7 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "tp @s ~ ~0.025 ~"
+                    "command": "execute as @s at @s run tp @s ~ ~0.025 ~ ~20 ~"
                 }, 
                 {
                     "type": "origins:execute_command",
