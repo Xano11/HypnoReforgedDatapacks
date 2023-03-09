@@ -4,12 +4,12 @@
     "duration": {
         "type": "origins:resource",
         "min": 0,
-        "max": 15,
-        "start_value": 15,
+        "max": 140,
+        "start_value": 140,
         "hud_render": {
             "should_render": false
         },
-        "min_action":{
+        "min_action": {
             "type": "origins:execute_command",
             "command": "kill @s"
         }
@@ -21,11 +21,15 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "data modify entity @s Pose.RightArm[0] set value 36f"
+                    "command": "particle minecraft:soul_fire_flame ~ ~1 ~ 0 0 0 0 1"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "particle minecraft:soul_fire_flame ~ ~1 ~ 0 0 0 0 1"
+                    "command": "execute as @s at @s run tp @s ~ ~ ~ ~50 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @s at @s run particle minecraft:soul_fire_flame ^-1.85 ^1.5 ^0.5 0 0 0 0 1"
                 },
                 {
                     "type": "origins:change_resource",
@@ -49,12 +53,21 @@
                             "type": "origins:area_of_effect",
                             "radius": 1.5,
                             "bientity_action": {
-                                "type": "origins:damage",
-                                "amount": 2,
-                                "source": {
-                                    "name": "cramming",
-                                    "bypasses_armor": true
-                                }
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:damage",
+                                        "amount": 2,
+                                        "source": {
+                                            "name": "cramming",
+                                            "bypasses_armor": true
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:add_velocity",
+                                        "z": 0.3
+                                    }
+                                ]
                             },
                             "bientity_condition": {
                                 "type": "origins:and",
@@ -81,78 +94,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 1,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 72f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 2,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 108f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 3,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 144f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 4,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 180f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 5,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 216f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 6,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 252f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 7,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 288f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 8,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 324f"
-                    }
-                },
-                {
-                    "type": "origins:delay",
-                    "ticks": 9,
-                    "action": {
-                        "type": "origins:execute_command",
-                        "command": "data modify entity @s Pose.RightArm[0] set value 360f"
-                    }
                 }
             ]
         },
