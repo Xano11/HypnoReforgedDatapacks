@@ -3,7 +3,8 @@
 		"hypno:playstyle/artemis/fenrirkin/hailstorm",
 		"hypno:playstyle/artemis/fenrirkin/chains",
 		"hypno:playstyle/artemis/fenrirkin/wolf",
-		"hypno:playstyle/artemis/fenrirkin/carnivore"
+		"hypno:playstyle/artemis/fenrirkin/carnivore",
+		"hypno:playstyle/artemis/fenrirkin/binded"
 	],
 	"icon": {
 		"item": "minecraft:diamond",

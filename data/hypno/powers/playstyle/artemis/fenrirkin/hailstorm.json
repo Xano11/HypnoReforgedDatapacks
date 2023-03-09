@@ -1,6 +1,6 @@
 {
   "name": "Hailstorm",
-  "description": "You've acquired Freyr's sword and can use it to unleash Hailstorm. Pressing your [Secondary Ability Key] whilst chained will plant the legendary sword into the ground, creating a hailstorm. In the hailstorm, icicles fall; dealing damage and freezing entities over time. Whilst Unchained, you can channel the energy of the sword to Leap. Leaping will launch you in the air, and stop you, letting you choose your landing area (Press your [USE] keybind).",
+  "description": "You've acquired Freyr's sword and can use it to unleash Hailstorm. Pressing your [Secondary Ability Key] whilst chained will plant the legendary sword into the ground, creating a hailstorm. In the hailstorm, icicles fall; dealing damage and freezing entities over time. Whilst Unchained, you can channel the energy of the sword to use Permafrost's Leap. Leaping will launch you in the air, and stop you, letting you choose your landing area (Press your [USE] keybind).",
   "type": "origins:multiple",
   "activate_sword": {
     "type": "origins:active_self",

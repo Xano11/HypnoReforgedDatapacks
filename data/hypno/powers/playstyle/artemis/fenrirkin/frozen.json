@@ -61,6 +61,14 @@
             "value": -1
         }
     },
+    "no_damage_taken": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -0.9
+        }
+    },
     "no_block_interaction": {
         "type": "origins:prevent_block_selection"
     },

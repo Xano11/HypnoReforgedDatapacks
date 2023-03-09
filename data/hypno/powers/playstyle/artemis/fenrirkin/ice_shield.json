@@ -19,6 +19,10 @@
                 },
                 {
                     "type": "origins:execute_command",
+                    "command": "draw sphere ~ ~ ~ 5 minecraft:air replace minecraft:ice"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "kill @s"
                 }
             ]
