@@ -33,5 +33,22 @@
         },
         "interval": 10
     },
+    "mitigation":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Less damage",
+            "operation": "multiply_total",
+            "value": -0.2
+        }
+    },
+    "no_knockback":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "no knockybacky uwu",
+            "attribute": "minecraft:generic.knockback_resistance",
+            "value": 10,
+            "operation": "addition"
+        }
+    },
     "hidden": true
 }

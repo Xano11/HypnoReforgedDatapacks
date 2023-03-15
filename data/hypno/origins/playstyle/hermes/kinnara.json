@@ -5,7 +5,8 @@
 		"hypno:playstyle/hermes/kinnara/offering",
 		"hypno:playstyle/hermes/kinnara/monsoon",
 		"hypno:playstyle/hermes/kinnara/zephyr",
-		"hypno:playstyle/hermes/kinnara/squall"
+		"hypno:playstyle/hermes/kinnara/squall",
+		"hypno:playstyle/hermes/kinnara/armor"
 	],
 	"icon": {
 		"item": "minecraft:feather"

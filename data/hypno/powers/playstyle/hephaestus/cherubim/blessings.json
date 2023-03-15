@@ -1,6 +1,6 @@
 {
-    "name": "Blessings of the Guardian",
-    "description": "Sneaking and [RIGHT CLICKING] an entity will grant one of three heads: Eagle, Ox or Lion. These heads all have different effects and will tether to the entities infinitely until the Cherubim is not close or not present.",
+    "name": "Guardians's Blessings",
+    "description": "Sneaking and [RIGHT CLICKING] an entity will grant one of three heads: Eagle, Ox or Lion. These heads all have different effects and will tether to the entities indefinitely until the Cherubim is not close or not present.",
     "type": "origins:multiple",
     "eagle_activation": {
         "type": "origins:action_on_entity_use",
@@ -74,7 +74,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
                             }
                         ]
                     }
@@ -318,7 +318,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
                             }
                         ]
                     }
@@ -554,7 +554,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
                             }
                         ]
                     }

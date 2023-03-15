@@ -111,8 +111,7 @@
             "operation": "addition"
         }
     },
-    "roll_uses":
-    {
+    "roll_uses":{
         "type": "origins:attribute",
         "modifier": {
             "name": "Max health increase",
@@ -121,8 +120,7 @@
             "operation": "addition"
         }
     },
-    "roll_recharge":
-    {
+    "roll_recharge":{
         "type": "origins:attribute",
         "modifier": {
             "name": "Max health increase",
@@ -147,16 +145,15 @@
             ]
         }
     },
-    "no_fall_damage":
-    {
+    "fall_damage":{
         "type": "origins:modify_damage_taken",
         "damage_condition": {
             "type": "origins:from_falling"
         },
         "modifier": {
-            "name": "Invulnerable to fall",
+            "name": "Reduced fall damage.",
             "operation": "multiply_total",
-            "value": -1
+            "value": -0.5
         }
     },
     "branch":{

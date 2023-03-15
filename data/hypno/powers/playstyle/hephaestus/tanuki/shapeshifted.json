@@ -44,6 +44,14 @@
                 },
                 {
                     "type": "origins:execute_command",
+                    "command": "tag @s remove shapeshift"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tp @s ~ -300 ~"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "kill @s"
                 }
             ]

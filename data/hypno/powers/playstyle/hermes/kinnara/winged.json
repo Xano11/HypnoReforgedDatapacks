@@ -103,5 +103,16 @@
             "type": "origins:passenger"
         }
     },
+    "fall_damage":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:from_falling"
+        },
+        "modifier": {
+            "name": "Reduced fall damage.",
+            "operation": "multiply_total",
+            "value": -0.48
+        }
+    },
     "hidden": false
 }

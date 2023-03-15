@@ -1,0 +1,124 @@
+{
+    "name": "Puffered",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 500,
+        "start_value": 500,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/aeolus/akhlut/puffered"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/aeolus/akhlut/puffered_timer",
+                    "change": -10
+                }
+            ]
+        },
+        "interval": 10
+    }, 
+    "scale": {
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale add pehkui:width 0.5",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale subtract pehkui:height 0.2",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale subtract pehkui:width 0.5",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale add pehkui:height 0.2",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "slower": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower speed",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.2,
+            "operation": "multiply_base"
+        }
+    },
+    "air_speed": {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.2
+        }
+    },
+    "thorns": {
+        "type": "origins:modify_damage_taken",
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:living"
+            }
+        },
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:invert",
+                    "action": {
+                        "type": "origins:damage",
+                        "amount": 3,
+                        "source": {
+                            "name": "thorns",
+                            "bypasses_armor": true,
+                            "magic": true
+                        }
+                    }
+                },
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:poison",
+                            "duration": 100,
+                            "amplifier": 0
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "hidden": true
+}

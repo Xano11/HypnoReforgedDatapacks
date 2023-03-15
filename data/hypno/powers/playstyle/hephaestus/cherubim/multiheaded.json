@@ -20,6 +20,18 @@
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
                     "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound naturalist:entity.vulture.ambient player @a ~ ~ ~ 2 0.6"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:feather ~ ~1 ~ 0.5 0 0.5 0.1 10"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 1 1 0.6 0.6 0.6 ~ ~1 ~ 0.5 0 0.5 0.1 30"
                 }
             ]
         },
@@ -73,6 +85,18 @@
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
                     "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.cow.ambient player @a ~ ~ ~ 2 0.6"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.4 0.2 0 1 0 0 0 ~ ~1 ~ 0.5 0 0.5 1 50"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:poof ~ ~1 ~ 0.5 0 0.5 0.2 10"
                 }
             ]
         },
@@ -126,6 +150,18 @@
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
                     "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound naturalist:entity.lion.roar player @a ~ ~ ~ 2 0.6"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.8 0.1 0 1 0 0 0 ~ ~1 ~ 0.5 0 0.5 1 50"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:angry_villager ~ ~ ~ 0.5 0.2 0.5 0.1 10"
                 }
             ]
         },

@@ -175,7 +175,7 @@
                         "actions": [
                             {
                                 "type": "origins:execute_command",
-                                "command": "playsound soulsweapons:nightfall_bonk player @s ~ ~ ~ 1 2"
+                                "command": "playsound simplyswords:magic_sword_breaks player @a ~ ~ ~ 1 0.5"
                             }
                         ]
                     },

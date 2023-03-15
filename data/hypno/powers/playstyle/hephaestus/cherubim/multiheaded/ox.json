@@ -33,184 +33,25 @@
         },
         "interval": 10
     },
-    "using": {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 200,
-        "start_value": 0,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "breaking": {
+    "move": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "change": 1
+            "type": "origins:and",
+            "actions": [{
+                    "type": "origins:add_velocity",
+                    "z": 1.5,
+                    "space": "local_horizontal_normalized",
+                    "set": true
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:poof ~ ~ ~ 0.2 0 0.2 0.1 3"
+                }
+            ]
         },
         "interval": 1,
         "condition": {
-            "type": "eggolib:breaking_block",
-            "using_effective_tool": true
-        }
-    },
-    "attacking": {
-        "type": "origins:self_action_on_hit",
-        "entity_action": {
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "change": 10
-        },
-        "cooldown": 5
-    },
-    "mining_speed1": {
-        "type": "origins:modify_break_speed",
-        "modifier": {
-            "operation": "multiply_base",
-            "value": 0.15
-        },
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 40
-        }
-    },
-    "mining_speed2": {
-        "type": "origins:modify_break_speed",
-        "modifier": {
-            "operation": "multiply_base",
-            "value": 0.3
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 80
-        }
-    },
-    "mining_speed3": {
-        "type": "origins:modify_break_speed",
-        "modifier": {
-            "operation": "multiply_base",
-            "value": 0.45
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 120
-        }
-    },
-    "mining_speed4": {
-        "type": "origins:modify_break_speed",
-        "modifier": {
-            "operation": "multiply_base",
-            "value": 0.60
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 160
-        }
-    },
-    "mining_speed5": {
-        "type": "origins:modify_break_speed",
-        "modifier": {
-            "operation": "multiply_base",
-            "value": 0.75
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 200
-        }
-    },
-    "attack_speed1": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "attribute": "minecraft:generic.attack_speed",
-            "operation": "addition",
-            "value": 0.1,
-            "name": "Increased attack speed"
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 40
-        }
-    },
-    "attack_speed2": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "attribute": "minecraft:generic.attack_speed",
-            "operation": "addition",
-            "value": 0.1,
-            "name": "Increased attack speed"
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 80
-        }
-    },
-    "attack_speed3": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "attribute": "minecraft:generic.attack_speed",
-            "operation": "addition",
-            "value": 0.1,
-            "name": "Increased attack speed"
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 120
-        }
-    },
-    "attack_speed4": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "attribute": "minecraft:generic.attack_speed",
-            "operation": "addition",
-            "value": 0.1,
-            "name": "Increased attack speed"
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 160
-        }
-    },
-    "attack_speed5": {
-        "type": "origins:conditioned_attribute",
-        "modifier": {
-            "attribute": "minecraft:generic.attack_speed",
-            "operation": "addition",
-            "value": 0.1,
-            "name": "Increased attack speed"
-        },
-        "tick_rate": 10,
-        "condition": {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/ox_using",
-            "comparison": "==",
-            "compare_to": 200
+            "type": "origins:on_block"
         }
     },
     "hidden": true

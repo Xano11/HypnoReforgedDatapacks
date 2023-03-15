@@ -1,5 +1,5 @@
 {
-    "name": "Song of Raging Winds : Squall",
+    "name": "Song of Raging Winds",
     "description": "Whilst gifted by Garuda, you can play the song of raging winds : Squall. This song will grant nearby entities additional speed as well as a chance of preventing incoming damage.",
     "type": "origins:multiple",
     "activate": {

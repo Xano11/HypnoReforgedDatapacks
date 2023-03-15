@@ -25,6 +25,7 @@ scoreboard objectives add shapeshift dummy
 scoreboard objectives add electric_orb dummy
 scoreboard objectives add corpse dummy
 scoreboard objectives add garuda dummy
+scoreboard objectives add echoes dummy
 
 #Tower
 scoreboard objectives add elevator dummy

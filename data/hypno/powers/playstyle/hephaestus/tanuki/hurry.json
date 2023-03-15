@@ -140,9 +140,6 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:on_block"
-                },
-                {
                     "type": "apugli:key_pressed",
                     "key": {
                         "key": "key.origins.secondary_active",

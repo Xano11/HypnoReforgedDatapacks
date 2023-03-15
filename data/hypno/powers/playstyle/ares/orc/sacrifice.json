@@ -13,10 +13,6 @@
             },
             {
                 "type": "origins:execute_command",
-                "command": "playsound soulsweapons:demon_death player @a ~ ~ ~ 1 1.5"
-            },
-            {
-                "type": "origins:execute_command",
                 "command": "playsound bettercombat:spear_stab player @s ~ ~ ~ 1 0.5"
             },
             {

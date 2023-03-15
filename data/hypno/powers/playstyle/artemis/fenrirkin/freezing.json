@@ -3,18 +3,7 @@
     "description": "The cold is felt along your spine...",
     "type": "origins:multiple",
     "freeze": {
-        "type": "origins:stacking_status_effect",
-        "min_stacks": -1,
-        "max_stacks": 5,
-        "duration_per_stack": 10,
-        "effects": [
-            {
-                "effect": "soulsweapons:freezing",
-                "is_ambient": true,
-                "show_particles": false,
-                "show_icon": true
-            }
-        ],
+        "type": "origins:freeze",
         "condition": {
             "type": "origins:nbt",
             "nbt": "{Tags: ['freezing']}"

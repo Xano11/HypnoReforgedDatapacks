@@ -6,8 +6,9 @@
 		"hypno:playstyle/hephaestus/cherubim/wings",
 		"hypno:playstyle/hephaestus/cherubim/multiheaded"
 	],
-	"icon": {
-		"item": "soulsweapons:essence_of_eventide"
+	"icon":  {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:7,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":0}"
 	},
 	"order": 1,
 	"impact": 0,

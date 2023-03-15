@@ -15,14 +15,6 @@
                 "type": "origins:change_resource",
                 "resource": "*:*_seismic_resource",
                 "change": 100
-              },
-              {
-                "type": "origins:execute_command",
-                "command": "particle twigs:item_pebble ~ ~ ~ 2.5 0 2.5 0.1 1000 normal @a"
-              },
-              {
-                "type": "origins:execute_command",
-                "command": "particle supplementaries:ash ~ ~ ~ 2.5 0 2.5 0 400 normal @a"
               }
           ]
       },
@@ -134,7 +126,7 @@
                         },
                         {
                             "type": "eggolib:area_of_effect",
-                            "radius": 20,
+                            "radius": 16,
                             "shape": "star",
                             "block_action": {
                                 "type": "origins:explode",
