@@ -1,0 +1,219 @@
+{
+    "name": "Garuda",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "kill @s"
+        }
+    },
+    "particle_generator": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 50,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @e[limit=1,sort=nearest,tag=particle_generator]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon marker ~ ~ ~ {Tags:[\"particle_generator\"]}"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/garuda_gift_particle_generator",
+                    "change": -50
+                }
+            ]
+        }
+    },
+    "cloud": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "updraft_effects": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:cloud ~ ~ ~ 0 0 0 0 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 1 1 0 1 0 ~ ~ ~ 1 4 1 1 5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:poof ~ ~ ~ 1 4 1 0.05 5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @s at @s run tp @s ~ ~ ~ ~9 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=particle_generator] at @s run particle minecraft:cloud ^ ^ ^3 0 0 0 0 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=particle_generator] at @s run tp @s ~ ~0.1 ~ ~18 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=particle_generator] at @s run particle minecraft:cloud ^ ^ ^2 0 0 0 0 1"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/garuda_gift_particle_generator",
+                    "change": 1
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 3,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:add_velocity",
+                                            "y": 0.6
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/garuda_gift_cloud",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "cloud_effects": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:cloud ~ ~6 ~ 1 0.5 1 0 20"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:falling_water ~ ~6 ~ 1 0.5 1 0 1"
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 4,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:heal",
+                                            "amount": 0.05
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:dust_color_transition 1 0.1 0.3 1 1 1 1 ~ ~1 ~ 0.5 0.5 0.5 1 3"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 1,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/garuda_gift_cloud",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/garuda_gift_duration",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": false
+}

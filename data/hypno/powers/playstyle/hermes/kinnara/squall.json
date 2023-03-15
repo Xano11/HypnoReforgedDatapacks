@@ -1,0 +1,89 @@
+{
+    "name": "Song of Raging Winds : Squall",
+    "description": "Whilst gifted by Garuda, you can play the song of raging winds : Squall. This song will grant nearby entities additional speed as well as a chance of preventing incoming damage.",
+    "type": "origins:multiple",
+    "activate": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 8,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/hermes/kinnara/cyclone"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute positioned ~ ~1.3 ~ run function hypno:notes_squall"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:note ~ ~1 ~ 0.2 0.05 0.2 0 20"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound horigins:song_squall player @a ~ ~ ~ 2"
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/offering_offered",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @e[distance=..8,tag=garuda_gift]",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

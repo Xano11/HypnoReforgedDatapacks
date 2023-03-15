@@ -1,0 +1,413 @@
+{
+    "name": "Garuda's Gift",
+    "description": "Using a bow and holding the string for long enough will charge up Garuda's Gift. Upon pressing [ATTACK] at max charge, you will shoot a special arrow that upon landing, will create a pillar of wind, launching any entity upwards.",
+    "type": "origins:multiple",
+    "cooldown":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 900,
+        "start_value": 0,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 2
+        }
+    },
+    "cooldown_usage":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_cooldown",
+                    "change": -1
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/offering_offered",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "interval": 1
+    },
+    "cooldown_usage_offered":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_cooldown",
+                    "change": -2
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/offering_offered",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "interval": 1
+    },
+    "hover":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:using_item",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:bow"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fall_flying"
+                }                
+            ]
+        }
+    },
+    "holding": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute positioned ^ ^1.4 ^1 run function hypno:garuda_particles"
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_01 player @a ~ ~ ~ 1 1"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                                "comparison": "==",
+                                "compare_to": 20
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_02 player @a ~ ~ ~ 1 1"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                                "comparison": "==",
+                                "compare_to": 40
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_03 player @a ~ ~ ~ 1 1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                    "change": 20
+                }
+            ]
+        },
+        "cooldown": 20,
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:using_item",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:bow"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                    "comparison": "<",
+                    "compare_to": 60
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/offering_offered",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "holding_offered": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute positioned ^ ^1.4 ^1 run function hypno:garuda_particles"
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_01 player @a ~ ~ ~ 1 1"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                                "comparison": "==",
+                                "compare_to": 20
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_02 player @a ~ ~ ~ 1 1"
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                                "comparison": "==",
+                                "compare_to": 40
+                            },
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_03 player @a ~ ~ ~ 1 1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                    "change": 20
+                }
+            ]
+        },
+        "cooldown": 10,
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:using_item",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:bow"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                    "comparison": "<",
+                    "compare_to": 60
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/offering_offered",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "windup": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "reset": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+            "change": -60
+        },
+        "interval": 1,
+        "condition": {
+            "type": "apugli:key_pressed",
+            "key": {
+                "key": "key.use",
+                "continuous": true
+            },
+            "inverted": true
+        }
+    },
+    "shooting": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                    "change": -60
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 32,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "collider",
+                    "fluid_handling": "any",
+                    "block_action": {
+                        "type": "origins:and",
+                        "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "summon minecraft:armor_stand ~ ~1 ~ {Marker:1b,NoGravity:1b,Invisible:1b,Tags:[\"garuda_gift\"]}"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute positioned ~ ~1 ~ run power grant @e[limit=1,sort=nearest,tag=garuda_gift] hypno:playstyle/hermes/kinnara/garuda_gift"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:item.elytra.flying player @a ~ ~1 ~ 3 1.5"
+                        }
+                        ]
+                    },
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:spawn_entity",
+                                            "entity_type": "minecraft:armor_stand",
+                                            "tag": "{Marker:1b,NoGravity:1b,Invisible:1b,Tags:[\"garuda_gift\"]}",
+                                            "entity_action": {
+                                                "type": "origins:execute_command",
+                                                "command": "power grant @s hypno:playstyle/hermes/kinnara/garuda_gift"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:item.elytra.flying player @a ~ ~ ~ 3 1.5"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "command_along_ray": "function hypno:garuda_particles",
+                    "command_step": 2,
+                    "command_along_ray_only_on_hit": true
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_cooldown",
+                    "change": 900
+                }
+            ]
+        },
+        "cooldown": 20,
+        "key": {
+            "key": "key.attack",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:using_item",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:bow"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/winds_windup",
+                    "comparison": "==",
+                    "compare_to": 60
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

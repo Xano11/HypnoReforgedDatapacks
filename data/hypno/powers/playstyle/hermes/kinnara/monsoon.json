@@ -1,0 +1,45 @@
+{
+    "name": "Song of the Upcoming Season : Monsoon",
+    "description": "Whilst near an active updraft of wind caused by Garuda's gift, you can play the song of the upcoming season : Monsoon. Playing this tune will convert the updraft into a soothing light rain, slowly healing entities in it.",
+    "type": "origins:multiple",
+    "activate": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=garuda_gift] run resource set @s hypno:playstyle/hermes/kinnara/garuda_gift_cloud 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute positioned ~ ~1.3 ~ run function hypno:notes_monsoon"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:note ~ ~1 ~ 0.2 0.05 0.2 0 20"
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @e[distance=..8,tag=garuda_gift]",
+                    "comparison": ">=",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "hidden": false
+}
