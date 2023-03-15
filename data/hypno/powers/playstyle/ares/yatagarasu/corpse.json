@@ -84,6 +84,13 @@
                     ]
                 },
                 {
+                    "type": "origins:explode",
+                    "power": 2,
+                    "destruction_type": "none",
+                    "damage_self": false,
+                    "create_fire": false
+                },
+                {
                     "type": "origins:execute_command",
                     "command": "execute as @e[tag=corpse_particles] if score @s corpse = @e[limit=1,sort=nearest] corpse run kill @s"
                 },

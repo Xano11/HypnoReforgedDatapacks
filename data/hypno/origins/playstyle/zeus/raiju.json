@@ -10,7 +10,7 @@
 	],
 	"icon": {
 		"item": "minecraft:diamond",
-		"tag": "{CustomModelData:2,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":4}"
+		"tag": "{CustomModelData:2,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":9}"
 	},
 	"order": 1,
 	"impact": 0,

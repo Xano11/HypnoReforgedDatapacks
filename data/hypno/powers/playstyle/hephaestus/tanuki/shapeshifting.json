@@ -225,7 +225,7 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound horigins:vine_thud"
+                    "command": "playsound horigins:vine_thud player @a ~ ~ ~ 1 1"
                 }
             ]
         },
