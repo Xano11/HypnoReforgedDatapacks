@@ -14,6 +14,14 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
+                    "command": "tag @s remove echoed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s echoes"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/aeolus/akhlut/salmoned"
                 }
             ]
@@ -38,6 +46,20 @@
         "modifier": {
             "operation": "multiply_base",
             "value": 0.5
+        }
+    },
+    "weakness":{
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @e[distance=0.1..12] minecraft:weakness 10 0",
+                    "permission_level": 4
+                }
+            ]
         }
     },
     "hidden": true

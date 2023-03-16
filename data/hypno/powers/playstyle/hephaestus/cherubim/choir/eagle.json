@@ -42,12 +42,12 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "execute as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
+        "command": "execute as @e[tag=heads_owner] if score @s blessed = @e[limit=1,sort=nearest] blessed run power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
     },
     {
         "type": "origins:execute_command",
         "command": "effect give @a[distance=..8] minecraft:slow_falling 10 1 true"
-},
+    },
     {
         "type": "origins:execute_command",
         "command": "particle supplementaries:feather ~ ~1.75 ~ 0 0 0 1 50"

@@ -1,8 +1,8 @@
 {
 	"powers": [
-        "hypno:playstyle/ares/orc/chunky",
-        "hypno:playstyle/ares/orc/retribution",
-		"hypno:playstyle/ares/orc/sacrifice"
+        "hypno:playstyle/ares/oni/chunky",
+        "hypno:playstyle/ares/oni/retribution",
+		"hypno:playstyle/ares/oni/sacrifice"
 	],
 	"icon": {
 		"item": "minecraft:slime_ball",
@@ -10,6 +10,6 @@
 	},
 	"order": 1,
 	"impact": 0,
-	"name": "Orc",
+	"name": "Oni",
 	"description": "A brutish, bulky species with an ambition for revenge in melee combat."
 }

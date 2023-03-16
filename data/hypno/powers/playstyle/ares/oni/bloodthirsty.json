@@ -13,14 +13,14 @@
         },
         "min_action": {
             "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+            "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
         }
     },
     "timer_down":{
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
-            "resource": "hypno:playstyle/ares/orc/bloodthirsty_timer",
+            "resource": "hypno:playstyle/ares/oni/bloodthirsty_timer",
             "change": -10
         },
         "interval": 10
@@ -115,7 +115,7 @@
             "actions":[   
             {
                 "type": "origins:change_resource",
-                "resource": "hypno:playstyle/ares/orc/bloodthirsty_bar",
+                "resource": "hypno:playstyle/ares/oni/bloodthirsty_bar",
                 "change": 10
             }
             ]
@@ -147,7 +147,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -174,7 +174,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -192,7 +192,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -219,7 +219,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -237,7 +237,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -264,7 +264,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -282,7 +282,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -304,7 +304,7 @@
                                 "actions":[
                                     {
                                         "type": "origins:execute_command",
-                                        "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                        "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                                     },
                                     {
                                     "type":"origins:delay",
@@ -319,7 +319,7 @@
                                      "ticks":2,
                                      "action": {
                                         "type": "origins:execute_command",
-                                        "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                        "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                                     }
                                 }
                             ]
@@ -330,7 +330,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -348,7 +348,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -375,7 +375,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -393,7 +393,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -420,7 +420,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -438,7 +438,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -465,7 +465,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -483,7 +483,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -510,7 +510,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -528,7 +528,7 @@
                         "actions":[
                             {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                             },
                             {
                                 "type": "origins:execute_command",
@@ -555,7 +555,7 @@
                              "ticks":2,
                              "action": {
                                 "type": "origins:execute_command",
-                                "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                             }
                         }
                     ]
@@ -589,7 +589,7 @@
                                         "type": "origins:and",
                                         "actions": [{
                                             "type": "origins:execute_command",
-                                            "command": "power grant @s hypno:playstyle/ares/orc/slashed"
+                                            "command": "power grant @s hypno:playstyle/ares/oni/slashed"
                                         }
                                 ]
                                     }
@@ -627,14 +627,14 @@
                                         "type": "origins:and",
                                         "actions": [{
                                             "type": "origins:execute_command",
-                                            "command": "power grant @s hypno:playstyle/ares/orc/slash"
+                                            "command": "power grant @s hypno:playstyle/ares/oni/slash"
                                         }
                                 ]
                                     }
                                 },
                                 {
                                     "type": "origins:execute_command",
-                                    "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty_healing"
+                                    "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty_healing"
                                 },
                                 {
                                     "type": "origins:execute_command",
@@ -671,7 +671,7 @@
                                     "action":
                                     {
                                     "type": "origins:execute_command",
-                                    "command": "power remove @s hypno:playstyle/ares/orc/bloodthirsty"
+                                    "command": "power remove @s hypno:playstyle/ares/oni/bloodthirsty"
                                         }
                                     }
                                     ]

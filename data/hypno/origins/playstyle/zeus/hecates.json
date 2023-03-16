@@ -10,7 +10,8 @@
 		"hypno:playstyle/zeus/hecates/spells/ice"
 	],
 	"icon": {
-		"item": "handcrafted:stackable_book"
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:11,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":10}"
 	},
 	"order": 4,
 	"impact": 2,

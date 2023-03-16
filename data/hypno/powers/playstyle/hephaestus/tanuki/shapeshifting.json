@@ -149,11 +149,11 @@
                     },
                     "if_action": {
                         "type": "origins:execute_command",
-                        "command": "data modify entity @e[limit=1,sort=nearest,type=minecraft:fox,tag=shapeshift] Sitting set value 1b"
+                        "command": "data modify entity @e[limit=1,sort=nearest,type=minecraft:fox,tag=shapeshift] Sleeping set value 1b"
                     },
                     "else_action": {
                         "type": "origins:execute_command",
-                        "command": "data modify entity @e[limit=1,sort=nearest,type=minecraft:fox,tag=shapeshift] Sitting set value 0b"
+                        "command": "data modify entity @e[limit=1,sort=nearest,type=minecraft:fox,tag=shapeshift] Sleeping set value 0b"
                     }
                 }
             ]
@@ -248,6 +248,12 @@
         "key": {
             "key": "key.sneak",
             "continuous": false
+        },
+        "condition":{
+            "type": "origins:command",
+            "command": "execute if entity @e[type=minecraft:polar_bear,limit=1,sort=nearest,tag=shapeshift]",
+            "comparison": "==",
+            "compare_to": 1
         }
     },
     "leave": {

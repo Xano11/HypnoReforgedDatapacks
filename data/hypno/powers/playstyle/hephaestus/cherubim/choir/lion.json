@@ -42,7 +42,7 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "execute as @a if score @s blessed = @e[limit=1,sort=nearest] blessed run power remove @s hypno:playstyle/hephaestus/cherubim/lion"
+        "command": "execute as @e[tag=heads_owner] if score @s blessed = @e[limit=1,sort=nearest] blessed run power remove @s hypno:playstyle/hephaestus/cherubim/lion"
     },
     {
         "type": "origins:execute_command",

@@ -12,7 +12,7 @@
     "cod": {
         "type": "origins:modify_food",
         "item_condition": {
-            "type": "origins:and",
+            "type": "origins:or",
             "conditions": [
                 {
                     "type": "origins:ingredient",
@@ -70,7 +70,7 @@
     "salmon": {
         "type": "origins:modify_food",
         "item_condition": {
-            "type": "origins:and",
+            "type": "origins:or",
             "conditions": [
                 {
                     "type": "origins:ingredient",
@@ -146,7 +146,8 @@
             "name": "Increased saturation points",
             "operation": "multiply_base",
             "value": 0.25
-        }
+        },
+        "prevent_effects": true
     },
     "tropical_fish": {
         "type": "origins:modify_food",
@@ -169,6 +170,25 @@
             "name": "Increased saturation points",
             "operation": "multiply_base",
             "value": 0.25
+        }
+    },
+    "anything_else": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "hypno:pescivore"
+            }
+        },
+        "food_modifier": {
+            "name": "Decreased food points",
+            "operation": "multiply_base",
+            "value": -0.6
+        },
+        "saturation_modifier": {
+            "name": "Decreased saturation points",
+            "operation": "multiply_base",
+            "value": -0.6
         }
     }
 }

@@ -103,6 +103,10 @@
                 },
                 {
                     "type": "origins:execute_command",
+                    "command": "tag @s remove heads_owner"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "scoreboard players reset @s blessed"
                 },
                 {

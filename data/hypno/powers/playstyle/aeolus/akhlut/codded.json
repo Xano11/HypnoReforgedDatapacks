@@ -14,6 +14,14 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
+                    "command": "tag @s remove echoed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s echoes"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/aeolus/akhlut/codded"
                 }
             ]

@@ -90,6 +90,17 @@
                                     "comparison": ">",
                                     "compare_to": 0
                                 }
+                            },
+                            {
+                                "type": "origins:biome",
+                                "biomes": [
+                                    "minecraft:grove",
+                                    "minecraft:snowy_taiga",
+                                    "minecraft:old_growth_pine_taiga",
+                                    "minecraft:old_growth_spruce_taiga",
+                                    "minecraft:taiga"
+                                ],
+                                "inverted": true
                             }
                         ]
                     },

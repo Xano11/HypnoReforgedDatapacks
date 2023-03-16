@@ -99,11 +99,6 @@
     "smite": {
         "type": "apugli:modify_enchantment_damage_taken",
         "enchantment": "minecraft:smite",
-        "base_value": 3,
-        "modifier": {
-            "operation": "addition",
-            "value": 1
-        },
         "bientity_action": {
             "type": "origins:target_action",
             "action": {

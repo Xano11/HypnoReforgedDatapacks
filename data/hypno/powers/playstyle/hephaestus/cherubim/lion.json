@@ -90,11 +90,11 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "tag @s remove heads_owner"
+                    "command": "execute as @e[tag=lion] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[tag=lion] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                    "command": "tag @s remove heads_owner"
                 },
                 {
                     "type": "origins:execute_command",

@@ -184,6 +184,10 @@
                                         {
                                             "type": "origins:execute_command",
                                             "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
                                         }
                                     ]
                                 }
@@ -217,6 +221,10 @@
                                         {
                                             "type": "origins:execute_command",
                                             "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
                                         }
                                     ]
                                 }
@@ -250,6 +258,10 @@
                                         {
                                             "type": "origins:execute_command",
                                             "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
                                         }
                                     ]
                                 }
@@ -283,6 +295,10 @@
                                         {
                                             "type": "origins:execute_command",
                                             "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
                                         }
                                     ]
                                 }
@@ -317,7 +333,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "tag @s add heads_owner"
+                                "command": "tag @s add echoed"
                             },
                             {
                                 "type": "origins:delay",
@@ -455,11 +471,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "execute as @e[distance=..5,tag=echoed] if score @s echoes = @e[limit=1,sort=nearest] echoes run kill @s"
-                            },
-                            {
-                                "type": "origins:execute_command",
-                                "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
+                                "command": "tag @s remove echoed"
                             },
                             {
                                 "type": "origins:execute_command",
