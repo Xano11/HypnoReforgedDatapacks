@@ -1,7 +1,8 @@
 {
 	"powers": [
 		"hypno:playstyle/zeus/ifrit/engulfed",
-        "hypno:playstyle/zeus/ifrit/demonic"
+        "hypno:playstyle/zeus/ifrit/demonic",
+		"hypno:playstyle/zeus/ifrit/corrupted"
 	],
 	"icon": {
 		"item": "minecraft:fire_coral_fan",
