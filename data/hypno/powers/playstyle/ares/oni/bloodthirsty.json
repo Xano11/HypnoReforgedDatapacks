@@ -22,7 +22,7 @@
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/ares/oni/bloodthirsty_timer",
             "change": -10
-        },
+        },  
         "interval": 10
     },
     "particles":{
