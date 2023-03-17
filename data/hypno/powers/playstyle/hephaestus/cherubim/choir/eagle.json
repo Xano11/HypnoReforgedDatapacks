@@ -2,14 +2,14 @@
     "name":"Eagle",
     "description":"",
     "type": "origins:multiple",
-    "head_follow":{
+    "head":{
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "tp @s ~ ~0.025 ~"
+                    "command": "execute as @s at @s run tp @s ~ ~0.025 ~ ~20 ~"
                 }, 
                 {
                     "type": "origins:execute_command",
@@ -42,8 +42,12 @@
     },
     {
         "type": "origins:execute_command",
+        "command": "execute as @e[tag=heads_owner] if score @s blessed = @e[limit=1,sort=nearest] blessed run power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
+    },
+    {
+        "type": "origins:execute_command",
         "command": "effect give @a[distance=..8] minecraft:slow_falling 10 1 true"
-},
+    },
     {
         "type": "origins:execute_command",
         "command": "particle supplementaries:feather ~ ~1.75 ~ 0 0 0 1 50"

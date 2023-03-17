@@ -1,6 +1,6 @@
 {
     "name":"Lucky",
-    "description":"You can toggle your Thunderous form using your [SECONDARY ABILITY KEY]. In this form, you are reduced to a ball of electricity allowing you to move faster. Using this form costs energy over time.",
+    "description":"You're quite lucky. By default, you have Looting I and Fortune I.",
     "type": "origins:multiple",
     "fortune":{
         "type": "apugli:modify_enchantment_level",

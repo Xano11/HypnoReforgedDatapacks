@@ -1,0 +1,20 @@
+{
+    "replace": false,
+    "values": [
+      "minecraft:cod",
+      "minecraft:cooked_cod",
+      "minecraft:salmon",
+      "minecraft:cooked_salmon",
+      "minecraft:pufferfish",
+      "minecraft:tropical_fish",
+      "farmersdelight:cod_slice",
+      "farmersdelight:cooked_cod_slice",
+      "farmersdelight:salmon_slice",
+      "farmersdelight:cooked_salmon_slice",
+      "farmersdelight:salmon_roll",
+      "farmersdelight:cod_roll",
+      "farmersdelight:fish_stew",
+      "farmersdelight:squid_ink_pasta",
+      "farmersdelight:grilled_salmon"
+    ]
+  }

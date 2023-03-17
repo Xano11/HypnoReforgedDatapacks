@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
     "name": "Stalking",
-    "description": "Using [PRIMARY ABILITY KEY] ",
+    "description": "Using [PRIMARY ABILITY KEY], you will fade away your corporeal presence and become invisible over time. Once totally invisible, you will stalk the entity you are looking at, making it glow. After 12.5 seconds of stalking, you will grant the entity Preyed, reducing their max health by 50% for the duration. ",
     "using": {
         "type": "origins:active_self",
         "entity_action": {

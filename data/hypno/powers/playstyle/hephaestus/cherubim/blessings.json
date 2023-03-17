@@ -1,196 +1,208 @@
 {
-    "name":"Blessings of the Guardian",
-    "description":"Sneaking and [RIGHT CLICKING] an entity will grant one of three heads: Eagle, Ox or Lion. These heads all have different effects and will tether to the entities infinitely until the Cherubim is not close or not present.",
+    "name": "Guardians's Blessings",
+    "description": "Sneaking and [RIGHT CLICKING] an entity will grant one of three heads: Eagle, Ox or Lion. These heads all have different effects and will tether to the entities indefinitely until the Cherubim is not close or not present.",
     "type": "origins:multiple",
-    "eagle_activation":{
+    "eagle_activation": {
         "type": "origins:action_on_entity_use",
         "bientity_action": {
-                "type": "origins:and",
-                "actions": [
+            "type": "origins:and",
+            "actions": [
                 {
                     "type": "origins:target_action",
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:execute_command",
-                            "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-1852313442,1555777103,-1685094601,1297290500],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGMyN2UzY2I1MmE2NDk2OGU2MGM4NjFlZjFhYjg0ZTBhMGNiNWYwN2JlMTAzYWM3OGRhNjc3NjE3MzFmMDBjOCJ9fX0=\"}]}}}}],Tags:[\"eagle\"]}"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "power grant @s hypno:playstyle/hephaestus/cherubim/eagle"
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":1,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @s blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
-                            }
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":1,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @e[limit=1,sort=nearest,tag=eagle] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
-                            }
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":2,
-                            "action":{
+                            {
                                 "type": "origins:execute_command",
-                                "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                                "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-1852313442,1555777103,-1685094601,1297290500],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGMyN2UzY2I1MmE2NDk2OGU2MGM4NjFlZjFhYjg0ZTBhMGNiNWYwN2JlMTAzYWM3OGRhNjc3NjE3MzFmMDBjOCJ9fX0=\"}]}}}}],Tags:[\"eagle\"]}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/hephaestus/cherubim/eagle"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add heads_owner"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @s blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @e[limit=1,sort=nearest,tag=eagle] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                                }
                             }
-                        }
-                    ]
-                }
+                        ]
+                    }
                 },
                 {
-                "type": "origins:actor_action",
-                "action": {
-                    "type": "origins:and",
-                    "actions": [{
-                            "type": "origins:execute_command",
-                            "command": "tag @s add blessed"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @s blessed run data get entity @s UUID[0] 1"
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":2,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "tag @s remove blessed"
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add blessed"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s blessed run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove blessed"
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
                             }
-                        },
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
-                            "change": 1
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
-                        }
-                    ]
+                        ]
+                    }
                 }
-                }
-                ]
-            },
+            ]
+        },
         "item_condition": {
             "type": "origins:empty"
         },
         "hands": [
             "main_hand"
         ],
-        "bientity_condition":  {
+        "bientity_condition": {
             "type": "origins:target_condition",
             "condition": {
-                "type":"origins:and",
-                "conditions":[{
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/eagle",
-                "inverted": true
-            },
-            {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/ox",
-                "inverted": true
-            },
-            {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/lion",
-                "inverted": true
-            }
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/eagle",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/ox",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/lion",
+                        "inverted": true
+                    }
                 ]
             }
         },
         "condition": {
             "type": "origins:and",
             "conditions": [
-        {
-            "type": "origins:sneaking"
-        },
-        {
-            "type": "origins:resource",
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @p blessed",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "eagle": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "eagle_check": {
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:change_resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
-            "comparison": "==",
-            "compare_to": 0
+            "change": -1
         },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-            "comparison": "==",
-            "compare_to": 1
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
+            "change": 1
         },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+        "interval": 10,
+        "condition": {
+            "type": "origins:command",
+            "command": "execute as @e[tag=eagle] if score @s blessed = @p blessed",
             "comparison": "==",
             "compare_to": 0
         }
-        ]
-    }
     },
-    "eagle":
-    {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 1,
-        "start_value": 0,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "eagle_deactivation":{
+    "eagle_deactivation": {
         "type": "origins:action_on_entity_use",
         "bientity_action": {
             "type": "origins:and",
             "actions": [
-            {
-                "type": "origins:target_action",
-                "action": {
-                    "type": "origins:and",
-                    "actions": [
-                    {
-                        "type": "origins:execute_command",
-                        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "execute as @e[distance=..5,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "scoreboard players reset @s blessed"
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power remove @s hypno:playstyle/hephaestus/cherubim/eagle"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[distance=..5,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scoreboard players reset @s blessed"
+                            }
+                        ]
                     }
-                ]
-            }
-            },
-            {
-            "type": "origins:actor_action",
-            "action":{
-                "type": "origins:change_resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
-                "change": -1
-            }
-            }
+                }
             ]
         },
         "item_condition": {
@@ -199,7 +211,7 @@
         "hands": [
             "main_hand"
         ],
-        "bientity_condition":  {
+        "bientity_condition": {
             "type": "origins:target_condition",
             "condition": {
                 "type": "origins:power",
@@ -210,435 +222,223 @@
         "condition": {
             "type": "origins:and",
             "conditions": [
-            {
-                "type": "origins:sneaking"
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
-                "comparison": "==",
-                "compare_to": 1
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                "comparison": "==",
-                "compare_to": 1
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
-                "comparison": "==",
-                "compare_to": 0
-            }
-        ]
-    }
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=eagle] if score @s blessed = @p blessed",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
     },
-    "ox_activation":{
+    "ox_activation": {
         "type": "origins:action_on_entity_use",
         "bientity_action": {
-                "type": "origins:and",
-                "actions": [
+            "type": "origins:and",
+            "actions": [
                 {
                     "type": "origins:target_action",
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:execute_command",
-                            "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-964337629,522275819,-1379437386,-184095955],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTY3NWFjZjlhZjY1M2EyZGRhZGFkOTcxZDA2MTMwYmJlOGViYzJhODk2ZGYxN2VkNDgyYmVhN2YyMDU0YmI2OCJ9fX0=\"}]}}}}],Tags:[\"ox\"]}"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "power grant @s hypno:playstyle/hephaestus/cherubim/ox"
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":1,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @s blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
-                            }
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":1,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @e[limit=1,sort=nearest,tag=ox] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
-                            }
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":2,
-                            "action":{
+                            {
                                 "type": "origins:execute_command",
-                                "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                                "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-964337629,522275819,-1379437386,-184095955],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTY3NWFjZjlhZjY1M2EyZGRhZGFkOTcxZDA2MTMwYmJlOGViYzJhODk2ZGYxN2VkNDgyYmVhN2YyMDU0YmI2OCJ9fX0=\"}]}}}}],Tags:[\"ox\"]}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/hephaestus/cherubim/ox"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add heads_owner"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @s blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @e[limit=1,sort=nearest,tag=ox] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @e[distance=..12,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                                }
                             }
-                        }
-                    ]
-                }
+                        ]
+                    }
                 },
                 {
-                "type": "origins:actor_action",
-                "action": {
-                    "type": "origins:and",
-                    "actions": [{
-                            "type": "origins:execute_command",
-                            "command": "tag @s add blessed"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @s blessed run data get entity @s UUID[0] 1"
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":2,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "tag @s remove blessed"
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add blessed"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s blessed run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove blessed"
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
                             }
-                        },
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
-                            "change": 1
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
-                        }
-                    ]
+                        ]
+                    }
                 }
-                }
-                ]
-            },
+            ]
+        },
         "item_condition": {
             "type": "origins:empty"
         },
         "hands": [
             "main_hand"
         ],
-        "bientity_condition":  {
+        "bientity_condition": {
             "type": "origins:target_condition",
             "condition": {
-                "type":"origins:and",
-                "conditions":[{
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/eagle",
-                "inverted": true
-            },
-            {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/ox",
-                "inverted": true
-            },
-            {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/lion",
-                "inverted": true
-            }
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/eagle",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/ox",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/lion",
+                        "inverted": true
+                    }
                 ]
             }
         },
         "condition": {
             "type": "origins:and",
             "conditions": [
-        {
-            "type": "origins:sneaking"
-        },
-        {
-            "type": "origins:resource",
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=ox] if score @s blessed = @p blessed",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 2
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "ox": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "ox_check": {
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:change_resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
-            "comparison": "==",
-            "compare_to": 0
+            "change": -1
         },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-            "comparison": "==",
-            "compare_to": 2
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
+            "change": 1
         },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+        "interval": 10,
+        "condition": {
+            "type": "origins:command",
+            "command": "execute as @e[tag=ox] if score @s blessed = @p blessed",
             "comparison": "==",
             "compare_to": 0
         }
-        ]
-    }
     },
-    "ox":
-    {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 1,
-        "start_value": 0,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "ox_deactivation":{
+    "ox_deactivation": {
         "type": "origins:action_on_entity_use",
         "bientity_action": {
             "type": "origins:and",
             "actions": [
-            {
-                "type": "origins:target_action",
-                "action": {
-                    "type": "origins:and",
-                    "actions": [
-                    {
-                        "type": "origins:execute_command",
-                        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/ox"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "execute as @e[distance=..5,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "scoreboard players reset @s blessed"
-                    }
-                ]
-            }
-            },
-            {
-            "type": "origins:actor_action",
-            "action":{
-                "type": "origins:change_resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
-                "change": -1
-            }
-            }
-            ]
-        },
-        "item_condition": {
-            "type": "origins:empty"
-        },
-        "hands": [
-            "main_hand"
-        ],
-        "bientity_condition":  {
-            "type": "origins:target_condition",
-            "condition": {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/ox",
-                "inverted": false
-            }
-        },
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-            {
-                "type": "origins:sneaking"
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_ox",
-                "comparison": "==",
-                "compare_to": 1
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                "comparison": "==",
-                "compare_to": 2
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
-                "comparison": "==",
-                "compare_to": 0
-            }
-        ]
-    }
-    },
-    "lion_activation":{
-        "type": "origins:action_on_entity_use",
-        "bientity_action": {
-                "type": "origins:and",
-                "actions": [
                 {
                     "type": "origins:target_action",
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:execute_command",
-                            "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;645463137,-76988349,-1809591869,-630565080],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGNkOWJkYWRmZDM1ZTkwZDBkMmNhMzIxNWIyNjk2OGRkMTAzZTgzZWExM2IxNWQ2MGFhZDYzM2RhZTZmOTIwOCJ9fX0=\"}]}}}}],Tags:[\"lion\"]}"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "power grant @s hypno:playstyle/hephaestus/cherubim/lion"
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":1,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @s blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
-                            }
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":1,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @e[limit=1,sort=nearest,tag=lion] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
-                            }
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":2,
-                            "action":{
+                            {
                                 "type": "origins:execute_command",
-                                "command": "execute as @e[distance=..12,tag=eagle] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                                "command": "power remove @s hypno:playstyle/hephaestus/cherubim/ox"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[distance=..5,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scoreboard players reset @s blessed"
                             }
-                        }
-                    ]
-                }
-                },
-                {
-                "type": "origins:actor_action",
-                "action": {
-                    "type": "origins:and",
-                    "actions": [{
-                            "type": "origins:execute_command",
-                            "command": "tag @s add blessed"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "execute store result score @s blessed run data get entity @s UUID[0] 1"
-                        },
-                        {
-                            "type":"origins:delay",
-                            "ticks":2,
-                            "action":{
-                            "type": "origins:execute_command",
-                            "command": "tag @s remove blessed"
-                            }
-                        },
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
-                            "change": 1
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound soulsweapons:restore player @a ~ ~ ~ 2 0.7"
-                        }
-                    ]
-                }
-                }
-                ]
-            },
-        "item_condition": {
-            "type": "origins:empty"
-        },
-        "hands": [
-            "main_hand"
-        ],
-        "bientity_condition":  {
-            "type": "origins:target_condition",
-            "condition": {
-                "type":"origins:and",
-                "conditions":[{
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/eagle",
-                "inverted": true
-            },
-            {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/ox",
-                "inverted": true
-            },
-            {
-                "type": "origins:power",
-                "power": "hypno:playstyle/hephaestus/cherubim/lion",
-                "inverted": true
-            }
-                ]
-            }
-        },
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-        {
-            "type": "origins:sneaking"
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
-            "comparison": "==",
-            "compare_to": 0
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-            "comparison": "==",
-            "compare_to": 3
-        },
-        {
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
-            "comparison": "==",
-            "compare_to": 0
-        }
-        ]
-    }
-    },
-    "lion":
-    {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 1,
-        "start_value": 0,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "lion_deactivation":{
-        "type": "origins:action_on_entity_use",
-        "bientity_action": {
-            "type": "origins:and",
-            "actions": [
-            {
-                "type": "origins:target_action",
-                "action": {
-                    "type": "origins:and",
-                    "actions": [
-                    {
-                        "type": "origins:execute_command",
-                        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/lion"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "execute as @e[distance=..5,tag=lion] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
-                    },
-                    {
-                        "type": "origins:execute_command",
-                        "command": "scoreboard players reset @s blessed"
+                        ]
                     }
-                ]
-            }
-            },
-            {
-            "type": "origins:actor_action",
-            "action":{
-                "type": "origins:change_resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
-                "change": -1
-            }
-            }
+                }
             ]
         },
         "item_condition": {
@@ -647,7 +447,243 @@
         "hands": [
             "main_hand"
         ],
-        "bientity_condition":  {
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:power",
+                "power": "hypno:playstyle/hephaestus/cherubim/ox",
+                "inverted": false
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=ox] if score @s blessed = @p blessed",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 2
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "lion_activation": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;645463137,-76988349,-1809591869,-630565080],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGNkOWJkYWRmZDM1ZTkwZDBkMmNhMzIxNWIyNjk2OGRkMTAzZTgzZWExM2IxNWQ2MGFhZDYzM2RhZTZmOTIwOCJ9fX0=\"}]}}}}],Tags:[\"lion\"]}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/hephaestus/cherubim/lion"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add heads_owner"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @s blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @e[limit=1,sort=nearest,tag=lion] blessed run data get entity @e[limit=1,sort=nearest,tag=blessed] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @e[distance=..12,tag=lion] if score @s blessed = @e[limit=1,sort=nearest] blessed run power grant @s hypno:playstyle/hephaestus/cherubim/heads"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add blessed"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s blessed run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove blessed"
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/eagle",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/ox",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/hephaestus/cherubim/lion",
+                        "inverted": true
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=lion] if score @s blessed = @p blessed",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 3
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "lion": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "lion_check": {
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
+            "change": -1
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
+            "change": 1
+        },
+        "interval": 10,
+        "condition": {
+            "type": "origins:command",
+            "command": "execute as @e[tag=lion] if score @s blessed = @p blessed",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "lion_deactivation": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power remove @s hypno:playstyle/hephaestus/cherubim/lion"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[distance=..5,tag=lion] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scoreboard players reset @s blessed"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition": {
             "type": "origins:target_condition",
             "condition": {
                 "type": "origins:power",
@@ -658,32 +694,31 @@
         "condition": {
             "type": "origins:and",
             "conditions": [
-            {
-                "type": "origins:sneaking"
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_lion",
-                "comparison": "==",
-                "compare_to": 1
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                "comparison": "==",
-                "compare_to": 3
-            },
-            {
-                "type": "origins:resource",
-                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
-                "comparison": "==",
-                "compare_to": 0
-            }
-        ]
-    }
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=lion] if score @s blessed = @p blessed",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                    "comparison": "==",
+                    "compare_to": 3
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
     },
-    "toggle_resource":
-    {
+    "toggle_resource": {
         "type": "origins:resource",
         "min": 0,
         "max": 3,
@@ -692,7 +727,7 @@
             "should_render": false
         }
     },
-    "toggling":{
+    "toggling": {
         "type": "origins:active_self",
         "entity_action": {
             "type": "origins:if_else_list",
@@ -707,21 +742,21 @@
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                            "change": 1
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound naturalist:entity.vulture.hurt player @a ~ ~ ~ 2 0.5"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "particle supplementaries:feather ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
-                        }
-                    ]
-                }
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound naturalist:entity.vulture.hurt player @a ~ ~ ~ 2 0.5"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle supplementaries:feather ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                            }
+                        ]
+                    }
                 },
                 {
                     "condition": {
@@ -733,21 +768,21 @@
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                            "change": 1
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound minecraft:entity.cow.ambient player @s ~ ~ ~ 2 0.7"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "particle minecraft:dust_color_transition 1 1 1 1 0.1 0.1 0 ~ ~1 ~ 0.5 0.2 0.5 1 40"
-                        }
-                    ]
-                }
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.cow.ambient player @s ~ ~ ~ 2 0.7"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 1 1 1 1 0.1 0.1 0 ~ ~1 ~ 0.5 0.2 0.5 1 40"
+                            }
+                        ]
+                    }
                 },
                 {
                     "condition": {
@@ -759,21 +794,21 @@
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                            "change": 1
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "particle minecraft:angry_villager ~ ~ ~ 0.5 0.2 0.5 0.1 10"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound naturalist:entity.lion.roar player @a ~ ~ ~ 2 1"
-                        }
-                    ]
-                }
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:angry_villager ~ ~ ~ 0.5 0.2 0.5 0.1 10"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound naturalist:entity.lion.roar player @a ~ ~ ~ 2 1"
+                            }
+                        ]
+                    }
                 },
                 {
                     "condition": {
@@ -785,21 +820,21 @@
                     "action": {
                         "type": "origins:and",
                         "actions": [
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
-                            "change": -3
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "execute positioned ~ ~1.84 ~ run function hypno:halo"
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "playsound create:haunted_bell_use player @a ~ ~ ~ 2 0.5"
-                        }
-                    ]
-                }
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:playstyle/hephaestus/cherubim/blessings_toggle_resource",
+                                "change": -3
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute positioned ~ ~1.84 ~ run function hypno:halo"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound create:haunted_bell_use player @a ~ ~ ~ 2 0.5"
+                            }
+                        ]
+                    }
                 }
             ]
         },
@@ -810,10 +845,9 @@
         "key": {
             "key": "key.origins.secondary_active",
             "continuous": false
-          }
-      },
-      "cooldown":
-    {
+        }
+    },
+    "cooldown": {
         "type": "origins:resource",
         "min": 0,
         "max": 600,
@@ -822,7 +856,7 @@
             "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
             "bar_index": 0,
-            "condition":{
+            "condition": {
                 "type": "origins:resource",
                 "resource": "hypno:playstyle/hephaestus/cherubim/blessings_cooldown",
                 "comparison": ">",
@@ -830,7 +864,7 @@
             }
         }
     },
-    "cooldown_down":{
+    "cooldown_down": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",

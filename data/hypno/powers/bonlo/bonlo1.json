@@ -1,0 +1,53 @@
+{
+    "type": "origins:multiple",
+    "use": {
+        "type": "origins:action_on_being_used",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:advancement",
+                            "advancement": "hypno:root_bonlo",
+                            "inverted": true
+                        },
+                        "if_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "moborigins:show_floating_item",
+                                    "item_stack": {
+                                        "item": "minecraft:diamond",
+                                        "tag": "{CustomModelData:6}"
+                                    }
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "advancement grant @s only hypno:root_bonlo",
+                                    "permission_level": 4
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:bonlo/bonlo_leave",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound horigins:amogus player @s ~ ~ ~ 1 1",
+                        "permission_level": 4
+                    }
+                ]
+            }
+        },
+        "hands": [
+            "main_hand"
+        ]
+    },
+    "hidden": true
+}

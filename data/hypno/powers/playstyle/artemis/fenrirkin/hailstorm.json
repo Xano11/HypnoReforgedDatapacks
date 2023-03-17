@@ -1,6 +1,6 @@
 {
   "name": "Hailstorm",
-  "description": "You've acquired Freyr's sword and can use it to unleash Hailstorm. Pressing your [Secondary Ability Key] whilst chained will plant the legendary sword into the ground, creating a hailstorm. In the hailstorm, icicles fall; dealing damage and freezing entities over time. Whilst Unchained, you can channel the energy of the sword to Leap. Leaping will launch you in the air, and stop you, letting you choose your landing area (Press your [USE] keybind).",
+  "description": "You've acquired Freyr's sword and can use it to unleash Hailstorm. Pressing your [Secondary Ability Key] whilst chained will plant the legendary sword into the ground, creating a hailstorm. In the hailstorm, icicles fall; dealing damage and freezing entities over time. Whilst Unchained, you can channel the energy of the sword to use Permafrost's Leap. Leaping will launch you in the air, and stop you, letting you choose your landing area (Press your [USE] keybind).",
   "type": "origins:multiple",
   "activate_sword": {
     "type": "origins:active_self",
@@ -9,15 +9,15 @@
       "actions": [
         {
           "type": "origins:execute_command",
-          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,Marker:1b,NoBasePlate:1b,ShowArms:1b,ArmorItems:[{},{},{},{}],HandItems:[{id:\"soulsweapons:freyr_sword\",Count:1b},{}],Tags:[\"hailstorm\"],Pose:{RightArm:[90f,0f,0f]}}"
+          "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,Marker:1b,NoBasePlate:1b,ShowArms:1b,ArmorItems:[{},{},{},{}],HandItems:[{id:\"simplyswords:awakened_lichblade\",Count:1b},{}],Tags:[\"hailstorm\"],Pose:{RightArm:[90f,0f,0f]}}"
         },
         {
           "type": "origins:execute_command",
-          "command": "playsound soulsweapons:sharpen player @a ~ ~ ~ 2 0.6"
+          "command": "playsound simplyswords:elemental_sword_ice_attack_01 player @a ~ ~ ~ 1 1.5"
         },
         {
           "type": "origins:execute_command",
-          "command": "playsound soulsweapons:shield player @a ~ ~ ~ 0.5 0.7"
+          "command": "playsound simplyswords:dark_sword_block player @a ~ ~ ~ 0.5 0.5"
         },
         {
           "type": "origins:execute_command",

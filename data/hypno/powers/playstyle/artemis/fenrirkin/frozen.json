@@ -1,0 +1,104 @@
+{
+    "name": "Freezing",
+    "description": "The cold is felt along your spine...",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 60,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/artemis/fenrirkin/frozen"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/artemis/fenrirkin/frozen_timer",
+                    "change": -5
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "model": {
+        "type": "origins:model_color",
+        "red": 0,
+        "green": 0.2,
+        "blue": 1,
+        "alpha": 1
+    },
+    "no_move": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -1,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+    "no_damage": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_damage_taken": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -0.9
+        }
+    },
+    "no_block_interaction": {
+        "type": "origins:prevent_block_selection"
+    },
+    "no_block_use": {
+        "type": "origins:prevent_block_use"
+    },
+    "no_jump": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "prevent_item_use": {
+        "type": "origins:prevent_item_use"
+    },
+    "no_camera":{
+        "type": "eggolib:modify_mouse_sensitivity",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "fog":{
+        "type": "moborigins:fog",
+        "red": 1,
+        "green": 1,
+        "blue": 1,
+        "start": -1,
+        "end": 1
+    },
+    "hidden": true
+}

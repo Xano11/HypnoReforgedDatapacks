@@ -1,0 +1,54 @@
+{
+    "name": "Eagle",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hephaestus/cherubim/blessings_eagle",
+                    "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/hephaestus/cherubim/multiheaded/eagle"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/cherubim/multiheaded/eagle_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "flight": {
+        "type": "origins:elytra_flight",
+        "render_elytra": true,
+        "texture_location": "horigins:cherubim.png"
+    },
+    "velocity": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:add_velocity",
+            "z": 0.03,
+            "space": "local"
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:fall_flying"
+        }
+    },
+    "hidden": true
+}

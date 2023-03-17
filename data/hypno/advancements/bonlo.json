@@ -1,0 +1,27 @@
+{
+    "display": {
+        "title": {
+            "text": "bonlo (bonlo)."
+        },
+        "description": {
+            "text": "bonlo..."
+        },
+        "icon": {
+            "item": "minecraft:diamond",
+            "nbt": "{CustomModelData:6}"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": true
+    },
+    "criteria": {
+        "bonlo": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "rewards": {
+        "experience": 0
+    },
+    "parent": "hypno:root_bonlo"
+}

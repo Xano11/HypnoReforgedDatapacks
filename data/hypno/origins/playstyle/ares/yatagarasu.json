@@ -6,8 +6,8 @@
 		"hypno:playstyle/ares/yatagarasu/souleater"
 	],
 	"icon": {
-		"item": "soulsweapons:chaos_orb",
-		"tag": "{Enchantments:[{}],CustomModelData:1}"
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:8,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":2}"
 	},
 	"order": 1,
 	"impact": 0,

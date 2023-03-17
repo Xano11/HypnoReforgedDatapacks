@@ -1,6 +1,6 @@
 {
     "name": "Vision of the Astral",
-    "description": "Using your [PRIMARY ABILITY KEY], you will be granted perception capable of viewing a specific star. Looking at a star with a spyglass will grant you buffs.",
+    "description": "Using your [PRIMARY ABILITY KEY], you will be granted perception capable of viewing a specific star. Looking at a star with a spyglass will grant you blessings based off the current moon.",
     "type": "origins:multiple",
     "use": {
         "type": "origins:active_self",

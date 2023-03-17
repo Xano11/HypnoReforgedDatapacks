@@ -116,7 +116,7 @@
             },
             {
                 "type": "origins:execute_command",
-                "command": "playsound soulsweapons:shield player @s ~ ~ ~ 1 2"
+                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @s ~ ~ ~ 1 1"
             }
             ]
         }

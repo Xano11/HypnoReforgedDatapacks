@@ -34,97 +34,109 @@
                 {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:flame ~ ~ ~ 0.3 0.3 0.3 0.01 30"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=meteor_particles] at @s run tp @s ~ ~ ~ ~10 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=meteor_particles] at @s run particle minecraft:flame ^ ^ ^9 0.5 0.1 0.5 0 10"
                 }
             ]
         },
         "interval": 1
     },
-    "landing":
-    {
+    "landing": {
         "type": "origins:action_over_time",
-        "rising_action":  {
-            "type": "origins:area_of_effect",
-            "radius": 9,
-            "bientity_action": {
-                "type":"origins:and",
-                "actions":[{
-                "type": "origins:target_action",
-                "action": {
-                    "type":"origins:and",
-                    "actions":[
-                { 
-                    "type": "origins:execute_command",
-                    "command": "particle minecraft:ash ~ ~1 ~ 0.5 0.5 0.5 0.4 100"
-                },
-                { 
-                    "type": "origins:execute_command",
-                    "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.4 100"
-                },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
                 {
-                    "type": "origins:set_on_fire",
-                    "duration": 4
-                },
-                {
-                    "type": "origins:damage",
-                    "amount": 7,
-                    "source": {
-                        "name": "onFire",
-                        "fire": true,
-                        "bypasses_armor": true
+                    "type": "origins:area_of_effect",
+                    "radius": 9,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:ash ~ ~1 ~ 0.5 0.5 0.5 0.4 100"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.4 100"
+                                        },
+                                        {
+                                            "type": "origins:set_on_fire",
+                                            "duration": 4
+                                        },
+                                        {
+                                            "type": "origins:damage",
+                                            "amount": 7,
+                                            "source": {
+                                                "name": "onFire",
+                                                "fire": true,
+                                                "bypasses_armor": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:living"
+                                },
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                }
+                            ]
+                        }
                     }
-                }
-            ]
-                }
-            },
-            {
-                "type": "origins:actor_action",
-                "action": {
-                    "type":"origins:and",
-                    "actions":[
-                { 
+                },
+                {
                     "type": "origins:execute_command",
                     "command": "playsound simplyswords:elemental_bow_earth_shoot_impact_03 player @a ~ ~ ~ 2 0.5"
                 },
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_02 player @s ~ ~ ~ 1 0.5"
                 },
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:flame ~ ~ ~ 3 0 3 0.1 300"
                 },
-                { 
+                {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:dust_color_transition 1 0.2 0 2 0.8 0.1 0 ~ ~ ~ 3 0 3 0.1 100"
-                }
-            ]
-                }
-            }
-                ]
-            },
-            "bientity_condition": {
-                "type":"origins:target_condition",
-                "condition":{
-                "type":"origins:and",
-                "conditions":[
-                {
-                    "type": "origins:living"
                 },
                 {
-                    "type": "origins:in_tag",
-                    "tag": "hypno:living"
+                    "type": "origins:execute_command",
+                    "command": "kill @e[tag=meteor_particles]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
                 }
             ]
-            }
-            }
         },
         "interval": 1,
-        "condition":{
+        "condition": {
             "type": "origins:on_block"
         }
     },
-    "fall_speed":
-    {
+    "fall_speed": {
         "type": "origins:modify_falling",
         "velocity": 0.025,
         "take_fall_damage": true

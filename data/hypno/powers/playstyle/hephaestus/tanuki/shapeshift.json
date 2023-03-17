@@ -1,6 +1,6 @@
 {
     "name": "Shapeshift",
-    "description": "Using your [PRIMARY ABILITY KEY], you can dash forward. Dashing puts you on fire for five seconds.",
+    "description": "Using your [PRIMARY ABILITY KEY], you will shapeshift into an entity. Depending on your surrondings, the entity will change. To leave shapeshift, use [SNEAK].",
     "type": "origins:multiple",
     "use": {
         "type": "origins:active_self",
@@ -16,35 +16,190 @@
                     "command": "tag @s add shapeshifter"
                 },
                 {
-                    "type": "origins:choice",
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:magic_sword_spell_01 player @a ~ ~ ~ 1 1.4"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:item.lodestone_compass.lock player @s ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:entity_effect ~ ~ ~ 1 1 1 1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:instant_effect ~ ~ ~ 1 1 1 1 100"
+                },
+                {
+                    "type": "origins:if_else_list",
                     "actions": [
                         {
-                            "element":  {
-                                "type": "origins:execute_command",
-                                "command": "summon llama ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Tags:[\"shapeshift\"]}"
-                            },
-                            "weight": 1
+                            "condition": {
+                                "type":"origins:and",
+                                "conditions":[{
+                                "type": "origins:biome",
+                                "biomes": [
+                                    "minecraft:windswept_hills",
+                                    "minecraft:windswept_forest",
+                                    "minecraft:windswept_gravelly_hills",
+                                    "minecraft:savanna_plateau"
+                                ]
+                            }
+                        ]
+                    },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "summon llama ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,NoAI:1b,Tags:[\"shapeshift\"]}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:height 1.04"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:width 1.45"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:eye_height 1.4"
+                                    }
+                                ]
+                            }
                         },
                         {
-                            "element": {
-                                "type": "origins:execute_command",
-                                "command": "summon wolf ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Tags:[\"shapeshift\"]}"
+                            "condition":{
+                                "type":"origins:and",
+                                "conditions":[{
+                                "type": "origins:biome",
+                                "biomes": [
+                                    "minecraft:windswept_hills",
+                                    "minecraft:windswept_forest",
+                                    "minecraft:windswept_gravelly_hills",
+                                    "minecraft:savanna_plateau"
+                                ],
+                                "inverted": true
                             },
-                            "weight": 1
+                            {
+                                "type": "origins:biome",
+                                "condition": {
+                                    "type": "origins:temperature",
+                                    "comparison": ">",
+                                    "compare_to": 0
+                                }
+                            },
+                            {
+                                "type": "origins:biome",
+                                "biomes": [
+                                    "minecraft:grove",
+                                    "minecraft:snowy_taiga",
+                                    "minecraft:old_growth_pine_taiga",
+                                    "minecraft:old_growth_spruce_taiga",
+                                    "minecraft:taiga"
+                                ],
+                                "inverted": true
+                            }
+                        ]
+                    },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "summon wolf ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,NoAI:1b,Tags:[\"shapeshift\"]}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:eye_height 1.4"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:height 0.474"
+                                    }
+                                ]
+                            }
                         },
                         {
-                            "element": {
-                                "type": "origins:execute_command",
-                                "command": "summon polar_bear ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Tags:[\"shapeshift\"]}"
+                            "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:biome",
+                                            "condition": {
+                                                "type": "origins:temperature",
+                                                "comparison": "<=",
+                                                "compare_to": 0
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:biome",
+                                            "biomes": [
+                                                "minecraft:grove",
+                                                "minecraft:snowy_taiga"
+                                            ],
+                                            "inverted": true
+                                        }
+                                    ]
                             },
-                            "weight": 1
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "summon polar_bear ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,NoAI:1b,Tags:[\"shapeshift\"]}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:height 0.77"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:width 2.34"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:eye_height 1.3"
+                                    }
+                                ]
+                            }
                         },
                         {
-                            "element": {
-                                "type": "origins:execute_command",
-                                "command": "summon villager ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Willing:0b,Tags:[\"shapeshift\"],VillagerData:{profession:\"minecraft:nitwit\"}}"
+                            "condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:biome",
+                                        "biomes": [
+                                            "minecraft:grove",
+                                            "minecraft:snowy_taiga",
+                                            "minecraft:old_growth_pine_taiga",
+                                            "minecraft:old_growth_spruce_taiga",
+                                            "minecraft:taiga"
+                                        ],
+                                        "inverted": false
+                                    }
+                                ]
                             },
-                            "weight": 1
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "summon fox ~ ~ ~ {DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,NoAI:1b,Tags:[\"shapeshift\"]}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:height 1.1"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "scale set pehkui:eye_height 1.2"
+                                    }
+                                ]
+                            }
                         }
                     ]
                 },
@@ -63,17 +218,27 @@
             ]
         },
         "condition": {
+            "type":"origins:and",
+            "conditions":[{
             "type": "origins:power",
             "power": "hypno:playstyle/hephaestus/tanuki/shapeshifting",
             "inverted": true
         },
+        {
+            "type": "origins:command",
+            "command": "execute if entity @s[tag=disguise_tp]",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    ]
+    },
         "cooldown": 1200,
         "hud_render": {
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
             "bar_index": 5
         },
         "key": {
-            "key": "key.origins.secondary_active"
+            "key": "key.origins.primary_active"
         }
     },
     "hidden": false

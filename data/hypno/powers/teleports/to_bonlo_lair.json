@@ -1,0 +1,51 @@
+{
+    "type": "origins:multiple",
+    "use": {
+        "type": "origins:action_on_being_used",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle supplementaries:stasis ~ ~1 ~ 0.3 0.7 0.3 0.1 100"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute in hypno:island run tp @s -157 198 -173"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound create:fwoomp player @s ~ ~ ~ 1 0.5"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle supplementaries:stasis ~ ~1 ~ 0.3 0.7 0.3 0.1 100"
+                    }
+                ]
+            }
+        },
+        "hands": [
+            "main_hand"
+        ]
+    },
+    "invisibility": {
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "particles": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:witch ~ ~0.7 ~ 0 0 0 0 10"
+                }
+            ]
+        },
+        "interval": 50
+    },
+    "hidden": true
+}

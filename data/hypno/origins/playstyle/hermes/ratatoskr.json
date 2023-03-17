@@ -7,8 +7,8 @@
 		"hypno:playstyle/hermes/ratatoskr/armor"
 	],
 	"icon": {
-		"item": "naturalist:antler",
-		"tag": "{Enchantments:[{}],CustomModelData:1}"
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:9,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":9}"
 	},
 	"order": 1,
 	"impact": 0,

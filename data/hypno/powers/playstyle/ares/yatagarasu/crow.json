@@ -29,6 +29,10 @@
             "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
             "change": 15
         },
+        "entity_action_added": {
+            "type": "origins:execute_command",
+            "command": "execute store result score @s corpse run data get entity @s UUID[0] 1"
+        },
         "execute_chosen_when_orb": true
     },
     "undead": {
@@ -38,33 +42,63 @@
     "soulcollector": {
         "type": "apugli:action_on_target_death",
         "bientity_action": {
+            "type":"origins:and",
+            "actions":[{
             "type": "origins:target_action",
             "action": {
                 "type": "origins:and",
                 "actions": [
                     {
                         "type": "origins:execute_command",
-                        "command": "summon allay ~ ~1 ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+                        "command": "power grant @s hypno:playstyle/ares/yatagarasu/corpse",
                         "permission_level": 4
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "power grant @e[limit=1,sort=nearest,type=minecraft:allay,tag=yatagarasu_soul] hypno:playstyle/ares/yatagarasu/collectable_soul",
-                        "permission_level": 4
+                        "command": "execute store result score @s corpse run data get entity @p[tag=corpse_uuid] UUID[0] 1"
+                    },
+                    {
+                        "type": "origins:spawn_entity",
+                        "entity_type": "minecraft:allay",
+                        "tag": "{NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+                        "entity_action":{
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:playstyle/ares/yatagarasu/collectable_soul",
+                            "permission_level": 4
+                        }
                     }
                 ]
             }
         },
+        {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tag @s add corpse_uuid",
+                        "permission_level": 4
+                    },
+                    {
+                        "type":"origins:delay",
+                        "ticks":1,
+                        "action":{
+                            "type": "origins:execute_command",
+                            "command": "tag @s remove corpse_uuid",
+                            "permission_level": 4
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+    },
         "includes_prime_adversary": false
     },
     "smite": {
         "type": "apugli:modify_enchantment_damage_taken",
         "enchantment": "minecraft:smite",
-        "base_value": 3,
-        "modifier": {
-            "operation": "addition",
-            "value": 1
-        },
         "bientity_action": {
             "type": "origins:target_action",
             "action": {
@@ -122,5 +156,50 @@
         "hands": [
             "off_hand"
         ]
+    },
+    "soul_sleep":{
+        "type": "origins:prevent_sleep",
+        "message": "You need a soul campfire close to rest your soul.",
+        "block_condition":{
+        "type": "origins:adjacent",
+        "adjacent_condition": {
+            "type": "origins:block",
+            "block": "minecraft:soul_campfire"
+        },
+        "comparison": "==",
+        "compare_to": 0
     }
+},
+"drop_offhand": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:drop_inventory",
+        "inventory_type": "inventory",
+        "slots": [
+            "weapon.offhand"
+        ]
+    },
+    "interval": 1
+},
+"deathmarked":{
+    "type": "origins:modify_damage_dealt",
+    "target_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:in_tag",
+                "tag": "hypno:living"
+            },
+            {
+                "type": "origins:power",
+                "power": "hypno:playstyle/ares/yatagarasu/deathmarked"
+            }
+        ]
+    },
+    "modifier": {
+        "name": "More damage against Deathmarked",
+        "operation": "multiply_total",
+        "value": 0.25
+    }
+}
 }

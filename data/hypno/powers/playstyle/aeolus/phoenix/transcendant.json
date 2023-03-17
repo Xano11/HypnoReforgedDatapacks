@@ -77,6 +77,14 @@
                     {
                         "type": "origins:execute_command",
                         "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_03 player @s ~ ~ ~ 1 1"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "effect give @s minecraft:regeneration 7 0"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "effect give @s minecraft:fire_resistance 15 0"
                     }
                 ]
             }

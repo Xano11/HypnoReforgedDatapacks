@@ -1,0 +1,523 @@
+{
+    "name": "Echoes",
+    "description": "Using [SECONDARY ABILITY KEY] will trigger Echoes. Depending on what fish you last ate, Echoes will have a different effect. Additionally, [USING] an entity will allow you to change where the Echo is used and therefore; whoever is the user.",
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:command",
+                        "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:if_else_list",
+                        "actions": [
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 0
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/aeolus/akhlut/codded"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:dust_color_transition 0 0.4 1 1.5 1 1 1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 1
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/aeolus/akhlut/salmoned"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:dust_color_transition 1 0 0.4 1.5 1 1 1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 2
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/aeolus/akhlut/puffered"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:dust_color_transition 1 1 0 1.5 1 1 1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 3
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/aeolus/akhlut/tropicaled"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:dust_color_transition 1 0 0.3 1.5 0.8 1 0.1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:if_else_list",
+                        "actions": [
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 0
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power grant @s hypno:playstyle/aeolus/akhlut/codded"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:dust_color_transition 0 0.4 1 1.5 1 1 1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 1
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power grant @s hypno:playstyle/aeolus/akhlut/salmoned"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:dust_color_transition 1 0 0.4 1.5 1 1 1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 2
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power grant @s hypno:playstyle/aeolus/akhlut/puffered"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:dust_color_transition 1 1 0 1.5 1 1 1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "hypno:playstyle/aeolus/akhlut/pescivore_fish",
+                                    "comparison": "==",
+                                    "compare_to": 3
+                                },
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power grant @s hypno:playstyle/aeolus/akhlut/tropicaled"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.ambient player @a ~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run playsound minecraft:entity.dolphin.play player @a~ ~ ~ 2 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:dust_color_transition 1 0 0.3 1.5 0.8 1 0.1 ~ ~1 ~ 0.6 0 0.6 1 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run particle minecraft:enchanted_hit ~ ~1 ~ 0.6 0 0.6 0 30"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes at @s run power remove @s hypno:playstyle/aeolus/akhlut/echoed"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    },
+    "echoed_tagging": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:playstyle/aeolus/akhlut/echoed"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add echoed"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @s echoes run data get entity @e[limit=1,sort=nearest,tag=echoes] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @e[limit=1,sort=nearest,tag=echoed] echoes run data get entity @e[limit=1,sort=nearest,tag=echoes] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @e[distance=..12,tag=echoed] if score @s echoes = @e[limit=1,sort=nearest] echoes run power grant @s hypno:playstyle/aeolus/akhlut/heads"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add echoes"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s echoes run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove echoes"
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a ~ ~ ~ 0.4 0.8"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:playstyle/aeolus/akhlut/echoed",
+                        "inverted": true
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "echoed": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "echoed_check": {
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/akhlut/echolocation_echoed",
+            "change": -1
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/aeolus/akhlut/echolocation_echoed",
+            "change": 1
+        },
+        "interval": 10,
+        "condition": {
+            "type": "origins:command",
+            "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "echoed_untag": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power remove @s hypno:playstyle/aeolus/akhlut/echoed"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s remove echoed"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.beacon.deactivate player @a ~ ~ ~ 2 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scoreboard players reset @s echoes"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:power",
+                "power": "hypno:playstyle/aeolus/akhlut/echoed",
+                "inverted": false
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute as @e[tag=echoed] if score @s echoes = @p echoes",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

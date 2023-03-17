@@ -21,7 +21,7 @@
             },
             {
                 "type": "origins:execute_command",
-                "command": "playsound soulsweapons:dawnbreaker_sound player @s ~ ~ ~ 0.5 2"
+                "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @s ~ ~ ~ 1 1.5"
             }
             ]
         },

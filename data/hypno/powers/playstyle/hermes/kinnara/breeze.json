@@ -1,0 +1,40 @@
+{
+    "name": "Breeze",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:playstyle/hermes/kinnara/breeze"
+        }
+    },
+    "overtime": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/hermes/kinnara/breeze_duration",
+                    "change": -1
+                },
+                {
+                    "type": "origins:heal",
+                    "amount": 0.025
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 0.1 0.3 1 1 1 1 ~ ~1 ~ 0.5 0.5 0.5 1 3"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": true
+}

@@ -1,30 +1,29 @@
 {
-    "name":"Ox",
-    "description":"",
+    "name": "Ox",
+    "description": "",
     "type": "origins:multiple",
-    "head_follow":{
+    "head_follow": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..12,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[0] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[0] 1"
+                    "command": "execute as @e[tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[0] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[0] 1"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..12,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[1] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[1] 1"
+                    "command": "execute as @e[tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed store result entity @s Rotation[1] float 1 run data get entity @e[limit=1,sort=nearest] Rotation[1] 1"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..12,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run tp @s ^0.5 ^ ^-1"
+                    "command": "execute as @e[tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run tp @s ^0.5 ^ ^-1"
                 }
             ]
         },
         "interval": 1
     },
-    "timer":
-    {
+    "timer": {
         "type": "origins:resource",
         "min": 0,
         "max": 300,
@@ -32,37 +31,36 @@
         "hud_render": {
             "should_render": false
         },
-        "min_action":{
-            "type":"origins:and",
-            "actions":[
-        {
-            "type": "origins:execute_command",
-            "command": "execute as @e[distance=..12,tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
-    },
-    {
-        "type": "origins:execute_command",
-        "command": "scoreboard players reset @s blessed"
-    },
-    {
-        "type":"origins:delay",
-        "ticks":1,
-        "action":{
-        "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/ox"
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s blessed"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:playstyle/hephaestus/cherubim/ox"
+                    }
+                }
+            ]
         }
-    }
-    ]
-  }
-},
-    "timer_down":{
+    },
+    "timer_down": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/ox_timer",
             "change": -10
         },
-        "condition":
-        {
+        "condition": {
             "type": "origins:command",
             "command": "execute as @a[distance=..40] if score @s blessed = @e[limit=1,sort=nearest] blessed",
             "comparison": "==",
@@ -70,8 +68,7 @@
         },
         "interval": 10
     },
-    "run_resource":
-    {
+    "run_resource": {
         "type": "origins:resource",
         "min": 0,
         "max": 20,
@@ -80,50 +77,49 @@
             "should_render": false
         }
     },
-    "run_up":{
+    "run_up": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
             "change": 1
         },
-        "condition":{
-        "type":"origins:and",
-        "conditions":[
-        {
-            "type": "origins:sprinting"
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sprinting"
+                },
+                {
+                    "type": "origins:on_block"
+                }
+            ]
         },
-        {
-            "type": "origins:on_block"
-        }
-    ]
-    },
         "interval": 10
     },
-    "run_down":
-    {
+    "run_down": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "hypno:playstyle/hephaestus/cherubim/ox_run_resource",
             "change": -1
         },
-        "condition":{
-        "type":"origins:or",
-        "conditions":[
-        {
-            "type": "origins:sprinting",
-            "inverted": true
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:sprinting",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:on_block",
+                    "inverted": true
+                }
+            ]
         },
-        {
-            "type": "origins:on_block",
-            "inverted": true
-        }
-    ]
-    },
         "interval": 5
     },
-    "speed1":{
+    "speed1": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
@@ -139,7 +135,7 @@
             "compare_to": 4
         }
     },
-    "speed2":{
+    "speed2": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
@@ -155,7 +151,7 @@
             "compare_to": 8
         }
     },
-    "speed3":{
+    "speed3": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
@@ -171,7 +167,7 @@
             "compare_to": 12
         }
     },
-    "speed4":{
+    "speed4": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
@@ -187,7 +183,7 @@
             "compare_to": 16
         }
     },
-    "speed5":{
+    "speed5": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
@@ -203,7 +199,7 @@
             "compare_to": 20
         }
     },
-    "particles":{
+    "particles": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -216,5 +212,30 @@
         },
         "interval": 5
     },
-    "hidden": false
+    "leave": {
+        "type": "origins:action_on_callback",
+        "entity_action_removed": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=ox] if score @s blessed = @e[limit=1,sort=nearest] blessed run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove heads_owner"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s blessed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/hephaestus/cherubim/ox"
+                }
+            ]
+        },
+        "execute_chosen_when_orb": false
+    },
+    "hidden": true
 }

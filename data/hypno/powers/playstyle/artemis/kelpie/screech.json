@@ -138,5 +138,12 @@
         }
     },
     "name": "Screech",
-    "description": "As a descendant of a divine messenger, you can tear rifts into existence; linking two points in space together. By pressing your [Secondary Ability Key], you phase into the Realm between Dimensions, allowing you to move extremely fast and leaving an initial rift behind you. After a certain amount of time, you will go back to reality, where a second rift will be created. Entering the first rift will teleport you to the second, but not vice-versa. "
+    "description": "Using [SECONDARY ABILITY KEY], you will Screech, alarming entities to not move. If entities are caught moving 3 seconds after the screech, they will glow for the next 7 seconds and be totally deafened.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Entities affected by Screech will see their detection range reduced by 75%."
+        }
+    ]
   }

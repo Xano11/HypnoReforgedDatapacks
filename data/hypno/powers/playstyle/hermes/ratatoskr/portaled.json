@@ -25,10 +25,14 @@
     "tp":{
         "type": "origins:action_over_time",
         "entity_action": {
+          "type":"origins:and",
+          "actions":[{
             "type": "origins:execute_command",
             "command": "execute if entity @s[tag=portal1] as @e[distance=0.01..,tag=portal2] run execute if score @s ratatoskr_portal = @e[limit=1,sort=nearest,tag=portal1] ratatoskr_portal run function hypno:portal_tp"
-          },
-        "interval": 10,
+          }
+        ]
+      },
+        "interval": 1,
         "condition":{
             "type": "origins:scoreboard",
             "objective": "ratatoskr_portal",
@@ -36,25 +40,67 @@
             "compare_to": 70
         }
     },
+    "sounds":{
+      "type": "origins:action_over_time",
+      "entity_action": {
+        "type":"origins:and",
+        "actions":[{
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] run playsound minecraft:entity.enderman.teleport player @a ~ ~ ~ 1 2"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] run playsound bettercombat:wand_swing player @a ~ ~ ~ 1 0.5"
+        }
+      ]
+    },
+      "interval": 20,
+      "condition":{
+          "type": "origins:scoreboard",
+          "objective": "ratatoskr_portal",
+          "comparison": ">",
+          "compare_to": 70
+      }
+  },
     "particle_portal1":{
         "type": "origins:action_over_time",
         "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:execute_command",
-            "command": "execute if entity @s[tag=portal1] run particle minecraft:dust_color_transition 1 1 1 1.5 1 1 1 ~ ~1 ~ 0.5 0.75 0.5 1 100 force @a"
-          },
-          {
-            "type": "origins:execute_command",
-            "command": "execute if entity @s[tag=portal1] run particle minecraft:dust_color_transition 1 1 1 1 1 1 1 ~ ~1 ~ 0.1 0.1 0.1 1 100 force @a"
-          },
-          {
-            "type": "origins:execute_command",
-            "command": "execute if entity @s[tag=portal1] run particle minecraft:snowflake ~ ~1 ~ 0.3 0.3 0.3 0.01 30 @a"
-          }
-        ]
+          "type":"origins:and",
+          "actions":[{
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 1 1 1 2 1 1 1 ~ ~1 ~ 0 0 0 1 1 force @a"
         },
-        "interval": 5,
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 1.2 1 1 1 ^ ^2 ^-1 0 0 0 1 1 force @a"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 1.2 1 1 1 ^ ^2 ^1 0 0 0 1 1 force @a"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 1.2 1 1 1 ^ ^1 ^-1 0 0 0 1 1 force @a"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 1.2 1 1 1 ^ ^1 ^1 0 0 0 1 1 force @a"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 1.2 1 1 1 ^ ^ ^-1 0 0 0 1 1 force @a"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 1.2 1 1 1 ^ ^ ^1 0 0 0 1 1 force @a"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute if entity @s[tag=portal1] at @s run tp @s ~ ~ ~ ~9 ~"
+        }
+      ]
+      },
+        "interval": 1,
         "condition":{
             "type": "origins:scoreboard",
             "objective": "ratatoskr_portal",
@@ -68,19 +114,39 @@
             "type":"origins:and",
             "actions":[{
             "type": "origins:execute_command",
-            "command": "execute if entity @s[tag=portal2] run particle minecraft:dust_color_transition 0 0.5 1 1.5 0 0.9 1 ~ ~1 ~ 0.5 0.75 0.5 1 100 force @a"
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 0 0.3 0.7 2 0 0.3 0.7 ~ ~1 ~ 0 0 0 1 1 force @a"
           },
           {
             "type": "origins:execute_command",
-            "command": "execute if entity @s[tag=portal2] run particle minecraft:dust_color_transition 0 0 1 1 0 0.5 1 ~ ~1 ~ 0.1 0.1 0.1 1 100 force @a"
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 1 1 1 1.2 0 0.3 0.7 ^ ^2 ^-1 0 0 0 1 1 force @a"
           },
           {
             "type": "origins:execute_command",
-            "command": "execute if entity @s[tag=portal2] run particle minecraft:soul_fire_flame ~ ~1 ~ 0.3 0.3 0.3 0.01 30 force @a"
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 1 1 1 1.2 0 0.3 0.7 ^ ^2 ^1 0 0 0 1 1 force @a"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 1 1 1 1.2 0 0.3 0.7 ^ ^1 ^-1 0 0 0 1 1 force @a"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 1 1 1 1.2 0 0.3 0.7 ^ ^1 ^1 0 0 0 1 1 force @a"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 1 1 1 1.2 0 0.3 0.7 ^ ^ ^-1 0 0 0 1 1 force @a"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=portal2] at @s run particle minecraft:dust_color_transition 1 1 1 1.2 0 0.3 0.7 ^ ^ ^1 0 0 0 1 1 force @a"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "execute if entity @s[tag=portal2] at @s run tp @s ~ ~ ~ ~9 ~"
           }
         ]
         },
-        "interval": 5,
+        "interval": 1,
         "condition":{
             "type": "origins:scoreboard",
             "objective": "ratatoskr_portal",

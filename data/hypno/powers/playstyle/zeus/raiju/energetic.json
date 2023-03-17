@@ -1,6 +1,6 @@
 {
-    "name":"Energetic",
-    "description":"You have an electro-bar. If your bar is at 1 bar or lower, you suffer from weakned attributes. The bar recharges passively and when you get hit by lightning and during thunderstorms. Additionally, being hit by an arrow with piercing will create an energy leak.",
+    "name": "Energetic",
+    "description": "You have an electro-bar. If your bar is at 1 bar or lower, you suffer from weakned attributes. The bar recharges passively and when you get hit by lightning and during thunderstorms. Additionally, being hit by an arrow with piercing will create an energy leak.",
     "badges": [
         {
             "type": "origins:tooltip",
@@ -9,7 +9,7 @@
         }
     ],
     "type": "origins:multiple",
-    "bar_up":{
+    "bar_up": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
@@ -18,7 +18,7 @@
         },
         "interval": 100
     },
-    "bar_up_rain":{
+    "bar_up_rain": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:change_resource",
@@ -26,12 +26,11 @@
             "change": 10
         },
         "interval": 100,
-        "condition":
-        {
+        "condition": {
             "type": "origins:in_rain"
-        }     
+        }
     },
-    "leak":{
+    "leak": {
         "type": "origins:self_action_when_hit",
         "entity_action": {
             "type": "origins:change_resource",
@@ -40,63 +39,31 @@
         },
         "damage_condition": {
             "type": "origins:or",
-            "conditions": [{
-            "type": "eggolib:projectile",
-            "nbt": "{PierceLevel:1b}"
-            },
-            {
-            "type": "eggolib:projectile",
-            "nbt": "{PierceLevel:2b}"
-            },
-            {
-            "type": "eggolib:projectile",
-            "nbt": "{PierceLevel:3b}"
-            },
-            {
-            "type": "eggolib:projectile",
-            "nbt": "{PierceLevel:4b}"
-            }
-        ]
-    },
-        "cooldown": 20,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "leak2":{
-        "type": "origins:self_action_on_hit",
-        "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "change": -100
-        },
-        {
-        "type": "origins:execute_command",
-        "command": "power remove @s hypno:playstyle/zeus/raiju/infused"
-    }
-    ]
-    },
-        "damage_condition": {
-            "type": "origins:attacker",
-            "condition": {
-                "type": "origins:using_item",
-                "item_condition": {
-                    "type": "origins:ingredient",
-                    "ingredient": {
-                        "item": "minecraft:shield"
-                    }
+            "conditions": [
+                {
+                    "type": "eggolib:projectile",
+                    "nbt": "{PierceLevel:1b}"
+                },
+                {
+                    "type": "eggolib:projectile",
+                    "nbt": "{PierceLevel:2b}"
+                },
+                {
+                    "type": "eggolib:projectile",
+                    "nbt": "{PierceLevel:3b}"
+                },
+                {
+                    "type": "eggolib:projectile",
+                    "nbt": "{PierceLevel:4b}"
                 }
-            }
+            ]
         },
         "cooldown": 20,
         "hud_render": {
             "should_render": false
         }
     },
-    "resource":
-    {
+    "resource": {
         "type": "origins:resource",
         "min": 0,
         "max": 700,
@@ -106,7 +73,7 @@
             "bar_index": 5
         }
     },
-    "movement_reduction":{
+    "movement_reduction": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Speed decrease",
@@ -114,41 +81,41 @@
             "value": -0.4,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "healing_reduction":
-    {
+    "healing_reduction": {
         "type": "origins:modify_healing",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.5
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
             "conditions": [
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "armor_reduction":{
+    "armor_reduction": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Speed decrease",
@@ -156,23 +123,24 @@
             "value": -4,
             "operation": "addition"
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "attackspeed_reduction":{
+    "attackspeed_reduction": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Attack speed decrease",
@@ -180,23 +148,24 @@
             "value": -0.3,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "attackdmg_reduction":{
+    "attackdmg_reduction": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Attack damage decrease",
@@ -204,45 +173,47 @@
             "value": -0.25,
             "operation": "multiply_total"
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "air_speed":{
+    "air_speed": {
         "type": "origins:modify_air_speed",
         "modifier": {
             "operation": "multiply_total",
             "value": -0.4
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },  
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "roll_reduction":{
+    "roll_reduction": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Faster roll recharge",
@@ -250,41 +221,50 @@
             "value": -0.2,
             "operation": "multiply_base"
         },
-        "condition":{
+        "condition": {
             "type": "origins:and",
-            "conditions": [{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "comparison": "<",
-            "compare_to": 100
-        },
-        {
-            "type": "origins:power",
-            "power": "hypno:playstyle/zeus/raiju/infused",
-            "inverted": true
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
         }
-        ]
-    }
     },
-    "sneaking_dmg":
-    {
+    "sneaking_dmg": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:damage",
-            "amount": 1,
-            "source": {
-                "name":"generic",
-                "bypasses_armor": true,
-                "unblockable": true
-        }
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:damage",
+                    "amount": 1,
+                    "source": {
+                        "name": "generic",
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "change": -50
+                }
+            ]
         },
         "interval": 60,
         "condition": {
             "type": "origins:sneaking"
         }
     },
-    "sneaking_speed":
-    {
+    "sneaking_speed": {
         "type": "origins:conditioned_attribute",
         "modifier": {
             "name": "Sneak speed decrease",
@@ -297,8 +277,7 @@
             "type": "origins:sneaking"
         }
     },
-    "sneaking_particles":
-    {
+    "sneaking_particles": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -308,32 +287,32 @@
                     "command": "particle minecraft:electric_spark ~ ~ ~ 0.3 0 0.3 0.1 5"
                 }
             ]
-        },     
+        },
         "interval": 2,
         "condition": {
             "type": "origins:sneaking"
         }
     },
-    "particle":
-    {
+    "particle": {
         "type": "origins:particle",
         "particle": "supplementaries:stasis",
         "frequency": 4,
-        "condition":{
+        "condition": {
             "type": "origins:resource",
             "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
             "comparison": ">=",
             "compare_to": 100
         }
     },
-    "water_leak":{
+    "water_leak": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type":"origins:and",
-            "actions":[{
-            "type": "origins:change_resource",
-            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
-            "change": -50
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "change": -50
                 },
                 {
                     "type": "origins:area_of_effect",
@@ -341,22 +320,23 @@
                     "bientity_action": {
                         "type": "origins:target_action",
                         "action": {
-                            "type":"origins:and",
-                            "actions":[{
-                            "type": "origins:damage",
-                            "amount": 3,
-                            "source": {
-                                "name": "lightningBolt",
-                                "unblockable": true,
-                                "bypasses_armor": true
-                            }
-                        },
-                        {
-                            "type": "origins:execute_command",
-                            "command": "execute at @s run particle supplementaries:stasis ~ ~ ~ 0.3 0 0.3 0.01 10"
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:damage",
+                                    "amount": 3,
+                                    "source": {
+                                        "name": "lightningBolt",
+                                        "unblockable": true,
+                                        "bypasses_armor": true
+                                    }
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "execute at @s run particle supplementaries:stasis ~ ~ ~ 0.3 0 0.3 0.01 10"
+                                }
+                            ]
                         }
-                    ]
-                    }
                     },
                     "bientity_condition": {
                         "type": "origins:target_condition",
@@ -371,13 +351,12 @@
             ]
         },
         "interval": 5,
-        "condition":
-    {
-        "type": "origins:fluid_height",
-        "fluid": "minecraft:water",
-        "comparison": ">",
-        "compare_to": 0
-    }
+        "condition": {
+            "type": "origins:fluid_height",
+            "fluid": "minecraft:water",
+            "comparison": ">",
+            "compare_to": 0
+        }
     },
     "hidden": false
 }

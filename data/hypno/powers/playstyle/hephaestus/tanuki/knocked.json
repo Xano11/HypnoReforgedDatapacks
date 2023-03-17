@@ -1,8 +1,7 @@
 {
     "name":"Knocked",
     "type": "origins:multiple",
-    "resource":
-    {
+    "resource":{
         "type": "origins:resource",
         "min": 0,
         "max": 60,
@@ -29,8 +28,7 @@
         },
         "interval": 1
     },
-    "shader":
-    {
+    "shader":{
         "type": "origins:shader",
         "shader": "minecraft:shaders/post/blobs2.json",
         "toggleable": false
@@ -51,5 +49,16 @@
             "operation": "multiply_total"
         }
     },
+    "inverted_momentum":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -2,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "z"
+        ]
+      },
     "hidden": true
 }

@@ -1,0 +1,239 @@
+{
+    "name": "I GOTTA HURRY-",
+    "description": "Holding [SECONDARY ABILITY KEY] will allow you to run in a straight line quickly, but you will be short-sighted. Additionally, you will build up proportional exhaustion.",
+    "type": "origins:multiple",
+    "exhausted":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 400,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "speed": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_total",
+            "value": 1.0,
+            "name": "Increased sprinting speed"
+        },
+        "tick_rate": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:on_block"
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:food_level",
+                    "comparison": ">",
+                    "compare_to": 6
+                },
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "exhausted_slow":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_total",
+            "value": -0.6,
+            "name": "Decreased sprinting speed"
+        },
+        "tick_rate": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    },
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/tanuki/hurry_exhausted",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "no_jump": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:on_block"
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:food_level",
+                    "comparison": ">",
+                    "compare_to": 6
+                },
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                }
+            ]
+        },
+        {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    },
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/hephaestus/tanuki/hurry_exhausted",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    ]
+        }
+    },
+    "shortsight": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 6,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:food_level",
+                    "comparison": ">",
+                    "compare_to": 6
+                },
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "step": {
+        "type": "origins:action_over_time",
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "particle minecraft:cloud ~ ~ ~ 0 0.2 0 0.1 5"
+        },
+        {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/hurry_exhausted",
+            "change": 1
+        }
+    ]
+},
+        "rising_action": {
+            "type": "origins:execute_command",
+            "command": "scale set pehkui:step_height 2"
+        },
+        "falling_action": {
+            "type": "origins:execute_command",
+            "command": "scale reset pehkui:step_height"
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:on_block"
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:food_level",
+                    "comparison": ">",
+                    "compare_to": 6
+                },
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "lose_exhaust":
+    {
+        "type": "origins:action_over_time",
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[
+        {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/hephaestus/tanuki/hurry_exhausted",
+            "change": -1
+        }
+    ]
+},
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    },
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

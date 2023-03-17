@@ -9,20 +9,65 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "particle minecraft:sculk_charge 10 ~ ~1 ~ 0.3 0.5 0.3 0 30"
+                    "command": "particle minecraft:sculk_charge 10 ~ ~1 ~ 0.5 0.5 0.5 0.3 100"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound minecraft:block.respawn_anchor.charge player @a ~ ~ ~ 2 2"
+                    "command": "playsound minecraft:block.respawn_anchor.set_spawn player @a ~ ~ ~ 2 0.8"
                 },
                 {
                     "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/ares/yatagarasu/souleater_windup",
-                    "change": 1
+                    "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
+                    "change": -5
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 32,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type":"origins:and",
+                            "actions":[{
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/ares/yatagarasu/corpse_siphoned",
+                            "change": 100
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:playstyle/ares/yatagarasu/corpse_duration",
+                            "change": 600
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "summon marker ~ ~ ~ {Tags:[\"corpse_particles\"]}"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute store result score @e[limit=1,sort=nearest,tag=corpse_particles] corpse run data get entity @e[tag=!corpse_particles,limit=1,sort=nearest] UUID[0] 1"
+                        }
+                    ]
+                }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                },
+                                {
+                                    "type": "origins:power",
+                                    "power": "hypno:playstyle/ares/yatagarasu/corpse"
+                                }
+                            ]
+                        }
+                    }
                 }
             ]
         },
-        "cooldown": 5,
+        "cooldown": 60,
         "hud_render": {
             "should_render": false
         },
@@ -54,91 +99,6 @@
             ]
         }
     },
-    "windup": {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 5,
-        "start_value": 0,
-        "hud_render": {
-            "should_render": true,
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
-            "bar_index": 14
-        },
-        "max_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:execute_command",
-                    "command": "particle minecraft:sculk_charge 10 ~ ~1 ~ 0.5 0.5 0.5 0.3 100"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "playsound minecraft:block.respawn_anchor.set_spawn player @a ~ ~ ~ 2 0.8"
-                },
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/ares/yatagarasu/souleater_windup",
-                    "change": -5
-                },
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
-                    "change": -5
-                },
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/ares/yatagarasu/souleater_frenzy",
-                    "change": 300
-                },
-                {
-                    "type": "origins:area_of_effect",
-                    "radius": 24,
-                    "bientity_action": {
-                        "type": "origins:target_action",
-                        "action": {
-                            "type": "origins:execute_command",
-                            "command": "power grant @s hypno:playstyle/ares/yatagarasu/deathmarked"
-                        }
-                    },
-                    "bientity_condition": {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:and",
-                            "conditions": [
-                                {
-                                    "type": "origins:in_tag",
-                                    "tag": "hypno:living"
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    "frenzy": {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 300,
-        "start_value": 0,
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "frenzy_drain": {
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/ares/yatagarasu/souleater_frenzy",
-                    "change": -10
-                }
-            ]
-        },
-        "interval": 10
-    },
     "glow": {
         "type": "origins:entity_glow",
         "bientity_condition": {
@@ -152,20 +112,10 @@
                             {
                                 "type": "origins:in_tag",
                                 "tag": "hypno:living"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "type": "origins:actor_condition",
-                    "condition": {
-                        "type": "origins:and",
-                        "conditions": [
+                            },
                             {
-                                "type": "origins:resource",
-                                "resource": "hypno:playstyle/ares/yatagarasu/souleater_frenzy",
-                                "comparison": ">",
-                                "compare_to": 0
+                                "type": "origins:power",
+                                "power": "hypno:playstyle/ares/yatagarasu/deathmarked"
                             }
                         ]
                     }
@@ -177,32 +127,6 @@
         "green": 0.0,
         "blue": 0.0
     },
-    "deathmarked_damage": {
-        "type": "origins:modify_damage_dealt",
-        "target_condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:in_tag",
-                    "tag": "hypno:living"
-                },
-                {
-                    "type": "origins:power",
-                    "power": "hypno:playstyle/ares/yatagarasu/deathmarked"
-                }
-            ]
-        },
-        "modifier": {
-            "name": "More damage against Deathmarked",
-            "operation": "multiply_total",
-            "value": 0.4
-        },
-        "condition":{
-            "type": "origins:resource",
-            "resource": "hypno:playstyle/ares/yatagarasu/souleater_frenzy",
-            "comparison": ">",
-            "compare_to": 0
-        }
-    },
+
     "hidden": false
 }

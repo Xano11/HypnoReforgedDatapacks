@@ -1,0 +1,60 @@
+{
+    "name": "Codded",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 500,
+        "start_value": 500,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove echoed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s echoes"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/aeolus/akhlut/codded"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/aeolus/akhlut/codded_timer",
+                    "change": -5
+                },
+                {
+                    "type": "origins:gain_air",
+                    "value": 20
+                }
+            ]
+        },
+        "interval": 5
+    }, 
+    "breaking_speed": {
+        "type": "origins:modify_break_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.5
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "hidden": true
+}

@@ -1,7 +1,9 @@
 {
 	"powers": [
-		"hypno:playstyle/aeolus/akhlut/pounce",
-		"hypno:playstyle/aeolus/akhlut/hunting"
+		"hypno:playstyle/aeolus/akhlut/slide",
+		"hypno:playstyle/aeolus/akhlut/hunting",
+		"hypno:playstyle/aeolus/akhlut/echolocation",
+		"hypno:playstyle/aeolus/akhlut/pescivore"
 	],
 	"icon": {
 		"item": "minecraft:salmon"

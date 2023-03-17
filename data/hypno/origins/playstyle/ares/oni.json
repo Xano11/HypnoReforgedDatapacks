@@ -1,0 +1,15 @@
+{
+	"powers": [
+        "hypno:playstyle/ares/oni/chunky",
+        "hypno:playstyle/ares/oni/retribution",
+		"hypno:playstyle/ares/oni/sacrifice"
+	],
+	"icon": {
+		"item": "minecraft:slime_ball",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Oni",
+	"description": "A brutish, bulky species with an ambition for revenge in melee combat."
+}

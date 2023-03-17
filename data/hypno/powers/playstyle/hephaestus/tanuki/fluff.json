@@ -1,6 +1,6 @@
 {
     "name":"Fluffy",
-    "description":"You can't wear armor that is equal or better than diamond armor. Being a being of colossal energy, diamonds insulate your energy and prevents you from using any of that same energy. Additionally, iron armor gives you a slight amount of toughness.",
+    "description":"You can't wear leggins because.... you're fluffy. Yup, definitely the reason why.",
     "type": "origins:multiple",
     "restrict":{
         "type": "origins:restrict_armor",

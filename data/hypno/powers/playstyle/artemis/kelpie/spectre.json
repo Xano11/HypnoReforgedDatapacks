@@ -1,6 +1,6 @@
 {
-    "name": "Water-like",
-    "description": "You do not take damage from lighting; In comparison, you get infused by it. Being infused makes you powerful and allows you to recharge your electro-bar faster. Additionally, you can inflict stacks of shock to your enemies. At 3 stacks, they get damaged by lighting.",
+    "name": "Haunting Spectre",
+    "description": "As a spirit, you can breathe perfectly under the water as well as outside of it. Venturing for too long outside of the water will reduce your maximum health and your mining speed. Additionally, you do not eat; Instead, you use the Souls from the entities binded to your anchors as a feeding source.",
     "type": "origins:multiple",
     "water_breathing": {
         "type": "origins:action_over_time",
