@@ -22,14 +22,11 @@ scoreboard objectives add scythe dummy
 scoreboard objectives add scythe_owner dummy
 scoreboard objectives add rekindle dummy
 scoreboard objectives add shapeshift dummy
-<<<<<<< HEAD
 scoreboard objectives add corrupted dummy
-=======
 scoreboard objectives add electric_orb dummy
 scoreboard objectives add corpse dummy
 scoreboard objectives add garuda dummy
 scoreboard objectives add echoes dummy
->>>>>>> 0aa3ba674d3d7583a39757d673a4662d1897cb95
 
 #Tower
 scoreboard objectives add elevator dummy
