@@ -1,0 +1,66 @@
+{
+    "type": "origins:multiple",
+    "activate": {
+        "type": "apugli:action_on_target_death",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "apoli:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:spawn_entity",
+                                "entity_type": "minecraft:zombie",
+                                "tag": "{DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Health:10f,IsBaby:1b,CanBreakDoors:1b,Tags:[\"fire_spirit\"],ArmorItems:[{id:\"minecraft:leather_boots\",Count:1b,tag:{display:{color:15691524},Unbreakable:1b}},{id:\"minecraft:leather_leggings\",Count:1b,tag:{display:{color:15691524}}},{id:\"minecraft:leather_chestplate\",Count:1b,tag:{display:{color:15691524},Unbreakable:1b}},{id:\"minecraft:magma_block\",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],Attributes:[{Name:generic.max_health,Base:10},{Name:generic.movement_speed,Base:0.2}]}",
+                                "entity_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "power grant @s hypno:playstyle/zeus/ifrit/fire_spirit"
+                                }
+                            },
+                            {
+                                "type":"origins:delay",
+                                "ticks":1,
+                                "action":{
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[limit=1,sort=nearest,tag=fire_spirit] store result score @s corrupted run data get entity @p[tag=ifrit_spirit] UUID[0] 1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "apoli:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add ifrit_spirit"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s corrupted run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type":"origins:delay",
+                                "ticks":2,
+                                "action":{
+                                "type": "origins:execute_command",
+                                "command": "tag @s remove ifrit_spirit"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "includes_prime_adversary": false
+    },
+    "hidden": false
+}
