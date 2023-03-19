@@ -61,7 +61,7 @@
                                 },
                                 {
                                     "type": "origins:execute_command",
-                                    "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_01 player @s ~ ~ ~ 0.1 1.5"
+                                    "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_01 player @a[distance=..16] ~ ~ ~ 0.1 1.5"
                                 }
                             ]
                         }
@@ -93,7 +93,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_sword_thunder_attack_03 player @a ~ ~ ~ 0.5 2"
+                    "command": "playsound simplyswords:elemental_sword_thunder_attack_03 player @a[distance=..16] ~ ~ ~ 0.5 2"
                 }
             ]
         },
@@ -175,7 +175,7 @@
                         "actions": [
                             {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:magic_sword_breaks player @a ~ ~ ~ 1 0.5"
+                                "command": "playsound simplyswords:magic_sword_breaks player @a[distance=..16] ~ ~ ~ 1 0.5"
                             }
                         ]
                     },

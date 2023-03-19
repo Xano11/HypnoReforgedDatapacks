@@ -73,7 +73,7 @@
         "max": 50,
         "start_value": 0,
         "hud_render": {
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "sprite_location": "horigins:textures/resource_bar02.png",
             "bar_index": 4,
             "condition": {
                 "type": "origins:resource",

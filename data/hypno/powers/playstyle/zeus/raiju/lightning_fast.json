@@ -130,7 +130,7 @@
                 "actions": [
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:elemental_sword_thunder_attack_01 player @a ~ ~ ~ 1 2"
+                        "command": "playsound simplyswords:elemental_sword_thunder_attack_01 player @a[distance=..16] ~ ~ ~ 1 2"
                     },
                     {
                         "type": "origins:execute_command",

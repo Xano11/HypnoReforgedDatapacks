@@ -21,7 +21,7 @@
                         {
                             "element": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:magic_sword_block_01 player @a ~ ~ ~ 1 1.8",
+                                "command": "playsound simplyswords:magic_sword_block_01 player @a[distance=..16] ~ ~ ~ 1 1.8",
                                 "permission_level": 4
                             },
                             "weight": 1
@@ -29,7 +29,7 @@
                         {
                             "element": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:magic_sword_block_01 player @a ~ ~ ~ 1 1.6",
+                                "command": "playsound simplyswords:magic_sword_block_01 player @a[distance=..16] ~ ~ ~ 1 1.6",
                                 "permission_level": 4
                             },
                             "weight": 1
@@ -37,7 +37,7 @@
                         {
                             "element": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:magic_sword_block_01 player @a ~ ~ ~ 1 1.7",
+                                "command": "playsound simplyswords:magic_sword_block_01 player @a[distance=..16] ~ ~ ~ 1 1.7",
                                 "permission_level": 4
                             },
                             "weight": 1
@@ -98,7 +98,7 @@
                                     "type":"origins:and",
                                     "actions":[{
                                     "type": "origins:execute_command",
-                                    "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a ~ ~ ~ 1 1.7",
+                                    "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 1.7",
                                     "permission_level": 4
                                 },
                                 {

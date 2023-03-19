@@ -76,7 +76,7 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_03 player @s ~ ~ ~ 1 1"
+                        "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 1"
                     },
                     {
                         "type": "origins:execute_command",

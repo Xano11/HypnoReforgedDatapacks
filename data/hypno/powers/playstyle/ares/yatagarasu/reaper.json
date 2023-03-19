@@ -83,6 +83,11 @@
                                             "hand": "MAIN_HAND"
                                         },
                                         {
+                                            "type": "origins:change_resource",
+                                            "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
+                                            "change": -3
+                                        },
+                                        {
                                             "type": "origins:execute_command",
                                             "command": "execute store result score @s scythe_owner run data get entity @s UUID[0] 1"
                                         },
@@ -96,7 +101,7 @@
                                         },
                                         {
                                             "type": "origins:execute_command",
-                                            "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 2 0.8"
+                                            "command": "playsound simplyswords:dark_sword_unfold player @a[distance=..16] ~ ~ ~ 2 0.8"
                                         },
                                         {
                                             "type": "origins:delay",
@@ -133,9 +138,8 @@
         },
         "cooldown": 400,
         "hud_render": {
-            "should_render": true,
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 17
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 0
         },
         "key": {
             "key": "key.attack",
@@ -195,7 +199,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[tag=scythe,type=minecraft:armor_stand] if score @s scythe_owner = @p scythe_owner at @s run playsound simplyswords:dark_sword_attack_with_blood_03 player @a ~ ~ ~ 1 0.8"
+                    "command": "execute as @e[tag=scythe,type=minecraft:armor_stand] if score @s scythe_owner = @p scythe_owner at @s run playsound simplyswords:dark_sword_attack_with_blood_03 player @a[distance=..16] ~ ~ ~ 1 0.8"
                 },
                 {
                     "type": "origins:execute_command",
@@ -236,7 +240,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @e[tag=scythe,type=minecraft:armor_stand] if score @s scythe_owner = @p scythe_owner at @s run playsound simplyswords:dark_sword_attack_with_blood_03 player @a ~ ~ ~ 1 0.8"
+                    "command": "execute as @e[tag=scythe,type=minecraft:armor_stand] if score @s scythe_owner = @p scythe_owner at @s run playsound simplyswords:dark_sword_attack_with_blood_03 player @a[distance=..16] ~ ~ ~ 1 0.8"
                 },
                 {
                     "type": "origins:execute_command",

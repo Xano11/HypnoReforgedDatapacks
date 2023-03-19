@@ -40,7 +40,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:dark_sword_enchant player @a ~ ~ ~ 2 1.4"
+                    "command": "playsound simplyswords:dark_sword_enchant player @a[distance=..16] ~ ~ ~ 2 1.4"
                 },
                 {
                     "type": "origins:execute_command",

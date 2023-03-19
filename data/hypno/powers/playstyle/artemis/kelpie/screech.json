@@ -26,10 +26,9 @@
       },
       "cooldown": 1200,
       "hud_render": {
-          "should_render": true,
-          "sprite_location": "horigins:textures/resource_bar01.png",
-          "bar_index": 13
-      },
+        "sprite_location": "horigins:textures/resource_bar02.png",
+        "bar_index": 5
+    },
       "key": {
           "key": "key.origins.secondary_active",
           "continuous": false

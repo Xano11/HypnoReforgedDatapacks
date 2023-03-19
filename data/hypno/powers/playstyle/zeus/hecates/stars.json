@@ -98,11 +98,11 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:magic_bow_charge_long_version player @a ~ ~ ~ 1 2"
+                    "command": "playsound simplyswords:magic_bow_charge_long_version player @a[distance=..16] ~ ~ ~ 1 2"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:magic_sword_block_02 player @a ~ ~ ~ 1 0.5"
+                    "command": "playsound simplyswords:magic_sword_block_02 player @a[distance=..16] ~ ~ ~ 1 0.5"
                 },
                 {
                     "type": "origins:execute_command",
@@ -130,8 +130,8 @@
         "cooldown": 1200,
         "hud_render": {
             "should_render": true,
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 0
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 12
         },
         "key": {
             "key": "key.origins.primary_active",
@@ -177,7 +177,7 @@
                                     "actions": [
                                         {
                                             "type": "origins:execute_command",
-                                            "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a ~ ~ ~ 1 1.7",
+                                            "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 1.7",
                                             "permission_level": 4
                                         },
                                         {
@@ -195,7 +195,7 @@
                                     "actions": [
                                         {
                                             "type": "origins:execute_command",
-                                            "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @s ~ ~ ~ 1 2",
+                                            "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 2",
                                             "permission_level": 4
                                         },
                                         {
@@ -287,7 +287,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:dark_sword_spell player @a ~ ~ ~ 1 2"
+                    "command": "playsound simplyswords:dark_sword_spell player @a[distance=..16] ~ ~ ~ 1 2"
                 },
                 {
                     "type": "origins:execute_command",

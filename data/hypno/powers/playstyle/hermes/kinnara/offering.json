@@ -13,8 +13,9 @@
             "change": 18
         },
         "hud_render": {
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 2
+            "should_render": true,
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 10
         }
     },
     "offered_hearts": {

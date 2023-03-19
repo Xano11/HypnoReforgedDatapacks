@@ -8,8 +8,8 @@
         "max": 900,
         "start_value": 0,
         "hud_render": {
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 2
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 6
         }
     },
     "cooldown_usage":{
@@ -108,7 +108,7 @@
                             },
                             "action": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_01 player @a ~ ~ ~ 1 1"
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_01 player @a[distance=..16] ~ ~ ~ 1 1"
                             }
                         },
                         {
@@ -120,7 +120,7 @@
                             },
                             "action": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_02 player @a ~ ~ ~ 1 1"
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_02 player @a[distance=..16] ~ ~ ~ 1 1"
                             }
                         },
                         {
@@ -132,7 +132,7 @@
                             },
                             "action": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_03 player @a ~ ~ ~ 1 1"
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_03 player @a[distance=..16] ~ ~ ~ 1 1"
                             }
                         }
                     ]
@@ -206,7 +206,7 @@
                             },
                             "action": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_01 player @a ~ ~ ~ 1 1"
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_01 player @a[distance=..16] ~ ~ ~ 1 1"
                             }
                         },
                         {
@@ -218,7 +218,7 @@
                             },
                             "action": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_02 player @a ~ ~ ~ 1 1"
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_02 player @a[distance=..16] ~ ~ ~ 1 1"
                             }
                         },
                         {
@@ -230,7 +230,7 @@
                             },
                             "action": {
                                 "type": "origins:execute_command",
-                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_03 player @a ~ ~ ~ 1 1"
+                                "command": "playsound simplyswords:elemental_bow_wind_shoot_flyby_03 player @a[distance=..16] ~ ~ ~ 1 1"
                             }
                         }
                     ]

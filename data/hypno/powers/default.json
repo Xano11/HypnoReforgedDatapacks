@@ -71,6 +71,123 @@
                 "type": "origins:gamemode",
                 "gamemode": "creative",
                 "inverted": true
+        },
+        {
+            "type": "origins:dimension",
+            "dimension": "hypno:island",
+            "inverted": false
+        },
+        {
+            "type": "origins:distance_from_coordinates",
+            "offset": {
+                "x": -159,
+                "y": 70,
+                "z": -4
+            },
+            "shape": "sphere",
+            "comparison": "<",
+            "compare_to": 92,
+            "ignore_y": true
+        }
+    ]
+}
+    },
+    "no_damage_taken":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Invulnerable",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:gamemode",
+                "gamemode": "creative",
+                "inverted": true
+        },
+        {
+            "type": "origins:dimension",
+            "dimension": "hypno:island",
+            "inverted": false
+        },
+        {
+            "type": "origins:distance_from_coordinates",
+            "offset": {
+                "x": -159,
+                "y": 70,
+                "z": -4
+            },
+            "shape": "sphere",
+            "comparison": "<",
+            "compare_to": 92,
+            "ignore_y": true
+        }
+    ]
+}
+    },
+    "no_damage_dealt":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:gamemode",
+                "gamemode": "creative",
+                "inverted": true
+        },
+        {
+            "type": "origins:dimension",
+            "dimension": "hypno:island",
+            "inverted": false
+        },
+        {
+            "type": "origins:distance_from_coordinates",
+            "offset": {
+                "x": -159,
+                "y": 70,
+                "z": -4
+            },
+            "shape": "sphere",
+            "comparison": "<",
+            "compare_to": 92,
+            "ignore_y": true
+        }
+    ]
+}
+    },
+    "fell":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:set_on_fire",
+            "duration": 4
+        },
+        "interval": 20,
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+                "type": "origins:gamemode",
+                "gamemode": "creative",
+                "inverted": true
+        },
+        {
+            "type": "origins:dimension",
+            "dimension": "hypno:island",
+            "inverted": false
+        },
+        {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+                "type": "origins:height",
+                "comparison": "<=",
+                "compare_to": -60
+            },
+            "comparison": ">=",
+            "compare_to": 1
         }
     ]
 }

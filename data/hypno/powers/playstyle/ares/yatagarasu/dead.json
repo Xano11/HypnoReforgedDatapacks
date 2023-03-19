@@ -8,7 +8,7 @@
         "max": 200,
         "start_value": 200,
         "hud_render": {
-            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "sprite_location": "horigins:textures/resource_bar02.png",
             "bar_index": 2
         },
         "min_action": {
@@ -52,6 +52,20 @@
         },
         "interval": 1
     },
+    "soul_use": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:playstyle/ares/yatagarasu/crow_souls",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 50
+    },
     "mark": {
         "type": "origins:action_on_block_use",
         "block_action": {
@@ -63,7 +77,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a ~ ~ ~ 1 0.5"
+                    "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 0.5"
                 }
             ]
         },

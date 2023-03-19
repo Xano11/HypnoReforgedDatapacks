@@ -129,7 +129,7 @@
             },
             {
                 "type": "origins:execute_command",
-                "command": "playsound simplyswords:elemental_bow_ice_shoot_impact_03 player @a ~ ~ ~ 0.5 2"
+                "command": "playsound simplyswords:elemental_bow_ice_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 0.5 2"
             },
             {
                 "type": "origins:block_action_at",

@@ -17,7 +17,7 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:magic_sword_attack_02 player @a ~ ~ ~ 1 0.5",
+                        "command": "playsound simplyswords:magic_sword_attack_02 player @a[distance=..16] ~ ~ ~ 1 0.5",
                         "permission_level": 4
                     },
                     {
@@ -174,7 +174,7 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:magic_sword_attack_02 player @a ~ ~ ~ 1 0.5",
+                        "command": "playsound simplyswords:magic_sword_attack_02 player @a[distance=..16] ~ ~ ~ 1 0.5",
                         "permission_level": 4
                     },
                     {

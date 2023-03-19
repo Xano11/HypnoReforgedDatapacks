@@ -71,7 +71,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_sword_earth_attack_03 player @a ~ ~ ~ 1.5 0.9"
+                    "command": "playsound simplyswords:elemental_sword_earth_attack_03 player @a[distance=..16] ~ ~ ~ 1.5 0.9"
                 }
             ]
         },

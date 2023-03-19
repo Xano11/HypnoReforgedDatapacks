@@ -1,4 +1,6 @@
 {
+    "name":"Corrupted Kindlings",
+    "description":"Killing an entity whilst engulfed will create a Corrupted Kindling. Kindlings will move towards the closest entity and explode on target, dealing fire damage.",
     "type": "origins:multiple",
     "activate": {
         "type": "apugli:action_on_target_death",
@@ -6,18 +8,48 @@
             "type": "origins:and",
             "actions": [
                 {
-                    "type": "apoli:target_action",
+                    "type": "origins:target_action",
                     "action": {
                         "type": "origins:and",
                         "actions": [
                             {
                                 "type": "origins:spawn_entity",
-                                "entity_type": "minecraft:zombie",
-                                "tag": "{DeathLootTable:\"minecraft:empty\",CanPickUpLoot:0b,Health:10f,IsBaby:1b,CanBreakDoors:1b,Tags:[\"fire_spirit\"],ArmorItems:[{id:\"minecraft:leather_boots\",Count:1b,tag:{display:{color:15691524},Unbreakable:1b}},{id:\"minecraft:leather_leggings\",Count:1b,tag:{display:{color:15691524}}},{id:\"minecraft:leather_chestplate\",Count:1b,tag:{display:{color:15691524},Unbreakable:1b}},{id:\"minecraft:magma_block\",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],Attributes:[{Name:generic.max_health,Base:10},{Name:generic.movement_speed,Base:0.2}]}",
-                                "entity_action": {
-                                    "type": "origins:execute_command",
-                                    "command": "power grant @s hypno:playstyle/zeus/ifrit/fire_spirit"
+                                "entity_type": "minecraft:armor_stand",
+                                "tag": "{NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:1b,DisabledSlots:4144959,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;159580284,-592032342,-2052890761,-1419523739],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA0NTAxYjI5MjVkOTE3NTZkY2UzNTJmM2M0M2ZhOTVjOTE1YmY5NTJmNWM4YjgxM2M0Zjg0NmUwZjExZGUzNCJ9fX0=\"}]}}}}]}",
+                                "entity_action":
+                                {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/zeus/ifrit/fire_spirit"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add fire_spirit"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add ifrit"
+                                        }
+                                    ]
                                 }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 1 0 0 1 0.9 0.8 0 ~ ~1 ~ 0.5 0.5 0.5 1 40"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.2 40"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:small_flame ~ ~1 ~ 0.5 0.5 0.5 0 40"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.lava.pop player @a ~ ~ ~ 2 0.5"
                             },
                             {
                                 "type":"origins:delay",
@@ -31,10 +63,14 @@
                     }
                 },
                 {
-                    "type": "apoli:actor_action",
+                    "type": "origins:actor_action",
                     "action": {
                         "type": "origins:and",
                         "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add ifrit"
+                            },
                             {
                                 "type": "origins:execute_command",
                                 "command": "tag @s add ifrit_spirit"
@@ -57,6 +93,11 @@
             ]
         },
         "cooldown": 200,
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+            "inverted": false
+        },
         "hud_render": {
             "should_render": false
         },

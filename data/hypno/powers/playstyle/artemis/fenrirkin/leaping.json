@@ -187,11 +187,11 @@
                 "actions": [
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:elemental_bow_ice_shoot_impact_01 player @a ~ ~ ~ 1 0.5"
+                        "command": "playsound simplyswords:elemental_bow_ice_shoot_impact_01 player @a[distance=..16] ~ ~ ~ 1 0.5"
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:elemental_bow_ice_shoot_flyby_02 player @a ~ ~ ~ 1 0.5"
+                        "command": "playsound simplyswords:elemental_bow_ice_shoot_flyby_02 player @a[distance=..16] ~ ~ ~ 1 0.5"
                     }
                 ]
             },

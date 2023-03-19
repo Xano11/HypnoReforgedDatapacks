@@ -1,6 +1,6 @@
 {
     "name": "Engulfed",
-    "description": "Pressing [PRIMARY ABILITY KEY] will engulf oneself in hellfire. This will allow the user to create Corrupted Kindling and to flame dash.",
+    "description": "Pressing [PRIMARY ABILITY KEY] will engulf oneself in hellfire. This will allow the user to create Corrupted Kindlings and use most of their abilities. Whilst engulfed, speed will increase whilst speeding, up to 250% speed. At maximum speed, you will deal massive knockback on hit and be granted the ability to run on lava. Additionally, being engulfed allows the user to light up furnaces and brewing stands around by clicking a fire block.",
     "type": "origins:multiple",
     "toggle": {
         "type": "origins:toggle",
@@ -76,7 +76,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 0.5"
+                    "command": "playsound simplyswords:dark_sword_unfold player @a[distance=..16] ~ ~ ~ 1 0.5"
                 }
             ]
         },
@@ -111,7 +111,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:dark_sword_unfold player @a ~ ~ ~ 1 1"
+                    "command": "playsound simplyswords:dark_sword_unfold player @a[distance=..16] ~ ~ ~ 1 1"
                 }
             ]
         },

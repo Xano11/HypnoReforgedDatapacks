@@ -9,7 +9,7 @@
 		"hypno:playstyle/hephaestus/tanuki/sweettooth"
 	],
 	"icon": {
-		"item": "naturalist:bear_fur"
+		"item": "minecraft:chest"
 	},
 	"order": 1,
 	"impact": 0,

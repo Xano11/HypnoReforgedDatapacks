@@ -267,7 +267,7 @@
                                         },
                                         {
                                             "type": "origins:execute_command",
-                                            "command": "playsound simplyswords:dark_sword_parry player @s ~ ~ ~ 1 0.5"
+                                            "command": "playsound simplyswords:dark_sword_parry player @a[distance=..16] ~ ~ ~ 1 0.5"
                                         },
                                         {
                                             "type": "origins:delay",

@@ -23,7 +23,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound naturalist:entity.vulture.ambient player @a ~ ~ ~ 2 0.6"
+                    "command": "playsound minecraft:entity.phantom.hurt player @a ~ ~ ~ 1 1.4"
                 },
                 {
                     "type": "origins:execute_command",
@@ -153,7 +153,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound naturalist:entity.lion.roar player @a ~ ~ ~ 2 0.6"
+                    "command": "playsound minecraft:entity.zombie_horse.hurt player @a ~ ~ ~ 1 0.7"
                 },
                 {
                     "type": "origins:execute_command",

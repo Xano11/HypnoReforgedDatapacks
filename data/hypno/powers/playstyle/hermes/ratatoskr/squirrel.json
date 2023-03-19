@@ -305,7 +305,7 @@
             },
             {
             "type": "origins:execute_command",
-            "command": "playsound naturalist:entity.deer.ambient_baby player @a ~ ~ ~ 1 1.6",
+            "command": "playsound minecraft:entity.fox.hurt player @a ~ ~ ~ 1 1.6 ",
             "permission_level": 4
             }
             ]

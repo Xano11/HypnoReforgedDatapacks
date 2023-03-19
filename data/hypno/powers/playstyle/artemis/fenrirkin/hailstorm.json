@@ -13,11 +13,11 @@
         },
         {
           "type": "origins:execute_command",
-          "command": "playsound simplyswords:elemental_sword_ice_attack_01 player @a ~ ~ ~ 1 1.5"
+          "command": "playsound simplyswords:elemental_sword_ice_attack_01 player @a[distance=..16] ~ ~ ~ 1 1.5"
         },
         {
           "type": "origins:execute_command",
-          "command": "playsound simplyswords:dark_sword_block player @a ~ ~ ~ 0.5 0.5"
+          "command": "playsound simplyswords:dark_sword_block player @a[distance=..16] ~ ~ ~ 0.5 0.5"
         },
         {
           "type": "origins:execute_command",
@@ -72,8 +72,8 @@
     },
     "hud_render": {
       "should_render": true,
-      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-      "bar_index": 0
+      "sprite_location": "horigins:textures/resource_bar01.png",
+      "bar_index": 16
     },
     "key": {
       "key": "key.origins.secondary_active"
@@ -95,7 +95,7 @@
         },
         {
           "type": "origins:execute_command",
-          "command": "playsound simplyswords:magic_sword_spell_01 player @a ~ ~ ~ 3 0.8"
+          "command": "playsound simplyswords:magic_sword_spell_01 player @a[distance=..16] ~ ~ ~ 3 0.8"
         },
         {
           "type": "origins:execute_command",
@@ -175,7 +175,7 @@
         },
         {
           "type": "origins:execute_command",
-          "command": "playsound simplyswords:elemental_sword_ice_attack_03 player @a ~ ~ ~ 2 0.7"
+          "command": "playsound simplyswords:elemental_sword_ice_attack_03 player @a[distance=..16] ~ ~ ~ 2 0.7"
         },
         {
           "type": "origins:execute_command",
@@ -211,8 +211,8 @@
     },
     "hud_render": {
       "should_render": true,
-      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-      "bar_index": 0
+      "sprite_location": "horigins:textures/resource_bar01.png",
+      "bar_index": 17
     },
     "key": {
       "key": "key.origins.secondary_active"

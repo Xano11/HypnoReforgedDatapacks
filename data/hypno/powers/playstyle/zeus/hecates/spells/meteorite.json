@@ -107,11 +107,11 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_bow_earth_shoot_impact_03 player @a ~ ~ ~ 2 0.5"
+                    "command": "playsound simplyswords:elemental_bow_earth_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 2 0.5"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_02 player @s ~ ~ ~ 1 0.5"
+                    "command": "playsound simplyswords:elemental_bow_fire_shoot_impact_02 player @a[distance=..16] ~ ~ ~ 1 0.5"
                 },
                 {
                     "type": "origins:execute_command",

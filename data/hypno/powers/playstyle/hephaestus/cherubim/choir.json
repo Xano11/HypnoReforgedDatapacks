@@ -33,7 +33,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_01 player @a ~ ~ ~ 0.5 0.5"
+                    "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_01 player @a[distance=..16] ~ ~ ~ 0.5 0.5"
                 },
                 {
                     "type": "origins:execute_command",

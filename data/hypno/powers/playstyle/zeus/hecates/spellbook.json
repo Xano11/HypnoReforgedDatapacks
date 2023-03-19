@@ -19,7 +19,7 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:magic_sword_spell_03 player @a ~ ~ ~ 1 1.5",
+                        "command": "playsound simplyswords:magic_sword_spell_03 player @a[distance=..16] ~ ~ ~ 1 1.5",
                         "permission_level": 4
                     },
                     {
@@ -44,7 +44,7 @@
                 "actions": [
                     {
                         "type": "origins:execute_command",
-                        "command": "playsound simplyswords:magic_sword_spell_02 player @a ~ ~ ~ 1 1.5",
+                        "command": "playsound simplyswords:magic_sword_spell_02 player @a[distance=..16] ~ ~ ~ 1 1.5",
                         "permission_level": 4
                     },
                     {

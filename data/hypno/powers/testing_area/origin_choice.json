@@ -1,0 +1,54 @@
+{
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:action_on_being_used",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                  "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "origin gui @s origins:blessing"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:witch ~ ~1 ~ 0.4 0.4 0.4 1 40"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.beacon.activate player @s ~ ~ ~ 1 2"
+                    }
+                ]
+              }
+        },
+        "hands": [
+            "main_hand"
+        ]
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:execute_command",
+            "command": "tp @s ~ ~ ~ ~18 ~"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:dust_color_transition 1 0 0.8 1 1 1 1 ^ ^1.6 ^2 0 0 0 1 10"
+          },
+          {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:dust_color_transition 1 0 0.8 1 1 1 1 ^ ^1.6 ^-1 0 0 0 1 10"
+          }
+        ]
+        },
+        "interval": 1
+    },
+    "invisibility":{
+        "type": "origins:invisibility",
+        "render_armor": true
+    },
+    "hidden": true
+}

@@ -68,11 +68,15 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_bow_fire_shoot_flyby_02 player @s ~ ~ ~ 1 0.7"
+                    "command": "playsound simplyswords:elemental_bow_fire_shoot_flyby_02 player @a[distance=..16] ~ ~ ~ 1 0.7"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound naturalist:entity.vulture.death player @a ~ ~ ~ 1 0.7"
+                    "command": "playsound minecraft:entity.parrot.fly player @a ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.fire.extinguish player @a ~ ~ ~ 1 0.8"
                 }
             ]
         },

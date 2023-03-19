@@ -54,7 +54,7 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "playsound naturalist:entity.lion.roar player @a ~ ~ ~ 2 0.5"
+        "command": "playsound minecraft:entity.zombie_horse.hurt player @a ~ ~ ~ 1 0.7"
     },
     {
         "type":"origins:delay",

@@ -17,7 +17,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:magic_sword_spell_01 player @a ~ ~ ~ 1 1.4"
+                    "command": "playsound simplyswords:magic_sword_spell_01 player @a[distance=..16] ~ ~ ~ 1 1.4"
                 },
                 {
                     "type": "origins:execute_command",

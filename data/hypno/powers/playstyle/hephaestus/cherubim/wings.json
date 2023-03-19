@@ -55,7 +55,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "playsound simplyswords:elemental_bow_holy_shoot_flyby_02 player @a ~ ~ ~ 1 0.7",
+                    "command": "playsound simplyswords:elemental_bow_holy_shoot_flyby_02 player @a[distance=..16] ~ ~ ~ 1 0.7",
                     "permission_level": 4
                 },
                 {

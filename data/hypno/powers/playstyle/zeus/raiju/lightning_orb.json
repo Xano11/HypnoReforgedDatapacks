@@ -41,7 +41,7 @@
             },
             {
                 "type": "origins:execute_command",
-                "command": "playsound simplyswords:elemental_bow_thunder_shoot_impact_02 player @a ~ ~ ~ 1 0.7"
+                "command": "playsound simplyswords:elemental_bow_thunder_shoot_impact_02 player @a[distance=..16] ~ ~ ~ 1 0.7"
             },
             {
                 "type": "origins:change_resource",
@@ -158,7 +158,7 @@
         },
         "max_action":{
             "type": "origins:execute_command",
-            "command": "playsound simplyswords:elemental_bow_thunder_shoot_impact_03 player @a ~ ~ ~ 1 1.3"
+            "command": "playsound simplyswords:elemental_bow_thunder_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 1.3"
         }
     },
     "reset": {
@@ -183,7 +183,7 @@
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:execute_command",
-            "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_02 player @a ~ ~ ~ 1 1"
+            "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_02 player @a[distance=..16] ~ ~ ~ 1 1"
         },
         "interval": 10,
         "condition":{

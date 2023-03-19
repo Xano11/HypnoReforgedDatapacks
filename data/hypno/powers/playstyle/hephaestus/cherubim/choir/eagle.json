@@ -54,7 +54,7 @@
     },
     {
         "type": "origins:execute_command",
-        "command": "playsound naturalist:entity.vulture.death player @a ~ ~ ~ 2 0.6"
+        "command": "playsound minecraft:entity.phantom.hurt player @a ~ ~ ~ 1 1.4"
     },
     {
         "type":"origins:delay",

@@ -69,7 +69,9 @@
             "continuous": false
         },
         "hud_render": {
-            "should_render": false
+            "should_render": true,
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 7
         },
         "condition": {
             "type": "origins:and",

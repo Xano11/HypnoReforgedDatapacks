@@ -1,6 +1,6 @@
 {
     "name":"Demonic",
-    "description":"As a being from hell, you take no damage from fire. You ignite your surroundings and burn through any potions or food at twice the rate. But be careful, unless you are engulfed, water is your worst enemy.",
+    "description":"As a being from hell, you take no damage from fire. You ignite your surroundings and burn through any potions or food at twice the rate. But be careful, water is your worst enemy. Even being engulfed will only protect you from fire temporarily.",
     "type": "origins:multiple",
     "fire_immune": {
         "type": "origins:modify_damage_taken",
