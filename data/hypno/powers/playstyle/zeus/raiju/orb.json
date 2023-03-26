@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
-                    "command": "execute at @s run particle dust_color_transition 0.008 1 0.949 2 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 5"
+                    "command": "execute at @s run particle dust_color_transition 0.008 1 0.949 2 1 0.95 0.24 ~ ~1.6 ~ 0.1 0.1 0.1 0.1 5"
                 }
             ]
         },
@@ -42,9 +42,21 @@
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:execute_command",
-            "command": "execute if block ^ ^ ^0.2 minecraft:air run tp @s ^ ^ ^0.2"
+            "command": "tp @s ^ ^ ^0.2"
         },
-        "interval": 1
+        "interval": 1,
+        "condition": {
+            "type": "origins:raycast",
+            "distance": 0.2,
+            "block": true,
+            "entity": false,
+            "shape_type": "collider",
+            "fluid_handling": "none",
+            "block_condition": {
+                "type": "origins:movement_blocking"
+            },
+            "inverted": true
+        }
     },
     "no_collision": {
         "type": "origins:prevent_entity_collision"
@@ -66,7 +78,7 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute as @a if score @s electric_orb = @e[limit=1,sort=nearest] electric_orb run tp @s ~ ~ ~"
+                    "command": "execute as @a if score @s electric_orb = @e[limit=1,sort=nearest] electric_orb run tp @s ~ ~1.6 ~"
                 },
                 {
                     "type": "origins:execute_command",

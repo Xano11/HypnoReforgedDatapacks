@@ -1,5 +1,5 @@
 {
-    "name":"Corrupted Kindlings",
+    "name":"Corrupted Kindlings ☄",
     "description":"Killing an entity whilst engulfed will create a Corrupted Kindling. Kindlings will move towards the closest entity and explode on target, dealing fire damage.",
     "type": "origins:multiple",
     "activate": {

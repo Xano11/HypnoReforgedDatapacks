@@ -6,12 +6,24 @@
           "type": "origins:and",
           "actions": [
               {
+              "type": "origins:execute_command",
+              "command": "execute store result score @s ratatoskr_portal run data get entity @s UUID[0] 1"
+              },
+              {
                 "type": "origins:execute_command",
                 "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"portal1\"]}"
               },
               {
                 "type": "origins:execute_command",
                 "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"portal2\"]}"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "execute store result score @e[limit=1,sort=nearest,tag=portal1] ratatoskr_portal run data get entity @s UUID[0] 1"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "execute store result score @e[limit=1,sort=nearest,tag=portal2] ratatoskr_portal run data get entity @s UUID[0] 1"
               },
               {
                 "type": "origins:execute_command",

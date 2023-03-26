@@ -47,12 +47,11 @@
         },
         "interval": 5
     },
-    "status_bar":{
+    "status_bar": {
         "type": "origins:status_bar_texture",
         "texture": "horigins:textures/gui/starblessed_icons.png"
     },
-    "mana_up":
-    {
+    "mana_up": {
         "type": "origins:action_over_time",
         "entity_action": {
             "type": "origins:and",
@@ -66,8 +65,7 @@
         },
         "interval": 1
     },
-    "magic_resistance":
-    {
+    "magic_resistance": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
             "type": "apugli:magic"

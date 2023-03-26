@@ -66,14 +66,6 @@
                 }
             ]
         },
-        "block_condition": {
-            "type": "origins:offset",
-            "condition": {
-                "type": "origins:block",
-                "block": "minecraft:water"
-            },
-            "y": 1
-        },
         "directions": [
             "up"
         ],

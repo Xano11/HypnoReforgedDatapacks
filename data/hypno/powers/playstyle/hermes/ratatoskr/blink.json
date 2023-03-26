@@ -58,6 +58,10 @@
                         "type": "origins:add_velocity",
                         "y": 0,
                         "set": true
+                    },
+                    {
+                        "type": "origins:set_fall_distance",
+                        "fall_distance": 0
                     }
                 ]
             },

@@ -143,7 +143,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "execute as @a if score @s scythe_owner = @p scythe_owner at @s run resource change @s hypno:playstyle/ares/yatagarasu/crow_souls 2"
+                                "command": "execute as @a if score @s scythe_owner = @e[limit=1,sort=nearest] scythe_owner at @s run resource change @s hypno:playstyle/ares/yatagarasu/crow_souls 4"
                             },
                             {
                                 "type": "origins:execute_command",

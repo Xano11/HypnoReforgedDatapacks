@@ -1,5 +1,5 @@
 {
-    "name": "Land of the Storms",
+    "name": "Land of the Storms ϟ☁",
     "description": "Using your [PRIMARY ABILITY KEY], you create a storm field around you. In this 16 block radius area, lightning randomly hits the ground. Additionally, entities that stay in the field slowly lose speed up to 25% and take damage over a duration. Finally, holding [SECONDARY ABILITY KEY] with Stormfield toggled on will cast lighting to recharge your bar.",
     "badges": [
         {
@@ -233,67 +233,6 @@
                     "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
                     "comparison": ">=",
                     "compare_to": 100
-                }
-            ]
-        },
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "unstable": {
-        "type": "origins:resource",
-        "min": 0,
-        "max": 3,
-        "start_value": 0,
-        "max_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:execute_command",
-                    "command": "power grant @s hypno:playstyle/zeus/raiju/discharged"
-                },
-                {
-                    "type": "origins:change_resource",
-                    "resource": "hypno:playstyle/zeus/raiju/stormfield_unstable",
-                    "change": -3
-                }
-            ]
-        },
-        "hud_render": {
-            "should_render": false
-        }
-    },
-    "recharge": {
-        "type": "origins:active_self",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:execute_command",
-                    "command": "summon minecraft:lightning_bolt"
-                },
-                {
-                    "type": "origins:chance",
-                    "action": {
-                        "type": "origins:change_resource",
-                        "resource": "hypno:playstyle/zeus/raiju/stormfield_unstable",
-                        "change": 1
-                    },
-                    "chance": 0.25
-                }
-            ]
-        },
-        "cooldown": 10,
-        "key": {
-            "key": "key.origins.secondary_active",
-            "continuous": true
-        },
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-                {
-                    "type": "origins:power_active",
-                    "power": "hypno:playstyle/zeus/raiju/stormfield_toggle"
                 }
             ]
         },

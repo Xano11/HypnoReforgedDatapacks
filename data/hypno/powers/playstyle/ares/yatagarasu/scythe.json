@@ -65,7 +65,7 @@
                                     },
                                     {
                                         "type": "origins:add_velocity",
-                                        "z": 0.3
+                                        "z": 0.05
                                     }
                                 ]
                             },
@@ -89,6 +89,20 @@
                                                 }
                                             ]
                                         }
+                                    },
+                                    {
+                                        "type": "origins:actor_condition",
+                                        "condition": {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:resource",
+                                                    "resource": "hypno:playstyle/ares/yatagarasu/scythe_duration",
+                                                    "comparison": "<",
+                                                    "compare_to": 137
+                                                }
+                                            ]
+                                        }
                                     }
                                 ]
                             }
@@ -98,6 +112,26 @@
             ]
         },
         "interval": 1
+    },
+    "soulcollector": {
+        "type": "apugli:action_on_target_death",
+        "bientity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute as @a if score @s scythe_owner = @e[limit=1,sort=nearest] scythe_owner at @s run resource change @s hypno:playstyle/ares/yatagarasu/crow_souls 1"
+                    }
+                ]
+            }
+        }
+    ]
+    },
+        "includes_prime_adversary": false
     },
     "hidden": false
 }

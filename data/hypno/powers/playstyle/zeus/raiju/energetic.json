@@ -73,6 +73,15 @@
             "bar_index": 5
         }
     },
+    "refill": {
+        "type": "origins:action_on_callback",
+        "entity_action_respawned": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+            "change": 700
+        },
+        "execute_chosen_when_orb": true
+    },
     "movement_reduction": {
         "type": "origins:conditioned_attribute",
         "modifier": {
@@ -120,8 +129,8 @@
         "modifier": {
             "name": "Speed decrease",
             "attribute": "minecraft:generic.armor",
-            "value": -4,
-            "operation": "addition"
+            "value": -0.5,
+            "operation": "multiply_total"
         },
         "condition": {
             "type": "origins:and",
@@ -221,6 +230,48 @@
             "value": -0.2,
             "operation": "multiply_base"
         },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "swim_speed":{
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": "<",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:playstyle/zeus/raiju/infused",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "prevent_sprint":{
+        "type": "origins:prevent_sprinting",
         "condition": {
             "type": "origins:and",
             "conditions": [
@@ -339,23 +390,47 @@
                         }
                     },
                     "bientity_condition": {
-                        "type": "origins:target_condition",
-                        "condition": {
-                            "type": "origins:fluid_height",
-                            "fluid": "minecraft:water",
-                            "comparison": ">",
-                            "compare_to": 0
-                        }
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:living"
+                                        },
+                                        {
+                                            "type": "origins:fluid_height",
+                                            "fluid": "minecraft:water",
+                                            "comparison": ">",
+                                            "compare_to": 0
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
                     }
                 }
             ]
         },
         "interval": 5,
         "condition": {
-            "type": "origins:fluid_height",
-            "fluid": "minecraft:water",
-            "comparison": ">",
-            "compare_to": 0
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:playstyle/zeus/raiju/energetic_resource",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
         }
     },
     "hidden": false

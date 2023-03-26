@@ -4,67 +4,137 @@
     "pull": {
         "type": "origins:action_over_time",
         "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:area_of_effect",
-                    "radius": 24,
-                    "bientity_action": {
-                        "type": "origins:add_velocity",
-                        "z": -0.1
-                    },
-                    "bientity_condition": {
-                        "type": "origins:and",
-                        "conditions": [
-                            {
-                                "type": "eggolib:compare_score",
-                                "actor_objective": "anchors",
-                                "target_objective": "anchors",
-                                "comparison": "=="
-                            },
-                            {
-                                "type": "origins:target_condition",
-                                "condition": {
-                                    "type": "origins:and",
-                                    "conditions": [
-                                        {
-                                            "type": "origins:command",
-                                            "command": "execute if entity @s[tag=hooked]",
-                                            "comparison": ">=",
-                                            "compare_to": 1
-                                        },
-                                        {
-                                            "type": "origins:in_tag",
-                                            "tag": "hypno:living"
-                                        },
-                                        {
-                                            "type": "origins:origin",
-                                            "origin": "hypno:playstyle/artemis/kelpie",
-                                            "layer": "origins:artemis",
-                                            "inverted": true
-                                        }
-                                    ]
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water"
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:area_of_effect",
+                        "radius": 24,
+                        "bientity_action": {
+                            "type": "origins:add_velocity",
+                            "z": -0.1
+                        },
+                        "bientity_condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "eggolib:compare_score",
+                                    "actor_objective": "anchors",
+                                    "target_objective": "anchors",
+                                    "comparison": "=="
+                                },
+                                {
+                                    "type": "origins:target_condition",
+                                    "condition": {
+                                        "type": "origins:and",
+                                        "conditions": [
+                                            {
+                                                "type": "origins:command",
+                                                "command": "execute if entity @s[tag=hooked]",
+                                                "comparison": ">=",
+                                                "compare_to": 1
+                                            },
+                                            {
+                                                "type": "origins:in_tag",
+                                                "tag": "hypno:living"
+                                            },
+                                            {
+                                                "type": "origins:origin",
+                                                "origin": "hypno:playstyle/artemis/kelpie",
+                                                "layer": "origins:artemis",
+                                                "inverted": true
+                                            }
+                                        ]
+                                    }
                                 }
-                            }
-                        ]
+                            ]
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute as @e[distance=..24,type=!armor_stand,tag=hooked] if score @s anchors = @e[limit=1,sort=nearest] anchors anchored eyes facing entity @s eyes run tp @e[limit=1,sort=nearest] ~ ~ ~ ~ ~"
+                    },
+                    {
+                        "type": "origins:raycast",
+                        "distance": 24,
+                        "block": true,
+                        "entity": true,
+                        "shape_type": "visual",
+                        "fluid_handling": "none",
+                        "command_along_ray": "particle minecraft:soul ~ ~ ~ 0 0 0 0 2",
+                        "command_step": 0.3,
+                        "command_along_ray_only_on_hit": true
                     }
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "execute as @e[distance=..24,type=!armor_stand,tag=hooked] if score @s anchors = @e[limit=1,sort=nearest] anchors anchored eyes facing entity @s eyes run tp @e[limit=1,sort=nearest] ~ ~ ~ ~ ~"
-                },
-                {
-                    "type": "origins:raycast",
-                    "distance": 24,
-                    "block": true,
-                    "entity": true,
-                    "shape_type": "visual",
-                    "fluid_handling": "none",
-                    "command_along_ray": "particle minecraft:soul ~ ~ ~ 0 0 0 0 2",
-                    "command_step": 0.3,
-                    "command_along_ray_only_on_hit": true
-                }
-            ]
+                ]
+            },
+            "else_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:area_of_effect",
+                        "radius": 10,
+                        "bientity_action": {
+                            "type": "origins:add_velocity",
+                            "z": -0.1
+                        },
+                        "bientity_condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "eggolib:compare_score",
+                                    "actor_objective": "anchors",
+                                    "target_objective": "anchors",
+                                    "comparison": "=="
+                                },
+                                {
+                                    "type": "origins:target_condition",
+                                    "condition": {
+                                        "type": "origins:and",
+                                        "conditions": [
+                                            {
+                                                "type": "origins:command",
+                                                "command": "execute if entity @s[tag=hooked]",
+                                                "comparison": ">=",
+                                                "compare_to": 1
+                                            },
+                                            {
+                                                "type": "origins:in_tag",
+                                                "tag": "hypno:living"
+                                            },
+                                            {
+                                                "type": "origins:origin",
+                                                "origin": "hypno:playstyle/artemis/kelpie",
+                                                "layer": "origins:artemis",
+                                                "inverted": true
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute as @e[distance=..10,type=!armor_stand,tag=hooked] if score @s anchors = @e[limit=1,sort=nearest] anchors anchored eyes facing entity @s eyes run tp @e[limit=1,sort=nearest] ~ ~ ~ ~ ~"
+                    },
+                    {
+                        "type": "origins:raycast",
+                        "distance": 10,
+                        "block": true,
+                        "entity": true,
+                        "shape_type": "visual",
+                        "fluid_handling": "none",
+                        "command_along_ray": "particle minecraft:soul ~ ~ ~ 0 0 0 0 2",
+                        "command_step": 0.3,
+                        "command_along_ray_only_on_hit": true
+                    }
+                ]
+            }
         },
         "interval": 1,
         "condition": {
@@ -104,7 +174,7 @@
                     }
                 ]
             },
-            "radius": 24.0,
+            "radius": 10.0,
             "comparison": ">=",
             "compare_to": 1
         }
@@ -169,6 +239,23 @@
             "name": "Tougher",
             "operation": "multiply_total",
             "value": -0.5
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    },
+    "more_damage": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Weaker",
+            "operation": "multiply_total",
+            "value": 0.5
+        },
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water",
+            "inverted": true
         }
     },
     "ignore": {
@@ -218,7 +305,7 @@
             ]
         }
     },
-    "no_healing":{
+    "no_healing": {
         "type": "origins:modify_healing",
         "modifier": {
             "operation": "multiply_total",

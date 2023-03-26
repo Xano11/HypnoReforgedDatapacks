@@ -49,6 +49,11 @@
             "actions": [
                 {
                     "type": "origins:execute_command",
+                    "command": "scale easing set pehkui:width pehkui:bounce_out",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "scale add pehkui:width 0.5",
                     "permission_level": 4
                 },
@@ -70,6 +75,11 @@
                 {
                     "type": "origins:execute_command",
                     "command": "scale add pehkui:height 0.2",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale easing reset pehkui:width",
                     "permission_level": 4
                 }
             ]

@@ -62,9 +62,5 @@
             ]
         }
     },
-    "redirect": {
-        "type": "apugli:redirect_lightning",
-        "chance": 0.50
-    },
     "hidden": false
 }

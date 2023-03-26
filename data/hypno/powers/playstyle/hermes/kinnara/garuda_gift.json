@@ -102,7 +102,15 @@
                                         {
                                             "type": "origins:add_velocity",
                                             "y": 0.6
+                                        },
+                                        {
+                                            "type": "origins:apply_effect",
+                                            "effect": {
+                                                "effect": "minecraft:slow_falling",
+                                                "duration": 200,
+                                                "amplifier": 0
                                         }
+                                    }
                                     ]
                                 }
                             }
@@ -163,6 +171,9 @@
                                         {
                                             "type": "origins:heal",
                                             "amount": 0.05
+                                        },
+                                        {
+                                            "type": "origins:extinguish"
                                         },
                                         {
                                             "type": "origins:execute_command",

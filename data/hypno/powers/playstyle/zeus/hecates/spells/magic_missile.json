@@ -93,7 +93,7 @@
                                 "type":"origins:and",
                                 "actions": [{
                                     "type": "origins:damage",
-                                    "amount": 4,
+                                    "amount": 5,
                                     "source": {
                                         "name": "magic.player",
                                         "magic": true,
@@ -103,10 +103,23 @@
                                 {
                                     "type": "origins:target_action",
                                     "action": {
+                                        "type":"origins:and",
+                                        "actions": [{
                                         "type": "origins:execute_command",
                                         "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 1.7",
                                         "permission_level": 4
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "power grant @s hypno:playstyle/zeus/hecates/overmagicked"
+                                    },
+                                    {
+                                        "type": "origins:change_resource",
+                                        "resource": "hypno:playstyle/zeus/hecates/overmagicked_stacks",
+                                        "change": 1
                                     }
+                                ]
+                            }
                                 }
                             ]
                         },

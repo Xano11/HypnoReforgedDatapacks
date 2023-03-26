@@ -192,5 +192,15 @@
     ]
 }
     },
+    "no_elytra":{
+        "type": "origins:conditioned_restrict_armor",
+        "chest": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:elytra"
+            }
+        },
+        "tick_rate": 20
+    },
     "hidden": true
 }

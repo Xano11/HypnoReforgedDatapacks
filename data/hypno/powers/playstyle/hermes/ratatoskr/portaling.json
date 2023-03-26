@@ -13,9 +13,18 @@
             "bar_index": 2
         },
         "min_action": {
-            "type": "origins:execute_command",
-            "command": "power remove @s hypno:playstyle/hermes/ratatoskr/portaling"
-        }
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=portal2,type=armor_stand] run execute if score @s ratatoskr_portal = @p ratatoskr_portal run tp @s ~ ~ ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:playstyle/hermes/ratatoskr/portaling"
+                }
+            ]
+        }     
     },
     "resource_use":{
         "type": "origins:action_over_time",
@@ -26,19 +35,6 @@
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/hermes/ratatoskr/portaling_resource",
                     "change": -1
-                }
-            ]
-        },
-        "interval": 1
-    },
-    "portal2_follow":{
-        "type": "origins:action_over_time",
-        "entity_action": {
-            "type": "origins:and",
-            "actions": [
-                {
-                    "type": "origins:execute_command",
-                    "command": "tp @e[limit=1,sort=nearest,tag=portal2] ~ ~ ~"
                 }
             ]
         },

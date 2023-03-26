@@ -239,6 +239,10 @@
             "type": "origins:execute_command",
             "command": "particle minecraft:glow ~ ~ ~ 0.2 0 0.2 0.01 100",
             "permission_level": 4
+            },
+            {
+                "type": "origins:set_fall_distance",
+                "fall_distance": 0
             }
             ]
         },

@@ -21,7 +21,7 @@
         },
         "cooldown": 5,
         "key": {
-            "key": "key.origins.primary_active",
+            "key": "key.origins.secondary_active",
             "continuous": true
         },
         "hud_render": {
@@ -41,6 +41,9 @@
                 {
                     "type": "origins:moving",
                     "inverted": true
+                },
+                {
+                    "type": "origins:sneaking"
                 }
             ]
         }
@@ -334,6 +337,9 @@
                     "resource": "hypno:playstyle/artemis/kelpie/stalk_transparency",
                     "comparison": "==",
                     "compare_to": 10
+                },
+                {
+                    "type": "origins:sneaking"
                 }
             ]
         }

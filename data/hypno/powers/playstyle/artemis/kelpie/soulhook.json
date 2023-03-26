@@ -30,7 +30,7 @@
         },
         "cooldown": 3,
         "key": {
-            "key": "key.use",
+            "key": "key.origins.primary_active",
             "continuous": true
         },
         "hud_render": {
@@ -70,7 +70,7 @@
     "resource": {
         "type": "origins:resource",
         "min": 0,
-        "max": 50,
+        "max": 40,
         "start_value": 0,
         "hud_render": {
             "sprite_location": "horigins:textures/resource_bar02.png",
@@ -225,7 +225,7 @@
                 {
                     "type": "origins:change_resource",
                     "resource": "hypno:playstyle/artemis/kelpie/soulhook_resource",
-                    "change": -50
+                    "change": -40
                 }
             ]
         }
@@ -268,7 +268,7 @@
                 {
                     "type": "apugli:key_pressed",
                     "key": {
-                        "key": "key.use",
+                        "key": "key.origins.primary_active",
                         "continuous": true
                     }
                 }
@@ -312,7 +312,7 @@
                 {
                     "type": "apugli:key_pressed",
                     "key": {
-                        "key": "key.use",
+                        "key": "key.origins.primary_active",
                         "continuous": true
                     }
                 }

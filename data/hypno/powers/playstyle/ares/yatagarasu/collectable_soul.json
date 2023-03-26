@@ -49,15 +49,7 @@
         "type": "origins:prevent_entity_collision"
     },
     "prevent_usage": {
-        "type": "origins:prevent_being_used",
-        "bientity_condition": {
-            "type": "origins:actor_condition",
-            "condition": {
-                "type": "origins:power",
-                "power": "hypno:playstyle/ares/yatagarasu/dead"
-            },
-            "inverted": true
-        }
+        "type": "origins:prevent_being_used"
     },
     "hidden": false
 }

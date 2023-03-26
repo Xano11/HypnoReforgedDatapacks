@@ -3,7 +3,13 @@
     "description":"You are infused. You are fire resistant and able to use new abilities.",
     "type": "origins:multiple",
     "fire_immune":{
-    "type": "origins:fire_immunity"
+    "type": "origins:fire_immunity",
+    "condition": {
+        "type": "origins:fluid_height",
+        "fluid": "minecraft:lava",
+        "comparison": "==",
+        "compare_to": 0
+    }
     },
     "thunderstruck":{
         "type": "origins:target_action_on_hit",

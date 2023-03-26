@@ -65,5 +65,94 @@
         },
         "interval": 1
     },
+    "blocking": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:add_velocity",
+                                "z": 1
+                            },
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:sculk_charge_pop ~ ~1 ~ 0.5 0.5 0.5 0.2 100",
+                                            "permission_level": 4
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:block.anvil.place player @a ~ ~ ~ 1 0.7",
+                                            "permission_level": 4
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "eggolib:compare_score",
+                                "actor_objective": "scythe",
+                                "target_objective": "scythe",
+                                "comparison": "=="
+                            },
+                            {
+                                "type": "origins:relative_rotation",
+                                "actor_rotation": "head",
+                                "target_rotation": "body",
+                                "comparison": ">=",
+                                "compare_to": -0.8
+                            },
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @s[tag=scythe]",
+                                            "comparison": ">=",
+                                            "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:using_item",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:shield"
+                }
+            }
+        }
+    },
     "hidden": false
 }

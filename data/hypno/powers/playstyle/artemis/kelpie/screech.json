@@ -29,6 +29,10 @@
         "sprite_location": "horigins:textures/resource_bar02.png",
         "bar_index": 5
     },
+    "condition": {
+        "type": "origins:sneaking",
+        "inverted": true
+    },
       "key": {
           "key": "key.origins.secondary_active",
           "continuous": false

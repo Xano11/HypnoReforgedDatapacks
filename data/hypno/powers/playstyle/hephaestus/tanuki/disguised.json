@@ -7,7 +7,7 @@
             "type":"origins:and",
             "actions":[{
                 "type": "origins:execute_command",
-                "command": "execute as @e[tag=disguise_tp] if score @s disguised = @p[tag=!disguise_tp] disguised at @s run tp @p[tag=!disguise_tp] ~ ~ ~"
+                "command": "execute as @e[type=#hypno:disguises,tag=disguise_tp] if score @s disguised = @p[tag=!disguise_tp] disguised at @s run tp @p[tag=!disguise_tp] ~ ~ ~"
                     }
             ]
         },

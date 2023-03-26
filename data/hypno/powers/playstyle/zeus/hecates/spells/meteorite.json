@@ -83,6 +83,15 @@
                                                 "fire": true,
                                                 "bypasses_armor": true
                                             }
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:playstyle/zeus/hecates/overmagicked"
+                                        },
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "hypno:playstyle/zeus/hecates/overmagicked_stacks",
+                                            "change": 1
                                         }
                                     ]
                                 }
