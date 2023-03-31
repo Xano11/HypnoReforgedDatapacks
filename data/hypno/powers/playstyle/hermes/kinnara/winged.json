@@ -1,6 +1,6 @@
 {
     "name": "Winged",
-    "description": "You are infused. You are fire resistant and able to use new abilities.",
+    "description": "Being a flying being, you can be ridden by [SNEAKING] and being [USED] by another player. You also take reduced fall damage and sneak quicker.",
     "type": "origins:multiple",
     "wings": {
         "type": "origins:elytra_flight",
@@ -103,7 +103,7 @@
             "type": "origins:passenger"
         }
     },
-    "fall_damage":{
+    "fall_damage": {
         "type": "origins:modify_damage_taken",
         "damage_condition": {
             "type": "origins:from_falling"
@@ -112,6 +112,40 @@
             "name": "Reduced fall damage.",
             "operation": "multiply_total",
             "value": -0.48
+        }
+    },
+    "fall": {
+        "type": "origins:modify_falling",
+        "velocity": 0.08,
+        "take_fall_damage": false,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:fall_distance",
+                    "comparison": "<",
+                    "compare_to": 8
+                },
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:slow_falling",
+                    "min_amplifier": 0,
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "sneaking":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Sneaking speed",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.2,
+            "operation": "multiply_base"
+        },
+        "tick_rate": 1,
+        "condition": {
+            "type": "origins:sneaking"
         }
     },
     "hidden": false

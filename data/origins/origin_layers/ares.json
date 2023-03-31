@@ -10,7 +10,8 @@
           },
               "origins": [
                 "hypno:playstyle/ares/oni",
-                "hypno:playstyle/ares/yatagarasu"
+                "hypno:playstyle/ares/yatagarasu",
+                "hypno:repick"
               ]
           }
       ],

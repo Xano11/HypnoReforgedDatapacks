@@ -11,7 +11,8 @@
           "origins": [
             "hypno:playstyle/hephaestus/tanuki",
             "hypno:playstyle/hephaestus/cherubim",
-            "hypno:playstyle/hephaestus/golem"
+            "hypno:playstyle/hephaestus/golem",
+            "hypno:repick"
           ]
           }
       ],

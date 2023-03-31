@@ -21,6 +21,10 @@
                 },
                 {
                     "type": "origins:execute_command",
+                    "command": "forceload add ~ ~ ~ ~"
+                },
+                {
+                    "type": "origins:execute_command",
                     "command": "power remove @s hypno:playstyle/hermes/ratatoskr/portaling"
                 }
             ]

@@ -77,10 +77,10 @@
                                         },
                                         {
                                             "type": "origins:damage",
-                                            "amount": 7,
+                                            "amount": 9,
                                             "source": {
-                                                "name": "onFire",
-                                                "fire": true,
+                                                "name": "magic",
+                                                "magic": true,
                                                 "bypasses_armor": true
                                             }
                                         },
@@ -125,6 +125,10 @@
                 {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:flame ~ ~ ~ 3 0 3 0.1 300"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:explosion_emitter ~ ~ ~ 0 0 0 1 1"
                 },
                 {
                     "type": "origins:execute_command",

@@ -166,9 +166,54 @@
                             "item": "minecraft:written_book"
                         }
                     }
+                },
+                {
+                    "type": "origins:sneaking"
                 }
             ]
         }
+    },
+    "arcane_pouch":{
+        "type": "origins:inventory",
+        "container_type": "hopper",
+        "drop_on_death": true,
+        "title": "Arcane Storage",
+        "key": {
+            "key": "key.use",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:nbt",
+                        "nbt": "{Tags:[\"spellbook\"]}"
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        }
+    },
+    "only_magic": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+        "type": "origins:drop_inventory",
+        "inventory_type": "power",
+        "power": "hypno:playstyle/zeus/hecates/spellbook_arcane_pouch",
+        "item_condition":  {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            },
+            "inverted": true
+        }
+    },
+    "interval": 1
     },
     "magic_missile": {
         "type": "origins:item_on_item",

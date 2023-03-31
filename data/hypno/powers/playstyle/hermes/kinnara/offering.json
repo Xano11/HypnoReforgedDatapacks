@@ -52,6 +52,16 @@
                     "change": -10
                 },
                 {
+                    "type": "origins:damage",
+                    "amount": 10,
+                    "source": {
+                        "name": "indirectMagic",
+                        "magic": true,
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                },
+                {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:dust_color_transition 0.1 1 0.2 1 1 1 1 ~ ~1 ~ 0.2 0.4 0.2 1 100"
                 },
@@ -110,6 +120,16 @@
                     "change": -2
                 },
                 {
+                    "type": "origins:damage",
+                    "amount": 2,
+                    "source": {
+                        "name": "indirectMagic",
+                        "magic": true,
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                },
+                {
                     "type": "origins:execute_command",
                     "command": "particle minecraft:dust_color_transition 0.1 1 0.2 1 1 1 1 ~ ~1 ~ 0.2 0.4 0.2 1 100"
                 },
@@ -153,13 +173,89 @@
             ]
         }
     },
-    "less_health": {
-        "type": "origins:modify_attribute",
-        "attribute": "minecraft:generic.max_health",
+    "less_health1":{
+        "type": "origins:conditioned_attribute",
         "modifier": {
+            "attribute": "minecraft:generic.max_health",
             "operation": "addition",
+            "value": -10,
+            "name": "Lesser health 1"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
             "resource": "hypno:playstyle/hermes/kinnara/offering_offered_hearts",
-            "value": 0
+            "comparison": "==",
+            "compare_to": -10
+        }
+    },
+    "less_health2":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -12,
+            "name": "Lesser health 2"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -12
+        }
+    },
+    "less_health3":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -14,
+            "name": "Lesser health 3"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -14
+        }
+    },
+    "less_health4":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -16,
+            "name": "Lesser health 4"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -16
+        }
+    },
+    "less_health5":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -18,
+            "name": "Lesser health 5"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:playstyle/hermes/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -18
         }
     },
     "movement_speed": {

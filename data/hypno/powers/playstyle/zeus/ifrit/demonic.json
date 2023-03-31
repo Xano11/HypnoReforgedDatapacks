@@ -1,6 +1,6 @@
 {
-    "name":"Demonic",
-    "description":"As a being from hell, you take no damage from fire. You ignite your surroundings and burn through any potions or food at twice the rate. But be careful, water is your worst enemy. Even being engulfed will only protect you from fire temporarily.",
+    "name": "Demonic",
+    "description": "As a being from hell, you take no damage from fire. You ignite your surroundings and burn through any potions or food at twice the rate. But be careful, water is your worst enemy. Even being engulfed will only protect you from fire temporarily.",
     "type": "origins:multiple",
     "fire_immune": {
         "type": "origins:modify_damage_taken",
@@ -73,18 +73,10 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:or",
-                    "conditions": [
-                        {
-                            "type": "origins:fluid_height",
-                            "fluid": "minecraft:water",
-                            "comparison": ">",
-                            "compare_to": 0.0
-                        },
-                        {
-                            "type": "origins:in_rain"
-                        }
-                    ]
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0.0
                 },
                 {
                     "type": "origins:power_active",
@@ -94,6 +86,28 @@
             ]
         },
         "interval": 5
+    },
+    "rain": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:playstyle/zeus/ifrit/engulfed_energy",
+            "change": -20
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_rain"
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:playstyle/zeus/ifrit/engulfed_toggle",
+                    "inverted": false
+                }
+            ]
+        },
+        "interval": 10
     },
     "burningstomach": {
         "type": "origins:modify_food",

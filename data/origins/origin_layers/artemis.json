@@ -11,7 +11,8 @@
           "origins": [
             "hypno:playstyle/artemis/kelpie",
             "hypno:playstyle/artemis/fenrirkin",
-            "hypno:playstyle/artemis/minotaur"
+            "hypno:playstyle/artemis/minotaur",
+            "hypno:repick"
           ]
           }
       ],

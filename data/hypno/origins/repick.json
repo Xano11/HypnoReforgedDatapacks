@@ -1,0 +1,14 @@
+{
+	"powers": [
+        "hypno:repick"
+	],
+	"icon": {
+		"item": "origins:orb_of_origin",
+		"tag": "{Enchantments:[{}],CustomModelData:1}"
+	},
+	"order": 1,
+	"impact": 0,
+    "unchoosable": false,
+	"name": "Return",
+	"description": "Go back to Blessing choice Menu."
+}

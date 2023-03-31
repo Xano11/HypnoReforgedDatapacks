@@ -10,7 +10,8 @@
           },
           "origins": [
             "hypno:playstyle/hermes/ratatoskr",
-            "hypno:playstyle/hermes/kinnara"
+            "hypno:playstyle/hermes/kinnara",
+            "hypno:repick"
           ]
           }
       ],

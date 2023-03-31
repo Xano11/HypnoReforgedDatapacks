@@ -87,7 +87,7 @@
         "modifier": {
             "name": "Speed decrease",
             "attribute": "minecraft:generic.movement_speed",
-            "value": -0.4,
+            "value": -0.5,
             "operation": "multiply_base"
         },
         "condition": {
@@ -251,7 +251,7 @@
         "type": "origins:modify_swim_speed",
         "modifier": {
             "operation": "multiply_total",
-            "value": -0.5
+            "value": -0.6
         },
         "condition": {
             "type": "origins:and",

@@ -9,8 +9,17 @@
       "should_render": false
     },
     "min_action": {
-      "type": "origins:execute_command",
-      "command": "kill @s"
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:execute_command",
+          "command": "forceload remove ~ ~ ~ ~"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "kill @s"
+        }
+      ]
     }
   },
   "up": {

@@ -114,17 +114,10 @@
                     "type": "origins:dimension",
                     "dimension": "minecraft:nether",
                     "inverted": true
-                },
-                {
-                    "type": "origins:exposed_to_sky"
-                },
-                {
-                    "type": "origins:daytime",
-                    "inverted": true
                 }
             ]
         },
-        "interval": 20
+        "interval": 10
     },
     "moonshard_use": {
         "type": "origins:resource",
