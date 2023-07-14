@@ -1,0 +1,675 @@
+{
+    "type": "origins:multiple",
+    "name": "Stalking",
+    "description": "Using [PRIMARY ABILITY KEY], you will fade away your corporeal presence and become invisible over time. Once totally invisible, you will stalk the entity you are looking at, making it glow. After 12.5 seconds of stalking, you will grant the entity Preyed, reducing their max health by 50% for the duration. ",
+    "using": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kelpie/stalk_transparency",
+                    "change": 1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kelpie/stalk_reset",
+                    "change": 10
+                }
+            ]
+        },
+        "cooldown": 5,
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water"
+                },
+                {
+                    "type": "origins:swimming",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:moving",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        }
+    },
+    "hook": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 32,
+                    "block": false,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add hooked"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:mythos/kelpie/fearful"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:block.chain.step player @a ~ ~ ~ 1 0.5"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:block minecraft:chain ~ ~1 ~ 0.3 0.3 0.3 1 100"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle supplementaries:green_flame ~ ~1 ~ 0.3 0.3 0.3 0.05 10"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "execute store result score @s anchors run data get entity @p[tag=kelpie_anchor] UUID[0] 1"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s remove hook"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add kelpie_anchor"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute store result score @s anchors run data get entity @s UUID[0] 1"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 2,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "tag @s remove kelpie_anchor"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @s[tag=hooked]",
+                                            "comparison": "==",
+                                            "compare_to": 0
+                                        },
+                                        {
+                                            "type": "origins:command",
+                                            "command": "execute if entity @s[tag=anchor]",
+                                            "comparison": "==",
+                                            "compare_to": 0
+                                        },
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "command_at_hit": "particle supplementaries:green_flame ~ ~1 ~ 0.2 0.2 0.2 0.1 100",
+                    "command_step": 0.4,
+                    "command_along_ray_only_on_hit": false
+                }
+            ]
+        },
+        "cooldown": 5,
+        "key": {
+            "key": "key.attack",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @s[tag=hook]",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water"
+                },
+                {
+                    "type": "origins:swimming",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:moving",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kelpie/stalk_transparency",
+                    "comparison": "==",
+                    "compare_to": 10
+                }
+            ]
+        }
+    },
+    "stalking": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 48,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle minecraft:soul ~ ~ ~ 0.3 0 0.3 0.05 10"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound minecraft:entity.warden.heartbeat player @s ~ ~ ~ 0.5 0.5"
+                                        },
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "hypno:mythos/kelpie/stalked_stacks",
+                                            "change": 1
+                                        },
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "hypno:mythos/kelpie/stalked_stacks_reset",
+                                            "change": 90
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:mythos/kelpie/stalked"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "execute store result score @s stalking run data get entity @p[tag=kelpie_stalk] UUID[0] 1"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "tag @s add kelpie_stalk"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute store result score @s stalking run data get entity @s UUID[0] 1"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "playsound simplyswords:dark_sword_parry player @a[distance=..16] ~ ~ ~ 1 0.5"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 2,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "tag @s remove kelpie_stalk"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:living"
+                                },
+                                {
+                                    "type": "origins:power",
+                                    "power": "hypno:mythos/kelpie/preyed",
+                                    "inverted": true
+                                },
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                }
+                            ]
+                        }
+                    },
+                    "command_step": 0.5
+                }
+            ]
+        },
+        "cooldown": 50,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:submerged_in",
+                    "fluid": "minecraft:water"
+                },
+                {
+                    "type": "origins:swimming",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:moving",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kelpie/stalk_transparency",
+                    "comparison": "==",
+                    "compare_to": 10
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        }
+    },
+    "glow1": {
+        "type": "origins:entity_glow",
+        "use_teams": false,
+        "red": 1.0,
+        "green": 0.0,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "stalking",
+                    "target_objective": "stalking",
+                    "comparison": "=="
+                }
+            ]
+        },
+        "entity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_tag",
+                    "tag": "hypno:living"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kelpie/stalked_stacks",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "glow2": {
+        "type": "origins:entity_glow",
+        "use_teams": false,
+        "red": 0.9,
+        "green": 0.0,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "stalking",
+                    "target_objective": "stalking",
+                    "comparison": "=="
+                }
+            ]
+        },
+        "entity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_tag",
+                    "tag": "hypno:living"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kelpie/stalked_stacks",
+                    "comparison": "==",
+                    "compare_to": 2
+                }
+            ]
+        }
+    },
+    "glow3": {
+        "type": "origins:entity_glow",
+        "use_teams": false,
+        "red": 0.8,
+        "green": 0.0,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "stalking",
+                    "target_objective": "stalking",
+                    "comparison": "=="
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:in_tag",
+                                "tag": "hypno:living"
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "hypno:mythos/kelpie/stalked_stacks",
+                                "comparison": "==",
+                                "compare_to": 3
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "glow4": {
+        "type": "origins:entity_glow",
+        "use_teams": false,
+        "red": 0.7,
+        "green": 0.0,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "stalking",
+                    "target_objective": "stalking",
+                    "comparison": "=="
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:in_tag",
+                                "tag": "hypno:living"
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "hypno:mythos/kelpie/stalked_stacks",
+                                "comparison": "==",
+                                "compare_to": 4
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "glow5": {
+        "type": "origins:entity_glow",
+        "use_teams": false,
+        "red": 0.3,
+        "green": 0.0,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "eggolib:compare_score",
+                    "actor_objective": "stalking",
+                    "target_objective": "stalking",
+                    "comparison": "=="
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:in_tag",
+                                "tag": "hypno:living"
+                            },
+                            {
+                                "type": "origins:power",
+                                "power": "hypno:mythos/kelpie/preyed"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "transparency": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 10,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "model1": {
+        "type": "origins:model_color",
+        "alpha": 0.9,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "model2": {
+        "type": "origins:model_color",
+        "alpha": 0.8,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 2
+        }
+    },
+    "model3": {
+        "type": "origins:model_color",
+        "alpha": 0.7,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
+    "model4": {
+        "type": "origins:model_color",
+        "alpha": 0.6,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 4
+        }
+    },
+    "model5": {
+        "type": "origins:model_color",
+        "alpha": 0.5,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 5
+        }
+    },
+    "model6": {
+        "type": "origins:model_color",
+        "alpha": 0.4,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 6
+        }
+    },
+    "model7": {
+        "type": "origins:model_color",
+        "alpha": 0.3,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 7
+        }
+    },
+    "model8": {
+        "type": "origins:model_color",
+        "alpha": 0.2,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 8
+        }
+    },
+    "model9": {
+        "type": "origins:model_color",
+        "alpha": 0.1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 9
+        }
+    },
+    "model10": {
+        "type": "origins:invisibility",
+        "render_armor": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    },
+    "ignore": {
+        "type": "apugli:mobs_ignore",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    },
+    "nametag": {
+        "type": "eggolib:modify_label_render",
+        "render_mode": "hide_completely",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kelpie/stalk_transparency",
+            "comparison": "==",
+            "compare_to": 10
+        }
+    },
+    "reset": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 10,
+        "start_value": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kelpie/stalk_transparency",
+                    "change": -10
+                }
+            ]
+        }
+    },
+    "reset2": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/kelpie/stalk_reset",
+            "change": -5
+        },
+        "interval": 10
+    }
+}

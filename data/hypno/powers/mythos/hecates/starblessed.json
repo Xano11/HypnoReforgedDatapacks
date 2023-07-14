@@ -1,0 +1,87 @@
+{
+    "name": "Starblessed",
+    "type": "origins:multiple",
+    "shader": {
+        "type": "origins:shader",
+        "shader": "supplementaries:shaders/post/flare.json",
+        "toggleable": false
+    },
+    "moon_phase": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 7,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/hecates/starblessed"
+                }
+            ]
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/hecates/starblessed_duration",
+                    "change": -5
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "status_bar": {
+        "type": "origins:status_bar_texture",
+        "texture": "horigins:textures/gui/starblessed_icons.png"
+    },
+    "mana_up": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/hecates/witch_mana",
+                    "change": 1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "magic_resistance": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "apugli:magic"
+        },
+        "modifier": {
+            "name": "Magic resistance",
+            "operation": "multiply_total",
+            "value": -0.75
+        }
+    },
+    "star_fog": {
+        "type": "moborigins:fog",
+        "red": 0.6,
+        "green": 0,
+        "blue": 0.8,
+        "start": -1,
+        "end": 50
+    }
+}

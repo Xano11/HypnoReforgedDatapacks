@@ -1,0 +1,17 @@
+{
+	"powers": [
+		"hypno:mythos/cherubim/blessings",
+		"hypno:mythos/cherubim/choir",
+		"hypno:mythos/cherubim/angel",
+		"hypno:mythos/cherubim/wings",
+		"hypno:mythos/cherubim/multiheaded"
+	],
+	"icon":  {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:7,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":0}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Cherubim",
+	"description": "Guardian of the Eden's garden, these mythical angels will confuse the simple-minded with their inhumane characteristics. But in this realm, there is no god to watch over you."
+}

@@ -1,0 +1,100 @@
+{
+    "name": "Cyclone",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:mythos/kinnara/cyclone"
+        }
+    },
+    "resource_use": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kinnara/cyclone_duration",
+                    "change": -1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.1 1 0.2 1 1 1 1 ~ ~1 ~ 0.5 0.5 0.5 1 3"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "dodge": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Dodge",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "damage_condition": {
+            "type": "origins:attacker"
+        },
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "y": 0.1,
+                    "z": 1
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/kinnara/cyclone_duration",
+                                "change": -40
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:item.trident.riptide_1 player @a ~ ~ ~ 1.5 2 "
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:cloud ~ ~0.2 ~ 0.5 0 0.5 0.1 20"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "eggolib:chance",
+            "chance": 0.25
+        }
+    },
+    "attack_speed": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "More attack speed",
+            "attribute": "minecraft:generic.attack_speed",
+            "value": 0.2,
+            "operation": "addition"
+        }
+    },
+    "movement_speed": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "More movement speed",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": 0.4,
+            "operation": "multiply_base"
+        }
+    },
+    "hidden": true
+}

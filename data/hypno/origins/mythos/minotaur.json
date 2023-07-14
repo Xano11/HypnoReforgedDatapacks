@@ -1,0 +1,18 @@
+{
+	"powers": [
+		"hypno:mythos/minotaur/ram",
+		"hypno:mythos/minotaur/slam",
+		"hypno:mythos/minotaur/power_jump",
+		"hypno:mythos/minotaur/size",
+		"hypno:mythos/minotaur/daytime",
+		"hypno:mythos/minotaur/nobows",
+		"hypno:mythos/minotaur/vegetarian"
+	],
+	"icon": {
+		"item": "minecraft:goat_horn"
+	},
+	"order": 4,
+	"impact": 2,
+	"name": "Minotaur",
+	"description": "A monster cursed to live in a labyrinth. But the chains couldn't hold them for long enough... and now the beast seeks answers."
+}

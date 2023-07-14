@@ -1,0 +1,314 @@
+{
+    "name": "The Calm after The Storm",
+    "description": "Holding [SECONDARY ABILITY KEY], you will channel the inner storm into powerful controlled energy at your disposition.",
+    "type": "origins:multiple",
+    "replenishing": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:mythos/raiju/zen_buildup",
+                                "comparison": ">=",
+                                "compare_to": 60
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/energetic_resource",
+                                "change": 10
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:mythos/raiju/zen_buildup",
+                                "comparison": ">=",
+                                "compare_to": 40
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/energetic_resource",
+                                "change": 6
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "hypno:mythos/raiju/zen_buildup",
+                                "comparison": ">=",
+                                "compare_to": 20
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/energetic_resource",
+                                "change": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run particle dust_color_transition 0.54 0.99 1 1 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 10"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:moving",
+                        "inverted": true
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/zen_buildup",
+                                "change": 2
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute at @s run particle minecraft:instant_effect ~ ~1 ~ 0.2 0.2 0.2 0.5 5"
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/zen_buildup",
+                                "change": -60
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run particle dust_color_transition 0.54 0.99 1 1 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 5"
+                }
+            ]
+        },
+        "cooldown": 2,
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:on_block"
+                }
+            ]
+        }
+    },
+    "buildup": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "stop_buildup":{
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/zen_buildup",
+                    "change": -60
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:moving"
+        }
+    },
+    "tier1":{
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.beacon.power_select player @s ~ ~ ~ 1 1.6"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.deepslate.place player @s ~ ~ ~ 2 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.illusioner.prepare_mirror player @s ~ ~ ~ 1 1.6"
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/zen_buildup",
+            "comparison": "==",
+            "compare_to": 20
+        }
+    },
+    "tier2":{
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.beacon.power_select player @s ~ ~ ~ 1 1.8"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.deepslate.place player @s ~ ~ ~ 2 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.illusioner.prepare_mirror player @s ~ ~ ~ 1 1.8"
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/zen_buildup",
+            "comparison": "==",
+            "compare_to": 40
+        }
+    },
+    "tier3":{
+        "type": "origins:action_over_time",
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.beacon.power_select player @s ~ ~ ~ 1 1.6"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.deepslate.place player @s ~ ~ ~ 2 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:swing_omen_two player @s ~ ~ ~ 0.7 1.7"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @s ~ ~ ~ 2 1.4"
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/zen_buildup",
+            "comparison": "==",
+            "compare_to": 60
+        }
+    },
+    "slowdown": {
+        "type": "origins:prevent_sprinting",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:on_block"
+                }
+            ]
+        }
+    },
+    "slowdown2": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -0.6,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.secondary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:on_block"
+                }
+            ]
+        }
+    },
+    "discharged":{
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "power grant @s hypno:mythos/raiju/discharged"
+        },
+        "damage_condition": {
+            "type": "origins:amount",
+            "comparison": ">=",
+            "compare_to": 1.0
+        },
+        "cooldown": 1
+    },
+    "hidden": false
+}

@@ -1,0 +1,224 @@
+{
+    "type": "origins:multiple",
+    "eat_cod": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tp @s ~ ~-400 ~"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.generic.eat player @a ~ ~ ~ 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 0"
+                            },
+                            {
+                                "type": "origins:feed",
+                                "food": 3,
+                                "saturation": 0.25
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand",
+            "off_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:cod"
+            }
+        }
+    },
+    "eat_salmon": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tp @s ~ ~-400 ~"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.generic.eat player @a ~ ~ ~ 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 1"
+                            },
+                            {
+                                "type": "origins:feed",
+                                "food": 3,
+                                "saturation": 0.25
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand",
+            "off_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:salmon"
+            }
+        }
+    },
+    "eat_pufferfish": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tp @s ~ ~-400 ~"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.generic.eat player @a ~ ~ ~ 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 2"
+                            },
+                            {
+                                "type": "origins:feed",
+                                "food": 2,
+                                "saturation": 0.5
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand",
+            "off_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:pufferfish"
+            }
+        }
+    },
+    "eat_tropical": {
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tp @s ~ ~-400 ~"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.generic.eat player @a ~ ~ ~ 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 3"
+                            },
+                            {
+                                "type": "origins:feed",
+                                "food": 2,
+                                "saturation": 0.5
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand",
+            "off_hand"
+        ],
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:tropical_fish"
+            }
+        }
+    },
+    "hidden": true
+}

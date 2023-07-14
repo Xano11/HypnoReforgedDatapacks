@@ -1,0 +1,138 @@
+{
+    "name": "Magicked",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/hecates/overmagicked"
+                }
+            ]
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/hecates/overmagicked_duration",
+                    "change": -5
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "stacks": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 5,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "magic_weakness1": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "apugli:magic"
+        },
+        "modifier": {
+            "name": "Magic weakness",
+            "operation": "multiply_total",
+            "value": 0.2
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/hecates/overmagicked_stacks",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "magic_weakness2": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "apugli:magic"
+        },
+        "modifier": {
+            "name": "Magic weakness",
+            "operation": "multiply_total",
+            "value": 0.4
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/hecates/overmagicked_stacks",
+            "comparison": "==",
+            "compare_to": 2
+        }
+    },
+    "magic_weakness3": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "apugli:magic"
+        },
+        "modifier": {
+            "name": "Magic weakness",
+            "operation": "multiply_total",
+            "value": 0.6
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/hecates/overmagicked_stacks",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
+    "magic_weakness4": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "apugli:magic"
+        },
+        "modifier": {
+            "name": "Magic weakness",
+            "operation": "multiply_total",
+            "value": 0.8
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/hecates/overmagicked_stacks",
+            "comparison": "==",
+            "compare_to": 4
+        }
+    },
+    "magic_weakness5": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "apugli:magic"
+        },
+        "modifier": {
+            "name": "Magic weakness",
+            "operation": "multiply_total",
+            "value": 1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/hecates/overmagicked_stacks",
+            "comparison": "==",
+            "compare_to": 5
+        }
+    },
+    "star_fog": {
+        "type": "moborigins:fog",
+        "red": 0.6,
+        "green": 0,
+        "blue": 0.8,
+        "start": -1,
+        "end": 50
+    }
+}

@@ -1,0 +1,141 @@
+{
+    "name": "Ice furry",
+    "description": "As a fabled race of wolves, Fenrir's are rumored to be quite different to their not-so-legendary counterpart. As being of the permafrost, they are quite weak to fire (3x damage), have one lesser heart and  ",
+    "type": "origins:multiple",
+    "damaged": {
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/fenrirkin/binded_timer",
+            "change": 60
+        },
+        "damage_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:projectile",
+                    "projectile": "minecraft:spectral_arrow"
+                },
+                {
+                    "type": "origins:projectile",
+                    "projectile": "minecraft:arrow"
+                }
+            ]
+        },
+        "cooldown": 5
+    },
+    "extra_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:projectile",
+                    "projectile": "minecraft:spectral_arrow"
+                },
+                {
+                    "type": "origins:projectile",
+                    "projectile": "minecraft:arrow"
+                }
+            ]
+        },
+        "modifier": {
+            "name": "More arrow damage",
+            "operation": "multiply_base",
+            "value": 0.5
+        }
+    },
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/fenrirkin/binded_timer",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "no_jump": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/fenrirkin/binded_timer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "jump_usage":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/fenrirkin/binded_timer",
+                    "change": -4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.chain.place player @a ~ ~ ~ 1 1"
+                }
+            ]
+        },
+        "cooldown": 2,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.jump"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/fenrirkin/binded_timer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "slower": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Slower speed",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.6,
+            "operation": "multiply_base"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/fenrirkin/binded_timer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "air_speed": {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/fenrirkin/binded_timer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}

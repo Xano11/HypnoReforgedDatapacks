@@ -1,0 +1,20 @@
+{
+	"powers": [
+		"hypno:mythos/raiju/absorb",
+		"hypno:mythos/raiju/blade",
+		"hypno:mythos/raiju/lightning_fast",
+		"hypno:mythos/raiju/energetic",
+		"hypno:mythos/raiju/armor",
+		"hypno:mythos/raiju/carnivore",
+		"hypno:mythos/raiju/inabikari",
+		"hypno:mythos/raiju/zen"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:2,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":9}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Raiju",
+	"description": "A beast of thunderous energy, it's own presence is said to attract the bad weather; and it's roar, to be as powerful as the strike of lighting."
+}

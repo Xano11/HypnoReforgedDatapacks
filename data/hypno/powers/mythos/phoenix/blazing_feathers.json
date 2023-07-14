@@ -1,0 +1,117 @@
+{
+    "name":"Eternal",
+    "description":"[SNEAKING] and interacting with fire will put down a phoenix feather. This feather can be picked by any close players to grant them Transcendance, preventing their next death and teleporting them to the feather they picked.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "After 1 minute, if the player with Transcendance does not die, they will be teleported back to the feather's original position."
+        }
+    ],
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:action_on_block_use",
+        "block_action": {
+            "type":"origins:and",
+            "actions":[{
+                "type": "origins:set_block",
+                "block": "minecraft:air"
+            },
+            {
+            "type": "origins:execute_command",
+            "command": "summon item ~ ~ ~ {HasVisualFire:1b,Glowing:1b,Age:-32768,Health:1000,PickupDelay:32767,Invulnerable:1b,Tags:[\"fieryfeather\"],Item:{id:\"minecraft:diamond\",Count:1b,tag:{CustomModelData:1}}}"
+            },
+            {
+            "type": "origins:execute_command",
+            "command": "summon wither_skeleton ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,CustomNameVisible:0b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,Tags:[\"fieryfeather\"]}"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @e[limit=1,sort=nearest,type=wither_skeleton,tag=fieryfeather] hypno:mythos/phoenix/feather"
+            },
+            {
+                "type":"origins:delay",
+                "ticks":1,
+                "action":{
+                "type": "origins:execute_command",
+                "command": "execute store result score @e[limit=1,sort=nearest,type=wither_skeleton,tag=fieryfeather] feather run data get entity @p[tag=feather] UUID[0] 1"
+                }
+            },
+            {
+                "type":"origins:delay",
+                "ticks":1,
+                "action":{
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[limit=1,sort=nearest,type=wither_skeleton,tag=fieryfeather] hypno:mythos/phoenix/feather"
+                }
+            }
+            ]
+        },
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s add feather"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/phoenix/blazing_feathers_cooldown",
+                    "change": 18000
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @s feather run data get entity @s UUID[0] 1"
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":2,
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "tag @s remove feather"
+                    }
+                }
+            ]
+        },
+        "block_condition": {
+            "type": "origins:offset",
+            "condition": {
+                "type": "origins:block",
+                "block": "minecraft:fire"
+            }
+        },
+        "directions": ["up"],
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:sneaking"
+        },
+        {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/phoenix/blazing_feathers_cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    ]
+    }   
+    },
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 18000,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cooldown_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/phoenix/blazing_feathers_cooldown",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "hidden": false
+}

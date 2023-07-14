@@ -1,0 +1,17 @@
+{
+	"powers": [
+		"hypno:mythos/ratatoskr/portal",
+		"hypno:mythos/ratatoskr/squirrel",
+		"hypno:mythos/ratatoskr/branches",
+		"hypno:mythos/ratatoskr/blink",
+		"hypno:mythos/ratatoskr/armor"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:9,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":9}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Ratatosken",
+	"description": "Heirs of the messenger of Gods, you are a little horned-squirrel with powers ressembling those of your ancestor. Agile and quick on their feet, they roam the land as the mischiefs of Yggdrasil."
+}

@@ -1,0 +1,489 @@
+{
+    "name": "Knowledge of the Arcanes",
+    "description": "As a part of the cult of the Moon Godess, you have learnt the spells of your people. Holding an Amethyst Shard whilst under the moonlight and [USING] will start turning them into Moon Shard. Using a Moon Shard on a book will grant you your spell book.",
+    "type": "origins:multiple",
+    "moon_shard": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:chance",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:equipped_item_action",
+                        "equipment_slot": "mainhand",
+                        "action": {
+                            "type": "origins:consume",
+                            "amount": 1
+                        }
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound simplyswords:magic_sword_spell_03 player @a[distance=..16] ~ ~ ~ 1 1.5",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:witch ~ ~1 ~ 0.5 0.5 0.5 0.1 50",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:dust_color_transition 1 0 1 2 0.7 0 1 ~ ~1 ~ 0.5 0.5 0.5 0.1 50",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "give @s amethyst_shard{Tags:[\"moonshard\"],display:{Name:'[{\"text\":\"Mo\",\"italic\":false,\"bold\":true,\"color\":\"light_purple\"},{\"text\":\"on\",\"color\":\"dark_purple\"},{\"text\":\" \",\"color\":\"dark_purple\"},{\"text\":\"Sha\",\"color\":\"dark_purple\"},{\"text\":\"rd\"}]'},Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":0} 1",
+                        "permission_level": 4
+                    }
+                ]
+            },
+            "fail_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound simplyswords:magic_sword_spell_02 player @a[distance=..16] ~ ~ ~ 1 1.5",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:witch ~ ~1 ~ 0.5 0.5 0.5 0.1 5",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:dust_color_transition 1 0 1 2 0.7 0 1 ~ ~1 ~ 0.5 0.5 0.5 0.1 5",
+                        "permission_level": 4
+                    }
+                ]
+            },
+            "chance": 0.15
+        },
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:amethyst_shard"
+                                }
+                            },
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags:[\"moonshard\"]}",
+                                "inverted": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:nether",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:daytime",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "bookcraft": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:book"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"moonshard\"]}"
+        },
+        "on_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "function hypno:grant_spellbook",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~ ~ 1 1 1 1 100",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "no_read": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"spellbook\"]}"
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:written_book"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        }
+    },
+    "arcane_pouch":{
+        "type": "origins:inventory",
+        "container_type": "hopper",
+        "drop_on_death": true,
+        "title": "Arcane Storage",
+        "key": {
+            "key": "key.use",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:nbt",
+                        "nbt": "{Tags:[\"spellbook\"]}"
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        }
+    },
+    "only_magic": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+        "type": "origins:drop_inventory",
+        "inventory_type": "power",
+        "power": "hypno:mythos/hecates/spellbook_arcane_pouch",
+        "item_condition":  {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            },
+            "inverted": true
+        }
+    },
+    "interval": 1
+    },
+    "magic_missile": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"moonshard\"]}"
+        },
+        "on_item_action": {
+            "type": "origins:merge_nbt",
+            "nbt": "{Tags:[\"magic_missile\"]}"
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~ ~ 1 1 1 1 100",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "teleport": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:ender_pearl"
+            }
+        },
+        "on_item_action": {
+            "type": "origins:merge_nbt",
+            "nbt": "{Tags:[\"teleport\"]}"
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~ ~ 1 1 1 1 100",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "invert_gravity": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:phantom_membrane"
+            }
+        },
+        "on_item_action": {
+            "type": "origins:merge_nbt",
+            "nbt": "{Tags:[\"invert_gravity\"]}"
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~ ~ 1 1 1 1 100",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "meteor": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:fire_charge"
+            }
+        },
+        "on_item_action": {
+            "type": "origins:merge_nbt",
+            "nbt": "{Tags:[\"meteor\"]}"
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~ ~ 1 1 1 1 100",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "ice": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:stick"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:blue_ice"
+            }
+        },
+        "on_item_action": {
+            "type": "origins:merge_nbt",
+            "nbt": "{Tags:[\"ice\"]}"
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.enchantment_table.use player @a ~ ~ ~ 1 0.8",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~ ~ 1 1 1 1 100",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "tooltip_missile": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"magic_missile\"]}"
+        },
+        "text": {
+            "text": "Imbued with Magic Missile",
+            "color": "light_purple"
+        }
+    },
+    "tooltip_teleport": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"teleport\"]}"
+        },
+        "text": {
+            "text": "Imbued with Teleport",
+            "color": "light_purple"
+        }
+    },
+    "tooltip_invert_gravity": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"invert_gravity\"]}"
+        },
+        "text": {
+            "text": "Imbued with Gravity Manipulation",
+            "color": "light_purple"
+        }
+    },
+    "tooltip_meteor": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"meteor\"]}"
+        },
+        "text": {
+            "text": "Imbued with Meteor",
+            "color": "light_purple"
+        }
+    },
+    "tooltip_ice": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Tags:[\"ice\"]}"
+        },
+        "text": {
+            "text": "Imbued with Freezing breeze",
+            "color": "light_purple"
+        }
+    },
+    "stick_prevent": {
+        "type": "eggolib:prevent_block_place",
+        "item_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags:[\"magic_missile\"]}"
+                },
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags:[\"teleport\"]}"
+                },
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags:[\"invert_gravity\"]}"
+                },
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags:[\"meteor\"]}"
+                },
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags:[\"ice\"]}"
+                }
+            ]
+        }
+    }
+}

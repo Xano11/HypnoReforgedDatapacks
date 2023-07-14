@@ -1,0 +1,194 @@
+{
+    "type": "origins:multiple",
+    "fish": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cod": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:cod"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:cooked_cod"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:cod_slice"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:cooked_cod_slice"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:cod_roll"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:baked_cod_stew"
+                    }
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 0"
+        },
+        "food_modifier": {
+            "name": "Increased food points",
+            "operation": "multiply_base",
+            "value": 0.25
+        },
+        "saturation_modifier": {
+            "name": "Increased saturation points",
+            "operation": "multiply_base",
+            "value": 0.25
+        }
+    },
+    "salmon": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:salmon"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:cooked_salmon"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:salmon_slice"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:cooked_salmon_slice"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:salmon_roll"
+                    }
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "farmersdelight:grilled_salmon"
+                    }
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 1"
+        },
+        "food_modifier": {
+            "name": "Increased food points",
+            "operation": "multiply_base",
+            "value": 0.25
+        },
+        "saturation_modifier": {
+            "name": "Increased saturation points",
+            "operation": "multiply_base",
+            "value": 0.25
+        }
+    },
+    "pufferfish": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:pufferfish"
+            }
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 2"
+        },
+        "food_modifier": {
+            "name": "Increased food points",
+            "operation": "multiply_base",
+            "value": 0.25
+        },
+        "saturation_modifier": {
+            "name": "Increased saturation points",
+            "operation": "multiply_base",
+            "value": 0.25
+        },
+        "prevent_effects": true
+    },
+    "tropical_fish": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:tropical_fish"
+            }
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "resource set @s hypno:mythos/akhlut/pescivore_fish 3"
+        },
+        "food_modifier": {
+            "name": "Increased food points",
+            "operation": "multiply_base",
+            "value": 0.25
+        },
+        "saturation_modifier": {
+            "name": "Increased saturation points",
+            "operation": "multiply_base",
+            "value": 0.25
+        }
+    },
+    "anything_else": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "hypno:pescivore"
+            }
+        },
+        "food_modifier": {
+            "name": "Decreased food points",
+            "operation": "multiply_base",
+            "value": -0.6
+        },
+        "saturation_modifier": {
+            "name": "Decreased saturation points",
+            "operation": "multiply_base",
+            "value": -0.6
+        }
+    }
+}

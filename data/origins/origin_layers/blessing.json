@@ -1,15 +1,15 @@
 {
-    "order": 2,
+    "order": 3,
     "replace": false,
     "origins": [
-    "hypno:playstyle/artemis",
-    "hypno:playstyle/hephaestus",
-    "hypno:playstyle/hermes",
-    "hypno:playstyle/ares",
-    "hypno:playstyle/zeus",
-    "hypno:playstyle/aeolus",
-    "hypno:playstyle/blessingless"
+          {   
+          "origins": [
+            "hypno:mythos/kelpie",
+            "hypno:mythos/fenrirkin",
+            "hypno:mythos/minotaur",
+            "hypno:repick"
+          ]
+          }
       ],
-      "name": "blessing"
+      "name": "origin"
 }
-  

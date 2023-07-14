@@ -1,0 +1,181 @@
+{
+    "name": "Ice furry",
+    "description": "As a fabled race of wolves, Fenrir's are rumored to be quite different to their not-so-legendary counterpart. As being of the permafrost, they are quite weak to fire (3x damage), have one lesser heart and  ",
+    "type": "origins:multiple",
+    "scale": {
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:height 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:width 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:view_bobbing 1.05",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:step_height 1",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:held_item 1.05",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "entity_action_respawned": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:height 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:width 0.95",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:view_bobbing 1.05",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:step_height 1",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:held_item 1.05",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:height @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:width @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:view_bobbing @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:step_height @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:held_item @s",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset pehkui:knockback @s",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "lessheart": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health increase",
+            "attribute": "minecraft:generic.max_health",
+            "value": -2,
+            "operation": "addition"
+        }
+    },
+    "slower": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "name": "Slower speed",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.2,
+            "operation": "multiply_base"
+        },
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:mythos/fenrirkin/chains_toggle",
+            "inverted": true
+          }
+    },
+    "air_speed": {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.2
+        },
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:mythos/fenrirkin/chains_toggle",
+            "inverted": true
+          }
+    },
+    "fire": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "name": "More fire damage",
+            "operation": "multiply_total",
+            "value": 2
+        }
+    },
+    "chained_footstep":
+    {
+        "type": "apugli:custom_footstep",
+        "sound": "minecraft:block.chain.place",
+        "condition":{
+            "type": "origins:power_active",
+            "power": "hypno:mythos/fenrirkin/chains_toggle",
+            "inverted": true
+          }
+    },
+    "bad_regen": {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.25
+        },
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:mythos/fenrirkin/chains_toggle",
+            "inverted": true
+          }
+    },
+    "status_bar":{
+        "type": "origins:status_bar_texture",
+        "texture": "horigins:textures/gui/chained_icons.png",
+        "condition": {
+            "type": "origins:power_active",
+            "power": "hypno:mythos/fenrirkin/chains_toggle",
+            "inverted": true
+        }
+    }
+}

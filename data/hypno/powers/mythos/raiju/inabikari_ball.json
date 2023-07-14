@@ -1,0 +1,105 @@
+{
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "start_value": 140,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "depleting": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run particle dust_color_transition 0.54 0.99 1 2 1 0.95 0.24 ~ ~1 ~ 0.1 0.1 0.1 0.1 5"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/inabikari_ball_timer",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 2
+    },
+    "transitioning":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "field_timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 50,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:end_rod ~ ~ ~ 0.2 0.2 0.2 1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:elemental_bow_recharge player @a ~ ~ ~ 1 1.4"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:entity.camel.dash_ready player @a ~ ~ ~ 1 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "field_depleting": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/inabikari_ball_field_timer",
+                    "change": -1
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:mythos/raiju/inabikari_ball_field_timer",
+                        "comparison": ">",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s run tp @s ~ ~ ~ ~18 ~"
+                    }
+                }
+            ]
+        },
+        "interval": 1
+    }
+}

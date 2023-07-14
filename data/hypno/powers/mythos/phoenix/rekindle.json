@@ -1,0 +1,227 @@
+{
+    "name":"Rekindle",
+    "description":"Sneaking and [RIGHT CLICKING] an entity will grant it the blessing of the Phoenix. For 30 seconds, the entity will be immune to fire and be passively healed over time. Beware, the blessing will use energy to heal the entity.",
+    "type": "origins:multiple",
+    "activation":{
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:mythos/phoenix/rekindled"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "summon minecraft:armor_stand ~ ~1 ~ {ShowArms:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;1646574283,-1653911923,-1227161329,-839415811],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTkwY2JkNzJlNDFhOWJkNDExYmU5MjliNzNmZDI2OTIwNjM2OGIyODEwZDZjNjgxOTkxOGNiOGViNjYyMjRmNCJ9fX0=\"}]}}}}],Tags:[\"phoenix_orb\"]}"
+                        },
+                        {
+                            "type":"origins:delay",
+                            "ticks":1,
+                            "action":{
+                            "type": "origins:execute_command",
+                            "command": "execute store result score @s rekindle run data get entity @e[limit=1,sort=nearest,tag=rekindle] UUID[0] 1"
+                            }
+                        },
+                        {
+                            "type":"origins:delay",
+                            "ticks":1,
+                            "action":{
+                            "type": "origins:execute_command",
+                            "command": "execute store result score @e[limit=1,sort=nearest,tag=phoenix_orb] rekindle run data get entity @e[limit=1,sort=nearest,tag=rekindle] UUID[0] 1"
+                            }
+                        }
+                    ]
+                }
+                },
+                {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [{
+                            "type": "origins:execute_command",
+                            "command": "tag @s add rekindle"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute store result score @s rekindle run data get entity @s UUID[0] 1"
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/phoenix/rekindle_cooldown",
+                            "change": 600
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound simplyswords:elemental_bow_holy_shoot_impact_02 player @a[distance=..16] ~ ~ ~ 1 1.5"
+                        },
+                        {
+                            "type":"origins:delay",
+                            "ticks":2,
+                            "action":{
+                            "type": "origins:execute_command",
+                            "command": "tag @s remove rekindle"
+                            }
+                        }
+                    ]
+                }
+                }
+                ]
+            },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition":  {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:in_tag",
+                        "tag": "hypno:living"
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:mythos/phoenix/rekindled",
+                        "inverted": true
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+                "type": "origins:resource",
+                "resource": "hypno:mythos/phoenix/rekindle_cooldown",
+                "comparison": "==",
+                "compare_to": 0
+            },
+        {
+            "type": "origins:sneaking"
+        }
+        ]
+    }
+    },
+    "deactivation":{
+        "type": "origins:action_on_entity_use",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:mythos/phoenix/rekindled"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:entity.blaze.shoot player @s ~ ~ ~ 2 1.5"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:flame ~ ~1 ~ 0.5 0.5 0.5 0.1 20"
+                    }
+                ]
+            }
+            }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:empty"
+        },
+        "hands": [
+            "main_hand"
+        ],
+        "bientity_condition":   {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:in_tag",
+                        "tag": "hypno:living"
+                    },
+                    {
+                        "type": "origins:power",
+                        "power": "hypno:mythos/phoenix/rekindled"
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [ {
+                "type": "origins:sneaking"
+            }
+        ]
+    }
+    },
+    "cooldown":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cooldown_timer":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/phoenix/rekindle_cooldown",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "energy_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/phoenix/firebird_energy",
+            "change": -20
+        },
+        "condition":{
+            "type": "origins:command",
+            "command": "execute as @e[tag=phoenix_orb] if score @s rekindle = @p rekindle",
+            "comparison": ">=",
+            "compare_to": 1
+        },
+        "interval": 10
+    },
+    "energy_depleted": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute as @a if score @s rekindle = @e[limit=1,sort=nearest] rekindle run power remove @s hypno:mythos/phoenix/rekindled"
+        },
+        "interval": 10,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "hypno:mythos/phoenix/firebird_energy",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "hidden": false
+}

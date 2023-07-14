@@ -1,0 +1,16 @@
+{
+	"powers": [
+		"hypno:mythos/akhlut/slide",
+		"hypno:mythos/akhlut/hunting",
+		"hypno:mythos/akhlut/echolocation",
+		"hypno:mythos/akhlut/pescivore"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:10,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":4}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Goldhorn",
+	"description": "BLOOD FOR THE BLOOD LILY!!!!!!!"
+}

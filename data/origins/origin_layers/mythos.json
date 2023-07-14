@@ -1,0 +1,25 @@
+{
+    "order": 2,
+    "replace": false,
+    "origins": [
+    "hypno:mythos/akhlut",
+    "hypno:mythos/cherubim",
+    "hypno:mythos/fenrirkin",
+    "hypno:mythos/goldhorn",
+    "hypno:mythos/golem",
+    "hypno:mythos/hecates",
+    "hypno:mythos/ifrit",
+    "hypno:mythos/kelpie",
+    "hypno:mythos/kinnara",
+    "hypno:mythos/minotaur",
+    "hypno:mythos/oni",
+    "hypno:mythos/phoenix",
+    "hypno:mythos/raiju",
+    "hypno:mythos/ratatoskr",
+    "hypno:mythos/tanuki",
+    "hypno:mythos/yatagarasu",
+    "hypno:blessingless"
+      ],
+      "name": "mythical origin"
+}
+  

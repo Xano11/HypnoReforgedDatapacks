@@ -1,0 +1,17 @@
+{
+	"powers": [
+		"hypno:mythos/fenrirkin/hailstorm",
+		"hypno:mythos/fenrirkin/chains",
+		"hypno:mythos/fenrirkin/wolf",
+		"hypno:mythos/fenrirkin/carnivore",
+		"hypno:mythos/fenrirkin/binded"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:4,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":3}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Fenrir",
+	"description": "Descendants of the Wolf-god Fenrir, they are described as ferocious and agile beasts of ice, capable of turning those they see as foes into crystals of frost."
+}

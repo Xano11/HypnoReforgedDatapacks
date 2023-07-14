@@ -1,0 +1,69 @@
+{
+    "name":"Discharged",
+    "description":"You are discharged. You suffer from plenty of debuffs.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:mythos/raiju/discharged"
+        }
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/raiju/discharged_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "weakened_resistance":{
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Weakened mitigation",
+            "operation": "multiply_total",
+            "value": 0.4
+        }
+    },
+    "slower_roll_recharge":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower recharge",
+            "attribute": "combatroll:recharge",
+            "value": -1,
+            "operation": "multiply_base"
+        }
+    },
+    "weakened_roll":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Slower recharge",
+            "attribute": "combatroll:distance",
+            "value": -1,
+            "operation": "multiply_base"
+        }
+    },
+    "energy_swirl":
+    {
+        "type": "apugli:energy_swirl",
+        "texture_location": "minecraft:textures/entity/trident_riptide.png",
+        "speed": 0.0005
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle supplementaries:stasis ~ ~0.6 ~ 0.5 0.5 0.5 0.1 10 normal"
+        },
+        "interval": 4
+    },
+    "hidden": true
+}

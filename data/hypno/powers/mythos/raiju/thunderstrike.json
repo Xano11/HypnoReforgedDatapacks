@@ -1,0 +1,76 @@
+{
+    "name": "Strike",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 25,
+        "start_value": 25,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[distance=..5,type=minecraft:item] run data modify entity @s Health set value 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon lightning_bolt"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:instant_effect ~ ~ ~ 1 0 1 0 50"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.1 0.3 0.8 1 1 1 0 ~ ~ ~ 1 0 1 0 50"
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 5,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:extinguish"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/thunderstrike_timer",
+                    "change": -1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @s at @s run tp @s ~ ~ ~ ~15 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @s at @s run particle minecraft:dust_color_transition 1 1 0 2 1 1 1 ^ ^ ^2 0 0 0 0 1"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": true
+}

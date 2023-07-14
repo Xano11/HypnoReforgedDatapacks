@@ -1,0 +1,43 @@
+{
+    "name": "Stormed",
+    "description": "Electricity is building up...",
+    "type": "origins:multiple",
+    "stacks": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/storm_stacks",
+                    "change": -1
+                },
+                {
+                    "type": "origins:spawn_entity",
+                    "entity_type": "minecraft:armor_stand",
+                    "tag": "{NoGravity:1b,Silent:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:[\"thunderstrike\"]}",
+                    "entity_action": {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:mythos/raiju/thunderstrike"
+                    }
+                }
+            ]
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/raiju/storm"
+                }
+            ]
+        }
+    },
+    "hidden": true
+}

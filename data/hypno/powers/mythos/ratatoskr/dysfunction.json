@@ -1,0 +1,49 @@
+{
+    "name":"Dysfunction",
+    "type": "origins:multiple",
+    "resource":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 15,
+        "start_value": 15,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:mythos/ratatoskr/dysfunction"
+        }
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/ratatoskr/dysfunction_resource",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "overlay":
+    {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/entity/end_portal.png",
+        "strength": 0.4,
+        "red": 0.6,
+        "green": 0.5,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": true
+    },
+    "no_entity":{
+        "type": "origins:prevent_entity_render"
+    },
+    "hidden": true
+}

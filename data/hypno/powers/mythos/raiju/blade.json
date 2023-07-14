@@ -1,0 +1,546 @@
+{
+    "name": "Lightning's Edge",
+    "description": "",
+    "type": "origins:multiple",
+    "attack": {
+        "type": "origins:action_on_hit",
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/blade_combo",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/blade_combo_cancel",
+                                "change": 30
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 0.1 0.4 0.7 1 1 1 0.3 ~ ~1 ~ 0.2 0.1 0.2 1 100"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:instant_effect ~ ~1 ~ 0.1 0 0.1 1 10"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 0.1 0.4 0.7 1 1 1 0.3 ~ ~1 ~ 0.2 0.1 0.2 1 100"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:instant_effect ~ ~1 ~ 0.1 0 0.1 1 10"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 5,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "<",
+                    "compare_to": 3
+                }
+            ]
+        }
+    },
+    "combo": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/blade_ready",
+                    "change": 20
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.end_portal_frame.fill player @s ~ ~ ~ 3 2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.ender_chest.close player @s ~ ~ ~ 3 1.7"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.note_block.bell player @s ~ ~ ~ 3 2"
+                }
+            ]
+        }
+    },
+    "combo_cancel": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 30,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "change": -3
+                }
+            ]
+        }
+    },
+    "deplete_combo_cancel": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/raiju/blade_combo_cancel",
+            "change": -1
+        },
+        "interval": 1
+    },
+    "wait": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 2,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "deplete_wait": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/raiju/blade_wait",
+            "change": -1
+        },
+        "interval": 1
+    },
+    "ready": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "change": -3
+                }
+            ]
+        }
+    },
+    "deplete_ready": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/raiju/blade_ready",
+            "change": -1
+        },
+        "interval": 1
+    },
+    "overlay1": {
+        "type": "origins:overlay",
+        "texture": "horigins:bar.png",
+        "strength": 1.0,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/blade_combo",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "overlay2": {
+        "type": "origins:overlay",
+        "texture": "horigins:bar1.png",
+        "strength": 1.0,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/blade_combo",
+            "comparison": "==",
+            "compare_to": 2
+        }
+    },
+    "overlay3": {
+        "type": "origins:overlay",
+        "texture": "horigins:bar2.png",
+        "strength": 1.0,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/blade_combo",
+            "comparison": "==",
+            "compare_to": 3
+        }
+    },
+    "dash": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 6,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "power grant @s hypno:mythos/raiju/storm"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "resource change @s hypno:mythos/raiju/storm_stacks 1"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_01 player @a[distance=..16] ~ ~ ~ 0.1 1.5"
+                                }
+                            ]
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 6,
+                    "block": true,
+                    "entity": false,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "before_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_sword_thunder_attack_01 player @a[distance=..16] ~ ~ ~ 1 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.respawn_anchor.charge player @a ~ ~ ~ 1 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "effect give @s minecraft:slow_falling 2 10 true"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/energetic_resource",
+                                "change": -50
+                            },
+                            {
+                                "type": "origins:add_velocity",
+                                "y": 0,
+                                "set": true
+                            },
+                            {
+                                "type": "origins:set_fall_distance",
+                                "fall_distance": 0
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/blade_ready",
+                                "change": -20
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                }
+                            ]
+                        }
+                    },
+                    "command_at_hit": "function hypno:lightninghit",
+                    "command_along_ray": "function hypno:lightningtp",
+                    "command_step": 1,
+                    "command_along_ray_only_on_hit": false
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "change": -175
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/blade_wait",
+                    "change": 2
+                }
+            ]
+        },
+        "cooldown": 2,
+        "key": {
+            "key": "key.attack",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_ready",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 5,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "hit_bientity_condition": {
+                        "type": "origins:attacker"
+                    }
+                }
+            ]
+        }
+    },
+    "kick_back": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 6,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "power grant @s hypno:mythos/raiju/storm"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "resource change @s hypno:mythos/raiju/storm_stacks 1"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "playsound simplyswords:elemental_bow_thunder_shoot_flyby_01 player @a[distance=..16] ~ ~ ~ 0.1 1.5"
+                                }
+                            ]
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:slow_falling 2 10 true"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "change": -50
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "y": 0,
+                    "set": true
+                },
+                {
+                    "type": "origins:set_fall_distance",
+                    "fall_distance": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/blade_ready",
+                    "change": -20
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:add_velocity",
+                        "y": 1,
+                        "z": -0.5,
+                        "space": "local_horizontal"
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "change": -175
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/blade_wait",
+                    "change": 2
+                }
+            ]
+        },
+        "cooldown": 2,
+        "key": {
+            "key": "key.use",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_ready",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 5,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "any",
+                    "hit_bientity_condition": {
+                        "type": "origins:attacker"
+                    }
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

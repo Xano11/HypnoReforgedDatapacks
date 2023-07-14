@@ -1,0 +1,16 @@
+{
+	"powers": [
+        "hypno:mythos/yatagarasu/traveler",
+        "hypno:mythos/yatagarasu/reaper",
+		"hypno:mythos/yatagarasu/crow",
+		"hypno:mythos/yatagarasu/souleater"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:8,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":2}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Yatagarasu",
+	"description": "A crow spirit bound to live inside of a soulless human body, they use their special living condition to interact with the plane of the dead and the living."
+}

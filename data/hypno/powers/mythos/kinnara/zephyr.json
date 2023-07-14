@@ -1,0 +1,95 @@
+{
+    "name": "Song of the Soft Breeze",
+    "description": "Whilst in your normal state, you can play the song of the soft breeze : Zephyr. Playing this song will grant absorption to those around you as well as better regeneration temporarily. ",
+    "type": "origins:multiple",
+    "activate": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 8,
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @s hypno:mythos/kinnara/breeze"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "effect give @s minecraft:absorption 15 1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:in_tag",
+                                            "tag": "hypno:living"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute positioned ~ ~1.3 ~ run function hypno:notes_zephyr"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:note ~ ~1 ~ 0.2 0.05 0.2 0 20"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound horigins:song_zephyr player @a ~ ~ ~ 2"
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 7
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @e[distance=..8,tag=garuda_gift]",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

@@ -1,0 +1,142 @@
+{
+    "name": "Fire Sprite",
+    "description": "Mmmmm Sprite",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 150,
+        "start_value": 150,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/ifrit/fire_spirit_timer",
+            "change": -1
+        },
+        "interval": 1
+    },
+    "particles": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:flame ~ ~1 ~ 0.05 0.05 0.05 0 3"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "pathfinding": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute anchored eyes facing entity @e[limit=1,sort=nearest,tag=!fire_spirit,tag=!ifrit,type=#hypno:living] eyes positioned ~ ~ ~ run tp @s ^ ^ ^0.2 ~ ~"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:collided_horizontally"
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "tp @s ~ ~1 ~"
+                    }
+                },
+                {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:area_of_effect",
+                            "radius": 1.5,
+                            "bientity_action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:actor_action",
+                                        "action": {
+                                            "type": "origins:and",
+                                            "actions": [
+                                                {
+                                                    "type": "origins:explode",
+                                                    "power": 2,
+                                                    "destruction_type": "none",
+                                                    "damage_self": false,
+                                                    "create_fire": false
+                                                },
+                                                {
+                                                    "type": "origins:execute_command",
+                                                    "command": "kill @s"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:target_action",
+                                        "action": {
+                                            "type": "origins:and",
+                                            "actions": [
+                                                {
+                                                    "type": "origins:execute_command",
+                                                    "command": "power grant @s hypno:mythos/ifrit/hellfire"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            "bientity_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:target_condition",
+                                        "condition": {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:living"
+                                                },
+                                                {
+                                                    "type": "origins:health",
+                                                    "comparison": ">",
+                                                    "compare_to": 0
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "eggolib:compare_score",
+                                        "actor_objective": "corrupted",
+                                        "target_objective": "corrupted",
+                                        "comparison": "==",
+                                        "inverted": true
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "hidden": true
+}

@@ -1,0 +1,14 @@
+{
+	"powers": [
+		"hypno:mythos/golem/golem",
+		"hypno:mythos/golem/edible",
+		"hypno:mythos/golem/seismic_slam"
+	],
+	"icon": {
+		"item": "minecraft:iron_block"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Golem",
+	"description": "Guardian of the Eden's garden, these mythical angels will confuse the simple-minded with their inhumane characteristics. But in this realm, there is no god to watch over you."
+}

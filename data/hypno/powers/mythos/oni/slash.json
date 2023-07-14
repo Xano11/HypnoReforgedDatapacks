@@ -1,0 +1,88 @@
+{
+    "name":"Slash",
+    "description":"You take more damage and can't move as well.",
+    "type": "origins:multiple",
+    "timer":
+    {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                    "type": "apoli:execute_command",
+                    "command": "scoreboard players reset @s spiral_slash"
+                    },  
+                    {
+                     "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/oni/slash"
+                    }
+                    ]
+            }      
+    },
+    "timer_down":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/oni/slash_timer",
+            "change": -2
+        },
+        "interval": 2
+    },
+    "particles":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                "type": "apoli:execute_command",
+                "command": "function hypno:spiral_slash" 
+                },
+                {
+                "type": "apoli:execute_command",
+                "command": "scoreboard players add @s spiral_slash 1"
+                }
+                ]
+            },
+        "interval": 1
+    },
+    "no_movement":
+    {
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ]
+    },
+    "no_damage":{
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "No damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "no_sprint":{
+        "type": "origins:prevent_sprinting"
+    },
+    "no_block_interaction":{
+        "type": "origins:prevent_block_selection"
+    },
+    "no_block_use":{
+        "type": "origins:prevent_block_use"
+    },
+    "prevent_item_use":{
+        "type": "origins:prevent_item_use"
+    },
+    "hidden": true
+}

@@ -1,0 +1,197 @@
+{
+    "name": "Meteor",
+    "type": "origins:multiple",
+    "use": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:swing_hand",
+                    "hand": "MAIN_HAND"
+                },
+                {
+                    "type": "moborigins:set_item_cooldown",
+                    "hand": "MAIN_HAND",
+                    "ticks": 200
+                },
+                {
+                    "type": "origins:choice",
+                    "actions": [
+                        {
+                            "element": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:magic_sword_block_01 player @a[distance=..16] ~ ~ ~ 1 1.8",
+                                "permission_level": 4
+                            },
+                            "weight": 1
+                        },
+                        {
+                            "element": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:magic_sword_block_01 player @a[distance=..16] ~ ~ ~ 1 1.6",
+                                "permission_level": 4
+                            },
+                            "weight": 1
+                        },
+                        {
+                            "element": {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:magic_sword_block_01 player @a[distance=..16] ~ ~ ~ 1 1.7",
+                                "permission_level": 4
+                            },
+                            "weight": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:and",
+                        "conditions":[{
+                        "type": "origins:dimension",
+                        "dimension": "minecraft:nether",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:exposed_to_sky"
+                    },
+                    {
+                        "type": "origins:daytime",
+                        "inverted": true
+                    }
+                ]
+                },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:mythos/hecates/witch_mana",
+                        "change": -140
+                    }, 
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/hecates/witch_mana",
+                                "change": -280
+                            },
+                            {
+                                "type": "origins:exhaust",
+                                "amount": 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 32,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "outline",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type":"origins:and",
+                                    "actions":[{
+                                    "type": "origins:execute_command",
+                                    "command": "playsound simplyswords:magic_bow_shoot_impact_03 player @a[distance=..16] ~ ~ ~ 1 1.7",
+                                    "permission_level": 4
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,Tags:[\"meteor\"],DisabledSlots:4144959}",
+                                    "permission_level": 4
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "summon marker ~ ~ ~ {Tags:[\"meteor_particles\"]}",
+                                    "permission_level": 4
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "tp @e[limit=1,sort=nearest,type=armor_stand,tag=meteor] ~ ~20 ~",
+                                    "permission_level": 4
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "power grant @e[limit=1,sort=nearest,type=armor_stand,tag=meteor] hypno:mythos/hecates/spells/meteorite",
+                                    "permission_level": 4
+                                }
+                            ]
+                        }
+                            }
+                        ]
+                    },
+                    "block_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,Tags:[\"meteor\"],DisabledSlots:4144959}",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon marker ~ ~1 ~ {Tags:[\"meteor_particles\"]}",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tp @e[limit=1,sort=nearest,type=armor_stand,tag=meteor] ~ ~20 ~",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[limit=1,sort=nearest,type=armor_stand,tag=meteor] hypno:mythos/hecates/spells/meteorite",
+                                "permission_level": 4
+                            }
+                        ]
+                    },
+                    "command_at_hit": "particle minecraft:dust_color_transition 1 0.6 0 1 0.8 0.4 0 ~ ~ ~ 0.3 0.3 0.3 0 100",
+                    "command_step": 0.5,
+                    "command_along_ray_only_on_hit": false
+                }
+            ]
+        },
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:nbt",
+                        "nbt": "{Tags:[\"meteor\"]}"
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:nbt",
+                        "nbt": "{Tags:[\"spellbook\"]}"
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/hecates/witch_mana",
+                    "comparison": ">=",
+                    "compare_to": 280
+                }
+            ]
+        }
+    },
+    "hidden": true
+}

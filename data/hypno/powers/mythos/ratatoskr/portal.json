@@ -1,0 +1,83 @@
+{
+    "type": "origins:multiple",
+    "activate": {
+      "type": "origins:active_self",
+      "entity_action": {
+          "type": "origins:and",
+          "actions": [
+              {
+              "type": "origins:execute_command",
+              "command": "execute store result score @s ratatoskr_portal run data get entity @s UUID[0] 1"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"portal1\"]}"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,Marker:1b,Tags:[\"portal2\"]}"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "execute store result score @e[limit=1,sort=nearest,tag=portal1] ratatoskr_portal run data get entity @s UUID[0] 1"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "execute store result score @e[limit=1,sort=nearest,tag=portal2] ratatoskr_portal run data get entity @s UUID[0] 1"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:mythos/ratatoskr/portaling"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:item.totem.use player @a ~ ~ ~ 2 2"
+              },
+              {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:block.conduit.deactivate player @a ~ ~ ~ 3 2"
+              },
+              {     
+                "type":"origins:delay",
+                "ticks":1,
+                "action":
+                  {
+                  "type": "origins:execute_command",
+                  "command": "power grant @e[limit=1,sort=nearest,tag=portal1] hypno:mythos/ratatoskr/portaled"
+                  }
+              },
+              {     
+                "type":"origins:delay",
+                "ticks":1,
+                "action":
+                  {
+                  "type": "origins:execute_command",
+                  "command": "power grant @e[limit=1,sort=nearest,tag=portal2] hypno:mythos/ratatoskr/portaled"
+                  }
+              }
+          ]
+      },
+      "cooldown": 3600,
+      "condition": {
+        "type":"origins:and",
+        "conditions":[
+          {
+            "type": "origins:power",
+            "power": "hypno:mythos/ratatoskr/dysfunction",
+            "inverted": true
+          }
+        ]
+      },
+      "hud_render": {
+          "should_render": true,
+          "sprite_location": "horigins:textures/resource_bar01.png",
+          "bar_index": 13
+      },
+      "key": {
+          "key": "key.origins.secondary_active",
+          "continuous": false
+        }
+    },
+    "name": "Realm between Dimensions",
+    "description": "As a descendant of a divine messenger, you can tear rifts into existence; linking two points in space together. By pressing your [Secondary Ability Key], you phase into the Realm between Dimensions, allowing you to move extremely fast and leaving an initial rift behind you. After a certain amount of time, you will go back to reality, where a second rift will be created. Entering the first rift will teleport you to the second, but not vice-versa. "
+  }

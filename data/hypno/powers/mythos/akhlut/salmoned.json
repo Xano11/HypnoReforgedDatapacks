@@ -1,0 +1,66 @@
+{
+    "name": "Salmoned",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 500,
+        "start_value": 500,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove echoed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s echoes"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/akhlut/salmoned"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/akhlut/salmoned_timer",
+                    "change": -5
+                }
+            ]
+        },
+        "interval": 5
+    }, 
+    "swim_speed":{
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.5
+        }
+    },
+    "weakness":{
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_added": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @e[distance=0.1..12] minecraft:weakness 10 0",
+                    "permission_level": 4
+                }
+            ]
+        }
+    },
+    "hidden": true
+}

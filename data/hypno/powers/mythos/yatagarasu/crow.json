@@ -1,0 +1,284 @@
+{
+    "name": "Soul-thirsty spirit",
+    "description": "You're the soul of a legendary crow, but stuck in mortal flesh. Through this body, you're able to interact with the living and the unliving. To feast upon souls, you must travel to the Realm in Between and [USE] the souls left there. But, beware of Smite, it will destroy the fragile bond between your frail body and your soul.",
+    "type": "origins:multiple",
+    "lesser_heart": {
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Max health decrease",
+            "attribute": "minecraft:generic.max_health",
+            "value": -2,
+            "operation": "addition"
+        }
+    },
+    "souls": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 15,
+        "start_value": 15,
+        "hud_render": {
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 1
+        }
+    },
+    "refill": {
+        "type": "origins:action_on_callback",
+        "entity_action_respawned": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/yatagarasu/crow_souls",
+            "change": 15
+        },
+        "entity_action_added": {
+            "type": "origins:execute_command",
+            "command": "execute store result score @s corpse run data get entity @s UUID[0] 1"
+        },
+        "execute_chosen_when_orb": true
+    },
+    "undead": {
+        "type": "origins:entity_group",
+        "group": "undead"
+    },
+    "soulcollector": {
+        "type": "apugli:action_on_target_death",
+        "bientity_action": {
+            "type":"origins:and",
+            "actions":[{
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s hypno:mythos/yatagarasu/corpse",
+                        "permission_level": 4
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute store result score @s corpse run data get entity @p[tag=corpse_uuid] UUID[0] 1"
+                    },
+                    {
+                        "type": "origins:spawn_entity",
+                        "entity_type": "minecraft:allay",
+                        "tag": "{NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+                        "entity_action":{
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:mythos/yatagarasu/collectable_soul",
+                            "permission_level": 4
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tag @s add corpse_uuid",
+                        "permission_level": 4
+                    },
+                    {
+                        "type":"origins:delay",
+                        "ticks":1,
+                        "action":{
+                            "type": "origins:execute_command",
+                            "command": "tag @s remove corpse_uuid",
+                            "permission_level": 4
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+    },
+        "includes_prime_adversary": false
+    },
+    "smite": {
+        "type": "apugli:modify_enchantment_damage_taken",
+        "enchantment": "minecraft:smite",
+        "base_value": 0,
+        "bientity_action": {
+            "type": "origins:target_action",
+            "action": {
+                "type": "origins:chance",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "summon allay ~ ~1 ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,CanDuplicate:0b,Tags:[\"yatagarasu_soul\"]}",
+                            "permission_level": 4
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power grant @e[limit=1,sort=nearest,type=minecraft:allay,tag=yatagarasu_soul] hypno:mythos/yatagarasu/collectable_soul",
+                            "permission_level": 4
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:sonic_boom ~ ~1 ~ 0 0 0 1 1",
+                            "permission_level": 4
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:entity.warden.sonic_charge player @a ~ ~ ~ 1 2",
+                            "permission_level": 4
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/yatagarasu/crow_souls",
+                            "change": -1
+                        }
+                    ]
+                },
+                "chance": 0.20
+            }
+        }
+    },
+    "weakened_link": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "Instant Death",
+            "operation": "multiply_total",
+            "value": 10
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/yatagarasu/crow_souls",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "lost_arm": {
+        "type": "eggolib:prevent_item_use",
+        "hands": [
+            "off_hand"
+        ]
+    },
+    "soul_sleep":{
+        "type": "origins:prevent_sleep",
+        "message": "You need a soul campfire close to rest your soul.",
+        "block_condition":{
+        "type": "origins:adjacent",
+        "adjacent_condition": {
+            "type": "origins:block",
+            "block": "minecraft:soul_campfire"
+        },
+        "comparison": "==",
+        "compare_to": 0
+    }
+},
+"drop_offhand": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:drop_inventory",
+        "inventory_type": "inventory",
+        "slots": [
+            "weapon.offhand"
+        ]
+    },
+    "interval": 1
+},
+"deathmarked":{
+    "type": "origins:modify_damage_dealt",
+    "target_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:in_tag",
+                "tag": "hypno:living"
+            },
+            {
+                "type": "origins:power",
+                "power": "hypno:mythos/yatagarasu/deathmarked"
+            }
+        ]
+    },
+    "modifier": {
+        "name": "More damage against Deathmarked",
+        "operation": "multiply_total",
+        "value": 0.25
+    }
+},
+"collect_soul": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+    "type": "origins:area_of_effect",
+    "radius": 1.5,
+    "bientity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:sculk_soul ~ ~ ~ 0.1 0.1 0.1 0.01 30"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle create:soul ~ ~ ~ 0.1 0.1 0.1 0.01 30"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "kill @s"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:heal",
+                            "amount": 2
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/yatagarasu/crow_souls",
+                            "change": 1
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/yatagarasu/dead_resource",
+                            "change": 200
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "playsound minecraft:entity.allay.death player @s ~ ~ ~ 1 0.7"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "bientity_condition": {
+        "type": "origins:target_condition",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:living"
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/yatagarasu/collectable_soul"
+                },
+                {
+                    "type": "origins:health",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    }
+},
+"interval": 1
+}
+}

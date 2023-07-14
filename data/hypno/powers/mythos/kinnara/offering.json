@@ -1,0 +1,362 @@
+{
+    "name": "Offering to Garuda",
+    "description": "You decide to offer part of your life to Garuda; quite literally. Halving your maximum health, you will be granted supernatural speed, flying and moving quicker for the duration of the offering.",
+    "type": "origins:multiple",
+    "offered": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "min_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+            "change": 18
+        },
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "horigins:textures/resource_bar02.png",
+            "bar_index": 10
+        }
+    },
+    "offered_hearts": {
+        "type": "origins:resource",
+        "min": -18,
+        "max": 0,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "offered_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/kinnara/offering_offered",
+            "change": -1
+        },
+        "interval": 1
+    },
+    "activate": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "change": 600
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+                    "change": -10
+                },
+                {
+                    "type": "origins:damage",
+                    "amount": 10,
+                    "source": {
+                        "name": "indirectMagic",
+                        "magic": true,
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.1 1 0.2 1 1 1 1 ~ ~1 ~ 0.2 0.4 0.2 1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:end_rod ~ ~1 ~ 1 0 1 0.4 30"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:item.trident.return player @a ~ ~ ~ 1.5 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.end_portal.spawn player @a ~ ~ ~ 2 2"
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:health",
+                    "comparison": ">",
+                    "compare_to": 10
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "activate_again": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "change": 600
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+                    "change": -2
+                },
+                {
+                    "type": "origins:damage",
+                    "amount": 2,
+                    "source": {
+                        "name": "indirectMagic",
+                        "magic": true,
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.1 1 0.2 1 1 1 1 ~ ~1 ~ 0.2 0.4 0.2 1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:end_rod ~ ~1 ~ 1 0 1 0.4 30"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:item.trident.return player @a ~ ~ ~ 1.5 0.5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.end_portal.spawn player @a ~ ~ ~ 2 2"
+                }
+            ]
+        },
+        "cooldown": 10,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+                    "comparison": ">",
+                    "compare_to": -18
+                }
+            ]
+        }
+    },
+    "less_health1":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -10,
+            "name": "Lesser health 1"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -10
+        }
+    },
+    "less_health2":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -12,
+            "name": "Lesser health 2"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -12
+        }
+    },
+    "less_health3":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -14,
+            "name": "Lesser health 3"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -14
+        }
+    },
+    "less_health4":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -16,
+            "name": "Lesser health 4"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -16
+        }
+    },
+    "less_health5":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -18,
+            "name": "Lesser health 5"
+        },
+        "tick_rate": 20,
+        "update_health": true,
+        "condition":  {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered_hearts",
+            "comparison": "==",
+            "compare_to": -18
+        }
+    },
+    "movement_speed": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_total",
+            "value": 0.5,
+            "name": "Increased speed"
+        },
+        "tick_rate": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "air_speed": {
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.5
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fall_flying"
+                }
+            ]
+        }
+    },
+    "garuda_swirl": {
+        "type": "apugli:energy_swirl",
+        "texture_location": "horigins:garuda_offering.png",
+        "speed": 0.01,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/kinnara/offering_offered",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "boost":
+    {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition":  {
+                "type": "origins:fall_flying"
+            },
+            "if_action":  {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:add_velocity",
+                        "space": "local",
+                        "z": 0.04
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "hypno:mythos/kinnara/offering_offered",
+                        "change": -3
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:end_rod ~ ~ ~ 0 0 0 0.2 4"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:dust_color_transition 0.1 1 0.2 2 1 1 1 ~ ~ ~ 0.1 0.1 0.1 1 4"
+                    }
+                ]
+            }
+        },
+        "key": {
+            "key": "key.sneak",
+            "continuous": true
+        },
+        "cooldown": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/kinnara/offering_offered",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "hidden": false
+}

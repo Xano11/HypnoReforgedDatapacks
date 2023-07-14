@@ -1,0 +1,116 @@
+{
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 200,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:mythos/ifrit/hellfire"
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/ifrit/hellfire_timer",
+            "change": -20
+        },
+        "interval": 20
+    },
+    "damage": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:damage",
+                    "amount": 2,
+                    "source": {
+                        "name": "onfire",
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    }
+                }
+            ]
+        },
+        "execute_chosen_when_orb": true
+    },
+    "hellfire_damage": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:damage",
+                    "amount": 3,
+                    "source": {
+                        "name": "onfire",
+                        "bypasses_armor": true,
+                        "fire": true
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 0.3 0 1 0 0 0 ~ ~1 ~ 0.5 0.5 0.5 1 60"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:crimson_spore ~ ~1 ~ 0.5 0.5 0.5 0.01 20"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:item minecraft:redstone ~ ~1 ~ 0.5 0.5 0.5 0.1 10"
+                }
+            ]
+        },
+        "interval": 30
+    },
+    "glow": {
+        "type": "origins:self_glow",
+        "use_teams": false,
+        "red": 1.0,
+        "green": 0.3,
+        "blue": 0.0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "hypno:mythos/ifrit",
+                        "layer": "origins:mythos"
+                    }
+                }
+            ]
+        }
+    },
+    "extra_damage":
+    {
+        "type": "origins:modify_damage_taken",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "hypno:mythos/ifrit",
+                        "layer": "origins:mythos"
+                    }
+                }
+            ]
+        },
+        "modifier": {
+            "name": "More Ifrit damage",
+            "operation": "multiply_total",
+            "value": 0.25
+        }
+    },
+    "hidden": true
+}

@@ -1,0 +1,132 @@
+{
+    "name": "Disguised Entity",
+    "type": "origins:multiple",
+    "prevent_use": {
+        "type": "origins:prevent_being_used",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:execute_command",
+                "command": "title @s actionbar [\"\",\"Something is....\",{\"text\":\"  off.\",\"italic\":true}]"
+            }
+        }
+    },
+    "prevent_death": {
+        "type": "origins:prevent_death",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @p[tag=shapeshifter] hypno:mythos/tanuki/shapeshifting_no_momentum"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @p[tag=shapeshifter] hypno:mythos/tanuki/knocked"
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "z": -0.5,
+                    "y": 0.5,
+                    "space": "local"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @p[tag=shapeshifter] hypno:mythos/tanuki/shapeshifting"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale reset @p[tag=shapeshifter]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @p[tag=shapeshifter] if score @s shapeshift = @p shapeshift run tag @s remove shapeshifter"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove shapeshift"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tp @s ~ -300 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    },
+    "counter":{
+        "type": "origins:action_when_hit",
+        "bientity_action": { 
+            "type": "origins:and",
+            "actions": [
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @p[tag=shapeshifter] run scale reset @s"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @p[tag=shapeshifter] run resource set @s hypno:mythos/tanuki/shapeshifting_leave 1"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @e[tag=surprised,limit=1,sort=nearest] at @s run tp @s[tag=shapeshifter] ^ ^ ^-1"
+                        },
+                        {
+                            "type": "origins:delay",
+                            "ticks": 1,
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "execute as @p[tag=shapeshifter] run tag @s remove shapeshifter"
+                            }
+                        },
+                        {
+                            "type": "origins:delay",
+                            "ticks": 2,
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "kill @s"
+                            }
+                        }
+                ]
+            }
+            },
+            {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [{
+                    "type": "origins:execute_command",
+                    "command": "tag @s add surprised"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:mythos/tanuki/knocked"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "tag @s remove surprised"
+                    }
+                }
+                ]
+            }
+            }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "hidden": false
+}

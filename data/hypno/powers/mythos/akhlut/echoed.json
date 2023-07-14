@@ -1,0 +1,84 @@
+{
+    "name": "Echoed",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 60,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove echoed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s echoes"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/akhlut/echoed"
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/akhlut/echoed_timer",
+            "change": -10
+        },
+        "condition": {
+            "type": "origins:command",
+            "command": "execute as @e if score @s echoes = @e[limit=1,sort=nearest] echoes",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "interval": 10
+    },
+    "particles": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchant ~ ~1 ~ 0.5 0.2 0.5 0 3"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:enchanted_hit ~ ~1 ~ 0.5 0.2 0.5 0 3"
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "leave": {
+        "type": "origins:action_on_callback",
+        "entity_action_removed": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s remove echoed"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players reset @s echoes"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/akhlut/echoed"
+                }
+            ]
+        },
+        "execute_chosen_when_orb": false
+    },
+    "hidden": true
+}

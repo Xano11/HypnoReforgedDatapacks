@@ -1,0 +1,40 @@
+{
+    "type":"origins:multiple",
+    "name":"Bag of Y'earnings",
+    "description":"Using [SECONDARY ABILITY KEY] whilst crouched will access your legendary bag, allowing you to keep items upon death. But, if you are to be killed by an entity wielding Curse of Vanishing, your inventory will drop.",
+
+    "inventory":{
+    "type": "origins:inventory",
+    "container_type": "dropper",
+    "title": "Bag of Y'earnings",
+    "drop_on_death": false,
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "condition":{
+        "type": "origins:sneaking"
+    }
+    },
+    "dropping":{
+        "type": "epoli:action_on_death",
+        "entity_action": {
+            "type": "origins:drop_inventory",
+            "inventory_type":"power",
+            "power":"hypno:mythos/tanuki/bag_inventory",
+            "throw_randomly": true
+        },
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:enchantment",
+                    "enchantment": "minecraft:vanishing_curse",
+                    "comparison": ">=",
+                    "compare_to": 1
+                }
+            }
+        }
+    }
+}

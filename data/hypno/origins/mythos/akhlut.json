@@ -1,0 +1,15 @@
+{
+	"powers": [
+		"hypno:mythos/akhlut/slide",
+		"hypno:mythos/akhlut/hunting",
+		"hypno:mythos/akhlut/echolocation",
+		"hypno:mythos/akhlut/pescivore"
+	],
+	"icon": {
+		"item": "minecraft:salmon"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Akhlut",
+	"description": "The Akhluts are a mythical species of passive orca-wolves born to hunt for fish yet still just being cute doggos with fins."
+}

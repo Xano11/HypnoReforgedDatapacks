@@ -1,0 +1,59 @@
+{
+    "name":"Sacrifice of blood",
+    "description":"Using your [PRIMARY ABILITY KEY], you can haunt everyone submerged in water in a 32 block radius. If the foes do not leave before their fear bar gets to max, they sink to the bottom of the water and get debuffed.",
+    "type": "origins:multiple",
+    "activation":{
+        "type": "origins:active_self",
+        "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s hypno:mythos/oni/bloodthirsty"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound bettercombat:spear_stab player @s ~ ~ ~ 1 0.5"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:dust_color_transition 1 0 0 1 0.5 0 0 ~ ~1 ~ 0.3 0.3 0.3 1 100"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:damage_indicator ~ ~1 ~ 0.3 0.3 0.3 0.01 10"
+            },
+            {
+                "type": "eggolib:modify_health",
+                "modifier": {
+                    "operation": "multiply_total",
+                    "value": -0.5
+                }
+            }
+            ]
+        },
+        "cooldown": 1200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 1
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition": {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:relative_health",
+            "comparison": ">=",
+            "compare_to": 0.75
+                },
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/oni/bloodthirsty",
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "hidden": false
+}

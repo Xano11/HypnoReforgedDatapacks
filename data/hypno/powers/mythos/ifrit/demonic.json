@@ -1,0 +1,133 @@
+{
+    "name": "Demonic",
+    "description": "As a being from hell, you take no damage from fire. You ignite your surroundings and burn through any potions or food at twice the rate. But be careful, water is your worst enemy. Even being engulfed will only protect you from fire temporarily.",
+    "type": "origins:multiple",
+    "fire_immune": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire"
+        },
+        "modifier": {
+            "name": "No fire damage",
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "water_weakness": {
+        "type": "origins:damage_over_time",
+        "interval": 10,
+        "onset_delay": 1,
+        "damage": 2,
+        "damage_easy": 2,
+        "damage_source": {
+            "name": "hurt_by_water",
+            "unblockable": true,
+            "bypasses_armor": true
+        },
+        "protection_enchantment": "origins:water_protection",
+        "protection_effectiveness": 0.5,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:fluid_height",
+                            "fluid": "minecraft:water",
+                            "comparison": ">",
+                            "compare_to": 0.0
+                        },
+                        {
+                            "type": "origins:in_rain"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "hypno:mythos/ifrit/engulfed_energy",
+                            "comparison": "==",
+                            "compare_to": 0
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "hypno:mythos/ifrit/engulfed_toggle",
+                            "inverted": true
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "waterlogged": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/ifrit/engulfed_energy",
+            "change": -50
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0.0
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:mythos/ifrit/engulfed_toggle",
+                    "inverted": false
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "rain": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/ifrit/engulfed_energy",
+            "change": -20
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:in_rain"
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "hypno:mythos/ifrit/engulfed_toggle",
+                    "inverted": false
+                }
+            ]
+        },
+        "interval": 10
+    },
+    "burningstomach": {
+        "type": "origins:modify_food",
+        "food_modifier": {
+            "name": "Decreased food points",
+            "operation": "multiply_total",
+            "value": -0.5
+        },
+        "saturation_modifier": {
+            "name": "Decreased saturation points",
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "boilingblood": {
+        "type": "origins:modify_status_effect_duration",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "hidden": false
+}

@@ -1,0 +1,85 @@
+{
+    "name": "Feather",
+    "type": "origins:multiple",
+    "timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @e[limit=1,sort=nearest,tag=fieryfeather,type=item]"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "kill @s"
+                    }
+                }
+            ]
+        }
+    },
+    "timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/phoenix/feather_timer",
+            "change": -10
+        },
+        "interval": 10
+    },
+    "invisible":{
+        "type": "origins:invisibility",
+        "render_armor": false
+    },
+    "interact": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:area_of_effect",
+            "radius": 2,
+            "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:flame ~ ~1.2 ~ 0.1 0 0.1 0.1 2"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power grant @s hypno:mythos/phoenix/feather_interaction"
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/phoenix/feather_interaction_timer",
+                            "change": 10
+                        }
+                    ]
+                }
+            },
+            "bientity_condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:entity_type",
+                            "entity_type": "minecraft:player"
+                        }
+                    }
+                ]
+            }
+        },
+        "interval": 2
+    },
+    "hidden": false
+}

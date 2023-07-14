@@ -1,0 +1,554 @@
+{
+    "name": "Inabikari ϟ",
+    "description": "Holding [PRIMARY ABILITY KEY] and pressing [ATTACK] will summon a lightning node. Whilst still holding [PRIMARY ABILITY KEY] and pressing [USE], you will teleport to lightning node you're looking at.               §oLightning ",
+    "type": "origins:multiple",
+    "placement": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 10,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "collider",
+                    "fluid_handling": "any",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "summon armor_stand ~ ~ ~ {NoGravity:1b,Marker:0b,Invisible:1b,PersistenceRequired:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-450443135,-158512987,-1153682247,-838866156],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJjZTRhMzQ4ZmI4ZjhjNGEzNTRkOWRkZmQzOGFmMjM1M2JmZGNhYzE0Yzk3OGI3N2MzZjIwNmQ5Mzg3ZmFhZiJ9fX0=\"}]}}}}],Tags:[\"raijuball\"],DisabledSlots:4144959}"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "particle dust_color_transition 0.54 0.99 1 0.5 1 0.95 0.24 ~ ~3 ~ 0.2 1.5 0.2 0.1 20"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power grant @e[limit=1,sort=nearest,tag=raijuball] hypno:mythos/raiju/inabikari_ball"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "scale set pehkui:hitbox_height 1.2 @s"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "scale set pehkui:hitbox_width 1.4 @s"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "execute store result score @e[limit=1,sort=nearest,type=armor_stand,tag=raijuball] raijuowner run data get entity @p[tag=raijuowner] UUID[0] 1"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                }
+                            ]
+                        }
+                    },
+                    "block_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ~ ~ ~ {NoGravity:1b,Marker:0b,Invisible:1b,PersistenceRequired:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-450443135,-158512987,-1153682247,-838866156],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJjZTRhMzQ4ZmI4ZjhjNGEzNTRkOWRkZmQzOGFmMjM1M2JmZGNhYzE0Yzk3OGI3N2MzZjIwNmQ5Mzg3ZmFhZiJ9fX0=\"}]}}}}],Tags:[\"raijuball\"],DisabledSlots:4144959}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle dust_color_transition 0.54 0.99 1 0.5 1 0.95 0.24 ~ ~3 ~ 0.2 1.5 0.2 0.1 20"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[limit=1,sort=nearest,tag=raijuball] hypno:mythos/raiju/inabikari_ball"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scale set pehkui:hitbox_height 1.2 @s"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scale set pehkui:hitbox_width 1.4 @s"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute positioned ^ ^ ^10 store result score @e[limit=1,sort=nearest,type=armor_stand,tag=raijuball] raijuowner run data get entity @p[tag=raijuowner] UUID[0] 1"
+                                }
+                            }
+                        ]
+                    },
+                    "hit_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add raijuowner"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s raijuowner run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove raijuowner"
+                                }
+                            }
+                        ]
+                    },
+                    "miss_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ^ ^ ^10 {NoGravity:1b,Marker:0b,Invisible:1b,PersistenceRequired:1b,ArmorItems:[{},{},{},{id:\"minecraft:player_head\",Count:1b,tag:{SkullOwner:{Id:[I;-450443135,-158512987,-1153682247,-838866156],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJjZTRhMzQ4ZmI4ZjhjNGEzNTRkOWRkZmQzOGFmMjM1M2JmZGNhYzE0Yzk3OGI3N2MzZjIwNmQ5Mzg3ZmFhZiJ9fX0=\"}]}}}}],Tags:[\"raijuball\"],DisabledSlots:4144959}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute positioned ^ ^ ^10 run particle dust_color_transition 0.54 0.99 1 0.5 1 0.95 0.24 ~ ~3 ~ 0.2 1.5 0.2 0.1 20"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute positioned ^ ^ ^10 run power grant @e[limit=1,sort=nearest,tag=raijuball] hypno:mythos/raiju/inabikari_ball"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute positioned ^ ^ ^10 run scale set pehkui:hitbox_height 1.2 @e[limit=1,sort=nearest,tag=raijuball]"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute positioned ^ ^ ^10 run scale set pehkui:hitbox_width 1.4 @e[limit=1,sort=nearest,tag=raijuball]"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add raijuowner"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s raijuowner run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute positioned ^ ^ ^10 store result score @e[limit=1,sort=nearest,type=armor_stand,tag=raijuball] raijuowner run data get entity @p[tag=raijuowner] UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 2,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove raijuowner"
+                                }
+                            }
+                        ]
+                    },
+                    "command_step": 0.5
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "change": -100
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:elemental_sword_thunder_attack_01 player @a[distance=..16] ~ ~ ~ 1 2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.respawn_anchor.charge player @a ~ ~ ~ 1 2"
+                }
+            ]
+        },
+        "cooldown": 5,
+        "key": {
+            "key": "key.attack",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_wait",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                }
+            ]
+        }
+    },
+    "teleport": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 10,
+                    "block": false,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "kill @s"
+                                }
+                            ]
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{Tags: ['raijuball']}"
+                                }
+                            }
+                        ]
+                    },
+                    "hit_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/raiju/inabikari_overlay_resource",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "effect give @s minecraft:slow_falling 2 10 true"
+                            },
+                            {
+                                "type": "origins:add_velocity",
+                                "y": 0,
+                                "set": true
+                            },
+                            {
+                                "type": "origins:set_fall_distance",
+                                "fall_distance": 0
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound simplyswords:elemental_bow_thunder_shoot_impact_02 player @s ~ ~ ~ 1 2"
+                            }
+                        ]
+                    },
+                    "command_along_ray_only_on_hit": true,
+                    "command_along_ray": "function hypno:lightningtp"
+                }
+            ]
+        },
+        "cooldown": 2,
+        "key": {
+            "key": "key.use",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 10,
+                    "block": false,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "hit_bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:nbt",
+                            "nbt": "{Tags: ['raijuball']}"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "selecting": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:raycast",
+                            "distance": 10,
+                            "block": true,
+                            "entity": true,
+                            "shape_type": "visual",
+                            "fluid_handling": "none",
+                            "bientity_action": {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute at @s run tp @s ~ ~ ~ ~10 ~"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute at @s run particle dust_color_transition 0.54 0.99 1 0.5 1 0.95 0.24 ^ ^1 ^1.5 0.1 0.1 0.1 0.1 5"
+                                        }
+                                    ]
+                                }
+                            },
+                            "bientity_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:target_condition",
+                                        "condition": {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:nbt",
+                                                    "nbt": "{Tags: ['raijuball']}"
+                                                },
+                                                {
+                                                    "type": "origins:resource",
+                                                    "resource": "hypno:mythos/raiju/inabikari_ball_field_timer",
+                                                    "comparison": "==",
+                                                    "compare_to": 0
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "field_activate": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 3,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "scale easing set pehkui:base pehkui:elastic_in @s"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "scale delay set pehkui:base 50 @s"
+                                },
+                                {
+                                    "type": "origins:execute_command",
+                                    "command": "scale set pehkui:base 0.2 @s"
+                                },
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "hypno:mythos/raiju/inabikari_ball_field_timer",
+                                    "change": 50
+                                }
+                            ]
+                        }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:target_condition",
+                                "condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Tags: ['raijuball']}"
+                                        },
+                                        {
+                                            "type": "origins:resource",
+                                            "resource": "hypno:mythos/raiju/inabikari_ball_field_timer",
+                                            "comparison": "==",
+                                            "compare_to": 0
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 2,
+        "key": {
+            "key": "key.use",
+            "continuous": false
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/raiju/discharged",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    },
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/blade_combo",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/raiju/energetic_resource",
+                    "comparison": ">=",
+                    "compare_to": 100
+                }
+            ]
+        }
+    },
+    "overlay_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:change_resource",
+                "resource": "hypno:mythos/raiju/inabikari_overlay_resource",
+                "change": -1
+            }
+        }
+    },
+    "overlay1": {
+        "type": "origins:overlay",
+        "texture": "horigins:thundered1.png",
+        "strength": 1.0,
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "hide_with_hud": false,
+        "visible_in_third_person": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/raiju/inabikari_overlay_resource",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "hidden": false
+}

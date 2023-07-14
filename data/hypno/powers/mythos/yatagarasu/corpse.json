@@ -1,0 +1,189 @@
+{
+    "name": "Corpse",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:mythos/yatagarasu/corpse"
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/yatagarasu/corpse_duration",
+            "change": -20
+        },
+        "interval": 20
+    },
+    "stay_dead": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:modify_death_ticks",
+            "modifier": {
+                "operation": "set_total",
+                "value": 0
+            }
+        },
+        "interval": 1
+    },
+    "siphoned": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:area_of_effect",
+                            "radius": 7,
+                            "bientity_action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:damage",
+                                        "amount": 10,
+                                        "source": {
+                                            "name": "cramming"
+                                        }
+                                    }
+                                ]
+                            },
+                            "bientity_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:target_condition",
+                                        "condition": {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:in_tag",
+                                                    "tag": "hypno:living"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:explode",
+                    "power": 3,
+                    "destruction_type": "none",
+                    "damage_self": false,
+                    "create_fire": false
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=corpse_particles] if score @s corpse = @e[limit=1,sort=nearest] corpse run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e if score @s corpse = @e[limit=1,sort=nearest] corpse run power remove @s hypno:mythos/yatagarasu/corpse"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s hypno:mythos/yatagarasu/corpse"
+                }
+            ]
+        }
+    },
+    "siphoned_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "hypno:mythos/yatagarasu/corpse_siphoned",
+            "change": -20
+        },
+        "interval": 20
+    },
+    "effects": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:soul_fire_flame ~ ~1 ~ 0 0 0 0 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=corpse_particles] at @s run tp @s ~ ~ ~ ~9 ~"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[limit=1,sort=nearest,tag=corpse_particles] at @s run particle minecraft:soul ^ ^ ^7 0 0 0 0 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sculk_soul ~ ~ ~ 2 0 2 0 1"
+                },
+                {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:area_of_effect",
+                            "radius": 7,
+                            "bientity_action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:add_velocity",
+                                        "z": -0.07
+                                    }
+                                ]
+                            },
+                            "bientity_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:target_condition",
+                                        "condition": {
+                                            "type": "origins:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "origins:in_tag",
+                                                    "tag": "hypno:living"
+                                                },
+                                                {
+                                                    "type": "origins:power",
+                                                    "power": "hypno:mythos/yatagarasu/corpse",
+                                                    "inverted": true
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/yatagarasu/corpse_siphoned",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "hidden": false
+}

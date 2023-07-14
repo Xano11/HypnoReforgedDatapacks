@@ -1,0 +1,596 @@
+{
+    "name": "Golem-build",
+    "description": "As a descendant of Ratatsokr, you've inherited a few traits. You're smaller, weaker (three less hearts), have the ability to climb and have negated fall damage. Also, you can [Sneak] in mid-air to stop any vertical momentum for a certain amount of time. ",
+    "type": "origins:multiple",
+    "prevent_normal_food": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:food"
+        }
+    },
+    "iron_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 33,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:ingredient",
+                            "ingredient": {
+                                "item": "minecraft:raw_iron"
+                            }
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "mainhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "type": "origins:heal",
+                                "amount": 10
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_iron_resource",
+                                "change": -33
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_iron_sounds",
+                                "change": 5
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 1 1 1 1.3 0.7 0.7 0.7 ~ ~1.2 ~ 0.6 0.2 0.6 1 50",
+                                "permission_level": 4
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "offhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "type": "origins:heal",
+                                "amount": 10
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 1 1 1 1.3 0.7 0.7 0.7 ~ ~1.2 ~ 0.6 0.2 0.6 1 50",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_iron_resource",
+                                "change": -33
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_iron_sounds",
+                                "change": 5
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "iron_sounds": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 5,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.anvil.land player @a ~ ~ ~ 1.5 1.3",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 1 1.3 0.7 0.7 0.7 ~ ~1.2 ~ 0.6 0.2 0.6 1 50",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_iron_sounds",
+                    "change": -5
+                }
+            ]
+        }
+    },
+    "eating_iron": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_iron_resource",
+                    "change": 1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_iron_sounds",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_iron"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_iron"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:health",
+                    "comparison": "<",
+                    "compare_to": 40
+                }
+            ]
+        }
+    },
+    "reset_iron_eating": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_iron_resource",
+                    "change": -33
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_iron_sounds",
+                    "change": -5
+                }
+            ]
+        },
+        "condition": {
+            "type": "apugli:key_pressed",
+            "key": {
+                "key": "key.use",
+                "continuous": true
+            },
+            "inverted": true
+        },
+        "interval": 2
+    },
+    "gold_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 33,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:ingredient",
+                            "ingredient": {
+                                "item": "minecraft:raw_gold"
+                            }
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "mainhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "type": "origins:heal",
+                                "amount": 4
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_gold_resource",
+                                "change": -33
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_gold_sounds",
+                                "change": 5
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_gold_healing_resource",
+                                "change": 140
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 0.7 0.7 0 1.3 0.9 0.7 0 ~ ~1.2 ~ 0.6 0.2 0.6 1 50",
+                                "permission_level": 4
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "offhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "type": "origins:heal",
+                                "amount": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:dust_color_transition 0.7 0.7 0 1.3 0.9 0.7 0 ~ ~1.2 ~ 0.6 0.2 0.6 1 50",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_gold_resource",
+                                "change": -33
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_gold_sounds",
+                                "change": 5
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/golem/edible_gold_healing_resource",
+                                "change": 140
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "gold_sounds": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 5,
+        "hud_render": {
+            "should_render": false
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.anvil.land player @a ~ ~ ~ 1.5 1.3",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0.7 0.7 0 1.3 0.9 0.7 0 ~ ~1.2 ~ 0.6 0.2 0.6 1 50",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_gold_sounds",
+                    "change": -5
+                }
+            ]
+        }
+    },
+    "eating_gold": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_gold_resource",
+                    "change": 1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_gold_sounds",
+                    "change": 1
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_gold"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_gold"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:health",
+                    "comparison": "<",
+                    "compare_to": 40
+                }
+            ]
+        }
+    },
+    "reset_gold_eating": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_gold_resource",
+                    "change": -33
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_gold_sounds",
+                    "change": -5
+                }
+            ]
+        },
+        "condition": {
+            "type": "apugli:key_pressed",
+            "key": {
+                "key": "key.use",
+                "continuous": true
+            },
+            "inverted": true
+        },
+        "interval": 2
+    },
+    "gold_healing_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 140,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "gold_healing": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/golem/edible_gold_healing_resource",
+                    "change": -20
+                },
+                {
+                    "type": "origins:heal",
+                    "amount": 2
+                }
+            ]
+        },
+        "interval": 20,
+        "condition":
+        {
+            "type": "origins:resource",
+            "resource": "hypno:mythos/golem/edible_gold_healing_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "slowdown":
+    {
+        "type": "origins:prevent_sprinting",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_iron"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_iron"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_gold"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_gold"
+                                }
+                            }
+                        }
+                    ]
+                },
+    {
+        "type":"apugli:key_pressed",
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        }
+    }
+    ]
+    }
+    },
+    "slowdown2":
+    {
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -0.6,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_iron"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_iron"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_gold"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:raw_gold"
+                                }
+                            }
+                        }
+                    ]
+                },
+    {
+        "type":"apugli:key_pressed",
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        }
+    }
+    ]
+    }
+      }
+}

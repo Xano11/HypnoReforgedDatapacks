@@ -1,0 +1,18 @@
+{
+	"powers": [
+		"origins:like_water",
+		"hypno:mythos/kelpie/spectre",
+		"hypno:mythos/kelpie/soulhook",
+		"hypno:mythos/kelpie/anchors",
+		"hypno:mythos/kelpie/stalk",
+		"hypno:mythos/kelpie/screech"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:3,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":13}"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Kelpie",
+	"description": "A horse-like mythical spirit of the waters said to inhabit the haunted bodies of water. It's sole existence fuels the fear in those aware of it."
+}

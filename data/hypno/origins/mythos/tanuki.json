@@ -1,0 +1,18 @@
+{
+	"powers": [
+		"hypno:mythos/tanuki/hurry",
+		"hypno:mythos/tanuki/lucky",
+		"hypno:mythos/tanuki/fluff",
+		"hypno:mythos/tanuki/shapeshift",
+		"hypno:mythos/tanuki/identity",
+		"hypno:mythos/tanuki/bag",
+		"hypno:mythos/tanuki/sweettooth"
+	],
+	"icon": {
+		"item": "minecraft:chest"
+	},
+	"order": 1,
+	"impact": 0,
+	"name": "Tanuki",
+	"description": "A japanese trickster, this yokai always makes a fool of others... and themselves."
+}

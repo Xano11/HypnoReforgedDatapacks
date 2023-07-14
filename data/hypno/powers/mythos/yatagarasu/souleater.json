@@ -1,0 +1,131 @@
+{
+    "name": "Soul's release",
+    "description": "Whilst holding [PRIMARY ABILITY KEY], you can press [USE] to channel souls. If you have at least 5 souls, you will consume them and be granted supernatural vision, as well as granting all entities in a 32 block radius with Marked to Death. You will also deal additional damage to all marked enemies.",
+    "type": "origins:multiple",
+    "activation": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sculk_charge 10 ~ ~1 ~ 0.5 0.5 0.5 0.3 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.respawn_anchor.set_spawn player @a ~ ~ ~ 2 0.8"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/yatagarasu/crow_souls",
+                    "change": -5
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 32,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type":"origins:and",
+                            "actions":[{
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/yatagarasu/corpse_siphoned",
+                            "change": 100
+                        },
+                        {
+                            "type": "origins:change_resource",
+                            "resource": "hypno:mythos/yatagarasu/corpse_duration",
+                            "change": 600
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "summon marker ~ ~ ~ {Tags:[\"corpse_particles\"]}"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute store result score @e[limit=1,sort=nearest,tag=corpse_particles] corpse run data get entity @e[tag=!corpse_particles,limit=1,sort=nearest] UUID[0] 1"
+                        }
+                    ]
+                }
+                    },
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:in_tag",
+                                    "tag": "hypno:living"
+                                },
+                                {
+                                    "type": "origins:power",
+                                    "power": "hypno:mythos/yatagarasu/corpse"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "cooldown": 60,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power",
+                    "power": "hypno:mythos/yatagarasu/dead",
+                    "inverted": true
+                },
+                {
+                    "type": "apugli:key_pressed",
+                    "key": {
+                        "key": "key.origins.primary_active",
+                        "continuous": true
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/crow_souls",
+                    "comparison": ">=",
+                    "compare_to": 5
+                }
+            ]
+        }
+    },
+    "glow": {
+        "type": "origins:entity_glow",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:in_tag",
+                                "tag": "hypno:living"
+                            },
+                            {
+                                "type": "origins:power",
+                                "power": "hypno:mythos/yatagarasu/deathmarked"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "use_teams": false,
+        "red": 1.0,
+        "green": 0.0,
+        "blue": 0.0
+    },
+    "hidden": false
+}

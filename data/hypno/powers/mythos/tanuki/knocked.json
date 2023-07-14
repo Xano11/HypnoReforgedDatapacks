@@ -1,0 +1,64 @@
+{
+    "name":"Knocked",
+    "type": "origins:multiple",
+    "resource":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 60,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s hypno:mythos/tanuki/knocked"
+        }
+    },
+    "resource_use":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/tanuki/knocked_resource",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "shader":{
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/blobs2.json",
+        "toggleable": false
+    },
+    "prevent_jump":{
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "speed":{
+        "type": "origins:attribute",
+        "modifier": {
+            "name": "Movement speed decrease",
+            "attribute": "minecraft:generic.movement_speed",
+            "value": -0.6,
+            "operation": "multiply_total"
+        }
+    },
+    "inverted_momentum":{
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -2,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "x",
+          "z"
+        ]
+      },
+    "hidden": true
+}

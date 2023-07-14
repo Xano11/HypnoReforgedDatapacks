@@ -1,0 +1,84 @@
+{
+    "name":"Wings of the Eternal",
+    "description":"Pressing [SECONDARY ABILITY KEY] whilst on a block will launch you upwards and grant you wings. Those wings last indefinitely, but once you've landed, they are lost.",
+    "type": "origins:multiple",
+    "use":{
+        "type": "origins:active_self",
+        "entity_action":{
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "y": 5,
+                    "space": "local_horizontal_normalized"
+                },
+                {
+                    "type": "origins:set_on_fire",
+                    "duration": 5
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:feather ~ ~ ~ 1 1 1 0.01 10"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:flame ~ ~ ~ 0.4 2 0.4 0.01 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:air_burst ~ ~ ~ 1 1 1 1 100"   
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle supplementaries:ash ~ ~ ~ 1 0.5 1 0.5 100"   
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 1 1 0 1 1 0.5 0 ~ ~ ~ 1 2 1 0.01 100"   
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:item.trident.throw player @s ~ ~ ~ 1 0.5"   
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":
+                    {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s hypno:mythos/phoenix/winged"
+                    }
+            }
+            ]
+        },
+        "condition":
+        {
+            "type":"origins:and",
+            "conditions":[{
+            "type": "origins:power",
+            "power": "hypno:mythos/phoenix/graceful",
+            "inverted": true
+                },
+                {
+                    "type": "origins:on_block",
+                    "inverted": false
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 0,
+            "condition":
+            {
+            "type": "origins:power",
+            "power": "hypno:mythos/phoenix/winged",
+            "inverted": true
+            }
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        } 
+    },
+    "hidden": false
+}

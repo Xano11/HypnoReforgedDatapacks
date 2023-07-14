@@ -1,0 +1,20 @@
+{
+	"powers": [
+		"hypno:mythos/hecates/witch",
+		"hypno:mythos/hecates/spellbook",
+		"hypno:mythos/hecates/stars",
+		"hypno:mythos/hecates/spells/magic_missile",
+		"hypno:mythos/hecates/spells/teleport",
+		"hypno:mythos/hecates/spells/invert_gravity",
+		"hypno:mythos/hecates/spells/meteor",
+		"hypno:mythos/hecates/spells/ice"
+	],
+	"icon": {
+		"item": "minecraft:diamond",
+		"tag": "{CustomModelData:11,Enchantments:[{}],\"enchant_the_rainbow:GlintColor\":10}"
+	},
+	"order": 4,
+	"impact": 2,
+	"name": "Hecatean",
+	"description": "A cult of witches that have dedicated themselves to the moonlight, acquiring the ability to manipulate magic to their deeds."
+}

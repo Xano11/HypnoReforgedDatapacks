@@ -1,0 +1,72 @@
+{
+    "name": "Inverted gravity",
+    "type": "origins:multiple",
+    "invert": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+          "value": -1.15,
+          "operation": "multiply_total"
+        },
+        "axes": [
+          "y"
+        ]
+    },
+    "shake":{
+        "type": "origins:shaking"
+    },
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 100,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "y": 0,
+                    "set": true
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":1,
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "power remove @s hypno:mythos/hecates/spells/gravity_invert"
+                    }
+            }
+            ]
+        }
+    },
+    "duration_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/hecates/spells/gravity_invert_duration",
+                    "change": -5
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:end_rod ~ ~ ~ 0.3 0.1 0.3 0.1 10"
+                }
+            ]
+        },
+        "interval": 5
+    },
+    "flip":
+    {
+        "type": "eggolib:model_flip"
+    },
+    "shader":
+    {
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/flip.json",
+        "toggleable": false
+    }
+}

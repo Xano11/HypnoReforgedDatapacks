@@ -1,0 +1,315 @@
+{
+    "name": "Neither dead or alive",
+    "description": "Using your [SECONDARY ABILITY KEY], your soul can navigate the land between the living and the dead. Right click the surface of a block to leave a mark, teleporting you to said mark shortly after. Whilst in this form, soul torches can expose your soul and weaken you.",
+    "type": "origins:multiple",
+    "living_dead": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "tp_timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 40,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[type=armor_stand,tag=marktp] if score @s marktp = @p marktp run tp @p @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[type=armor_stand,tag=marktp] if score @s marktp = @p marktp run kill @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sculk_soul ~ ~ ~ 1 1 1 0.5 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0 1 1 1.5 0 0 0 ~ ~ ~ 1 1 1 1 100"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound simplyswords:dark_sword_enchant player @a[distance=..16] ~ ~ ~ 2 1.4"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sonic_boom ~ ~1 ~ 0 0 0 1 1"
+                }
+            ]
+        }
+    },
+    "tp_timer_down": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "change": -1
+                }
+            ]
+        },
+        "interval": 1
+    },
+    "activation": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "hypno:mythos/yatagarasu/traveler_living_dead",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s hypno:mythos/yatagarasu/dead"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s souless run data get entity @s UUID[0] 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon wither_skeleton ~ ~ ~ {NoGravity:1b,Silent:1b,DeathLootTable:\"minecraft:empty\",NoAI:1b,CanPickUpLoot:0b,Tags:[\"souless\"]}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[limit=1,sort=nearest,type=wither_skeleton,tag=souless] hypno:mythos/yatagarasu/souless"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:soul ~ ~ ~ 0.3 0 0.3 0.05 100"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.wither.hurt player @a ~ ~ ~ 2 0.5"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute store result score @e[limit=1,sort=nearest,type=wither_skeleton,tag=souless] souless run data get entity @p UUID[0] 1"
+                                }
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/yatagarasu/traveler_living_dead",
+                                "change": 1
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power remove @s hypno:mythos/yatagarasu/dead"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[type=wither_skeleton,tag=souless] if score @s souless = @p souless run tp @p @s"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "hypno:mythos/yatagarasu/traveler_living_dead",
+                                "change": -1
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @e[type=wither_skeleton,tag=souless] if score @s souless = @p souless run kill @s"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": false
+        },
+        "condition": {
+            "type": "origins:power",
+            "power": "hypno:mythos/yatagarasu/forced_back",
+            "inverted": true
+        }
+    },
+    "fog1": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 10,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": ">",
+                    "compare_to": 30
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": "<=",
+                    "compare_to": 40
+                }
+            ]
+        }
+    },
+    "fog2": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 7,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": ">",
+                    "compare_to": 20
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": "<=",
+                    "compare_to": 30
+                }
+            ]
+        }
+    },
+    "fog3": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 4,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": ">",
+                    "compare_to": 10
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": "<=",
+                    "compare_to": 20
+                }
+            ]
+        }
+    },
+    "fog4": {
+        "type": "moborigins:fog",
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "start": -1,
+        "end": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": "<=",
+                    "compare_to": 10
+                }
+            ]
+        }
+    },
+    "slowdown": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -0.6,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "z"
+        ],
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "particles_teleporting": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:sculk_soul ~ ~ ~ 0.3 0 0.3 0.03 10"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:dust_color_transition 0 1 1 1.5 0 0 0 ~ ~ ~ 0.3 0 0.3 0.03 10"
+                }
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "hypno:mythos/yatagarasu/traveler_tp_timer",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "hidden": false
+}
